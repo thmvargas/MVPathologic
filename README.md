@@ -19,6 +19,14 @@ via GitHub Pages, se este repositório tiver Pages habilitado).
   (calculada via algoritmo húngaro/Kuhn-Munkres) e explica cada par
   doença-categoria.
 
+## Login e ranking (opcional)
+
+O jogo funciona inteiramente sem login. Se configurado com um projeto
+Supabase (ver [`SETUP_SUPABASE.md`](./SETUP_SUPABASE.md) e
+[`supabase_schema.sql`](./supabase_schema.sql)), os alunos também podem
+criar conta (e-mail + senha) para salvar o desempenho na nuvem e aparecer
+nos rankings diário, semanal e mensal (por apelido, não por nome real).
+
 ## Manutenção
 
 Para adicionar doenças novas, novas categorias, ou trocar o desafio do dia,

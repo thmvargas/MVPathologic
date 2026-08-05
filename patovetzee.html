@@ -307,6 +307,37 @@ body{
 
 .rodape-nota{ text-align:center; font-size:12px; color: var(--cor-texto-suave); margin-top:24px; }
 
+/* --------- Login / sessão / ranking --------- */
+.campo{
+  width:100%; font-family:inherit; font-size:16px;
+  border:2px solid #ccc; border-radius: var(--raio-pequeno);
+  padding:12px 14px; margin-bottom:12px; min-height:44px;
+}
+.campo:focus{ outline:3px solid var(--cor-acento); outline-offset:1px; border-color: var(--cor-acento); }
+.rotulo-campo{ display:block; font-weight:700; margin-bottom:6px; }
+.faixa-sessao{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:#fff; border:3px solid var(--cor-card-borda); border-radius: var(--raio-pequeno);
+  padding:10px 16px; margin-bottom:16px; flex-wrap:wrap;
+}
+.faixa-sessao strong{ color: var(--cor-primaria-escura); }
+.aviso-config{
+  background:#FFF3CD; border:2px dashed #B08900; color:#6b5400;
+  border-radius: var(--raio-pequeno); padding:12px 16px; font-size:14px;
+}
+.abas-ranking{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.aba-ranking{
+  font-family:inherit; font-weight:700; font-size:14px;
+  border:3px solid var(--cor-card-borda); border-radius:999px;
+  padding:8px 18px; min-height:44px; background:#fff; cursor:pointer;
+  box-shadow: var(--sombra-sticker-pequena);
+}
+.aba-ranking.ativa{ background: var(--cor-secundaria); color:#fff; }
+.tabela-ranking{ width:100%; border-collapse:collapse; font-size:15px; }
+.tabela-ranking th, .tabela-ranking td{ text-align:left; padding:8px 10px; border-bottom:1px solid #eee; }
+.tabela-ranking tr.minha-linha{ background:#FFF3CD; font-weight:800; }
+.medalha{ font-size:18px; margin-right:4px; }
+
 @media (max-width:420px){
   .card{ padding:16px; }
 }
@@ -316,6 +347,14 @@ body{
 <div id="app" role="main" aria-live="off"></div>
 <div id="confetti-layer" aria-hidden="true"></div>
 <div id="live-region" class="sr-only" role="status" aria-live="polite"></div>
+
+<!--
+  SDK do Supabase — só é usado para login e ranking (seção 10 do script
+  abaixo). Se isto não carregar (sem internet, CDN bloqueado, etc.), o jogo
+  inteiro continua funcionando normalmente em modo "sem login" — só login e
+  ranking ficam indisponíveis, com um aviso claro na tela em vez de quebrar.
+-->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
 <script>
 "use strict";
@@ -1318,6 +1357,17 @@ function renderIntro() {
 
   const partes = [renderMarca()];
 
+  const faixaSessao = sessao.usuario
+    ? el("div", { class: "faixa-sessao" }, [
+        el("span", {}, [document.createTextNode("Jogando como "), el("strong", { text: sessao.apelido || "(definindo apelido…)" })]),
+        el("button", { class: "btn fantasma", text: "Sair", onclick: fazerLogout }),
+      ])
+    : el("div", { class: "faixa-sessao" }, [
+        el("span", { text: "Você está jogando sem login — seu desempenho não entra no ranking." }),
+        el("button", { class: "btn secundario", text: "Entrar / Criar conta", onclick: renderLogin }),
+      ]);
+  partes.push(faixaSessao);
+
   const cardRegras = el("section", { class: "card" }, [
     el("h2", { text: desafio.titulo }),
     el("p", { text:
@@ -1362,6 +1412,7 @@ function renderIntro() {
     el("div", {}, [
       el("button", { class: "btn secundario", text: "📋 Carregar desafio personalizado", onclick: abrirModalPersonalizado }),
       el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }),
+      el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }),
     ]),
   ]);
   partes.push(cardExtras);
@@ -1749,6 +1800,11 @@ function salvarResultado(resultado) {
   } catch (e) {
     console.warn("[PatoVetZee] Não foi possível salvar o histórico no localStorage:", e);
   }
+
+  // Sincronização remota (login/ranking) é best-effort e assíncrona — não
+  // bloqueia a tela de resultado nem quebra nada se estiver sem internet ou
+  // sem login (ver seção 10).
+  salvarResultadoRemoto(resultado);
 }
 
 function carregarProgresso(desafioId) {
@@ -1791,6 +1847,308 @@ function renderHistorico() {
   }
   card.appendChild(el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }));
   appEl.appendChild(card);
+}
+
+
+/* =========================================================================
+ * 10. LOGIN, PERFIL E RANKING (Supabase)
+ * -------------------------------------------------------------------------
+ * Camada OPCIONAL por cima do puzzle (seções 1-9), que funciona inteiramente
+ * sem isto. Login serve só para (a) guardar o desempenho na nuvem, entre
+ * dispositivos, e (b) aparecer nos rankings diário/semanal/mensal. Jogar
+ * "sem login" continua sendo uma opção válida e completa — só não soma pro
+ * ranking nem sincroniza entre aparelhos.
+ *
+ * Preencha as duas constantes abaixo com os dados do SEU projeto Supabase
+ * (ver SETUP_SUPABASE.md e supabase_schema.sql nesta mesma pasta). Elas não
+ * são secretas — são feitas para ir no código do navegador; a segurança de
+ * fato vem das políticas de RLS já definidas no schema SQL.
+ * ======================================================================= */
+
+const SUPABASE_URL = "COLOQUE_AQUI_A_URL_DO_SEU_PROJETO_SUPABASE";
+const SUPABASE_ANON_KEY = "COLOQUE_AQUI_A_ANON_KEY_DO_SEU_PROJETO_SUPABASE";
+
+// Só ativa o cliente se as constantes acima foram preenchidas E o SDK do
+// Supabase carregou (ver <script src=".../supabase-js"> no <head>). Se
+// qualquer uma dessas condições falhar, o jogo inteiro continua funcionando
+// normalmente — só login/ranking ficam desabilitados com um aviso claro.
+const SUPABASE_CONFIGURADO =
+  typeof supabase !== "undefined" &&
+  !SUPABASE_URL.startsWith("COLOQUE_AQUI") &&
+  !SUPABASE_ANON_KEY.startsWith("COLOQUE_AQUI");
+
+const supabaseClient = SUPABASE_CONFIGURADO
+  ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
+// Estado de sessão do jogador. usuario=null significa "modo convidado".
+let sessao = { usuario: null, apelido: null };
+
+// Roda no carregamento da página: o SDK do Supabase já guarda o token de
+// sessão no localStorage por conta própria, então isto só recupera a sessão
+// existente (se houver) sem exigir login de novo a cada visita.
+async function verificarSessaoAtual() {
+  if (!supabaseClient) return;
+  try {
+    const { data } = await supabaseClient.auth.getSession();
+    if (data && data.session && data.session.user) {
+      await carregarPerfilDaSessao(data.session.user);
+    }
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível verificar a sessão de login:", e);
+  }
+}
+
+async function carregarPerfilDaSessao(usuario) {
+  sessao.usuario = usuario;
+  const { data: perfil } = await supabaseClient
+    .from("perfis")
+    .select("apelido")
+    .eq("id", usuario.id)
+    .maybeSingle();
+  sessao.apelido = perfil ? perfil.apelido : null;
+}
+
+async function fazerLogout() {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  sessao = { usuario: null, apelido: null };
+  renderIntro();
+}
+
+function traduzirErroAuth(error) {
+  const msg = (error && error.message) || "Erro desconhecido.";
+  if (/invalid login credentials/i.test(msg)) return "E-mail ou senha incorretos.";
+  if (/already registered/i.test(msg)) return "Já existe uma conta com este e-mail — tente entrar em vez de criar conta.";
+  if (/password should be at least/i.test(msg)) return "A senha precisa ter pelo menos 6 caracteres.";
+  return msg;
+}
+
+// Envia o resultado de um desafio OFICIAL (não prática, não personalizado)
+// para o Supabase, se o jogador estiver logado e já tiver apelido definido.
+// Best-effort: roda em paralelo à gravação local (seção 9); se falhar (sem
+// internet, projeto pausado, etc.) o jogo não quebra — o resultado
+// continua salvo no localStorage do aparelho.
+async function salvarResultadoRemoto(resultado) {
+  if (!supabaseClient || !sessao.usuario || !sessao.apelido) return;
+  if (estado.modoPratica || estado.desafio.personalizado) return;
+
+  const { error } = await supabaseClient.from("resultados").upsert({
+    user_id: sessao.usuario.id,
+    desafio_id: estado.desafio.id,
+    data_desafio: estado.desafio.data,
+    total_score: resultado.totalScore,
+    optimal_score: resultado.optimalScore,
+    efficiency: resultado.efficiency,
+  });
+
+  if (error) {
+    console.warn("[PatoVetZee] Não foi possível salvar o resultado no ranking (permanece salvo localmente):", error.message);
+  }
+}
+
+/* --------- Tela: login / cadastro --------- */
+function renderLogin() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  if (!SUPABASE_CONFIGURADO) {
+    appEl.appendChild(el("section", { class: "card" }, [
+      el("h2", { text: "Login ainda não configurado" }),
+      el("p", { class: "aviso-config", text:
+        "O professor ainda não configurou o serviço de login/ranking (Supabase) neste arquivo. " +
+        "O jogo funciona normalmente sem login — só o ranking fica indisponível por enquanto." }),
+      el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }),
+    ]));
+    return;
+  }
+
+  const campoEmail = document.createElement("input");
+  campoEmail.type = "email"; campoEmail.className = "campo"; campoEmail.autocomplete = "email";
+  campoEmail.placeholder = "seuemail@exemplo.com";
+
+  const campoSenha = document.createElement("input");
+  campoSenha.type = "password"; campoSenha.className = "campo"; campoSenha.autocomplete = "current-password";
+  campoSenha.placeholder = "Sua senha (mínimo 6 caracteres)";
+
+  const erroEl = el("p", { class: "campo-erro" });
+
+  const card = el("section", { class: "card" }, [
+    el("h2", { text: "Entrar ou criar conta" }),
+    el("label", { class: "rotulo-campo", text: "E-mail" }),
+    campoEmail,
+    el("label", { class: "rotulo-campo", text: "Senha" }),
+    campoSenha,
+    erroEl,
+  ]);
+
+  card.appendChild(el("div", {}, [
+    el("button", { class: "btn", text: "Entrar", onclick: async () => {
+      erroEl.style.color = ""; erroEl.textContent = "";
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: campoEmail.value, password: campoSenha.value,
+      });
+      if (error) { erroEl.textContent = traduzirErroAuth(error); return; }
+      await carregarPerfilDaSessao(data.user);
+      if (!sessao.apelido) renderEscolherApelido();
+      else renderIntro();
+    }}),
+    el("button", { class: "btn secundario", text: "Criar conta", onclick: async () => {
+      erroEl.style.color = ""; erroEl.textContent = "";
+      const { data, error } = await supabaseClient.auth.signUp({
+        email: campoEmail.value, password: campoSenha.value,
+      });
+      if (error) { erroEl.textContent = traduzirErroAuth(error); return; }
+      if (!data.session) {
+        erroEl.style.color = "#1a7a3c";
+        erroEl.textContent = "Conta criada! Verifique seu e-mail para confirmar antes de entrar.";
+        return;
+      }
+      await carregarPerfilDaSessao(data.user);
+      renderEscolherApelido();
+    }}),
+  ]));
+  appEl.appendChild(card);
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("p", { text: "Prefere não criar conta agora?" }),
+    el("button", { class: "btn fantasma", text: "Jogar sem salvar desempenho", onclick: renderIntro }),
+  ]));
+
+  campoEmail.focus();
+}
+
+/* --------- Tela: escolher apelido (primeiro acesso após login) --------- */
+function renderEscolherApelido() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const campo = document.createElement("input");
+  campo.type = "text"; campo.className = "campo"; campo.maxLength = 24;
+  campo.placeholder = "Ex.: PatoVeterinario99";
+
+  const erroEl = el("p", { class: "campo-erro" });
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Escolha seu apelido" }),
+    el("p", { text: "É esse nome que vai aparecer nos rankings — pode ser diferente do seu nome real, se preferir mais privacidade." }),
+    campo,
+    erroEl,
+    el("button", { class: "btn", text: "Salvar e continuar", onclick: async () => {
+      const apelido = campo.value.trim();
+      erroEl.textContent = "";
+      if (apelido.length < 2 || apelido.length > 24) {
+        erroEl.textContent = "O apelido precisa ter entre 2 e 24 caracteres.";
+        return;
+      }
+      const { error } = await supabaseClient.from("perfis").insert({ id: sessao.usuario.id, apelido });
+      if (error) {
+        erroEl.textContent = /duplicate key|unique/i.test(error.message)
+          ? "Esse apelido já está em uso — escolha outro."
+          : error.message;
+        return;
+      }
+      sessao.apelido = apelido;
+      renderIntro();
+    }}),
+  ]));
+  campo.focus();
+}
+
+/* --------- Tela: ranking (diário / semanal / mensal) --------- */
+const ABAS_RANKING = [
+  { id: "diario", label: "Diário", tabela: "ranking_diario" },
+  { id: "semanal", label: "Semanal", tabela: "ranking_semanal" },
+  { id: "mensal", label: "Mensal", tabela: "ranking_mensal" },
+];
+
+function inicioSemanaISO(data) {
+  const d = new Date(Date.UTC(data.getFullYear(), data.getMonth(), data.getDate()));
+  const diaISO = (d.getUTCDay() + 6) % 7; // 0 = segunda-feira
+  d.setUTCDate(d.getUTCDate() - diaISO);
+  return d.toISOString().slice(0, 10);
+}
+function inicioMesISO(data) {
+  return `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(2, "0")}-01`;
+}
+
+async function renderRanking(abaSelecionada) {
+  abaSelecionada = abaSelecionada || "diario";
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  if (!SUPABASE_CONFIGURADO) {
+    appEl.appendChild(el("section", { class: "card" }, [
+      el("h2", { text: "Ranking indisponível" }),
+      el("p", { class: "aviso-config", text: "O login/ranking ainda não foi configurado neste jogo (ver SETUP_SUPABASE.md)." }),
+      el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }),
+    ]));
+    return;
+  }
+
+  const infoAba = ABAS_RANKING.find((a) => a.id === abaSelecionada);
+  const abas = el("div", { class: "abas-ranking", role: "tablist" },
+    ABAS_RANKING.map((a) => el("button", {
+      class: "aba-ranking" + (a.id === abaSelecionada ? " ativa" : ""),
+      type: "button",
+      role: "tab",
+      "aria-selected": String(a.id === abaSelecionada),
+      onclick: () => renderRanking(a.id),
+      text: a.label,
+    }))
+  );
+
+  const cardRanking = el("section", { class: "card" }, [
+    el("h2", { text: "Ranking — " + infoAba.label }),
+  ]);
+  cardRanking.appendChild(abas);
+  const carregandoEl = el("p", { text: "Carregando..." });
+  cardRanking.appendChild(carregandoEl);
+  appEl.appendChild(cardRanking);
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }),
+  ]));
+
+  let query = supabaseClient.from(infoAba.tabela).select("*");
+  if (abaSelecionada === "diario") query = query.eq("desafio_id", DESAFIO_DO_DIA.id);
+  else if (abaSelecionada === "semanal") query = query.eq("inicio_semana", inicioSemanaISO(new Date()));
+  else if (abaSelecionada === "mensal") query = query.eq("inicio_mes", inicioMesISO(new Date()));
+  query = query.order("posicao", { ascending: true }).limit(50);
+
+  const { data, error } = await query;
+  carregandoEl.remove();
+
+  if (error) {
+    cardRanking.appendChild(el("p", { class: "campo-erro", text: "Não foi possível carregar o ranking: " + error.message }));
+    return;
+  }
+  if (!data || data.length === 0) {
+    cardRanking.appendChild(el("p", { text: "Ainda não há resultados suficientes para montar este ranking." }));
+    return;
+  }
+
+  const medalhas = ["🥇", "🥈", "🥉"];
+  const tabela = el("table", { class: "tabela-ranking" }, [
+    el("thead", {}, [el("tr", {}, [
+      el("th", { text: "#" }),
+      el("th", { text: "Apelido" }),
+      el("th", { text: abaSelecionada === "diario" ? "Pontos" : "Pontos no período" }),
+      ...(abaSelecionada !== "diario" ? [el("th", { text: "Desafios" })] : []),
+    ])]),
+  ]);
+  const corpo = el("tbody");
+  data.forEach((linha, i) => {
+    const ehMinhaLinha = !!(sessao.apelido && linha.apelido === sessao.apelido);
+    const celulas = [
+      el("td", { text: (medalhas[i] || "") + (i + 1) }),
+      el("td", { text: linha.apelido }),
+      el("td", { text: String(abaSelecionada === "diario" ? linha.total_score : linha.pontos_periodo) }),
+    ];
+    if (abaSelecionada !== "diario") celulas.push(el("td", { text: String(linha.desafios_jogados) }));
+    corpo.appendChild(el("tr", { class: ehMinhaLinha ? "minha-linha" : "" }, celulas));
+  });
+  tabela.appendChild(corpo);
+  cardRanking.appendChild(tabela);
 }
 
 
@@ -1888,7 +2246,7 @@ function abrirModalPersonalizado() {
  * INICIALIZAÇÃO
  * ======================================================================= */
 
-function init() {
+async function init() {
   if (DEBUG) {
     console.log("[PatoVetZee] Modo debug ativo (?debug=1).");
     rodarTestesInternosHungaro();
@@ -1896,7 +2254,13 @@ function init() {
   // Checagem de integridade do banco roda sempre (é barata e evita passar
   // um desafio quebrado pra turma por causa de um campo esquecido/errado).
   validarBancoDoencas();
+
+  // Renderiza a tela inicial já, sem esperar a verificação de sessão (que é
+  // assíncrona) — evita tela em branco. Se havia uma sessão de login salva,
+  // a tela inicial é atualizada de novo em seguida para refletir isso.
   renderIntro();
+  await verificarSessaoAtual();
+  if (sessao.usuario) renderIntro();
 }
 
 init();
