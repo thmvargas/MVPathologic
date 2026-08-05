@@ -1,0 +1,1770 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PatoVetZee — Desafio diário de patologia veterinária</title>
+<meta name="description" content="Jogo diário de alocação: encaixe 9 doenças em 9 categorias clínicas, em ordem, sem voltar atrás.">
+<!--
+  Tenta carregar uma fonte arredondada e amigável do Google Fonts. Se não
+  houver internet (ex.: uso 100% offline por file://), o @import simplesmente
+  falha silenciosamente e a pilha de fallback (também arredondada/amigável)
+  do CSS abaixo assume — o jogo funciona igual, só muda a fonte.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
+
+:root{
+  --cor-fundo-1:#FFF1D6;
+  --cor-fundo-2:#FFD9E8;
+  --cor-primaria:#FF6B6B;
+  --cor-primaria-escura:#E8534F;
+  --cor-secundaria:#4ECDC4;
+  --cor-secundaria-escura:#33A79F;
+  --cor-acento:#C77DFF;
+  --cor-sucesso:#2FBF71;
+  --cor-alerta:#FFB800;
+  --cor-texto:#3A2E39;
+  --cor-texto-suave:#6b5f6a;
+  --cor-card:#FFFFFF;
+  --cor-card-borda:#3A2E39;
+  --raio:22px;
+  --raio-pequeno:14px;
+  --sombra-sticker:0 6px 0 rgba(58,46,57,0.18), 0 10px 20px rgba(58,46,57,0.12);
+  --sombra-sticker-pequena:0 4px 0 rgba(58,46,57,0.18), 0 6px 14px rgba(58,46,57,0.10);
+  --fonte: 'Baloo 2', 'Comic Sans MS', 'Segoe UI Rounded', 'Trebuchet MS', Verdana, sans-serif;
+  color-scheme: light;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  min-height:100%;
+  font-family: var(--fonte);
+  color: var(--cor-texto);
+  background: radial-gradient(circle at 15% 10%, var(--cor-fundo-2), transparent 55%),
+              radial-gradient(circle at 85% 90%, var(--cor-secundaria), transparent 45%),
+              linear-gradient(160deg, var(--cor-fundo-1), var(--cor-fundo-2));
+  background-attachment: fixed;
+  overflow-x:hidden;
+}
+
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+#app{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+
+/* --------- Cabeçalho / marca --------- */
+.marca{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin: 4px 0 18px;
+}
+.marca h1{
+  font-size: clamp(28px, 6vw, 40px);
+  margin:0;
+  letter-spacing: 0.5px;
+  color: var(--cor-primaria-escura);
+  text-shadow: 2px 2px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.marca .mascote{ width:48px; height:48px; flex-shrink:0; }
+
+/* --------- Cards genéricos "sticker" --------- */
+.card{
+  background: var(--cor-card);
+  border: 3px solid var(--cor-card-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-sticker);
+  padding: 22px;
+  margin-bottom: 18px;
+}
+.card h2{ margin-top:0; }
+
+/* --------- Botões --------- */
+.btn{
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--cor-primaria);
+  border: 3px solid var(--cor-card-borda);
+  border-radius: 999px;
+  padding: 14px 26px;
+  min-height: 48px;
+  min-width: 44px;
+  cursor: pointer;
+  box-shadow: var(--sombra-sticker-pequena);
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+  touch-action: manipulation;
+}
+.btn:hover{ filter: brightness(1.05); }
+.btn:active{ transform: translateY(3px) scale(0.97); box-shadow: 0 1px 0 rgba(58,46,57,0.18); }
+.btn:focus-visible{ outline: 3px solid var(--cor-acento); outline-offset: 3px; }
+.btn.secundario{ background: var(--cor-secundaria); }
+.btn.acento{ background: var(--cor-acento); }
+.btn.fantasma{
+  background: #fff; color: var(--cor-texto);
+}
+.btn:disabled{ opacity:0.55; cursor:not-allowed; transform:none; }
+
+.btn-categoria{
+  display:block;
+  width:100%;
+  text-align:left;
+  font-size:16px;
+  background:#fff;
+  color: var(--cor-texto);
+  border:3px solid var(--cor-card-borda);
+  border-radius: var(--raio-pequeno);
+  padding: 14px 18px;
+  min-height:44px;
+  margin-bottom:12px;
+  box-shadow: var(--sombra-sticker-pequena);
+  cursor:pointer;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.15s;
+}
+.btn-categoria:hover{ background: #FFF6E9; }
+.btn-categoria:active{ transform: translateY(3px); box-shadow:0 1px 0 rgba(58,46,57,0.18); }
+.btn-categoria:focus-visible{ outline: 3px solid var(--cor-acento); outline-offset:2px; }
+.btn-categoria.confirmando{
+  background: #E9FBF2;
+  border-color: var(--cor-sucesso);
+  pointer-events:none;
+}
+.btn-categoria .check{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:50%;
+  background: var(--cor-sucesso); color:#fff; margin-right:10px;
+  opacity:0; transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+.btn-categoria.confirmando .check{ opacity:1; transform: scale(1); }
+
+.grade-categorias{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:0;
+}
+@media (min-width:520px){
+  .grade-categorias{ grid-template-columns: 1fr 1fr; gap:0 12px; }
+}
+
+/* --------- Doença atual (carta) --------- */
+.carta-doenca{
+  text-align:center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg,#fff, #FFF6E9);
+}
+.carta-doenca .rotulo-passo{
+  display:inline-block;
+  background: var(--cor-secundaria);
+  color:#fff; font-weight:700;
+  border-radius: 999px; padding: 4px 14px; margin-bottom:10px;
+  border: 2px solid var(--cor-card-borda);
+}
+.carta-doenca h2{
+  font-size: clamp(22px, 6vw, 30px);
+  margin: 8px 0 4px;
+}
+.carta-doenca .aviso-irreversivel{
+  font-size:13px; color: var(--cor-texto-suave); margin-top:6px;
+}
+.icone-doenca{ width:72px; height:72px; margin:0 auto 8px; }
+
+@keyframes cartaEntra{
+  0%{ opacity:0; transform: translateY(24px) rotate(-3deg) scale(0.9); }
+  60%{ opacity:1; transform: translateY(-4px) rotate(1deg) scale(1.02); }
+  100%{ opacity:1; transform: translateY(0) rotate(0) scale(1); }
+}
+.carta-doenca.anim-entrada{ animation: cartaEntra 0.55s ease-out; }
+
+/* --------- Barra de progresso --------- */
+.progresso{
+  display:flex; gap:6px; justify-content:center; margin-bottom:14px;
+}
+.progresso .ponto{
+  width:14px; height:14px; border-radius:50%;
+  background:#fff; border:2px solid var(--cor-card-borda);
+}
+.progresso .ponto.feito{ background: var(--cor-sucesso); }
+.progresso .ponto.atual{ background: var(--cor-alerta); }
+
+/* --------- Resultado --------- */
+.resumo-total{
+  text-align:center; padding: 18px;
+}
+.resumo-total .numero-grande{
+  font-size: clamp(40px,10vw,64px); font-weight:800; color: var(--cor-primaria-escura);
+  line-height:1;
+}
+.barra-eficiencia{
+  height: 22px; border-radius: 999px; background:#eee; border:2px solid var(--cor-card-borda);
+  overflow:hidden; margin: 10px 0;
+}
+.barra-eficiencia .preenchimento{
+  height:100%; background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-sucesso));
+  width:0%; transition: width 1s ease-out;
+}
+
+.linha-par{
+  display:flex; justify-content:space-between; gap:10px;
+  padding:10px 0; border-bottom: 2px dashed #eadfe0;
+  opacity:0; transform: translateY(10px);
+  animation: parEntra 0.4s ease-out forwards;
+}
+@keyframes parEntra{ to{ opacity:1; transform:none; } }
+.linha-par:last-child{ border-bottom:none; }
+.linha-par .pontos{ font-weight:800; white-space:nowrap; }
+.linha-par .pontos.cheio{ color: var(--cor-sucesso); }
+.linha-par .pontos.vazio{ color: var(--cor-texto-suave); }
+.linha-par .explicacao{ font-size:14px; color: var(--cor-texto-suave); margin-top:2px; }
+
+.tabela-otima{ width:100%; border-collapse: collapse; font-size:14px; }
+.tabela-otima th, .tabela-otima td{ text-align:left; padding:6px 8px; border-bottom:1px solid #eee; }
+
+/* --------- Confete --------- */
+#confetti-layer{
+  position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:999;
+}
+.confete{
+  position:absolute; top:-20px; width:10px; height:16px;
+  animation-name: cair; animation-timing-function: linear; animation-fill-mode: forwards;
+  border-radius:3px;
+}
+@keyframes cair{
+  0%{ transform: translateY(0) rotate(0deg); opacity:1; }
+  100%{ transform: translateY(110vh) rotate(var(--rot,360deg)); opacity:0.9; }
+}
+
+/* --------- Modal desafio personalizado --------- */
+.modal-fundo{
+  position:fixed; inset:0; background: rgba(58,46,57,0.55);
+  display:flex; align-items:center; justify-content:center; padding:16px; z-index:1000;
+}
+.modal-caixa{
+  background:#fff; border-radius: var(--raio); border:3px solid var(--cor-card-borda);
+  max-width:560px; width:100%; max-height:88vh; overflow:auto; padding:22px;
+  box-shadow: var(--sombra-sticker);
+}
+.modal-caixa textarea{
+  width:100%; min-height:160px; font-family: monospace; font-size:13px;
+  border-radius: var(--raio-pequeno); border:2px solid #ccc; padding:10px;
+}
+.campo-erro{ color:#B00020; font-size:14px; white-space:pre-wrap; }
+
+.rodape-nota{ text-align:center; font-size:12px; color: var(--cor-texto-suave); margin-top:24px; }
+
+@media (max-width:420px){
+  .card{ padding:16px; }
+}
+</style>
+</head>
+<body>
+<div id="app" role="main" aria-live="off"></div>
+<div id="confetti-layer" aria-hidden="true"></div>
+<div id="live-region" class="sr-only" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* =========================================================================
+ * PatoVetZee — motor do jogo
+ * -------------------------------------------------------------------------
+ * Arquivo único, sem dependências externas obrigatórias, pensado para rodar
+ * via file:// ou hospedagem estática simples.
+ *
+ * Organização (conforme pedido no briefing):
+ *   1. Banco de doenças com parâmetros
+ *   2. Definição do desafio do dia
+ *   3. Utilitário de seed determinístico por data
+ *   4. Algoritmo húngaro + testes internos
+ *   5. Estado do jogo
+ *   6. Renderização / DOM e animações
+ *   7. Handlers de interação (clique/toque + teclado)
+ *   8. Cálculo e exibição do resultado final
+ *   9. Persistência local (localStorage)
+ * ======================================================================= */
+
+
+/* =========================================================================
+ * 1. BANCO DE DOENÇAS COM PARÂMETROS
+ * -------------------------------------------------------------------------
+ * Por que este formato (e não uma matriz 9x9 por desafio):
+ *   - O banco é a fonte de verdade clínica. Cada doença já carrega TODOS os
+ *     parâmetros que possui (binários + graduais) de uma vez.
+ *   - A pontuação de qualquer par doença×categoria nunca é armazenada — ela
+ *     é sempre derivada em tempo real a partir daqui (ver calcularPontuacao,
+ *     seção 5). Isso elimina a necessidade de preencher uma matriz nova a
+ *     cada desafio.
+ *   - Quando novas doenças forem adicionadas, basta acrescentar um objeto
+ *     aqui com os mesmos ~60 campos preenchidos; elas já ficam disponíveis
+ *     para entrar em qualquer desafio futuro.
+ * ======================================================================= */
+
+// Catálogo de metadados dos parâmetros (não é por doença — é a "régua").
+// grupo_tematico é só organizacional (facilita você navegar/editar).
+const CATALOGO_PARAMETROS = {
+  binarios: {
+    // --- Etiologia ---
+    zoonose: { label: "Zoonose", grupo_tematico: "etiologia" },
+    doenca_viral: { label: "Doença viral", grupo_tematico: "etiologia" },
+    doenca_bacteriana: { label: "Doença bacteriana", grupo_tematico: "etiologia" },
+    doenca_parasitaria: { label: "Doença parasitária", grupo_tematico: "etiologia" },
+    doenca_fungica: { label: "Doença fúngica", grupo_tematico: "etiologia" },
+    associada_uso_hormonios: { label: "Associada ao uso de hormônios", grupo_tematico: "etiologia" },
+    etiologia_hereditaria_genetica: { label: "Etiologia hereditária/genética", grupo_tematico: "etiologia" },
+
+    // --- Transmissão ---
+    transmitida_por_vetores: { label: "Transmitida por vetores", grupo_tematico: "transmissao" },
+    contagiosa_contato_direto: { label: "Contagiosa por contato direto", grupo_tematico: "transmissao" },
+    transmissao_ambiental_fomites: { label: "Transmissão ambiental/fômites relevante", grupo_tematico: "transmissao" },
+    transmissao_vertical_transplacentaria: { label: "Transmissão vertical/transplacentária possível", grupo_tematico: "transmissao" },
+    requer_notificacao_obrigatoria: { label: "Doença de notificação obrigatória", grupo_tematico: "transmissao" },
+
+    // --- Predisposição ---
+    maior_prevalencia_felinos: { label: "Maior prevalência em felinos", grupo_tematico: "predisposicao" },
+    predisposicao_racial_reconhecida: { label: "Predisposição racial reconhecida", grupo_tematico: "predisposicao" },
+    maior_prevalencia_animais_idosos: { label: "Maior prevalência em animais idosos", grupo_tematico: "predisposicao" },
+    maior_prevalencia_filhotes_jovens: { label: "Maior prevalência em filhotes/jovens", grupo_tematico: "predisposicao" },
+    predisposicao_femeas_nao_castradas: { label: "Predisposição em fêmeas não castradas", grupo_tematico: "predisposicao" },
+    associada_obesidade: { label: "Associada à obesidade", grupo_tematico: "predisposicao" },
+    maior_prevalencia_ambientes_coletivos: { label: "Maior prevalência em ambientes coletivos", grupo_tematico: "predisposicao" },
+
+    // --- Natureza da lesão ---
+    doenca_neoplasica: { label: "Doença neoplásica", grupo_tematico: "natureza_lesao" },
+    causa_hemorragia: { label: "Causa hemorragia", grupo_tematico: "natureza_lesao" },
+    lesao_caracteristicamente_multissistemica: { label: "Lesão caracteristicamente multissistêmica", grupo_tematico: "natureza_lesao" },
+    processo_inflamatorio_predominante: { label: "Processo inflamatório predominante", grupo_tematico: "natureza_lesao" },
+    lesao_potencialmente_metastatica: { label: "Lesão potencialmente metastática/invasiva", grupo_tematico: "natureza_lesao" },
+    causa_alteracao_degenerativa_cronica: { label: "Causa alteração degenerativa crônica", grupo_tematico: "natureza_lesao" },
+
+    // --- Sinais clínicos ---
+    sinais_gastrointestinais_proeminentes: { label: "Sinais gastrointestinais proeminentes", grupo_tematico: "sinais_clinicos" },
+    sinais_respiratorios_proeminentes: { label: "Sinais respiratórios proeminentes", grupo_tematico: "sinais_clinicos" },
+    sinais_dermatologicos_proeminentes: { label: "Sinais dermatológicos proeminentes", grupo_tematico: "sinais_clinicos" },
+    sinais_musculoesqueleticos_proeminentes: { label: "Sinais musculoesqueléticos proeminentes", grupo_tematico: "sinais_clinicos" },
+    linfonodomegalia_frequente: { label: "Linfonodomegalia frequente", grupo_tematico: "sinais_clinicos" },
+    febre_frequente: { label: "Febre frequente", grupo_tematico: "sinais_clinicos" },
+    sinais_sistemicos_inespecificos_comuns: { label: "Sinais sistêmicos inespecíficos comuns", grupo_tematico: "sinais_clinicos" },
+    perda_peso_ou_caquexia_frequente: { label: "Perda de peso/caquexia frequente", grupo_tematico: "sinais_clinicos" },
+
+    // --- Diagnóstico ---
+    diagnostico_por_exame_sorologico: { label: "Diagnóstico auxiliado por sorologia", grupo_tematico: "diagnostico" },
+    diagnostico_por_citologia_biopsia: { label: "Diagnóstico via citologia/biópsia", grupo_tematico: "diagnostico" },
+    diagnostico_por_imagem_essencial: { label: "Diagnóstico com uso essencial de imagem", grupo_tematico: "diagnostico" },
+    diagnostico_laboratorial_bioquimico_essencial: { label: "Bioquímica/hematologia essencial ao Dx", grupo_tematico: "diagnostico" },
+    diagnostico_definitivo_requer_histopatologia: { label: "Diagnóstico definitivo requer histopatologia", grupo_tematico: "diagnostico" },
+    teste_rapido_disponivel_rotina: { label: "Teste rápido disponível na rotina", grupo_tematico: "diagnostico" },
+    alteracoes_hematologicas_caracteristicas: { label: "Alterações hematológicas características", grupo_tematico: "diagnostico" },
+
+    // --- Tratamento ---
+    tratamento_cirurgico_indicado: { label: "Tratamento cirúrgico indicado", grupo_tematico: "tratamento" },
+    tratamento_quimioterapico_indicado: { label: "Tratamento quimioterápico indicado", grupo_tematico: "tratamento" },
+    tratamento_com_antimicrobianos_especificos: { label: "Tratamento com agente específico (anti-inf.)", grupo_tematico: "tratamento" },
+    tratamento_essencialmente_de_suporte: { label: "Tratamento essencialmente de suporte", grupo_tematico: "tratamento" },
+    tratamento_topico_frequente: { label: "Tratamento tópico frequente", grupo_tematico: "tratamento" },
+    tratamento_exclusivamente_paliativo: { label: "Tratamento essencialmente paliativo", grupo_tematico: "tratamento" },
+    requer_tratamento_continuo_longo_prazo: { label: "Requer tratamento contínuo/longo prazo", grupo_tematico: "tratamento" },
+
+    // --- Prognóstico ---
+    prognostico_favoravel: { label: "Prognóstico favorável (Dx/Tx precoces)", grupo_tematico: "prognostico" },
+    doenca_potencialmente_fatal_sem_tratamento: { label: "Potencialmente fatal sem tratamento", grupo_tematico: "prognostico" },
+    risco_recidiva_relevante: { label: "Risco de recidiva relevante", grupo_tematico: "prognostico" },
+    cura_definitiva_possivel: { label: "Cura definitiva possível", grupo_tematico: "prognostico" },
+    doenca_cronica_progressiva: { label: "Doença crônica e progressiva", grupo_tematico: "prognostico" },
+  },
+
+  graduais: {
+    letalidade_nao_tratada: {
+      label: "Letalidade se não tratada",
+      grupo_tematico: "prognostico",
+      criterio_referencia: "0 = praticamente nunca letal sem tratamento; 100 = letalidade quase certa sem tratamento.",
+    },
+    velocidade_progressao: {
+      label: "Velocidade de progressão",
+      grupo_tematico: "sinais_clinicos",
+      criterio_referencia: "0 = curso de anos; 100 = curso de horas/dias.",
+    },
+    custo_complexidade_diagnostica: {
+      label: "Custo/complexidade diagnóstica",
+      grupo_tematico: "diagnostico",
+      criterio_referencia: "0 = exame clínico/teste simples e barato; 100 = workup multi-etapas e caro.",
+    },
+    impacto_qualidade_vida: {
+      label: "Impacto na qualidade de vida",
+      grupo_tematico: "prognostico",
+      criterio_referencia: "0 = sem impacto perceptível; 100 = comprometimento grave e constante.",
+    },
+    disseminacao_ambiente_coletivo: {
+      label: "Grau de disseminação em ambiente coletivo",
+      grupo_tematico: "transmissao",
+      criterio_referencia: "0 = não se dissemina entre animais de um canil/gatil; 100 = disseminação explosiva.",
+    },
+    relevancia_diferencial_rotina: {
+      label: "Relevância como diagnóstico diferencial na rotina",
+      grupo_tematico: "diagnostico",
+      criterio_referencia: "0 = raramente entra como DDx; 100 = DDx obrigatório e frequente na clínica geral.",
+    },
+    invasividade_tratamento_padrao: {
+      label: "Grau de invasividade do tratamento padrão",
+      grupo_tematico: "tratamento",
+      criterio_referencia: "0 = tratamento não invasivo (tópico/oral simples); 100 = cirurgia de grande porte/agressivo.",
+    },
+    impacto_economico_tratamento: {
+      label: "Impacto econômico do tratamento",
+      grupo_tematico: "tratamento",
+      criterio_referencia: "0 = tratamento de baixo custo; 100 = tratamento caro e/ou prolongado.",
+    },
+  },
+};
+
+// Banco de doenças. Cada doença preenche TODAS as chaves do catálogo acima.
+// `dica` fica reservado para uma versão futura — não é populado nem exibido.
+const BANCO_DOENCAS = [
+  {
+    id: "piometra_canina",
+    nome: "Piometra canina",
+    especie: "Canina", // guardado no dado, mas não exibido ao jogador (ver renderDoencaAtual)
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: true, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: true, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: false, maior_prevalencia_animais_idosos: true,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: true, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: true, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: true, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: true, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: true,
+      sinais_sistemicos_inespecificos_comuns: true, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: false, diagnostico_por_imagem_essencial: true,
+      diagnostico_laboratorial_bioquimico_essencial: true, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: true,
+      tratamento_cirurgico_indicado: true, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: true,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: false,
+      cura_definitiva_possivel: true, doenca_cronica_progressiva: false,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 70, velocidade_progressao: 60, custo_complexidade_diagnostica: 40,
+      impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 5, relevancia_diferencial_rotina: 70,
+      invasividade_tratamento_padrao: 85, impacto_economico_tratamento: 55,
+    },
+  },
+  {
+    id: "carcinoma_celulas_escamosas_cutaneo",
+    nome: "Carcinoma de células escamosas (cutâneo)",
+    especie: "Felina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: true, predisposicao_racial_reconhecida: true, maior_prevalencia_animais_idosos: true,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: true, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: false, lesao_potencialmente_metastatica: true, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: true,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: false, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: true, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: true,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: false,
+      tratamento_cirurgico_indicado: true, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: false,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: true, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: false, risco_recidiva_relevante: true,
+      cura_definitiva_possivel: true, doenca_cronica_progressiva: false,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 25, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
+      impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
+      invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 50,
+    },
+  },
+  {
+    id: "leishmaniose_visceral_canina",
+    nome: "Leishmaniose visceral canina",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: true, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: true,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: true, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: true, requer_notificacao_obrigatoria: true,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: true, maior_prevalencia_animais_idosos: false,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: true, lesao_caracteristicamente_multissistemica: true,
+      processo_inflamatorio_predominante: true, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: true,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: true, febre_frequente: true,
+      sinais_sistemicos_inespecificos_comuns: true, perda_peso_ou_caquexia_frequente: true,
+      diagnostico_por_exame_sorologico: true, diagnostico_por_citologia_biopsia: true, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: true, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: true, alteracoes_hematologicas_caracteristicas: true,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: true,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: true,
+      requer_tratamento_continuo_longo_prazo: true,
+      prognostico_favoravel: false, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: true,
+      cura_definitiva_possivel: false, doenca_cronica_progressiva: true,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 80, velocidade_progressao: 35, custo_complexidade_diagnostica: 55,
+      impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 60,
+      invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 65,
+    },
+  },
+  {
+    id: "parvovirose_canina",
+    nome: "Parvovirose canina",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: true, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: true, transmissao_ambiental_fomites: true,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: false, maior_prevalencia_animais_idosos: false,
+      maior_prevalencia_filhotes_jovens: true, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: true,
+      doenca_neoplasica: false, causa_hemorragia: true, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: true, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: true, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: true,
+      sinais_sistemicos_inespecificos_comuns: true, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: false, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: true, alteracoes_hematologicas_caracteristicas: true,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: false,
+      tratamento_essencialmente_de_suporte: true, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: false,
+      cura_definitiva_possivel: true, doenca_cronica_progressiva: false,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 85, velocidade_progressao: 90, custo_complexidade_diagnostica: 30,
+      impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 95, relevancia_diferencial_rotina: 80,
+      invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 60,
+    },
+  },
+  {
+    id: "dirofilariose_canina",
+    nome: "Dirofilariose canina",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: true,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: true, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: false, maior_prevalencia_animais_idosos: false,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: false, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: true, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: false, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: true, diagnostico_por_citologia_biopsia: false, diagnostico_por_imagem_essencial: true,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: true, alteracoes_hematologicas_caracteristicas: true,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: true,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: false,
+      cura_definitiva_possivel: true, doenca_cronica_progressiva: true,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 55, velocidade_progressao: 25, custo_complexidade_diagnostica: 45,
+      impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 15, relevancia_diferencial_rotina: 50,
+      invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+    },
+  },
+  {
+    id: "displasia_coxofemoral",
+    nome: "Displasia coxofemoral",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: true,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: true, maior_prevalencia_animais_idosos: false,
+      maior_prevalencia_filhotes_jovens: true, predisposicao_femeas_nao_castradas: false, associada_obesidade: true,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: false, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: true,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: true, linfonodomegalia_frequente: false, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: false, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: false, diagnostico_por_imagem_essencial: true,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: false,
+      tratamento_cirurgico_indicado: true, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: false,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: true,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: false, risco_recidiva_relevante: false,
+      cura_definitiva_possivel: false, doenca_cronica_progressiva: true,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 5, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
+      impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
+      invasividade_tratamento_padrao: 70, impacto_economico_tratamento: 70,
+    },
+  },
+  {
+    id: "linfoma_multicentrico_canino",
+    nome: "Linfoma multicêntrico canino",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: true, maior_prevalencia_animais_idosos: true,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: true, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: true,
+      processo_inflamatorio_predominante: false, lesao_potencialmente_metastatica: true, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: true, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: true, perda_peso_ou_caquexia_frequente: true,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: true, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: true,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: true, tratamento_com_antimicrobianos_especificos: false,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: true,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: false, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: true,
+      cura_definitiva_possivel: false, doenca_cronica_progressiva: true,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 90, velocidade_progressao: 75, custo_complexidade_diagnostica: 60,
+      impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
+      invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 75,
+    },
+  },
+  {
+    id: "otite_externa_malassezia",
+    nome: "Otite externa por Malassezia spp.",
+    especie: "Canina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: true, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: false, predisposicao_racial_reconhecida: true, maior_prevalencia_animais_idosos: false,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: true, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: false,
+      sinais_gastrointestinais_proeminentes: false, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: true,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: false, perda_peso_ou_caquexia_frequente: false,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: true, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: false, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: false,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: true,
+      tratamento_essencialmente_de_suporte: false, tratamento_topico_frequente: true, tratamento_exclusivamente_paliativo: false,
+      requer_tratamento_continuo_longo_prazo: false,
+      prognostico_favoravel: true, doenca_potencialmente_fatal_sem_tratamento: false, risco_recidiva_relevante: true,
+      cura_definitiva_possivel: true, doenca_cronica_progressiva: false,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 3, velocidade_progressao: 50, custo_complexidade_diagnostica: 20,
+      impacto_qualidade_vida: 30, disseminacao_ambiente_coletivo: 25, relevancia_diferencial_rotina: 85,
+      invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 15,
+    },
+  },
+  {
+    id: "drc_felina",
+    nome: "Doença renal crônica felina",
+    especie: "Felina",
+    dica: null,
+    parametros_binarios: {
+      zoonose: false, doenca_viral: false, doenca_bacteriana: false, doenca_parasitaria: false,
+      doenca_fungica: false, associada_uso_hormonios: false, etiologia_hereditaria_genetica: false,
+      transmitida_por_vetores: false, contagiosa_contato_direto: false, transmissao_ambiental_fomites: false,
+      transmissao_vertical_transplacentaria: false, requer_notificacao_obrigatoria: false,
+      maior_prevalencia_felinos: true, predisposicao_racial_reconhecida: false, maior_prevalencia_animais_idosos: true,
+      maior_prevalencia_filhotes_jovens: false, predisposicao_femeas_nao_castradas: false, associada_obesidade: false,
+      maior_prevalencia_ambientes_coletivos: false,
+      doenca_neoplasica: false, causa_hemorragia: false, lesao_caracteristicamente_multissistemica: false,
+      processo_inflamatorio_predominante: false, lesao_potencialmente_metastatica: false, causa_alteracao_degenerativa_cronica: true,
+      sinais_gastrointestinais_proeminentes: true, sinais_respiratorios_proeminentes: false, sinais_dermatologicos_proeminentes: false,
+      sinais_musculoesqueleticos_proeminentes: false, linfonodomegalia_frequente: false, febre_frequente: false,
+      sinais_sistemicos_inespecificos_comuns: true, perda_peso_ou_caquexia_frequente: true,
+      diagnostico_por_exame_sorologico: false, diagnostico_por_citologia_biopsia: false, diagnostico_por_imagem_essencial: false,
+      diagnostico_laboratorial_bioquimico_essencial: true, diagnostico_definitivo_requer_histopatologia: false,
+      teste_rapido_disponivel_rotina: false, alteracoes_hematologicas_caracteristicas: false,
+      tratamento_cirurgico_indicado: false, tratamento_quimioterapico_indicado: false, tratamento_com_antimicrobianos_especificos: false,
+      tratamento_essencialmente_de_suporte: true, tratamento_topico_frequente: false, tratamento_exclusivamente_paliativo: true,
+      requer_tratamento_continuo_longo_prazo: true,
+      prognostico_favoravel: false, doenca_potencialmente_fatal_sem_tratamento: true, risco_recidiva_relevante: false,
+      cura_definitiva_possivel: false, doenca_cronica_progressiva: true,
+    },
+    parametros_graduais: {
+      letalidade_nao_tratada: 65, velocidade_progressao: 30, custo_complexidade_diagnostica: 45,
+      impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 75,
+      invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 55,
+    },
+  },
+];
+
+// Índice rápido id -> doença, montado uma vez.
+const MAPA_DOENCAS = Object.fromEntries(BANCO_DOENCAS.map((d) => [d.id, d]));
+
+// Checagem de integridade do banco: roda uma vez ao carregar a página e avisa
+// no console (não trava o jogo) se alguma doença estiver com parâmetro
+// faltando, com tipo errado, ou com uma chave que não existe no catálogo
+// (sinal comum de erro de digitação ao copiar o MODELO_NOVA_DOENCA.js).
+// Ver GUIA_MANUTENCAO.md para o passo a passo de como adicionar doenças.
+function validarBancoDoencas() {
+  const idsBinarios = Object.keys(CATALOGO_PARAMETROS.binarios);
+  const idsGraduais = Object.keys(CATALOGO_PARAMETROS.graduais);
+  let problemas = 0;
+
+  for (const doenca of BANCO_DOENCAS) {
+    const faltando = [];
+    const tipoErrado = [];
+    const desconhecidos = [];
+
+    for (const id of idsBinarios) {
+      if (!(id in (doenca.parametros_binarios || {}))) faltando.push(id);
+      else if (typeof doenca.parametros_binarios[id] !== "boolean") tipoErrado.push(id);
+    }
+    for (const id of Object.keys(doenca.parametros_binarios || {})) {
+      if (!idsBinarios.includes(id)) desconhecidos.push("binario:" + id);
+    }
+
+    for (const id of idsGraduais) {
+      if (!(id in (doenca.parametros_graduais || {}))) faltando.push(id);
+      else if (typeof doenca.parametros_graduais[id] !== "number" || doenca.parametros_graduais[id] < 0 || doenca.parametros_graduais[id] > 100) {
+        tipoErrado.push(id + " (deve ser número entre 0 e 100)");
+      }
+    }
+    for (const id of Object.keys(doenca.parametros_graduais || {})) {
+      if (!idsGraduais.includes(id)) desconhecidos.push("gradual:" + id);
+    }
+
+    if (faltando.length || tipoErrado.length || desconhecidos.length) {
+      problemas++;
+      console.warn(
+        `[PatoVetZee] Doença "${doenca.id}" (${doenca.nome}) tem problemas no banco de dados:` +
+        (faltando.length ? `\n  faltando: ${faltando.join(", ")}` : "") +
+        (tipoErrado.length ? `\n  valor com tipo/faixa inválidos: ${tipoErrado.join(", ")}` : "") +
+        (desconhecidos.length ? `\n  chave desconhecida (possível erro de digitação): ${desconhecidos.join(", ")}` : "")
+      );
+    }
+  }
+
+  // Ids de doença duplicados também quebram o jogo (MAPA_DOENCAS silenciosamente
+  // sobrescreve o anterior), então vale avisar.
+  const contagem = {};
+  BANCO_DOENCAS.forEach((d) => { contagem[d.id] = (contagem[d.id] || 0) + 1; });
+  const duplicados = Object.entries(contagem).filter(([, n]) => n > 1).map(([id]) => id);
+  if (duplicados.length) {
+    problemas++;
+    console.warn(`[PatoVetZee] Ids de doença duplicados no BANCO_DOENCAS: ${duplicados.join(", ")}`);
+  }
+
+  if (problemas === 0) {
+    console.log(`[PatoVetZee] Banco de doenças OK: ${BANCO_DOENCAS.length} doenças, todos os ${idsBinarios.length + idsGraduais.length} parâmetros presentes e válidos.`);
+  }
+  return problemas === 0;
+}
+
+
+/* =========================================================================
+ * 2. DEFINIÇÃO DO DESAFIO DO DIA
+ * -------------------------------------------------------------------------
+ * O desafio NÃO guarda pontuação nenhuma — só referências a 9 parâmetros
+ * (de qualquer um dos dois grupos) e a lista de doenças participantes.
+ * A ordem de apresentação das doenças e a ordem de exibição das categorias
+ * são calculadas em runtime a partir do campo `data` (ver seção 3).
+ *
+ * Para publicar um novo desafio em outro dia: troque `id`/`data`,
+ * `parametros_selecionados` (e opcionalmente `doencas_selecionadas`, hoje
+ * igual ao banco inteiro) e `explicacoes`. Nada mais precisa mudar.
+ * ======================================================================= */
+
+// Mistura recomendada de objetivos/graduais por desafio — é só uma
+// referência para o aviso de qualidade (seção 5), não uma trava rígida.
+const MIX_RECOMENDADO = { min_graduais: 3, max_graduais: 4 };
+
+const DESAFIO_DO_DIA = {
+  id: "2026-08-05",
+  data: "2026-08-05", // <- campo que define a seed do dia (ver seededShuffle)
+  titulo: "Desafio de exemplo — revisão de patologia geral",
+  personalizado: false,
+
+  // Hoje o banco tem exatamente 9 doenças, então todas entram. Quando o
+  // banco crescer, esta lista passa a ser uma escolha real de 9 entre N.
+  doencas_selecionadas: [
+    "piometra_canina", "carcinoma_celulas_escamosas_cutaneo", "leishmaniose_visceral_canina",
+    "parvovirose_canina", "dirofilariose_canina", "displasia_coxofemoral",
+    "linfoma_multicentrico_canino", "otite_externa_malassezia", "drc_felina",
+  ],
+
+  // 5 objetivos + 4 graduais (dentro da mistura recomendada), escolhidos por
+  // terem boa variação de valores entre as 9 doenças (ver documento de
+  // revisão de conteúdo para o raciocínio completo).
+  parametros_selecionados: [
+    { id: "predisposicao_racial_reconhecida", grupo: "binario" },
+    { id: "sinais_sistemicos_inespecificos_comuns", grupo: "binario" },
+    { id: "alteracoes_hematologicas_caracteristicas", grupo: "binario" },
+    { id: "cura_definitiva_possivel", grupo: "binario" },
+    { id: "doenca_cronica_progressiva", grupo: "binario" },
+    { id: "letalidade_nao_tratada", grupo: "gradual" },
+    { id: "custo_complexidade_diagnostica", grupo: "gradual" },
+    { id: "impacto_qualidade_vida", grupo: "gradual" },
+    { id: "invasividade_tratamento_padrao", grupo: "gradual" },
+  ],
+
+  // explicacoes[doencaId][parametroId] = texto curto (1-2 frases), exibido
+  // na tela de resultado. Ver documento de revisão para a versão completa.
+  explicacoes: {
+    piometra_canina: {
+      predisposicao_racial_reconhecida: "Não há uma raça claramente mais predisposta; qualquer fêmea intacta em idade reprodutiva está em risco.",
+      sinais_sistemicos_inespecificos_comuns: "Letargia, anorexia e depressão são comuns, sobretudo na forma com colo fechado.",
+      alteracoes_hematologicas_caracteristicas: "Leucocitose com desvio à esquerda é um achado hematológico clássico de apoio diagnóstico.",
+      cura_definitiva_possivel: "A ovariohisterectomia é curativa na grande maioria dos casos.",
+      doenca_cronica_progressiva: "É uma condição de instalação aguda a subaguda, não crônica.",
+      letalidade_nao_tratada: "Risco relevante de sepse, peritonite (se ruptura uterina) e óbito se não tratada a tempo.",
+      custo_complexidade_diagnostica: "Ultrassonografia abdominal e hemograma geralmente bastam.",
+      impacto_qualidade_vida: "Quadro sistêmico, doloroso e potencialmente grave.",
+      invasividade_tratamento_padrao: "Cirurgia abdominal de urgência (ovariohisterectomia).",
+    },
+    carcinoma_celulas_escamosas_cutaneo: {
+      predisposicao_racial_reconhecida: "Pelagens claras/pele pouco pigmentada têm risco reconhecidamente maior (ex.: gatos brancos).",
+      sinais_sistemicos_inespecificos_comuns: "Geralmente é uma lesão localizada, sem repercussão sistêmica evidente até fases avançadas.",
+      alteracoes_hematologicas_caracteristicas: "O hemograma costuma ser inespecífico ou normal, salvo doença sistêmica concomitante.",
+      cura_definitiva_possivel: "A excisão cirúrgica completa em estágio inicial costuma ser curativa.",
+      doenca_cronica_progressiva: "A evolução é gradual, mas manejável quando identificada precocemente.",
+      letalidade_nao_tratada: "Costuma ser localmente agressivo, mas raramente causa morte direta sem metástase.",
+      custo_complexidade_diagnostica: "Requer biópsia/histopatologia e, em casos avançados, estadiamento por imagem.",
+      impacto_qualidade_vida: "Desconforto local e impacto funcional/estético variável conforme a localização.",
+      invasividade_tratamento_padrao: "Excisão cirúrgica, por vezes com necessidade de reconstrução.",
+    },
+    leishmaniose_visceral_canina: {
+      predisposicao_racial_reconhecida: "Boxer, Rottweiler e Cocker Spaniel, entre outras, têm predisposição descrita na literatura.",
+      sinais_sistemicos_inespecificos_comuns: "Letargia e apatia crônicas são sinais centrais do quadro.",
+      alteracoes_hematologicas_caracteristicas: "Anemia, trombocitopenia e hiperglobulinemia são achados característicos.",
+      cura_definitiva_possivel: "Não há protocolo terapêutico validado como curativo; busca-se controle clínico e parasitário.",
+      doenca_cronica_progressiva: "Evolui cronicamente, com agravamento progressivo se não controlada.",
+      letalidade_nao_tratada: "Tem alta letalidade em cães não tratados, por falência multiorgânica progressiva.",
+      custo_complexidade_diagnostica: "Sorologia, exames complementares e às vezes citologia de medula/PCR.",
+      impacto_qualidade_vida: "Doença sistêmica crônica com impacto significativo e cumulativo no bem-estar.",
+      invasividade_tratamento_padrao: "Tratamento predominantemente medicamentoso (oral/injetável), pouco invasivo fisicamente.",
+    },
+    parvovirose_canina: {
+      predisposicao_racial_reconhecida: "A suscetibilidade à infecção não é marcadamente racial, embora a gravidade varie entre raças.",
+      sinais_sistemicos_inespecificos_comuns: "Prostração, anorexia e depressão intensas são características do quadro agudo.",
+      alteracoes_hematologicas_caracteristicas: "Leucopenia (linfopenia/neutropenia) é um achado hematológico marcante e usado como suporte diagnóstico.",
+      cura_definitiva_possivel: "Animais que sobrevivem à fase aguda ficam curados e imunes.",
+      doenca_cronica_progressiva: "Tem curso agudo, de dias.",
+      letalidade_nao_tratada: "Mortalidade elevada em filhotes não tratados, por desidratação, sepse e CID.",
+      custo_complexidade_diagnostica: "Teste rápido de ELISA fecal é amplamente disponível e de baixo custo.",
+      impacto_qualidade_vida: "Quadro agudo grave, com sofrimento importante enquanto durar a doença.",
+      invasividade_tratamento_padrao: "Manejo hospitalar intensivo (fluidoterapia IV, antieméticos), invasivo em nível de suporte.",
+    },
+    dirofilariose_canina: {
+      predisposicao_racial_reconhecida: "Não há predisposição racial bem estabelecida; o risco depende principalmente de exposição ao vetor.",
+      sinais_sistemicos_inespecificos_comuns: "Muitos cães permanecem assintomáticos ou com sinais discretos por bastante tempo.",
+      alteracoes_hematologicas_caracteristicas: "Eosinofilia e/ou basofilia podem ser observadas, refletindo a resposta imune ao parasita.",
+      cura_definitiva_possivel: "A terapia adulticida adequada pode eliminar os parasitas adultos e curar a infecção.",
+      doenca_cronica_progressiva: "Sem tratamento, a carga parasitária e o dano cardiopulmonar tendem a se agravar progressivamente.",
+      letalidade_nao_tratada: "Casos com carga parasitária elevada ou síndrome cava têm risco real de óbito.",
+      custo_complexidade_diagnostica: "Teste antigênico rápido mais radiografia/ecocardiografia para estadiamento.",
+      impacto_qualidade_vida: "Intolerância a exercício e comprometimento respiratório em casos moderados a graves.",
+      invasividade_tratamento_padrao: "Adulticida injetável com risco de complicação tromboembólica e necessidade de repouso estrito.",
+    },
+    displasia_coxofemoral: {
+      predisposicao_racial_reconhecida: "Raças grandes/gigantes (Labrador, Pastor Alemão, Rottweiler) têm predisposição genética clássica e bem documentada.",
+      sinais_sistemicos_inespecificos_comuns: "O animal costuma manter-se sistemicamente bem, com sinais restritos ao aparelho locomotor.",
+      alteracoes_hematologicas_caracteristicas: "Não há alteração hematológica característica associada a essa doença ortopédica.",
+      cura_definitiva_possivel: "É uma condição crônica e degenerativa; o manejo é paliativo/de controle, não curativo.",
+      doenca_cronica_progressiva: "É uma doença degenerativa articular que se agrava ao longo da vida do animal.",
+      letalidade_nao_tratada: "Não é uma doença letal, é uma condição ortopédica/de qualidade de vida.",
+      custo_complexidade_diagnostica: "Radiografia com posicionamento adequado (e por vezes sedação).",
+      impacto_qualidade_vida: "Dor crônica e limitação de mobilidade afetam o bem-estar diário.",
+      invasividade_tratamento_padrao: "Opções cirúrgicas (FHO, prótese de quadril) são de porte considerável quando indicadas.",
+    },
+    linfoma_multicentrico_canino: {
+      predisposicao_racial_reconhecida: "Boxer e Golden Retriever, entre outras, têm predisposição reconhecida a linfoma.",
+      sinais_sistemicos_inespecificos_comuns: "Letargia e mal-estar geral acompanham a linfadenomegalia generalizada.",
+      alteracoes_hematologicas_caracteristicas: "Pode haver linfocitose atípica ou citopenias por infiltração medular em estágios avançados.",
+      cura_definitiva_possivel: "A quimioterapia induz remissão, mas recidiva é esperada — não se trata de cura.",
+      doenca_cronica_progressiva: "Sem tratamento, progride rapidamente ao longo de semanas a poucos meses.",
+      letalidade_nao_tratada: "Sem quimioterapia, a sobrevida costuma ser de poucas semanas a meses.",
+      custo_complexidade_diagnostica: "Citologia/biópsia com imunofenotipagem e exames de estadiamento (imagem, hemograma, mielograma).",
+      impacto_qualidade_vida: "Mal-estar sistêmico, embora muitos pacientes tenham boa qualidade de vida durante a remissão.",
+      invasividade_tratamento_padrao: "Protocolo quimioterápico com acessos venosos repetidos.",
+    },
+    otite_externa_malassezia: {
+      predisposicao_racial_reconhecida: "Raças com pregas cutâneas/orelhas pendentes e predispostas à dermatite atópica sofrem otite com maior frequência.",
+      sinais_sistemicos_inespecificos_comuns: "O quadro é localizado ao conduto auditivo, sem comprometimento do estado geral.",
+      alteracoes_hematologicas_caracteristicas: "Não há alteração hematológica sistêmica associada a uma otite localizada.",
+      cura_definitiva_possivel: "Tratando a causa predisponente e a infecção secundária, a resolução completa é comum.",
+      doenca_cronica_progressiva: "Tende a ser recorrente, mas cada episódio não é, por si, um processo cronicamente progressivo.",
+      letalidade_nao_tratada: "Quadro localizado, sem risco de vida associado.",
+      custo_complexidade_diagnostica: "Otoscopia e citologia simples do exsudato, baixo custo.",
+      impacto_qualidade_vida: "Prurido/desconforto local, sem comprometer o bem-estar geral do animal.",
+      invasividade_tratamento_padrao: "Tratamento tópico ótico, minimamente invasivo.",
+    },
+    drc_felina: {
+      predisposicao_racial_reconhecida: "A DRC felina ocorre em qualquer raça, com predisposições descritas fracas e inconsistentes.",
+      sinais_sistemicos_inespecificos_comuns: "Letargia, anorexia e apatia são sinais inespecíficos muito comuns, especialmente em fases mais avançadas.",
+      alteracoes_hematologicas_caracteristicas: "Pode haver anemia não regenerativa, mas ela não é o pilar diagnóstico (a bioquímica/urinálise é).",
+      cura_definitiva_possivel: "É uma doença crônica e progressiva sem possibilidade de reversão da lesão renal já estabelecida.",
+      doenca_cronica_progressiva: "É definida clinicamente pela perda progressiva e irreversível da função renal.",
+      letalidade_nao_tratada: "É progressiva e eventualmente fatal, embora a progressão possa ser lenta.",
+      custo_complexidade_diagnostica: "Painel bioquímico, urinálise e, idealmente, SDMA e imagem.",
+      impacto_qualidade_vida: "Doença sistêmica crônica com declínio progressivo do bem-estar.",
+      invasividade_tratamento_padrao: "Manejo dietético/medicamentoso e, quando necessário, fluidoterapia subcutânea domiciliar.",
+    },
+  },
+};
+
+
+/* =========================================================================
+ * 3. UTILITÁRIO DE SEED DETERMINÍSTICO POR DATA
+ * ======================================================================= */
+
+// Hash simples de string -> inteiro 32-bit (variante djb2/xfnv1a), só para
+// transformar uma data (ou qualquer string) numa seed numérica estável.
+function hashStringParaSeed(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+
+// PRNG determinístico (mulberry32) — mesmo seed sempre gera a mesma
+// sequência de números em [0,1).
+function criarGeradorPseudoAleatorio(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Embaralha `array` de forma determinística a partir de `seedTexto`
+// (Fisher-Yates). Não modifica o array original.
+function embaralharComSeed(array, seedTexto) {
+  const rand = criarGeradorPseudoAleatorio(hashStringParaSeed(seedTexto));
+  const copia = array.slice();
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+
+/* =========================================================================
+ * 4. ALGORITMO HÚNGARO (Kuhn-Munkres) + TESTES INTERNOS
+ * -------------------------------------------------------------------------
+ * Adaptado para MAXIMIZAÇÃO (minimizamos o custo = -pontuação). Testado
+ * isoladamente antes de integrar (ver hungarian.js na mesma pasta para a
+ * versão executável via `node hungarian.js`).
+ * ======================================================================= */
+
+function hungarianMinCost(costMatrix) {
+  const n = costMatrix.length;
+  const INF = Infinity;
+  const u = new Array(n + 1).fill(0);
+  const v = new Array(n + 1).fill(0);
+  const p = new Array(n + 1).fill(0);
+  const way = new Array(n + 1).fill(0);
+
+  for (let i = 1; i <= n; i++) {
+    p[0] = i;
+    let j0 = 0;
+    const minv = new Array(n + 1).fill(INF);
+    const used = new Array(n + 1).fill(false);
+    do {
+      used[j0] = true;
+      const i0 = p[j0];
+      let delta = INF;
+      let j1 = -1;
+      for (let j = 1; j <= n; j++) {
+        if (!used[j]) {
+          const cur = costMatrix[i0 - 1][j - 1] - u[i0] - v[j];
+          if (cur < minv[j]) { minv[j] = cur; way[j] = j0; }
+          if (minv[j] < delta) { delta = minv[j]; j1 = j; }
+        }
+      }
+      for (let j = 0; j <= n; j++) {
+        if (used[j]) { u[p[j]] += delta; v[j] -= delta; }
+        else { minv[j] -= delta; }
+      }
+      j0 = j1;
+    } while (p[j0] !== 0);
+    do {
+      const j1 = way[j0];
+      p[j0] = p[j1];
+      j0 = j1;
+    } while (j0 !== 0);
+  }
+
+  const assignment = new Array(n);
+  for (let j = 1; j <= n; j++) if (p[j] > 0) assignment[p[j] - 1] = j - 1;
+  const totalCost = assignment.reduce((s, col, row) => s + costMatrix[row][col], 0);
+  return { assignment, totalCost, u, v };
+}
+
+// API pública: recebe scoreMatrix[doenca][categoria] (0-100 ou qualquer
+// número) e devolve a alocação que MAXIMIZA a soma.
+function hungarianMaxAssignment(scoreMatrix) {
+  const n = scoreMatrix.length;
+  const costMatrix = scoreMatrix.map((row) => row.map((s) => -s));
+  const { assignment, totalCost, u, v } = hungarianMinCost(costMatrix);
+  const totalScore = -totalCost;
+
+  // Heurística de empate: conta arestas de custo reduzido zero no grafo
+  // completo. Mais que n arestas de custo zero é indício forte (não prova
+  // formal) de que existe alocação alternativa com a mesma soma ótima.
+  let arestasZero = 0;
+  const EPS = 1e-9;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (Math.abs(costMatrix[i][j] - u[i + 1] - v[j + 1]) < EPS) arestasZero++;
+    }
+  }
+  return { assignment, totalScore, hasMultipleOptima: arestasZero > n };
+}
+
+function rodarTestesInternosHungaro() {
+  function aproxIgual(a, b, eps = 1e-6) { return Math.abs(a - b) < eps; }
+  const testes = [
+    { nome: "diagonal dominante", matriz: [[100,0,0],[0,100,0],[0,0,100]], soma: 300, multiplos: false },
+    { nome: "2x2 empatado", matriz: [[100,100],[100,100]], soma: 200, multiplos: true },
+    { nome: "3x3 aditiva degenerada", matriz: [[1,2,3],[4,5,6],[7,8,9]], soma: 15, multiplos: true },
+    { nome: "4x4 bloco empatado + bloco único", matriz: [[100,100,0,0],[100,100,0,0],[0,0,100,50],[0,0,50,100]], soma: 400, multiplos: true },
+  ];
+  let ok = true;
+  console.log("=== PatoVetZee — testes internos do algoritmo húngaro ===");
+  for (const t of testes) {
+    const r = hungarianMaxAssignment(t.matriz);
+    const somaOk = aproxIgual(r.totalScore, t.soma);
+    const multOk = r.hasMultipleOptima === t.multiplos;
+    ok = ok && somaOk && multOk;
+    console.log(`[${somaOk && multOk ? "PASSOU" : "FALHOU"}] ${t.nome}: soma=${r.totalScore} (esperado ${t.soma}), múltiplos=${r.hasMultipleOptima} (esperado ${t.multiplos})`);
+  }
+  console.log(ok ? "Todos os testes do húngaro passaram." : "Há testes com falha no húngaro — revisar.");
+  return ok;
+}
+
+
+/* =========================================================================
+ * 5. ESTADO DO JOGO
+ * ======================================================================= */
+
+const STORAGE_PREFIXO_PROGRESSO = "patovetzee_progresso_";
+const STORAGE_HISTORICO = "patovetzee_historico";
+const DEBUG = new URLSearchParams(location.search).get("debug") === "1";
+
+// Estado mutável único do jogo em andamento (reset a cada nova partida).
+let estado = {
+  desafio: null,
+  ordemCategoriasIds: [],      // ordem "de exibição" (embaralhada por seed), reduz a cada escolha
+  ordemDoencasIds: [],         // ordem fixa de apresentação das 9 doenças
+  matriz: null,                // matriz[doencaId][categoriaId] = pontuação
+  indiceAtual: 0,               // 0..8, índice da doença atual na sequência
+  alocacoes: [],                // [{doencaId, categoriaId, score}], em ordem de confirmação
+  modoPratica: false,           // true = desafio personalizado ou "jogar de novo"; não conta como oficial
+  travaInteracao: false,        // evita duplo clique durante animação de confirmação
+};
+
+// Deriva a pontuação de um par (doença, parâmetro) diretamente do banco —
+// nunca é armazenada, sempre calculada.
+function calcularPontuacao(doencaId, paramRef) {
+  const doenca = MAPA_DOENCAS[doencaId];
+  if (!doenca) return 0;
+  if (paramRef.grupo === "binario") {
+    return doenca.parametros_binarios[paramRef.id] ? 100 : 0;
+  }
+  return doenca.parametros_graduais[paramRef.id];
+}
+
+// Monta a matriz completa doença×categoria para o desafio (usada pelo
+// húngaro e para exibir a pontuação de cada escolha do jogador).
+function construirMatriz(desafio) {
+  const matriz = {};
+  for (const doencaId of desafio.doencas_selecionadas) {
+    matriz[doencaId] = {};
+    for (const paramRef of desafio.parametros_selecionados) {
+      matriz[doencaId][paramRef.id] = calcularPontuacao(doencaId, paramRef);
+    }
+  }
+  return matriz;
+}
+
+// Checagem simples de "qualidade do desafio" (pedida no briefing): avisa no
+// console quando a seleção de parâmetros gera pouca variação (puzzle sem
+// graça) — não bloqueia o jogo, é só um alerta para quem está curando o
+// conteúdo do dia.
+function avaliarQualidadeDesafio(desafio, matriz) {
+  const doencaIds = desafio.doencas_selecionadas;
+  const paramRefs = desafio.parametros_selecionados;
+
+  // Categorias "constantes": todas as doenças têm o mesmo valor.
+  let categoriasConstantes = 0;
+  for (const ref of paramRefs) {
+    const valores = doencaIds.map((id) => matriz[id][ref.id]);
+    if (valores.every((v) => v === valores[0])) categoriasConstantes++;
+  }
+
+  // Doenças com pelo menos um "true isolado" (100 sem empate) em alguma
+  // categoria binária selecionada.
+  const doencasComTrueIsolado = new Set();
+  for (const ref of paramRefs) {
+    if (ref.grupo !== "binario") continue;
+    const valores = doencaIds.map((id) => matriz[id][ref.id]);
+    const indicesComCem = valores.reduce((acc, v, i) => (v === 100 ? acc.concat(i) : acc), []);
+    if (indicesComCem.length === 1) doencasComTrueIsolado.add(doencaIds[indicesComCem[0]]);
+  }
+
+  const nGraduais = paramRefs.filter((r) => r.grupo === "gradual").length;
+  const misturaForaDoRecomendado =
+    nGraduais < MIX_RECOMENDADO.min_graduais || nGraduais > MIX_RECOMENDADO.max_graduais;
+
+  console.log(
+    `[PatoVetZee] Checagem de qualidade do desafio "${desafio.id}": ` +
+    `${categoriasConstantes} categoria(s) constante(s) de ${paramRefs.length}; ` +
+    `${doencasComTrueIsolado.size} doença(s) com valor isolado; ` +
+    `${nGraduais} categoria(s) gradual(is) (recomendado ${MIX_RECOMENDADO.min_graduais}-${MIX_RECOMENDADO.max_graduais}).`
+  );
+  if (categoriasConstantes > 3) {
+    console.warn(
+      `[PatoVetZee] AVISO: ${categoriasConstantes} categorias têm o mesmo valor para todas as doenças — ` +
+      `esse desafio pode estar com pouca variação e ficar sem graça. Considere trocar alguns parâmetros.`
+    );
+  }
+  if (misturaForaDoRecomendado) {
+    console.warn(
+      `[PatoVetZee] AVISO: mistura de ${nGraduais} categorias graduais está fora da faixa recomendada ` +
+      `(${MIX_RECOMENDADO.min_graduais}-${MIX_RECOMENDADO.max_graduais}).`
+    );
+  }
+}
+
+// Inicializa `estado` a partir de um objeto de desafio (oficial ou
+// personalizado), calculando ordem determinística e a matriz de pontuação.
+function iniciarPartida(desafio, { pratica = false } = {}) {
+  const matriz = construirMatriz(desafio);
+  avaliarQualidadeDesafio(desafio, matriz);
+
+  const seedBase = (desafio.id || desafio.data || "desafio") + (pratica ? "|" + Date.now() : "");
+  const ordemDoencasIds = embaralharComSeed(desafio.doencas_selecionadas, seedBase + "|ordem-doencas");
+  const ordemCategoriasIds = embaralharComSeed(
+    desafio.parametros_selecionados.map((r) => r.id),
+    seedBase + "|ordem-categorias"
+  );
+
+  estado = {
+    desafio,
+    matriz,
+    ordemDoencasIds,
+    ordemCategoriasIds,
+    indiceAtual: 0,
+    alocacoes: [],
+    modoPratica: pratica,
+    travaInteracao: false,
+  };
+}
+
+
+/* =========================================================================
+ * 6. RENDERIZAÇÃO / DOM E ANIMAÇÕES
+ * ======================================================================= */
+
+const appEl = document.getElementById("app");
+const liveRegionEl = document.getElementById("live-region");
+
+function anunciar(texto) {
+  liveRegionEl.textContent = "";
+  // pequeno delay para o leitor de tela perceber a mudança mesmo se o texto
+  // for igual ao anterior.
+  requestAnimationFrame(() => { liveRegionEl.textContent = texto; });
+}
+
+// Helper mínimo para montar DOM sem innerHTML (evita risco de conteúdo de
+// desafios personalizados quebrar a página).
+function el(tag, attrs, children) {
+  const node = document.createElement(tag);
+  if (attrs) {
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") node.className = v;
+      else if (k === "text") node.textContent = v;
+      else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+      else if (v !== false && v !== null && v !== undefined) node.setAttribute(k, v);
+    }
+  }
+  (children || []).forEach((c) => { if (c) node.appendChild(c); });
+  return node;
+}
+
+function limparApp() { appEl.replaceChildren(); }
+
+function svgMascote() {
+  // Ícone genérico "cachorro + gato" cartunescos, só para a marca — não é
+  // usado nas telas de doença (evitaria dar pista de espécie).
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML =
+    '<svg class="mascote" viewBox="0 0 64 64" aria-hidden="true">' +
+    '<circle cx="32" cy="34" r="24" fill="#FFD9E8" stroke="#3A2E39" stroke-width="2.5"/>' +
+    '<circle cx="23" cy="30" r="4.5" fill="#3A2E39"/>' +
+    '<circle cx="41" cy="30" r="4.5" fill="#3A2E39"/>' +
+    '<path d="M22 42 Q32 50 42 42" stroke="#3A2E39" stroke-width="2.5" fill="none" stroke-linecap="round"/>' +
+    '<path d="M14 16 Q10 6 20 12" stroke="#3A2E39" stroke-width="2.5" fill="#FF6B6B"/>' +
+    '<path d="M50 16 Q54 6 44 12" stroke="#3A2E39" stroke-width="2.5" fill="#4ECDC4"/>' +
+    "</svg>";
+  return wrapper.firstElementChild;
+}
+
+function renderMarca() {
+  return el("div", { class: "marca" }, [svgMascote(), el("h1", { text: "PatoVetZee" })]);
+}
+
+/* --------- Tela inicial --------- */
+function renderIntro() {
+  limparApp();
+  const desafio = DESAFIO_DO_DIA;
+  const progressoHoje = carregarProgresso(desafio.id);
+
+  const partes = [renderMarca()];
+
+  const cardRegras = el("section", { class: "card" }, [
+    el("h2", { text: desafio.titulo }),
+    el("p", { text:
+      "Você vai receber as 9 doenças de hoje UMA DE CADA VEZ, sempre na mesma ordem para toda a turma. " +
+      "Para cada doença, escolha em qual categoria (das que ainda sobraram) ela melhor se encaixa." }),
+    el("p", { text:
+      "⚠️ Regra importante: depois de confirmar a categoria de uma doença, não dá para voltar nem trocar. " +
+      "Cada escolha é definitiva — pense antes de confirmar." }),
+    el("p", { text:
+      "No final, você vê sua pontuação total, a alocação ótima teórica (calculada por um algoritmo de " +
+      "otimização) e a explicação de cada par doença-categoria." }),
+  ]);
+  partes.push(cardRegras);
+
+  if (progressoHoje && progressoHoje.completed) {
+    const cardFeito = el("section", { class: "card" }, [
+      el("h2", { text: "Você já jogou o desafio de hoje" }),
+      el("p", { text: `Sua pontuação: ${progressoHoje.totalScore} / ${progressoHoje.optimalScore} ` +
+        `(eficiência ${Math.round(progressoHoje.efficiency)}%).` }),
+      el("div", {}, [
+        el("button", { class: "btn secundario", text: "Ver resultado novamente", onclick: () => renderResultadoDeProgresso(progressoHoje) }),
+        el("button", { class: "btn fantasma", text: "Jogar de novo (modo prática, não substitui seu resultado)",
+          onclick: () => { iniciarPartida(desafio, { pratica: true }); renderDoencaAtual(); } }),
+      ]),
+    ]);
+    partes.push(cardFeito);
+  } else {
+    const cardIniciar = el("section", { class: "card", style: "text-align:center" }, [
+      el("button", { class: "btn", text: "🐾 Começar desafio de hoje", onclick: () => {
+        iniciarPartida(desafio, { pratica: false });
+        renderDoencaAtual();
+      }}),
+    ]);
+    partes.push(cardIniciar);
+  }
+
+  const cardExtras = el("section", { class: "card" }, [
+    el("h2", { text: "Outras opções" }),
+    el("div", {}, [
+      el("button", { class: "btn secundario", text: "📋 Carregar desafio personalizado", onclick: abrirModalPersonalizado }),
+      el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }),
+    ]),
+  ]);
+  partes.push(cardExtras);
+
+  partes.push(el("p", { class: "rodape-nota", text:
+    "PatoVetZee — ferramenta didática de patologia veterinária. Alocação inspirada na mecânica do Geozee." }));
+
+  partes.forEach((p) => appEl.appendChild(p));
+}
+
+/* --------- Tela: doença atual --------- */
+function renderDoencaAtual() {
+  limparApp();
+  const doencaId = estado.ordemDoencasIds[estado.indiceAtual];
+  const doenca = MAPA_DOENCAS[doencaId];
+
+  appEl.appendChild(renderMarca());
+
+  // Barra de progresso (9 pontos)
+  const progresso = el("div", { class: "progresso", "aria-hidden": "true" },
+    estado.ordemDoencasIds.map((_, i) => el("span", {
+      class: "ponto" + (i < estado.indiceAtual ? " feito" : i === estado.indiceAtual ? " atual" : ""),
+    }))
+  );
+  appEl.appendChild(progresso);
+
+  const carta = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
+    el("span", { class: "rotulo-passo", text: `Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}` }),
+    el("h2", { text: doenca.nome }),
+    el("p", { class: "aviso-irreversivel", text: "Escolha a categoria abaixo. Depois de confirmar, não dá para voltar." }),
+  ]);
+  appEl.appendChild(carta);
+
+  const cardCategorias = el("section", { class: "card" }, [
+    el("h2", { text: "Categorias disponíveis" }),
+  ]);
+  const grade = el("div", { class: "grade-categorias", role: "listbox", "aria-label": "Categorias disponíveis para esta doença" });
+
+  const categoriasRestantes = estado.ordemCategoriasIds.filter(
+    (catId) => !estado.alocacoes.some((a) => a.categoriaId === catId)
+  );
+
+  categoriasRestantes.forEach((catId, idx) => {
+    const label = obterLabelParametro(catId);
+    const botao = el("button", {
+      class: "btn-categoria",
+      role: "option",
+      "aria-selected": "false",
+      type: "button",
+      onclick: () => onEscolherCategoria(catId, botao),
+    }, [
+      el("span", { class: "check", "aria-hidden": "true", text: "✓" }),
+      document.createTextNode(label),
+    ]);
+    grade.appendChild(botao);
+  });
+  cardCategorias.appendChild(grade);
+  appEl.appendChild(cardCategorias);
+
+  configurarNavegacaoTeclado(grade);
+
+  // Foco no primeiro botão de categoria para quem navega por teclado.
+  const primeiroBotao = grade.querySelector("button");
+  if (primeiroBotao) primeiroBotao.focus({ preventScroll: true });
+
+  anunciar(`Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}: ${doenca.nome}. Escolha uma categoria.`);
+}
+
+function obterLabelParametro(paramId) {
+  return (
+    (CATALOGO_PARAMETROS.binarios[paramId] && CATALOGO_PARAMETROS.binarios[paramId].label) ||
+    (CATALOGO_PARAMETROS.graduais[paramId] && CATALOGO_PARAMETROS.graduais[paramId].label) ||
+    paramId
+  );
+}
+
+/* --------- Confete --------- */
+function dispararConfete(intensidade) {
+  const cores = ["#FF6B6B", "#FFD166", "#06D6A0", "#4ECDC4", "#C77DFF"];
+  const camada = document.getElementById("confetti-layer");
+  const n = intensidade === "alta" ? 70 : 28;
+  for (let i = 0; i < n; i++) {
+    const c = document.createElement("div");
+    c.className = "confete";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = cores[Math.floor(Math.random() * cores.length)];
+    c.style.animationDuration = 2 + Math.random() * 1.5 + "s";
+    c.style.animationDelay = Math.random() * 0.4 + "s";
+    c.style.setProperty("--rot", Math.random() * 360 + "deg");
+    camada.appendChild(c);
+    setTimeout(() => c.remove(), 4200);
+  }
+}
+
+
+/* =========================================================================
+ * 7. HANDLERS DE INTERAÇÃO (clique/toque + teclado)
+ * ======================================================================= */
+
+function onEscolherCategoria(categoriaId, botaoEl) {
+  if (estado.travaInteracao) return;
+  estado.travaInteracao = true;
+
+  const doencaId = estado.ordemDoencasIds[estado.indiceAtual];
+  const score = estado.matriz[doencaId][categoriaId];
+
+  // Desabilita todos os botões da grade e mostra o feedback "confirmado" só
+  // no botão escolhido (sem revelar a pontuação ainda).
+  const grade = botaoEl.closest(".grade-categorias");
+  grade.querySelectorAll("button").forEach((b) => { b.disabled = true; b.tabIndex = -1; });
+  botaoEl.classList.add("confirmando");
+  botaoEl.setAttribute("aria-selected", "true");
+
+  anunciar(`Confirmado: ${MAPA_DOENCAS[doencaId].nome} alocada. Próxima doença em instantes.`);
+
+  estado.alocacoes.push({ doencaId, categoriaId, score });
+
+  setTimeout(() => {
+    estado.indiceAtual++;
+    estado.travaInteracao = false;
+    if (estado.indiceAtual < estado.ordemDoencasIds.length) {
+      renderDoencaAtual();
+    } else {
+      renderResultado();
+    }
+  }, 650);
+}
+
+// Navegação por setas dentro da grade de categorias (roving focus simples).
+// Enter/Espaço já funcionam nativamente em <button>.
+function configurarNavegacaoTeclado(grade) {
+  grade.addEventListener("keydown", (ev) => {
+    const botoes = Array.from(grade.querySelectorAll("button:not([disabled])"));
+    const atual = document.activeElement;
+    const i = botoes.indexOf(atual);
+    if (i === -1) return;
+
+    let proximo = null;
+    if (ev.key === "ArrowDown" || ev.key === "ArrowRight") proximo = botoes[(i + 1) % botoes.length];
+    else if (ev.key === "ArrowUp" || ev.key === "ArrowLeft") proximo = botoes[(i - 1 + botoes.length) % botoes.length];
+    else if (ev.key === "Home") proximo = botoes[0];
+    else if (ev.key === "End") proximo = botoes[botoes.length - 1];
+
+    if (proximo) {
+      ev.preventDefault();
+      proximo.focus();
+    }
+  });
+}
+
+
+/* =========================================================================
+ * 8. CÁLCULO E EXIBIÇÃO DO RESULTADO FINAL
+ * ======================================================================= */
+
+function calcularResultadoFinal() {
+  const desafio = estado.desafio;
+  const totalScore = estado.alocacoes.reduce((s, a) => s + a.score, 0);
+
+  // Monta a matriz n×n na ordem fixa doencas_selecionadas × parametros_selecionados
+  // para rodar o húngaro (a ordem de exibição ao jogador foi só cosmética).
+  const doencaIds = desafio.doencas_selecionadas;
+  const catIds = desafio.parametros_selecionados.map((r) => r.id);
+  const matrizNumerica = doencaIds.map((dId) => catIds.map((cId) => estado.matriz[dId][cId]));
+
+  const otimo = hungarianMaxAssignment(matrizNumerica);
+  const optimalScore = otimo.totalScore;
+  const alocacaoOtima = otimo.assignment.map((catIdx, doencaIdx) => ({
+    doencaId: doencaIds[doencaIdx],
+    categoriaId: catIds[catIdx],
+    score: matrizNumerica[doencaIdx][catIdx],
+  }));
+
+  const efficiency = optimalScore > 0 ? (totalScore / optimalScore) * 100 : 100;
+
+  return { totalScore, optimalScore, efficiency, alocacaoOtima, hasMultipleOptima: otimo.hasMultipleOptima };
+}
+
+function renderResultado() {
+  const resultado = calcularResultadoFinal();
+  salvarResultado(resultado);
+  renderTelaResultado(resultado);
+}
+
+// Permite reabrir o resultado de uma partida já salva (sem recalcular).
+function renderResultadoDeProgresso(progresso) {
+  renderTelaResultado(progresso, { doAnimacoes: false });
+}
+
+function renderTelaResultado(resultado, opts) {
+  opts = opts || { doAnimacoes: true };
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const desafio = estado.desafio || DESAFIO_DO_DIA;
+  const eficienciaArredondada = Math.round(resultado.efficiency);
+
+  const cardResumo = el("section", { class: "card resumo-total" }, [
+    el("h2", { text: "Resultado do desafio" }),
+    el("div", { class: "numero-grande", text: `${resultado.totalScore} / ${resultado.optimalScore}` }),
+    el("p", { text: `Você alcançou ${eficienciaArredondada}% da pontuação ótima teórica.` }),
+  ]);
+  const barra = el("div", { class: "barra-eficiencia" }, [el("div", { class: "preenchimento" })]);
+  cardResumo.appendChild(barra);
+
+  let mensagem;
+  if (eficienciaArredondada >= 90) mensagem = "Excelente! Você chegou muito perto da alocação ótima. 🎉";
+  else if (eficienciaArredondada >= 70) mensagem = "Muito bom! Boa leitura clínica das doenças de hoje. 👏";
+  else if (eficienciaArredondada >= 50) mensagem = "Bom esforço — dá para revisar os pares abaixo e entender onde apertou mais. 💪";
+  else mensagem = "Esse desafio tinha bastante concorrência entre doenças parecidas — vale revisar os pares abaixo com calma. 🌱";
+  cardResumo.appendChild(el("p", { text: mensagem }));
+  appEl.appendChild(cardResumo);
+
+  if (opts.doAnimacoes) {
+    requestAnimationFrame(() => { barra.querySelector(".preenchimento").style.width = Math.min(100, eficienciaArredondada) + "%"; });
+    if (eficienciaArredondada >= 70) dispararConfete(eficienciaArredondada >= 90 ? "alta" : "media");
+  } else {
+    barra.querySelector(".preenchimento").style.width = Math.min(100, eficienciaArredondada) + "%";
+  }
+
+  // Detalhe par-a-par (revelação progressiva quando `alocacoes` do jogador
+  // está disponível; ao reabrir um resultado salvo, mostra tudo de uma vez).
+  const cardDetalhe = el("section", { class: "card" }, [el("h2", { text: "Suas escolhas" })]);
+  const alocacoesJogador = resultado.alocacoesJogador || estado.alocacoes;
+  alocacoesJogador.forEach((a, i) => {
+    const doenca = MAPA_DOENCAS[a.doencaId];
+    const label = obterLabelParametro(a.categoriaId);
+    const explicacao = (desafio.explicacoes[a.doencaId] && desafio.explicacoes[a.doencaId][a.categoriaId]) ||
+      "Explicação não disponível para este desafio personalizado.";
+    const linha = el("div", { class: "linha-par" }, [
+      el("div", {}, [
+        el("div", { text: `${doenca.nome} → ${label}` }),
+        el("div", { class: "explicacao", text: explicacao }),
+      ]),
+      el("div", { class: "pontos " + (a.score >= 50 ? "cheio" : "vazio"), text: String(a.score) }),
+    ]);
+    linha.style.animationDelay = opts.doAnimacoes ? i * 0.12 + "s" : "0s";
+    cardDetalhe.appendChild(linha);
+  });
+  appEl.appendChild(cardDetalhe);
+
+  // Alocação ótima teórica, para comparação.
+  const cardOtimo = el("section", { class: "card" }, [
+    el("h2", { text: "Alocação ótima teórica (algoritmo húngaro)" }),
+    el("p", { text:
+      "Esta é a melhor combinação possível se alguém pudesse ver as 9 doenças de uma vez e escolher livremente " +
+      "(sem a ordem fixa e sem a regra de \"sem volta\" do jogo). Ela mostra quanto a ordem forçada e a " +
+      "irreversibilidade custaram em relação ao ótimo livre." }),
+  ]);
+  if (resultado.hasMultipleOptima) {
+    cardOtimo.appendChild(el("p", { text: "⚠️ Este desafio tem mais de uma alocação perfeita possível com a mesma soma máxima — a mostrada abaixo é só uma delas." }));
+  }
+  const tabela = el("table", { class: "tabela-otima" }, [
+    el("thead", {}, [el("tr", {}, [el("th", { text: "Doença" }), el("th", { text: "Categoria" }), el("th", { text: "Pontos" })])]),
+  ]);
+  const corpo = el("tbody");
+  resultado.alocacaoOtima.forEach((a) => {
+    corpo.appendChild(el("tr", {}, [
+      el("td", { text: MAPA_DOENCAS[a.doencaId].nome }),
+      el("td", { text: obterLabelParametro(a.categoriaId) }),
+      el("td", { text: String(a.score) }),
+    ]));
+  });
+  tabela.appendChild(corpo);
+  cardOtimo.appendChild(tabela);
+  appEl.appendChild(cardOtimo);
+
+  const cardVoltar = el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn", text: "⬅ Voltar ao início", onclick: renderIntro }),
+  ]);
+  appEl.appendChild(cardVoltar);
+
+  anunciar(`Resultado: ${resultado.totalScore} de ${resultado.optimalScore} pontos, ${eficienciaArredondada} por cento de eficiência.`);
+}
+
+
+/* =========================================================================
+ * 9. PERSISTÊNCIA LOCAL (localStorage)
+ * ======================================================================= */
+
+function salvarResultado(resultado) {
+  const registro = {
+    completed: true,
+    timestamp: Date.now(),
+    desafioId: estado.desafio.id,
+    totalScore: resultado.totalScore,
+    optimalScore: resultado.optimalScore,
+    efficiency: resultado.efficiency,
+    alocacoesJogador: estado.alocacoes,
+  };
+
+  if (!estado.modoPratica) {
+    try {
+      localStorage.setItem(STORAGE_PREFIXO_PROGRESSO + estado.desafio.id, JSON.stringify(registro));
+    } catch (e) {
+      console.warn("[PatoVetZee] Não foi possível salvar o progresso no localStorage:", e);
+    }
+  }
+
+  // Histórico sempre recebe a partida (oficial ou prática), para consulta.
+  try {
+    const historico = lerHistorico();
+    historico.unshift({
+      desafioId: estado.desafio.id,
+      titulo: estado.desafio.titulo,
+      data: estado.desafio.data || null,
+      pratica: estado.modoPratica,
+      totalScore: resultado.totalScore,
+      optimalScore: resultado.optimalScore,
+      efficiency: resultado.efficiency,
+      timestamp: Date.now(),
+    });
+    localStorage.setItem(STORAGE_HISTORICO, JSON.stringify(historico.slice(0, 50)));
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível salvar o histórico no localStorage:", e);
+  }
+}
+
+function carregarProgresso(desafioId) {
+  try {
+    const raw = localStorage.getItem(STORAGE_PREFIXO_PROGRESSO + desafioId);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível ler o progresso salvo:", e);
+    return null;
+  }
+}
+
+function lerHistorico() {
+  try {
+    const raw = localStorage.getItem(STORAGE_HISTORICO);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível ler o histórico salvo:", e);
+    return [];
+  }
+}
+
+function renderHistorico() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+  const historico = lerHistorico();
+  const card = el("section", { class: "card" }, [el("h2", { text: "Histórico de desafios jogados" })]);
+  if (historico.length === 0) {
+    card.appendChild(el("p", { text: "Ainda não há partidas registradas neste navegador." }));
+  } else {
+    historico.forEach((h) => {
+      card.appendChild(el("div", { class: "linha-par" }, [
+        el("div", {}, [
+          el("div", { text: `${h.titulo || h.desafioId}${h.pratica ? " (prática)" : ""}` }),
+          el("div", { class: "explicacao", text: new Date(h.timestamp).toLocaleString("pt-BR") }),
+        ]),
+        el("div", { class: "pontos cheio", text: `${h.totalScore}/${h.optimalScore}` }),
+      ]));
+    });
+  }
+  card.appendChild(el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }));
+  appEl.appendChild(card);
+}
+
+
+/* =========================================================================
+ * MODO PERSONALIZADO (colar/upload de um JSON de desafio)
+ * -------------------------------------------------------------------------
+ * Aceita um objeto no mesmo formato de DESAFIO_DO_DIA (seção 2), referenciando
+ * doenças e parâmetros que já existem no BANCO_DOENCAS/CATALOGO_PARAMETROS
+ * embutidos nesta página. Útil para montar desafios de aula sem editar o
+ * arquivo — basta manter uma cópia deste HTML e trocar o JSON colado.
+ * ======================================================================= */
+
+function validarDesafioPersonalizado(json) {
+  const erros = [];
+  if (!json || typeof json !== "object") { erros.push("O conteúdo não é um objeto JSON válido."); return { valido: false, erros }; }
+
+  if (!Array.isArray(json.doencas_selecionadas) || json.doencas_selecionadas.length !== 9) {
+    erros.push("`doencas_selecionadas` precisa ser uma lista com exatamente 9 ids de doença.");
+  } else {
+    json.doencas_selecionadas.forEach((id) => { if (!MAPA_DOENCAS[id]) erros.push(`Doença desconhecida: "${id}".`); });
+    const unicos = new Set(json.doencas_selecionadas);
+    if (unicos.size !== json.doencas_selecionadas.length) erros.push("`doencas_selecionadas` tem ids repetidos.");
+  }
+
+  if (!Array.isArray(json.parametros_selecionados) || json.parametros_selecionados.length !== 9) {
+    erros.push("`parametros_selecionados` precisa ser uma lista com exatamente 9 itens {id, grupo}.");
+  } else {
+    json.parametros_selecionados.forEach((ref) => {
+      if (!ref || (ref.grupo !== "binario" && ref.grupo !== "gradual")) {
+        erros.push(`Parâmetro com \`grupo\` inválido: ${JSON.stringify(ref)} (use "binario" ou "gradual").`);
+        return;
+      }
+      const catalogoDoGrupo = ref.grupo === "binario" ? CATALOGO_PARAMETROS.binarios : CATALOGO_PARAMETROS.graduais;
+      if (!catalogoDoGrupo[ref.id]) erros.push(`Parâmetro desconhecido no grupo "${ref.grupo}": "${ref.id}".`);
+    });
+    const chaves = json.parametros_selecionados.map((r) => r && r.grupo + ":" + r.id);
+    if (new Set(chaves).size !== chaves.length) erros.push("`parametros_selecionados` tem itens repetidos.");
+  }
+
+  if (!json.id) erros.push("Falta o campo `id` (identificador único do desafio).");
+
+  return { valido: erros.length === 0, erros };
+}
+
+function abrirModalPersonalizado() {
+  const fundo = el("div", { class: "modal-fundo", onclick: (ev) => { if (ev.target === fundo) fundo.remove(); } });
+  const erroEl = el("div", { class: "campo-erro" });
+  const textarea = document.createElement("textarea");
+  textarea.setAttribute("aria-label", "Cole aqui o JSON do desafio personalizado");
+  textarea.placeholder = '{\n  "id": "aula-neoplasias-1",\n  "doencas_selecionadas": [...9 ids...],\n  "parametros_selecionados": [...9 {id, grupo}...],\n  "explicacoes": { ... } // opcional\n}';
+
+  const inputArquivo = document.createElement("input");
+  inputArquivo.type = "file";
+  inputArquivo.accept = "application/json,.json";
+  inputArquivo.addEventListener("change", () => {
+    const arquivo = inputArquivo.files[0];
+    if (!arquivo) return;
+    const leitor = new FileReader();
+    leitor.onload = () => { textarea.value = String(leitor.result); };
+    leitor.readAsText(arquivo);
+  });
+
+  const caixa = el("div", { class: "modal-caixa" }, [
+    el("h2", { text: "Carregar desafio personalizado" }),
+    el("p", { text: "Cole o JSON abaixo ou selecione um arquivo .json com o mesmo formato do desafio do dia." }),
+    inputArquivo,
+    textarea,
+    erroEl,
+    el("div", {}, [
+      el("button", { class: "btn", text: "Carregar e começar", onclick: () => {
+        let json;
+        try { json = JSON.parse(textarea.value); }
+        catch (e) { erroEl.textContent = "JSON inválido: " + e.message; return; }
+
+        const { valido, erros } = validarDesafioPersonalizado(json);
+        if (!valido) { erroEl.textContent = erros.join("\n"); return; }
+
+        json.personalizado = true;
+        json.explicacoes = json.explicacoes || {};
+        json.titulo = json.titulo || "Desafio personalizado";
+        fundo.remove();
+        iniciarPartida(json, { pratica: true });
+        renderDoencaAtual();
+      }}),
+      el("button", { class: "btn fantasma", text: "Cancelar", onclick: () => fundo.remove() }),
+    ]),
+  ]);
+  fundo.appendChild(caixa);
+  document.body.appendChild(fundo);
+  textarea.focus();
+}
+
+
+/* =========================================================================
+ * INICIALIZAÇÃO
+ * ======================================================================= */
+
+function init() {
+  if (DEBUG) {
+    console.log("[PatoVetZee] Modo debug ativo (?debug=1).");
+    rodarTestesInternosHungaro();
+  }
+  // Checagem de integridade do banco roda sempre (é barata e evita passar
+  // um desafio quebrado pra turma por causa de um campo esquecido/errado).
+  validarBancoDoencas();
+  renderIntro();
+}
+
+init();
+</script>
+</body>
+</html>
