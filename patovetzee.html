@@ -188,6 +188,20 @@ body{
 }
 .item-roteiro.feita{ background:transparent; color: var(--cor-texto-suave); text-decoration: line-through; }
 
+/* --------- Selo de pontuação (revelado após cada escolha) --------- */
+.badge-pontuacao{
+  display:inline-block;
+  font-size: clamp(28px, 7vw, 40px);
+  font-weight:800;
+  padding: 8px 26px;
+  border-radius: 999px;
+  border: 3px solid var(--cor-card-borda);
+  margin: 12px 0 6px;
+}
+.badge-pontuacao.cheio{ background:#E9FBF2; color: var(--cor-sucesso); }
+.badge-pontuacao.vazio{ background:#FFF1E9; color: var(--cor-texto-suave); }
+.texto-explicacao{ font-size:15px; color: var(--cor-texto-suave); max-width:480px; margin:6px auto 0; }
+
 /* --------- Doença atual (carta) --------- */
 .carta-doenca{
   text-align:center;
@@ -1358,40 +1372,30 @@ function renderIntro() {
   partes.forEach((p) => appEl.appendChild(p));
 }
 
-/* --------- Tela: doença atual --------- */
-function renderDoencaAtual() {
-  limparApp();
-  const doencaId = estado.ordemDoencasIds[estado.indiceAtual];
-  const doenca = MAPA_DOENCAS[doencaId];
-
-  appEl.appendChild(renderMarca());
-
-  // Barra de progresso (9 pontos)
-  const progresso = el("div", { class: "progresso", "aria-hidden": "true" },
+// Barra de progresso (9 pontos). `doencasFeitasCount` = quantas já foram
+// alocadas; `indiceEmDestaque` = índice a marcar como "atual" (ou -1 se
+// nenhuma — usado na tela intermediária de revelação de pontuação, onde a
+// decisão da vez já foi tomada e ainda não há uma "atual" nova em jogo).
+function construirProgresso(doencasFeitasCount, indiceEmDestaque) {
+  return el("div", { class: "progresso", "aria-hidden": "true" },
     estado.ordemDoencasIds.map((_, i) => el("span", {
-      class: "ponto" + (i < estado.indiceAtual ? " feito" : i === estado.indiceAtual ? " atual" : ""),
+      class: "ponto" + (i < doencasFeitasCount ? " feito" : i === indiceEmDestaque ? " atual" : ""),
     }))
   );
-  appEl.appendChild(progresso);
+}
 
-  const carta = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
-    el("span", { class: "rotulo-passo", text: `Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}` }),
-    el("h2", { text: doenca.nome }),
-    el("p", { class: "aviso-irreversivel", text: "Escolha a categoria abaixo. Depois de confirmar, não dá para voltar." }),
-  ]);
-  appEl.appendChild(carta);
-
-  // Roteiro completo do dia: o jogador só ALOCA a doença atual, mas já sabe
-  // quais são todas as outras 8 (e em que ordem vão aparecer) — isso é
-  // proposital, pra ele conseguir planejar em qual categoria vale mais a
-  // pena "gastar" a doença de agora, pensando no que ainda vem.
+// Roteiro completo do dia: o jogador só ALOCA a doença atual, mas já sabe
+// quais são todas as outras 8 (e em que ordem vão aparecer) — isso é
+// proposital, pra ele conseguir planejar em qual categoria vale mais a pena
+// "gastar" a doença de agora, pensando no que ainda vem.
+function construirCardRoteiro(doencasFeitasCount, indiceEmDestaque) {
   const cardRoteiro = el("section", { class: "card" }, [
     el("h2", { text: "Sequência de doenças de hoje" }),
   ]);
   const listaRoteiro = el("ol", { class: "lista-roteiro" },
     estado.ordemDoencasIds.map((id, i) => {
       const d = MAPA_DOENCAS[id];
-      const status = i < estado.indiceAtual ? "feita" : i === estado.indiceAtual ? "atual" : "futura";
+      const status = i < doencasFeitasCount ? "feita" : i === indiceEmDestaque ? "atual" : "futura";
       const icone = status === "feita" ? "✅" : status === "atual" ? "👉" : "⏳";
       return el("li", { class: "item-roteiro " + status }, [
         el("span", { "aria-hidden": "true", text: icone + " " }),
@@ -1400,7 +1404,26 @@ function renderDoencaAtual() {
     })
   );
   cardRoteiro.appendChild(listaRoteiro);
-  appEl.appendChild(cardRoteiro);
+  return cardRoteiro;
+}
+
+/* --------- Tela: doença atual --------- */
+function renderDoencaAtual() {
+  limparApp();
+  const doencaId = estado.ordemDoencasIds[estado.indiceAtual];
+  const doenca = MAPA_DOENCAS[doencaId];
+
+  appEl.appendChild(renderMarca());
+  appEl.appendChild(construirProgresso(estado.alocacoes.length, estado.indiceAtual));
+
+  const carta = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
+    el("span", { class: "rotulo-passo", text: `Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}` }),
+    el("h2", { text: doenca.nome }),
+    el("p", { class: "aviso-irreversivel", text: "Escolha a categoria abaixo. Depois de confirmar, não dá para voltar." }),
+  ]);
+  appEl.appendChild(carta);
+
+  appEl.appendChild(construirCardRoteiro(estado.alocacoes.length, estado.indiceAtual));
 
   const cardCategorias = el("section", { class: "card" }, [
     el("h2", { text: "Categorias disponíveis" }),
@@ -1437,6 +1460,50 @@ function renderDoencaAtual() {
   if (primeiroBotao) primeiroBotao.focus({ preventScroll: true });
 
   anunciar(`Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}: ${doenca.nome}. Escolha uma categoria.`);
+}
+
+/* --------- Tela intermediária: pontuação da escolha que acabou de ser
+   confirmada --------- */
+// Aparece entre uma doença e a próxima: mostra quantos pontos aquele par
+// doença-categoria valeu e a explicação clínica, antes de revelar a doença
+// seguinte. Continua irreversível — é só uma revelação, não dá pra trocar.
+function renderPontuacaoEscolha(doencaId, categoriaId, score) {
+  limparApp();
+  const doenca = MAPA_DOENCAS[doencaId];
+  const label = obterLabelParametro(categoriaId);
+  const explicacao = (estado.desafio.explicacoes[doencaId] && estado.desafio.explicacoes[doencaId][categoriaId]) ||
+    "Explicação não disponível para este desafio.";
+  const indiceConfirmado = estado.indiceAtual; // ainda não incrementado neste ponto
+  const ehUltima = indiceConfirmado + 1 >= estado.ordemDoencasIds.length;
+
+  appEl.appendChild(renderMarca());
+  appEl.appendChild(construirProgresso(estado.alocacoes.length, -1));
+
+  const cardPontuacao = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
+    el("span", { class: "rotulo-passo", text: `Doença ${indiceConfirmado + 1} de ${estado.ordemDoencasIds.length}` }),
+    el("h2", { text: `${doenca.nome} → ${label}` }),
+    el("div", { class: "badge-pontuacao " + (score >= 50 ? "cheio" : "vazio"), text: `${score} pontos` }),
+    el("p", { class: "texto-explicacao", text: explicacao }),
+  ]);
+  appEl.appendChild(cardPontuacao);
+
+  appEl.appendChild(construirCardRoteiro(estado.alocacoes.length, -1));
+
+  const cardContinuar = el("section", { class: "card", style: "text-align:center" }, [
+    el("button", {
+      class: "btn",
+      text: ehUltima ? "Ver resultado final ➡" : "Próxima doença ➡",
+      onclick: () => {
+        estado.indiceAtual++;
+        estado.travaInteracao = false;
+        if (estado.indiceAtual < estado.ordemDoencasIds.length) renderDoencaAtual();
+        else renderResultado();
+      },
+    }),
+  ]);
+  appEl.appendChild(cardContinuar);
+
+  anunciar(`${doenca.nome} alocada em ${label}. Pontuação: ${score} pontos.`);
 }
 
 function obterLabelParametro(paramId) {
@@ -1477,26 +1544,21 @@ function onEscolherCategoria(categoriaId, botaoEl) {
   const doencaId = estado.ordemDoencasIds[estado.indiceAtual];
   const score = estado.matriz[doencaId][categoriaId];
 
-  // Desabilita todos os botões da grade e mostra o feedback "confirmado" só
-  // no botão escolhido (sem revelar a pontuação ainda).
+  // Desabilita todos os botões da grade e mostra o feedback "confirmado" no
+  // botão escolhido (um "check" animado) antes de revelar a pontuação na
+  // tela seguinte.
   const grade = botaoEl.closest(".grade-categorias");
   grade.querySelectorAll("button").forEach((b) => { b.disabled = true; b.tabIndex = -1; });
   botaoEl.classList.add("confirmando");
   botaoEl.setAttribute("aria-selected", "true");
 
-  anunciar(`Confirmado: ${MAPA_DOENCAS[doencaId].nome} alocada. Próxima doença em instantes.`);
+  anunciar(`Confirmado: ${MAPA_DOENCAS[doencaId].nome} alocada. Calculando pontuação...`);
 
   estado.alocacoes.push({ doencaId, categoriaId, score });
 
   setTimeout(() => {
-    estado.indiceAtual++;
-    estado.travaInteracao = false;
-    if (estado.indiceAtual < estado.ordemDoencasIds.length) {
-      renderDoencaAtual();
-    } else {
-      renderResultado();
-    }
-  }, 650);
+    renderPontuacaoEscolha(doencaId, categoriaId, score);
+  }, 550);
 }
 
 // Navegação por setas dentro da grade de categorias (roving focus simples).
