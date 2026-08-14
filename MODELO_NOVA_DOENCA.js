@@ -32,6 +32,13 @@
   id: "PREENCHA_UM_ID_UNICO_EM_SNAKE_CASE", // ex.: "cinomose_canina" — sem espaços/acentos, único no banco
   nome: "PREENCHA O NOME DE EXIBIÇÃO", // ex.: "Cinomose canina" — este é o texto que o aluno vê no jogo
   especie: "Canina", // "Canina" | "Felina" | outra — guardado no dado, mas NÃO é exibido ao jogador
+  sistema: "PREENCHA_UM_DOS_IDS_ABAIXO", // usado pelo "Modo por sistemas" — escolha o mais didático mesmo
+                                          // se a doença afetar mais de um órgão:
+                                          //   sistema_tegumentar | sistema_digestorio | sistema_respiratorio |
+                                          //   sistema_cardiovascular | sistema_urinario | sistema_reprodutor |
+                                          //   sistema_musculoesqueletico | sistema_nervoso |
+                                          //   sistema_hematopoietico_linfatico | doencas_infecciosas_sistemicas
+                                          // (lista completa em CATALOGO_SISTEMAS, dentro de patovetzee.html)
   dica: null, // reservado para o futuro — não preencha ainda
 
   parametros_binarios: {

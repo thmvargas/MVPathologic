@@ -28,7 +28,9 @@ Arquivos desta pasta:
    fecha o array — e coloque uma vírgula depois do item anterior, se não
    tiver.
 4. Preencha `id` (um identificador único, sem espaço/acento — ex.:
-   `cinomose_canina`), `nome` (o que o aluno vê) e `especie`.
+   `cinomose_canina`), `nome` (o que o aluno vê), `especie` e `sistema`
+   (um dos ids listados no comentário do modelo — é o que alimenta o "Modo
+   por sistemas", ver seção 4 deste guia).
 5. Percorra `parametros_binarios`: troque `false` por `true` sempre que a
    afirmação do comentário for verdadeira para essa doença.
 6. Percorra `parametros_graduais`: troque cada `0` por um número de 0 a 100,
@@ -43,9 +45,29 @@ Arquivos desta pasta:
      corrigir.
 
 **Importante:** só adicionar a doença ao `BANCO_DOENCAS` não a coloca no
-jogo — ela só aparece quando entrar em `doencas_selecionadas` de algum
-desafio (ver seção 3). Você pode manter doenças "de banco" sem uso imediato
-por vários dias, sem problema.
+desafio diário — ela só aparece lá quando entrar em `doencas_selecionadas`
+de algum desafio (ver seção 3). Mas ela já entra automaticamente no **Modo
+por sistemas** (ver abaixo), assim que tiver o campo `sistema` preenchido.
+
+### Sobre o campo `sistema` e o Modo por sistemas
+
+Cada doença tem um `sistema` (ex.: `sistema_digestorio`,
+`sistema_tegumentar`) — é a mesma classificação que um curso de patologia
+veterinária costuma usar para organizar o conteúdo por órgão/aparelho.
+Doenças verdadeiramente multiorgânicas (raiva, cinomose, PIF, BVD etc.) vão
+em `doencas_infecciosas_sistemicas` em vez de forçar um órgão só — use seu
+critério clínico para decidir qual é "mais didático" quando não for óbvio.
+
+O **Modo por sistemas** (botão na tela inicial) deixa o aluno escolher um
+desses sistemas e monta, na hora, um desafio de estudo só com as doenças
+daquele grupo — sem precisar de curadoria manual de categorias (o jogo
+escolhe automaticamente as categorias com mais variação entre as doenças
+daquele sistema). Um sistema só aparece habilitado na lista quando tiver
+pelo menos `MIN_DOENCAS_MODO_SISTEMA` doenças (hoje = 3, ajustável no
+código); antes disso ele aparece como "em construção (N/3)". Esse modo não
+usa explicações escritas à mão — mostra uma frase gerada automaticamente a
+partir do próprio dado ("Sim: no banco de dados, ... apresenta a
+característica ..."). Não conta para o desafio diário nem para o ranking.
 
 ---
 
