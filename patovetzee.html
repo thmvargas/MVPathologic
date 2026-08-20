@@ -56,7 +56,7 @@ body{
 }
 
 #app{
-  max-width: 760px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 20px 16px 64px;
 }
@@ -115,47 +115,59 @@ body{
 
 .btn-categoria{
   display:flex;
-  align-items:center;
-  gap:12px;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:16px;
   width:100%;
   text-align:left;
   font-size:16px;
   font-weight:700;
   font-family:inherit;
   color: var(--cor-texto);
+  background: var(--cor-card);
   border:3px solid var(--cor-card-borda);
-  border-radius: 20px;
-  padding: 14px 18px;
-  min-height:52px;
-  margin-bottom:12px;
+  border-radius: 18px;
+  padding: 16px 18px 14px;
+  min-height:104px;
   box-shadow: var(--sombra-sticker-pequena);
   cursor:pointer;
   transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, filter 0.15s;
 }
-.btn-categoria:hover{ filter: brightness(1.07); transform: translateY(-2px); }
+.btn-categoria:hover{ filter: brightness(1.0); transform: translateY(-2px); box-shadow: 0 8px 0 rgba(58,46,57,0.18), 0 12px 22px rgba(58,46,57,0.14); }
 .btn-categoria:active{ transform: translateY(3px); box-shadow:0 1px 0 rgba(58,46,57,0.18); filter:none; }
 .btn-categoria:focus-visible{ outline: 3px solid var(--cor-card-borda); outline-offset:2px; }
 
-/* Paleta cíclica pastel-vibrante — cada botão de categoria pega uma cor da
-   roda, na ordem em que aparece, pra tela não ficar toda branca/monótona. */
-.btn-categoria.cor-1{ background: #FFB4B4; }
-.btn-categoria.cor-2{ background: #FFE29A; }
-.btn-categoria.cor-3{ background: #B8F2E6; }
-.btn-categoria.cor-4{ background: #AEDFF7; }
-.btn-categoria.cor-5{ background: #D9C6F2; }
-.btn-categoria.cor-6{ background: #FFCBE1; }
+/* Paleta cíclica pastel-vibrante — cada categoria pega uma cor de borda da
+   roda, na ordem em que aparece, pra tela não ficar toda monocromática. */
+.btn-categoria.cor-1{ border-color:#FF8C8C; }
+.btn-categoria.cor-2{ border-color:#E8B93D; }
+.btn-categoria.cor-3{ border-color:#3FBFA8; }
+.btn-categoria.cor-4{ border-color:#59A9D9; }
+.btn-categoria.cor-5{ border-color:#B18AE0; }
+.btn-categoria.cor-6{ border-color:#E6789F; }
 
-.btn-categoria .texto-categoria{ flex:1; }
+.btn-categoria .texto-categoria{ font-size:16px; font-weight:800; line-height:1.28; }
+
+.btn-categoria .rodape-categoria{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.btn-categoria .cta-tocar{
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  color: var(--cor-texto-suave);
+}
 
 .btn-categoria.confirmando{
   background: var(--cor-sucesso) !important;
+  border-color: var(--cor-sucesso) !important;
   color:#fff;
   pointer-events:none;
 }
+.btn-categoria.confirmando .texto-categoria,
+.btn-categoria.confirmando .cta-tocar{ color:#fff; }
 .btn-categoria .check{
   display:inline-flex; align-items:center; justify-content:center;
-  width:24px; height:24px; border-radius:50%; flex-shrink:0;
-  background: #fff; color: var(--cor-sucesso); font-weight:800;
+  width:22px; height:22px; border-radius:50%; flex-shrink:0;
+  background: #fff; color: var(--cor-sucesso); font-weight:800; font-size:13px;
   opacity:0; transform: scale(0.4);
   transition: opacity 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1);
 }
@@ -164,10 +176,13 @@ body{
 .grade-categorias{
   display:grid;
   grid-template-columns: 1fr;
-  gap:0;
+  gap:12px;
 }
 @media (min-width:520px){
-  .grade-categorias{ grid-template-columns: 1fr 1fr; gap:0 12px; }
+  .grade-categorias{ grid-template-columns: 1fr 1fr; }
+}
+@media (min-width:680px){
+  .grade-categorias{ grid-template-columns: 1fr 1fr 1fr; }
 }
 
 /* --------- Roteiro (sequência de doenças do dia) --------- */
@@ -231,16 +246,69 @@ body{
 }
 .carta-doenca.anim-entrada{ animation: cartaEntra 0.55s ease-out; }
 
-/* --------- Barra de progresso --------- */
-.progresso{
-  display:flex; gap:6px; justify-content:center; margin-bottom:14px;
+/* --------- Painel de rodada (topo: total / doença atual / dia) --------- */
+.painel-rodada{ padding: 18px 20px 14px; }
+.painel-rodada .subtitulo-rodada{
+  font-size:13px; color: var(--cor-texto-suave); margin:0 0 14px; text-align:center;
 }
-.progresso .ponto{
-  width:14px; height:14px; border-radius:50%;
-  background:#fff; border:2px solid var(--cor-card-borda);
+.rodada-stats{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+  text-align:center;
 }
-.progresso .ponto.feito{ background: var(--cor-sucesso); }
-.progresso .ponto.atual{ background: var(--cor-alerta); }
+.rodada-stats .bloco-stat{ flex:1; min-width:0; }
+@media (max-width:480px){
+  .rodada-stats{ flex-direction:column; align-items:center; gap:12px; }
+}
+.rodada-stats .rotulo-stat{
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  color: var(--cor-texto-suave); margin-bottom:5px;
+}
+.rodada-stats .valor-total{
+  font-size: clamp(28px,7vw,38px); font-weight:800; color: var(--cor-primaria-escura); line-height:1;
+}
+.rodada-stats .valor-doenca{
+  font-size: clamp(15px,4vw,19px); font-weight:800; color: var(--cor-texto); line-height:1.2;
+}
+.rodada-stats .valor-rodada{ font-size:13px; color: var(--cor-texto-suave); font-weight:700; }
+.rodada-stats .valor-rodada strong{ color: var(--cor-texto); }
+
+/* --------- Rolo horizontal com a sequência do dia (chips numerados) ------ */
+.rolo-sequencia{
+  display:flex; gap:8px; overflow-x:auto; padding: 4px 4px 14px;
+  scrollbar-width: thin;
+}
+.chip-doenca{
+  flex:0 0 auto;
+  width:38px; height:38px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:14px;
+  border:2.5px solid var(--cor-card-borda);
+  background:#fff; color: var(--cor-texto-suave);
+  transition: transform 0.15s;
+}
+.chip-doenca.feita{ background: var(--cor-sucesso); color:#fff; border-color: var(--cor-sucesso); }
+.chip-doenca.atual{
+  background: var(--cor-alerta); color: var(--cor-texto); transform: scale(1.15);
+  box-shadow: var(--sombra-sticker-pequena);
+}
+.chip-doenca.futura{ background:#FFF6E9; }
+
+/* --------- Barra "SCORE" ao vivo (acumulado / teto teórico) --------- */
+.painel-score{ padding: 14px 20px; }
+.painel-score .linha-score{
+  display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px;
+}
+.painel-score .rotulo-score{
+  font-size:13px; font-weight:800; letter-spacing:1.5px; color: var(--cor-texto-suave);
+}
+.painel-score .fracao-score{ font-size:18px; font-weight:800; color: var(--cor-texto); }
+.painel-score .barra-fina{
+  height:14px; border-radius:999px; background:#eee; border:2px solid var(--cor-card-borda); overflow:hidden;
+}
+.painel-score .barra-fina .preenchimento{
+  height:100%; background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-sucesso));
+  transition: width 0.4s ease-out;
+}
 
 /* --------- Resultado --------- */
 .resumo-total{
@@ -7435,6 +7503,37 @@ function avaliarQualidadeDesafio(desafio, matriz) {
 
 // Inicializa `estado` a partir de um objeto de desafio (oficial ou
 // personalizado), calculando ordem determinística e a matriz de pontuação.
+// Monta a matriz n×n na ordem fixa doencas_selecionadas × parametros_selecionados
+// e resolve o húngaro — usado tanto para cachear a pontuação ótima teórica
+// no início da partida (exibida ao vivo na barra de placar) quanto no
+// cálculo do resultado final.
+function resolverAlocacaoOtima(desafio, matriz) {
+  const doencaIds = desafio.doencas_selecionadas;
+  const catIds = desafio.parametros_selecionados.map((r) => r.id);
+  const matrizNumerica = doencaIds.map((dId) => catIds.map((cId) => matriz[dId][cId]));
+  const otimo = hungarianMaxAssignment(matrizNumerica);
+  return { doencaIds, catIds, matrizNumerica, otimo };
+}
+
+// Data de lançamento do jogo — base para numerar as rodadas diárias
+// (rodada #1 = dia do lançamento, incrementa 1 por dia).
+const DATA_LANCAMENTO_JOGO = "2026-08-05";
+function numeroRodada(dataStr) {
+  const inicio = new Date(DATA_LANCAMENTO_JOGO + "T00:00:00");
+  const alvo = new Date((dataStr || DATA_LANCAMENTO_JOGO) + "T00:00:00");
+  const dias = Math.round((alvo - inicio) / 86400000);
+  return Math.max(1, dias + 1);
+}
+const DIAS_SEMANA_PT = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+const MESES_PT = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+function formatarDataExtenso(dataStr) {
+  if (!dataStr) return "";
+  const d = new Date(dataStr + "T00:00:00");
+  if (isNaN(d)) return "";
+  return `${capitalizar(DIAS_SEMANA_PT[d.getDay()])}, ${d.getDate()} de ${MESES_PT[d.getMonth()]}`;
+}
+function capitalizar(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
 function iniciarPartida(desafio, { pratica = false } = {}) {
   const matriz = construirMatriz(desafio);
   avaliarQualidadeDesafio(desafio, matriz);
@@ -7446,6 +7545,11 @@ function iniciarPartida(desafio, { pratica = false } = {}) {
     seedBase + "|ordem-categorias"
   );
 
+  // Pontuação ótima teórica é calculada uma vez, aqui — não depende das
+  // escolhas do jogador, só do desafio em si — para poder mostrar
+  // "SCORE acumulado / teto teórico" ao vivo durante a partida.
+  const { otimo } = resolverAlocacaoOtima(desafio, matriz);
+
   estado = {
     desafio,
     matriz,
@@ -7455,6 +7559,7 @@ function iniciarPartida(desafio, { pratica = false } = {}) {
     alocacoes: [],
     modoPratica: pratica,
     travaInteracao: false,
+    pontuacaoOtimaTeorica: otimo.totalScore,
   };
 }
 
@@ -7600,16 +7705,67 @@ function renderIntro() {
   partes.forEach((p) => appEl.appendChild(p));
 }
 
-// Barra de progresso (9 pontos). `doencasFeitasCount` = quantas já foram
-// alocadas; `indiceEmDestaque` = índice a marcar como "atual" (ou -1 se
-// nenhuma — usado na tela intermediária de revelação de pontuação, onde a
-// decisão da vez já foi tomada e ainda não há uma "atual" nova em jogo).
-function construirProgresso(doencasFeitasCount, indiceEmDestaque) {
-  return el("div", { class: "progresso", "aria-hidden": "true" },
-    estado.ordemDoencasIds.map((_, i) => el("span", {
-      class: "ponto" + (i < doencasFeitasCount ? " feito" : i === indiceEmDestaque ? " atual" : ""),
-    }))
+// Painel de topo da rodada (estilo "round info"): total acumulado, doença
+// sendo alocada agora (ou label genérico na tela de revelação) e o número/
+// data da rodada diária. `doencaEmFoco` é null na tela de revelação (ali
+// quem importa é o par já confirmado, mostrado em outro card).
+function construirPainelRodada(doencaEmFoco, subtitulo) {
+  const desafio = estado.desafio;
+  const totalAcumulado = estado.alocacoes.reduce((s, a) => s + a.score, 0);
+
+  const blocoTotal = el("div", { class: "bloco-stat" }, [
+    el("div", { class: "rotulo-stat", text: "Total" }),
+    el("div", { class: "valor-total", text: String(totalAcumulado) }),
+  ]);
+  const blocoDoenca = el("div", { class: "bloco-stat" }, [
+    el("div", { class: "rotulo-stat", text: doencaEmFoco ? "Alocando agora" : "Última alocação" }),
+    el("div", { class: "valor-doenca", text: doencaEmFoco ? doencaEmFoco.nome : "—" }),
+  ]);
+  const blocoRodada = el("div", { class: "bloco-stat" }, [
+    el("div", { class: "rotulo-stat", text: estado.modoPratica ? "Modo prática" : "Desafio diário" }),
+    el("div", { class: "valor-rodada" }, [
+      document.createTextNode(estado.modoPratica ? "" : `#${numeroRodada(desafio.data)} · `),
+      el("strong", { text: formatarDataExtenso(desafio.data) || desafio.titulo }),
+    ]),
+  ]);
+
+  return el("section", { class: "card painel-rodada" }, [
+    el("p", { class: "subtitulo-rodada", text: subtitulo }),
+    el("div", { class: "rodada-stats" }, [blocoTotal, blocoDoenca, blocoRodada]),
+  ]);
+}
+
+// Rolo horizontal com um "chip" numerado por doença do dia — versão
+// compacta da sequência (a lista com os nomes completos continua abaixo,
+// pois o jogador precisa dela pra planejar). `doencasFeitasCount` = quantas
+// já foram alocadas; `indiceEmDestaque` = índice a marcar como "atual" (ou
+// -1 se nenhuma — usado na tela intermediária de revelação de pontuação).
+function construirRoloSequencia(doencasFeitasCount, indiceEmDestaque) {
+  return el("div", { class: "rolo-sequencia", "aria-hidden": "true" },
+    estado.ordemDoencasIds.map((_, i) => {
+      const status = i < doencasFeitasCount ? "feita" : i === indiceEmDestaque ? "atual" : "futura";
+      return el("div", {
+        class: "chip-doenca " + status,
+        text: status === "feita" ? "✓" : String(i + 1),
+      });
+    })
   );
+}
+
+// Barra "SCORE" fina, ao vivo: acumulado / teto teórico do desafio.
+function construirBarraScoreTopo() {
+  const acumulado = estado.alocacoes.reduce((s, a) => s + a.score, 0);
+  const teto = estado.pontuacaoOtimaTeorica || 0;
+  const pct = teto > 0 ? Math.min(100, (acumulado / teto) * 100) : 0;
+  return el("section", { class: "card painel-score" }, [
+    el("div", { class: "linha-score" }, [
+      el("span", { class: "rotulo-score", text: "SCORE" }),
+      el("span", { class: "fracao-score", text: `${acumulado} / ${teto}` }),
+    ]),
+    el("div", { class: "barra-fina" }, [
+      el("div", { class: "preenchimento", style: `width:${pct}%` }),
+    ]),
+  ]);
 }
 
 // Roteiro completo do dia: o jogador só ALOCA a doença atual, mas já sabe
@@ -7642,14 +7798,15 @@ function renderDoencaAtual() {
   const doenca = MAPA_DOENCAS[doencaId];
 
   appEl.appendChild(renderMarca());
-  appEl.appendChild(construirProgresso(estado.alocacoes.length, estado.indiceAtual));
 
-  const carta = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
-    el("span", { class: "rotulo-passo", text: `Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length}` }),
-    el("h2", { text: doenca.nome }),
-    el("p", { class: "aviso-irreversivel", text: "Escolha a categoria abaixo. Depois de confirmar, não dá para voltar." }),
-  ]);
-  appEl.appendChild(carta);
+  const painel = construirPainelRodada(doenca, "Alocação diária. Encaixe cada doença na categoria em que ela melhor se enquadra.");
+  painel.classList.add("anim-entrada");
+  painel.setAttribute("aria-live", "polite");
+  appEl.appendChild(painel);
+  appEl.appendChild(construirRoloSequencia(estado.alocacoes.length, estado.indiceAtual));
+  appEl.appendChild(construirBarraScoreTopo());
+
+  appEl.appendChild(el("p", { class: "aviso-irreversivel", text: `Doença ${estado.indiceAtual + 1} de ${estado.ordemDoencasIds.length} — depois de confirmar a categoria, não dá para voltar.` }));
 
   appEl.appendChild(construirCardRoteiro(estado.alocacoes.length, estado.indiceAtual));
 
@@ -7673,8 +7830,11 @@ function renderDoencaAtual() {
       type: "button",
       onclick: () => onEscolherCategoria(catId, botao),
     }, [
-      el("span", { class: "check", "aria-hidden": "true", text: "✓" }),
       el("span", { class: "texto-categoria", text: label }),
+      el("div", { class: "rodape-categoria" }, [
+        el("span", { class: "cta-tocar", text: "Toque para alocar" }),
+        el("span", { class: "check", "aria-hidden": "true", text: "✓" }),
+      ]),
     ]);
     grade.appendChild(botao);
   });
@@ -7705,7 +7865,9 @@ function renderPontuacaoEscolha(doencaId, categoriaId, score) {
   const ehUltima = indiceConfirmado + 1 >= estado.ordemDoencasIds.length;
 
   appEl.appendChild(renderMarca());
-  appEl.appendChild(construirProgresso(estado.alocacoes.length, -1));
+  appEl.appendChild(construirPainelRodada(null, "Resultado da última alocação — confira antes de seguir para a próxima."));
+  appEl.appendChild(construirRoloSequencia(estado.alocacoes.length, -1));
+  appEl.appendChild(construirBarraScoreTopo());
 
   const cardPontuacao = el("section", { class: "card carta-doenca anim-entrada", "aria-live": "polite" }, [
     el("span", { class: "rotulo-passo", text: `Doença ${indiceConfirmado + 1} de ${estado.ordemDoencasIds.length}` }),
@@ -7820,13 +7982,9 @@ function calcularResultadoFinal() {
   const desafio = estado.desafio;
   const totalScore = estado.alocacoes.reduce((s, a) => s + a.score, 0);
 
-  // Monta a matriz n×n na ordem fixa doencas_selecionadas × parametros_selecionados
-  // para rodar o húngaro (a ordem de exibição ao jogador foi só cosmética).
-  const doencaIds = desafio.doencas_selecionadas;
-  const catIds = desafio.parametros_selecionados.map((r) => r.id);
-  const matrizNumerica = doencaIds.map((dId) => catIds.map((cId) => estado.matriz[dId][cId]));
-
-  const otimo = hungarianMaxAssignment(matrizNumerica);
+  // Reaproveita a mesma resolução húngara usada no início da partida (a
+  // ordem de exibição ao jogador foi só cosmética, o resultado é o mesmo).
+  const { doencaIds, catIds, matrizNumerica, otimo } = resolverAlocacaoOtima(desafio, estado.matriz);
   const optimalScore = otimo.totalScore;
   const alocacaoOtima = otimo.assignment.map((catIdx, doencaIdx) => ({
     doencaId: doencaIds[doencaIdx],
