@@ -185,6 +185,29 @@ body{
   .grade-categorias{ grid-template-columns: 1fr 1fr 1fr; }
 }
 
+/* --------- Lista de sistemas (Modo por sistemas) --------- */
+.item-sistema{
+  display:block;
+  width:100%;
+  text-align:left;
+  font-size:16px;
+  font-weight:700;
+  font-family:inherit;
+  color: var(--cor-texto);
+  background: #FFF6E9;
+  border:3px solid var(--cor-card-borda);
+  border-radius: 20px;
+  padding: 14px 18px;
+  min-height:52px;
+  margin-bottom:12px;
+  box-shadow: var(--sombra-sticker-pequena);
+  cursor:pointer;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, filter 0.15s;
+}
+.item-sistema:hover:not(:disabled){ filter: brightness(1.03); transform: translateY(-2px); }
+.item-sistema:active:not(:disabled){ transform: translateY(3px); box-shadow:0 1px 0 rgba(58,46,57,0.18); }
+.item-sistema:focus-visible{ outline: 3px solid var(--cor-card-borda); outline-offset:2px; }
+
 /* --------- Roteiro (sequência de doenças do dia) --------- */
 .lista-roteiro{
   list-style:none; margin:0; padding:0;
@@ -8534,13 +8557,13 @@ function renderEscolherSistema() {
     const n = contagem[sistemaId];
     const habilitado = n >= MIN_DOENCAS_MODO_SISTEMA;
     card.appendChild(el("button", {
-      class: "btn-categoria",
+      class: "item-sistema",
       style: habilitado ? "" : "opacity:0.55; cursor:not-allowed;",
       type: "button",
       disabled: !habilitado,
       onclick: habilitado ? () => iniciarDesafioPorSistema(sistemaId) : undefined,
     }, [
-      el("span", { class: "texto-categoria", text:
+      el("span", { text:
         habilitado
           ? `${label} (${n} doenças)`
           : `${label} — em construção (${n}/${MIN_DOENCAS_MODO_SISTEMA} doenças)` }),
@@ -8551,8 +8574,17 @@ function renderEscolherSistema() {
   appEl.appendChild(card);
 }
 
+// Tamanho de cada rodada do Modo por Sistemas — mantém o mesmo formato 9x9
+// do desafio diário mesmo em sistemas com bancos grandes (ex.: Tegumentar
+// tem 31 doenças hoje). Quando o sistema tem mais que isso, sorteia um
+// subconjunto novo a cada partida (sem seed fixa — é modo prática).
+const RODADA_TAMANHO_SISTEMA = 9;
+
 function iniciarDesafioPorSistema(sistemaId) {
-  const doencaIds = BANCO_DOENCAS.filter((d) => d.sistema === sistemaId).map((d) => d.id);
+  const todasDoencaIds = BANCO_DOENCAS.filter((d) => d.sistema === sistemaId).map((d) => d.id);
+  const doencaIds = todasDoencaIds.length > RODADA_TAMANHO_SISTEMA
+    ? embaralharComSeed(todasDoencaIds, "sistema-" + sistemaId + "|sorteio|" + Date.now()).slice(0, RODADA_TAMANHO_SISTEMA)
+    : todasDoencaIds;
   const quantidade = doencaIds.length;
   const parametrosSelecionados = escolherCategoriasAutomaticamente(doencaIds, quantidade);
 
