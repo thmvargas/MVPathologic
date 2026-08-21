@@ -7441,21 +7441,57 @@ function calcularVarianciaParametro(doencaIds, paramRef) {
   return valores.reduce((a, v) => a + (v - media) ** 2, 0) / valores.length;
 }
 
-// Escolhe `quantidade` categorias (entre binárias e graduais) que melhor
-// diferenciam as doenças em `doencaIds`, ordenando por variância decrescente.
-// Descarta parâmetros constantes (variância zero — todo mundo com o mesmo
-// valor, categoria sem nenhuma utilidade no puzzle).
+// Pontuação húngara máxima alcançável usando SÓ as categorias em
+// `categorias` para todas as doenças em `doencaIds` (mesmo quando
+// categorias.length < doencaIds.length) — completa a matriz com colunas
+// fictícias de custo 0 até ficar quadrada, então o húngaro naturalmente
+// escolhe as melhores `categorias.length` doenças para preencher essas
+// colunas e deixa o resto "sobrando" a 0, sem afetar o resultado.
+function avaliarTetoCategoriasParciais(doencaIds, categorias) {
+  const m = doencaIds.length;
+  const matriz = doencaIds.map((dId) => {
+    const linha = categorias.map((ref) => calcularPontuacao(dId, ref));
+    while (linha.length < m) linha.push(0);
+    return linha;
+  });
+  return hungarianMaxAssignment(matriz).totalScore;
+}
+
+// Escolhe `quantidade` categorias (entre binárias e graduais) para
+// `doencaIds`. Não basta ordenar por variância isolada: duas categorias de
+// alta variância podem, juntas, "competir" pelas mesmas 2-3 doenças e
+// forçar uma alocação ótima com zeros (mesmo havendo combinações sem
+// nenhum zero). Por isso a escolha é gulosa: a cada passo, adiciona a
+// categoria que mais aumenta a pontuação húngara máxima alcançável pelo
+// conjunto escolhido até agora — maximiza diretamente o teto teórico do
+// desafio, em vez de só "parecer" boa categoria a categoria.
 function escolherCategoriasAutomaticamente(doencaIds, quantidade) {
   const candidatos = [
     ...Object.keys(CATALOGO_PARAMETROS.binarios).map((id) => ({ id, grupo: "binario" })),
     ...Object.keys(CATALOGO_PARAMETROS.graduais).map((id) => ({ id, grupo: "gradual" })),
-  ];
-  return candidatos
+  ]
     .map((ref) => ({ ...ref, variancia: calcularVarianciaParametro(doencaIds, ref) }))
-    .filter((c) => c.variancia > 0)
-    .sort((a, b) => b.variancia - a.variancia)
-    .slice(0, quantidade)
-    .map(({ id, grupo }) => ({ id, grupo }));
+    .filter((c) => c.variancia > 0) // descarta parâmetros constantes (categoria sem utilidade)
+    .sort((a, b) => b.variancia - a.variancia);
+
+  if (candidatos.length <= quantidade) {
+    return candidatos.slice(0, quantidade).map(({ id, grupo }) => ({ id, grupo }));
+  }
+
+  const restantes = candidatos.slice();
+  const selecionadas = [];
+  for (let passo = 0; passo < quantidade; passo++) {
+    let melhorIdx = 0;
+    let melhorTeto = -Infinity;
+    for (let i = 0; i < restantes.length; i++) {
+      const teto = avaliarTetoCategoriasParciais(doencaIds, selecionadas.concat(restantes[i]));
+      // Empate no teto: prefere a de maior variância (já vem ordenado assim).
+      if (teto > melhorTeto) { melhorTeto = teto; melhorIdx = i; }
+    }
+    selecionadas.push(restantes[melhorIdx]);
+    restantes.splice(melhorIdx, 1);
+  }
+  return selecionadas.map(({ id, grupo }) => ({ id, grupo }));
 }
 
 // Gera uma explicação genérica a partir do próprio dado, para quando não há
