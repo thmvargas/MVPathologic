@@ -14,16 +14,54 @@ Arquivos desta pasta:
 | `hungarian.js` | Cópia isolada do algoritmo, só pra você rodar `node hungarian.js` e conferir os testes sem abrir navegador. |
 | `revisao_conteudo_patovetzee.md` | Documento de revisão do conteúdo original (histórico — não precisa editar). |
 | `GUIA_MANUTENCAO.md` | Este arquivo. |
+| `supabase_migration_002_doencas.sql` | Migração que cria a tabela `doencas` no Supabase e migra as que já existem — precisa rodar uma vez (ver seção 0). |
 
 ---
 
-## 1. Adicionar uma doença nova
+## 0. Painel de administração (o jeito mais fácil, recomendado)
+
+Desde a migração 002, o banco de doenças pode ser gerenciado **direto pelo
+jogo**, sem editar `patovetzee.html` nem fazer deploy — mudanças aparecem
+pra todo mundo na hora.
+
+**Configuração única** (só precisa fazer isso uma vez):
+
+1. Abra o SQL Editor do seu projeto Supabase, cole o conteúdo de
+   `supabase_migration_002_doencas.sql` inteiro e rode. Isso cria a tabela
+   `doencas`, as permissões (só admin escreve, todo mundo lê) e já migra as
+   doenças que existiam no jogo até agora.
+2. No final do mesmo arquivo tem um passo manual: rode a linha `update
+   public.perfis set is_admin = true where apelido = '...'` trocando pelo
+   seu apelido de login no jogo.
+3. Faça login no jogo normalmente. Uma aba **"🛠️ Administração"** aparece
+   na tela inicial, só pra você.
+
+**No dia a dia**, pelo painel de administração você pode:
+
+- Buscar/filtrar doenças por nome, sistema ou espécie.
+- Criar uma doença nova preenchendo um formulário (com os 60 parâmetros
+  organizados por tema — etiologia, transmissão, predisposição etc.),
+  em vez de editar JSON à mão.
+- Editar qualquer doença existente.
+- Excluir uma doença (o jogo bloqueia a exclusão se ela estiver no desafio
+  diário oficial fixo no código, pra não quebrar o desafio da turma).
+
+Se o Supabase cair ou a migração não tiver sido rodada ainda, o jogo
+**continua funcionando normalmente** com o banco embutido no
+`patovetzee.html` (`BANCO_DOENCAS_EMBUTIDO`) — o painel de admin é uma
+camada extra, não uma dependência obrigatória. As seções 1 e 2 abaixo (editar
+o arquivo à mão) continuam válidas como alternativa, ou para quem prefere
+manter tudo versionado no HTML.
+
+---
+
+## 1. Adicionar uma doença nova (editando o arquivo à mão)
 
 1. Abra `MODELO_NOVA_DOENCA.js` e copie o bloco entre `COPIE A PARTIR DAQUI`
    e `COPIE ATÉ AQUI`.
 2. Abra `patovetzee.html` num editor de texto (Notepad++, VS Code, etc.).
-   Procure por `const BANCO_DOENCAS = [` (seção 1, bem no início do
-   `<script>`).
+   Procure por `const BANCO_DOENCAS_EMBUTIDO = [` (seção 1, bem no início
+   do `<script>`).
 3. Cole o bloco copiado como mais um item da lista — **antes** do `];` que
    fecha o array — e coloque uma vírgula depois do item anterior, se não
    tiver.

@@ -429,6 +429,34 @@ body{
 .tabela-ranking tr.minha-linha{ background:#FFF3CD; font-weight:800; }
 .medalha{ font-size:18px; margin-right:4px; }
 
+/* --------- Administração do banco de doenças --------- */
+.btn-pequeno{ font-size:14px; padding:8px 16px; min-height:36px; }
+.linha-admin-doenca{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 0; border-bottom:2px dashed #eadfe0; flex-wrap:wrap;
+}
+.linha-admin-doenca:last-child{ border-bottom:none; }
+.linha-admin-info{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+.linha-admin-meta{ font-size:13px; color: var(--cor-texto-suave); }
+.linha-admin-acoes{ display:flex; gap:8px; flex-shrink:0; }
+
+.grade-checkboxes{
+  display:grid; grid-template-columns: 1fr; gap:10px 16px;
+}
+@media (min-width:560px){
+  .grade-checkboxes{ grid-template-columns: 1fr 1fr; }
+}
+.item-checkbox{
+  display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600;
+  cursor:pointer;
+}
+.item-checkbox input[type="checkbox"]{ width:18px; height:18px; flex-shrink:0; cursor:pointer; }
+
+.linha-gradual{ margin-bottom:16px; }
+.linha-gradual:last-child{ margin-bottom:0; }
+.campo-numero{ max-width:120px; }
+.ajuda-campo{ font-size:12px; color: var(--cor-texto-suave); margin:4px 0 0; }
+
 @media (max-width:420px){
   .card{ padding:16px; }
 }
@@ -623,9 +651,15 @@ const CATALOGO_SISTEMAS = {
   doencas_infecciosas_sistemicas: "Infecciosas sistêmicas/multiorgânicas",
 };
 
-// Banco de doenças. Cada doença preenche TODAS as chaves do catálogo acima.
-// `dica` fica reservado para uma versão futura — não é populado nem exibido.
-const BANCO_DOENCAS = [
+// Banco de doenças EMBUTIDO — funciona como conteúdo do jogo (offline, sem
+// depender de nada externo) e como FALLBACK: se o Supabase estiver
+// configurado, `init()` tenta carregar a versão mais atual da tabela
+// `doencas` e substitui `BANCO_DOENCAS` por ela (ver carregarBancoRemoto());
+// se isso falhar por qualquer motivo (sem internet, projeto pausado, RLS mal
+// configurada), o jogo continua funcionando normalmente com este array.
+// Cada doença preenche TODAS as chaves do catálogo acima. `dica` fica
+// reservado para uma versão futura — não é populado nem exibido.
+const BANCO_DOENCAS_EMBUTIDO = [
   {
     id: "piometra_canina",
     nome: "Piometra canina",
@@ -7027,8 +7061,14 @@ const BANCO_DOENCAS = [
   },
 ];
 
-// Índice rápido id -> doença, montado uma vez.
-const MAPA_DOENCAS = Object.fromEntries(BANCO_DOENCAS.map((d) => [d.id, d]));
+// `BANCO_DOENCAS`/`MAPA_DOENCAS` começam apontando pro conteúdo embutido e
+// podem ser substituídos em runtime por `carregarBancoRemoto()` (seção 10),
+// se o Supabase tiver uma versão mais atual. `let`, não `const`, de propósito.
+let BANCO_DOENCAS = BANCO_DOENCAS_EMBUTIDO;
+let MAPA_DOENCAS = indexarBancoDoencas(BANCO_DOENCAS);
+function indexarBancoDoencas(banco) {
+  return Object.fromEntries(banco.map((d) => [d.id, d]));
+}
 
 // Checagem de integridade do banco: roda uma vez ao carregar a página e avisa
 // no console (não trava o jogo) se alguma doença estiver com parâmetro
@@ -7758,6 +7798,15 @@ function renderIntro() {
   ]);
   partes.push(cardExtras);
 
+  // Só aparece pra quem tem is_admin=true no perfil (ver migração 002).
+  if (sessao.isAdmin) {
+    partes.push(el("section", { class: "card" }, [
+      el("h2", { text: "🛠️ Administração" }),
+      el("p", { text: "Visível só pra você. Gerencie o banco de doenças direto pelo app." }),
+      el("button", { class: "btn acento", text: "Gerenciar banco de doenças", onclick: () => renderAdmin() }),
+    ]));
+  }
+
   partes.push(el("p", { class: "rodape-nota", text:
     "PatoVetZee — ferramenta didática de patologia veterinária. Alocação inspirada na mecânica do Geozee." }));
 
@@ -8276,7 +8325,7 @@ const supabaseClient = SUPABASE_CONFIGURADO
   : null;
 
 // Estado de sessão do jogador. usuario=null significa "modo convidado".
-let sessao = { usuario: null, apelido: null };
+let sessao = { usuario: null, apelido: null, isAdmin: false };
 
 // Roda no carregamento da página: o SDK do Supabase já guarda o token de
 // sessão no localStorage por conta própria, então isto só recupera a sessão
@@ -8295,18 +8344,74 @@ async function verificarSessaoAtual() {
 
 async function carregarPerfilDaSessao(usuario) {
   sessao.usuario = usuario;
-  const { data: perfil } = await supabaseClient
+  let { data: perfil, error } = await supabaseClient
     .from("perfis")
-    .select("apelido")
+    .select("apelido, is_admin")
     .eq("id", usuario.id)
     .maybeSingle();
+  if (error) {
+    // `is_admin` só existe depois da migração 002 — se a coluna ainda não
+    // existe (banco antigo/migração não rodada), o select acima falha por
+    // completo. Refaz só com `apelido` pra não perder a sessão por causa
+    // disso; isAdmin fica false até a migração ser aplicada.
+    console.warn("[PatoVetZee] Coluna is_admin indisponível (rode a migração 002?):", error.message);
+    const fallback = await supabaseClient.from("perfis").select("apelido").eq("id", usuario.id).maybeSingle();
+    perfil = fallback.data;
+  }
   sessao.apelido = perfil ? perfil.apelido : null;
+  sessao.isAdmin = !!(perfil && perfil.is_admin);
 }
 
 async function fazerLogout() {
   if (supabaseClient) await supabaseClient.auth.signOut();
-  sessao = { usuario: null, apelido: null };
+  sessao = { usuario: null, apelido: null, isAdmin: false };
   renderIntro();
+}
+
+// Carrega a tabela `doencas` do Supabase (migração 002) e, se der certo,
+// substitui BANCO_DOENCAS/MAPA_DOENCAS pelo conteúdo remoto — é o que faz o
+// painel de admin (seção 12) valer a pena: editar lá reflete no jogo pra
+// todo mundo sem precisar de novo deploy. Best-effort: qualquer falha (sem
+// Supabase configurado, tabela não migrada ainda, sem internet) simplesmente
+// mantém BANCO_DOENCAS_EMBUTIDO — o jogo nunca fica sem conteúdo por causa
+// disso.
+async function carregarBancoRemoto() {
+  if (!supabaseClient) return false;
+  try {
+    const { data, error } = await supabaseClient.from("doencas").select("*");
+    if (error) throw error;
+    if (!data || data.length === 0) return false;
+
+    const banco = data.map((linha) => ({
+      id: linha.id,
+      nome: linha.nome,
+      especie: linha.especie,
+      sistema: linha.sistema,
+      dica: linha.dica,
+      parametros_binarios: linha.parametros_binarios || {},
+      parametros_graduais: linha.parametros_graduais || {},
+    }));
+    const mapaCandidato = indexarBancoDoencas(banco);
+
+    // Salvaguarda: nunca troca pro banco remoto se ele não tiver todas as
+    // doenças que o desafio diário oficial (DESAFIO_DO_DIA, fixo no código)
+    // referencia — isso quebraria o desafio da turma. Nesse caso, mantém o
+    // banco embutido e só avisa no console.
+    const faltando = DESAFIO_DO_DIA.doencas_selecionadas.filter((id) => !mapaCandidato[id]);
+    if (faltando.length > 0) {
+      console.warn(`[PatoVetZee] Banco remoto está sem doenças usadas no desafio diário oficial (${faltando.join(", ")}) — mantendo o banco embutido por segurança.`);
+      return false;
+    }
+
+    BANCO_DOENCAS = banco;
+    MAPA_DOENCAS = mapaCandidato;
+    validarBancoDoencas();
+    console.log(`[PatoVetZee] Banco de doenças carregado do Supabase: ${BANCO_DOENCAS.length} doenças.`);
+    return true;
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível carregar o banco remoto (usando o conteúdo embutido):", e.message || e);
+    return false;
+  }
 }
 
 function traduzirErroAuth(error) {
@@ -8640,6 +8745,323 @@ function iniciarDesafioPorSistema(sistemaId) {
 
 
 /* =========================================================================
+ * 12. ADMINISTRAÇÃO DO BANCO DE DOENÇAS (só pra sessao.isAdmin === true)
+ * -------------------------------------------------------------------------
+ * CRUD completo contra a tabela `doencas` do Supabase (ver
+ * supabase_migration_002_doencas.sql). Toda escrita passa pela RLS
+ * "só admin" do lado do banco — mesmo que alguém adultere o JS no
+ * navegador, o Supabase recusa a escrita se a conta não tiver
+ * is_admin=true. Depois de cada escrita bem-sucedida, atualiza
+ * BANCO_DOENCAS/MAPA_DOENCAS localmente também, sem esperar um reload.
+ * ======================================================================= */
+
+const NOMES_GRUPO_TEMATICO = {
+  etiologia: "Etiologia",
+  transmissao: "Transmissão",
+  predisposicao: "Predisposição",
+  natureza_lesao: "Natureza da lesão",
+  sinais_clinicos: "Sinais clínicos",
+  diagnostico: "Diagnóstico",
+  tratamento: "Tratamento",
+  prognostico: "Prognóstico",
+};
+const ORDEM_GRUPOS_TEMATICOS = Object.keys(NOMES_GRUPO_TEMATICO);
+
+// Filtros da lista ficam num objeto de módulo (não em `estado`, que é só do
+// jogo em andamento) pra sobreviver entre re-renders enquanto o admin digita
+// na busca.
+let estadoAdmin = { busca: "", sistema: "", especie: "" };
+
+function guardaFoco(idCampo) {
+  const ativo = document.activeElement;
+  if (!ativo || ativo.id !== idCampo) return null;
+  return { id: idCampo, selecaoInicio: ativo.selectionStart, selecaoFim: ativo.selectionEnd };
+}
+function restauraFoco(guardado) {
+  if (!guardado) return;
+  const campo = document.getElementById(guardado.id);
+  if (!campo) return;
+  campo.focus();
+  if (typeof campo.setSelectionRange === "function" && guardado.selecaoInicio != null) {
+    try { campo.setSelectionRange(guardado.selecaoInicio, guardado.selecaoFim); } catch (e) { /* tipo de input sem seleção de texto */ }
+  }
+}
+
+function renderAdmin() {
+  if (!sessao.isAdmin) { renderIntro(); return; }
+  const foco = guardaFoco("admin-busca");
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "🛠️ Administração — banco de doenças" }),
+    el("p", { text: `${BANCO_DOENCAS.length} doenças cadastradas hoje. Mudanças aqui valem pra todo mundo assim que salvas — sem precisar de deploy novo.` }),
+    el("div", {}, [
+      el("button", { class: "btn", text: "+ Nova doença", onclick: () => renderEditorDoenca(null) }),
+      el("button", { class: "btn fantasma", text: "⬅ Voltar ao início", onclick: renderIntro }),
+    ]),
+  ]));
+
+  const cardFiltros = el("section", { class: "card" }, [el("h2", { text: "Buscar" })]);
+
+  const campoBusca = document.createElement("input");
+  campoBusca.type = "search"; campoBusca.className = "campo"; campoBusca.id = "admin-busca";
+  campoBusca.placeholder = "Nome ou id da doença…";
+  campoBusca.value = estadoAdmin.busca;
+  campoBusca.addEventListener("input", () => { estadoAdmin.busca = campoBusca.value; renderAdmin(); });
+  cardFiltros.appendChild(campoBusca);
+
+  const linhaSelects = document.createElement("div");
+  linhaSelects.style.cssText = "display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;";
+
+  const filtroSistema = document.createElement("select");
+  filtroSistema.className = "campo";
+  filtroSistema.style.flex = "1"; filtroSistema.style.minWidth = "200px";
+  filtroSistema.appendChild(new Option("Todos os sistemas", ""));
+  Object.entries(CATALOGO_SISTEMAS).forEach(([id, label]) => filtroSistema.appendChild(new Option(label, id)));
+  filtroSistema.value = estadoAdmin.sistema;
+  filtroSistema.addEventListener("change", () => { estadoAdmin.sistema = filtroSistema.value; renderAdmin(); });
+  linhaSelects.appendChild(filtroSistema);
+
+  const especiesConhecidas = [...new Set(BANCO_DOENCAS.map((d) => d.especie))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const filtroEspecie = document.createElement("select");
+  filtroEspecie.className = "campo";
+  filtroEspecie.style.flex = "1"; filtroEspecie.style.minWidth = "160px";
+  filtroEspecie.appendChild(new Option("Todas as espécies", ""));
+  especiesConhecidas.forEach((esp) => filtroEspecie.appendChild(new Option(esp, esp)));
+  filtroEspecie.value = estadoAdmin.especie;
+  filtroEspecie.addEventListener("change", () => { estadoAdmin.especie = filtroEspecie.value; renderAdmin(); });
+  linhaSelects.appendChild(filtroEspecie);
+
+  cardFiltros.appendChild(linhaSelects);
+  appEl.appendChild(cardFiltros);
+
+  const termo = estadoAdmin.busca.trim().toLowerCase();
+  const listaFiltrada = BANCO_DOENCAS.filter((d) => {
+    if (estadoAdmin.sistema && d.sistema !== estadoAdmin.sistema) return false;
+    if (estadoAdmin.especie && d.especie !== estadoAdmin.especie) return false;
+    if (termo && !(d.nome.toLowerCase().includes(termo) || d.id.toLowerCase().includes(termo))) return false;
+    return true;
+  }).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+
+  const cardLista = el("section", { class: "card" }, [
+    el("h2", { text: `Resultado (${listaFiltrada.length})` }),
+  ]);
+  if (listaFiltrada.length === 0) {
+    cardLista.appendChild(el("p", { text: "Nenhuma doença encontrada com esse filtro." }));
+  }
+  listaFiltrada.forEach((d) => {
+    cardLista.appendChild(el("div", { class: "linha-admin-doenca" }, [
+      el("div", { class: "linha-admin-info" }, [
+        el("strong", { text: d.nome }),
+        el("span", { class: "linha-admin-meta", text: `${d.especie} · ${CATALOGO_SISTEMAS[d.sistema] || d.sistema} · id: ${d.id}` }),
+      ]),
+      el("div", { class: "linha-admin-acoes" }, [
+        el("button", { class: "btn secundario btn-pequeno", text: "Editar", onclick: () => renderEditorDoenca(d.id) }),
+        el("button", { class: "btn fantasma btn-pequeno", text: "Excluir", onclick: () => confirmarExclusaoDoenca(d.id) }),
+      ]),
+    ]));
+  });
+  appEl.appendChild(cardLista);
+
+  restauraFoco(foco);
+}
+
+async function confirmarExclusaoDoenca(doencaId) {
+  const doenca = MAPA_DOENCAS[doencaId];
+  if (!doenca) return;
+
+  if (DESAFIO_DO_DIA.doencas_selecionadas.includes(doencaId)) {
+    window.alert(
+      `"${doenca.nome}" faz parte do desafio diário oficial (DESAFIO_DO_DIA, fixo no código-fonte do jogo).\n\n` +
+      `Excluir agora quebraria esse desafio pra todo mundo. Peça pra alterar DESAFIO_DO_DIA no código antes de excluir esta doença.`
+    );
+    return;
+  }
+
+  const confirmado = window.confirm(`Excluir "${doenca.nome}" definitivamente? Essa ação não pode ser desfeita.`);
+  if (!confirmado) return;
+
+  if (!supabaseClient) { window.alert("Supabase não configurado — não é possível salvar exclusões."); return; }
+
+  const { error } = await supabaseClient.from("doencas").delete().eq("id", doencaId);
+  if (error) { window.alert("Erro ao excluir: " + error.message); return; }
+
+  BANCO_DOENCAS = BANCO_DOENCAS.filter((d) => d.id !== doencaId);
+  MAPA_DOENCAS = indexarBancoDoencas(BANCO_DOENCAS);
+  renderAdmin();
+}
+
+/* --------- Formulário de criação/edição --------- */
+function renderEditorDoenca(doencaIdExistente) {
+  if (!sessao.isAdmin) { renderIntro(); return; }
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const editando = !!doencaIdExistente;
+  const doencaAtual = editando ? MAPA_DOENCAS[doencaIdExistente] : null;
+  if (editando && !doencaAtual) {
+    appEl.appendChild(el("section", { class: "card" }, [
+      el("p", { text: "Doença não encontrada (pode ter sido excluída em outra aba)." }),
+      el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderAdmin }),
+    ]));
+    return;
+  }
+
+  const erroEl = el("p", { class: "campo-erro" });
+
+  const campoId = document.createElement("input");
+  campoId.type = "text"; campoId.className = "campo";
+  campoId.placeholder = "ex.: nova_doenca_canina (minúsculo, sem espaço/acento)";
+  campoId.value = editando ? doencaAtual.id : "";
+  campoId.disabled = editando;
+
+  const campoNome = document.createElement("input");
+  campoNome.type = "text"; campoNome.className = "campo";
+  campoNome.value = editando ? doencaAtual.nome : "";
+
+  const especiesConhecidas = [...new Set(BANCO_DOENCAS.map((d) => d.especie))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const listaEspecies = document.createElement("datalist");
+  listaEspecies.id = "lista-especies-admin";
+  especiesConhecidas.forEach((esp) => listaEspecies.appendChild(new Option(esp, esp)));
+
+  const campoEspecie = document.createElement("input");
+  campoEspecie.type = "text"; campoEspecie.className = "campo";
+  campoEspecie.setAttribute("list", "lista-especies-admin");
+  campoEspecie.placeholder = "ex.: Canina";
+  campoEspecie.value = editando ? doencaAtual.especie : "";
+
+  const campoSistema = document.createElement("select");
+  campoSistema.className = "campo";
+  Object.entries(CATALOGO_SISTEMAS).forEach(([id, label]) => campoSistema.appendChild(new Option(label, id)));
+  campoSistema.value = editando ? doencaAtual.sistema : Object.keys(CATALOGO_SISTEMAS)[0];
+
+  const campoDica = document.createElement("textarea");
+  campoDica.className = "campo"; campoDica.rows = 2;
+  campoDica.placeholder = "Reservado para uma versão futura — não aparece pro jogador hoje.";
+  campoDica.value = (editando && doencaAtual.dica) || "";
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: editando ? `Editando: ${doencaAtual.nome}` : "Nova doença" }),
+    erroEl,
+    el("label", { class: "rotulo-campo", text: "Id (uso interno — não aparece pro jogador; não dá pra mudar depois de criada)" }),
+    campoId,
+    listaEspecies,
+    el("label", { class: "rotulo-campo", text: "Nome" }),
+    campoNome,
+    el("label", { class: "rotulo-campo", text: "Espécie" }),
+    campoEspecie,
+    el("label", { class: "rotulo-campo", text: "Sistema (Modo por sistemas)" }),
+    campoSistema,
+    el("label", { class: "rotulo-campo", text: "Dica (opcional, reservado)" }),
+    campoDica,
+  ]));
+
+  const camposBinarios = {};
+  const camposGraduais = {};
+
+  ORDEM_GRUPOS_TEMATICOS.forEach((grupo) => {
+    const binariosDoGrupo = Object.entries(CATALOGO_PARAMETROS.binarios).filter(([, def]) => def.grupo_tematico === grupo);
+    const graduaisDoGrupo = Object.entries(CATALOGO_PARAMETROS.graduais).filter(([, def]) => def.grupo_tematico === grupo);
+    if (binariosDoGrupo.length === 0 && graduaisDoGrupo.length === 0) return;
+
+    const cardGrupo = el("section", { class: "card" }, [el("h2", { text: NOMES_GRUPO_TEMATICO[grupo] })]);
+
+    if (binariosDoGrupo.length > 0) {
+      const grade = el("div", { class: "grade-checkboxes" });
+      binariosDoGrupo.forEach(([id, def]) => {
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.checked = editando ? !!doencaAtual.parametros_binarios[id] : false;
+        input.id = "campo-bin-" + id;
+        camposBinarios[id] = input;
+        const label = document.createElement("label");
+        label.className = "item-checkbox";
+        label.htmlFor = input.id;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(" " + def.label));
+        grade.appendChild(label);
+      });
+      cardGrupo.appendChild(grade);
+    }
+
+    graduaisDoGrupo.forEach(([id, def]) => {
+      const input = document.createElement("input");
+      input.type = "number"; input.min = "0"; input.max = "100";
+      input.className = "campo campo-numero";
+      input.value = editando ? doencaAtual.parametros_graduais[id] : 0;
+      camposGraduais[id] = input;
+      cardGrupo.appendChild(el("div", { class: "linha-gradual" }, [
+        el("label", { class: "rotulo-campo", text: def.label }),
+        input,
+        el("p", { class: "ajuda-campo", text: def.criterio_referencia }),
+      ]));
+    });
+
+    appEl.appendChild(cardGrupo);
+  });
+
+  const btnSalvar = el("button", { class: "btn", text: editando ? "Salvar alterações" : "Criar doença" });
+  btnSalvar.addEventListener("click", async () => {
+    erroEl.textContent = "";
+    const id = campoId.value.trim();
+    const nome = campoNome.value.trim();
+    const especie = campoEspecie.value.trim();
+    const sistema = campoSistema.value;
+    const dica = campoDica.value.trim() || null;
+
+    if (!id || !/^[a-z][a-z0-9_]*$/.test(id)) {
+      erroEl.textContent = "Id inválido: use só letras minúsculas, números e underscore, começando com letra (ex.: nova_doenca_canina).";
+      return;
+    }
+    if (!nome) { erroEl.textContent = "Preencha o nome."; return; }
+    if (!especie) { erroEl.textContent = "Preencha a espécie."; return; }
+    if (!editando && MAPA_DOENCAS[id]) { erroEl.textContent = `Já existe uma doença com o id "${id}".`; return; }
+
+    const parametros_binarios = {};
+    Object.keys(camposBinarios).forEach((pid) => { parametros_binarios[pid] = camposBinarios[pid].checked; });
+    const parametros_graduais = {};
+    for (const pid of Object.keys(camposGraduais)) {
+      const v = Number(camposGraduais[pid].value);
+      if (!Number.isFinite(v) || v < 0 || v > 100) {
+        erroEl.textContent = `Valor inválido em "${obterLabelParametro(pid)}" — precisa ser um número entre 0 e 100.`;
+        return;
+      }
+      parametros_graduais[pid] = v;
+    }
+
+    const registro = { id, nome, especie, sistema, dica, parametros_binarios, parametros_graduais };
+
+    if (!supabaseClient) { erroEl.textContent = "Supabase não configurado — não é possível salvar."; return; }
+
+    btnSalvar.disabled = true;
+    btnSalvar.textContent = "Salvando…";
+    const { error } = await supabaseClient.from("doencas").upsert(registro);
+    btnSalvar.disabled = false;
+    btnSalvar.textContent = editando ? "Salvar alterações" : "Criar doença";
+
+    if (error) {
+      erroEl.textContent = "Erro ao salvar: " + error.message +
+        (/row-level security|permission denied/i.test(error.message)
+          ? " (sua conta pode não estar marcada como admin no Supabase — veja o passo 4 da migração 002.)"
+          : "");
+      return;
+    }
+
+    const idx = BANCO_DOENCAS.findIndex((d) => d.id === id);
+    if (idx !== -1) BANCO_DOENCAS[idx] = registro; else BANCO_DOENCAS.push(registro);
+    MAPA_DOENCAS = indexarBancoDoencas(BANCO_DOENCAS);
+    renderAdmin();
+  });
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    btnSalvar,
+    el("button", { class: "btn fantasma", text: "Cancelar", onclick: renderAdmin }),
+  ]));
+}
+
+
+/* =========================================================================
  * MODO PERSONALIZADO (colar/upload de um JSON de desafio)
  * -------------------------------------------------------------------------
  * Aceita um objeto no mesmo formato de DESAFIO_DO_DIA (seção 2), referenciando
@@ -8742,12 +9164,12 @@ async function init() {
   // um desafio quebrado pra turma por causa de um campo esquecido/errado).
   validarBancoDoencas();
 
-  // Renderiza a tela inicial já, sem esperar a verificação de sessão (que é
-  // assíncrona) — evita tela em branco. Se havia uma sessão de login salva,
-  // a tela inicial é atualizada de novo em seguida para refletir isso.
+  // Renderiza a tela inicial já, sem esperar a verificação de sessão nem o
+  // carregamento do banco remoto (ambos assíncronos) — evita tela em branco.
+  // Atualiza de novo assim que qualquer um dos dois terminar.
   renderIntro();
-  await verificarSessaoAtual();
-  if (sessao.usuario) renderIntro();
+  const [, bancoTrocou] = await Promise.all([verificarSessaoAtual(), carregarBancoRemoto()]);
+  if (sessao.usuario || bancoTrocou) renderIntro();
 }
 
 init();
