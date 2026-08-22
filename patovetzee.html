@@ -8427,6 +8427,35 @@ async function fazerLogout() {
   renderIntro();
 }
 
+// Carrega a tabela `categorias` (migração 004, categorias criadas via o
+// painel de admin DEPOIS das ~60 originais) e mistura em CATALOGO_PARAMETROS
+// — sempre ADITIVO, nunca sobrescreve uma categoria já embutida com mesmo
+// id. Roda ANTES de carregarBancoRemoto() (que valida as doenças contra
+// CATALOGO_PARAMETROS): categorias precisam estar completas antes disso, ou
+// doenças com a categoria nova pareceriam ter uma "chave desconhecida".
+async function carregarCategoriasRemoto() {
+  if (!supabaseClient) return false;
+  try {
+    const { data, error } = await supabaseClient.from("categorias").select("*");
+    if (error) throw error;
+    if (!data || data.length === 0) return false;
+
+    let adicionou = false;
+    data.forEach((cat) => {
+      const alvo = cat.grupo === "binario" ? CATALOGO_PARAMETROS.binarios : CATALOGO_PARAMETROS.graduais;
+      if (alvo[cat.id]) return; // já existe embutida — não sobrescreve
+      alvo[cat.id] = { label: cat.label, grupo_tematico: cat.grupo_tematico };
+      if (cat.grupo === "gradual" && cat.criterio_referencia) alvo[cat.id].criterio_referencia = cat.criterio_referencia;
+      adicionou = true;
+    });
+    if (adicionou) console.log(`[PatoVetZee] Categorias extras carregadas do Supabase: ${data.length}.`);
+    return adicionou;
+  } catch (e) {
+    console.warn("[PatoVetZee] Não foi possível carregar categorias extras (usando só as embutidas):", e.message || e);
+    return false;
+  }
+}
+
 // Carrega a tabela `doencas` do Supabase (migração 002) e, se der certo,
 // substitui BANCO_DOENCAS/MAPA_DOENCAS pelo conteúdo remoto — é o que faz o
 // painel de admin (seção 12) valer a pena: editar lá reflete no jogo pra
@@ -8880,6 +8909,7 @@ function renderAdmin() {
     el("p", { text: `${BANCO_DOENCAS.length} doenças cadastradas hoje. Mudanças aqui valem pra todo mundo assim que salvas — sem precisar de deploy novo.` }),
     el("div", {}, [
       el("button", { class: "btn", text: "+ Nova doença", onclick: () => renderEditorDoenca(null) }),
+      el("button", { class: "btn secundario", text: "🏷️ Categorias", onclick: () => renderCategorias() }),
       el("button", { class: "btn secundario", text: "📊 Desempenho dos alunos", onclick: () => renderPainelProfessor() }),
       el("button", { class: "btn fantasma", text: "⬅ Voltar ao início", onclick: renderIntro }),
     ]),
@@ -9141,6 +9171,154 @@ function renderEditorDoenca(doencaIdExistente) {
     btnSalvar,
     el("button", { class: "btn fantasma", text: "Cancelar", onclick: renderAdmin }),
   ]));
+}
+
+/* --------- Categorias: criar categoria nova + listar as existentes ------ */
+// Cria uma categoria (parâmetro binário ou gradual) nova: salva em
+// `categorias` (migração 004), mistura em CATALOGO_PARAMETROS, e — passo
+// essencial — preenche essa chave com um valor padrão neutro em TODAS as
+// doenças existentes (senão elas ficariam "incompletas" e
+// validarBancoDoencas() acusaria erro em cada uma). O padrão é só um ponto
+// de partida: o professor edita doença por doença depois, pela tela de
+// edição, pra refletir a característica de verdade onde fizer sentido.
+async function adicionarCategoria(cat) {
+  if (!supabaseClient) return { erro: "Supabase não configurado — não é possível salvar." };
+
+  const { error: erroInsert } = await supabaseClient.from("categorias").insert({
+    id: cat.id, grupo: cat.grupo, label: cat.label,
+    grupo_tematico: cat.grupo_tematico, criterio_referencia: cat.criterio_referencia || null,
+  });
+  if (erroInsert) {
+    return { erro: "Não foi possível criar a categoria: " + erroInsert.message +
+      (/row-level security|permission denied/i.test(erroInsert.message) ? " (sua conta é admin?)" : "") };
+  }
+
+  const alvo = cat.grupo === "binario" ? CATALOGO_PARAMETROS.binarios : CATALOGO_PARAMETROS.graduais;
+  alvo[cat.id] = { label: cat.label, grupo_tematico: cat.grupo_tematico };
+  if (cat.grupo === "gradual" && cat.criterio_referencia) alvo[cat.id].criterio_referencia = cat.criterio_referencia;
+
+  const campo = cat.grupo === "binario" ? "parametros_binarios" : "parametros_graduais";
+  const valorPadrao = cat.grupo === "binario" ? false : 0;
+  const doencasAtualizadas = BANCO_DOENCAS.map((d) => ({
+    ...d,
+    [campo]: { ...d[campo], [cat.id]: valorPadrao },
+  }));
+
+  const { error: erroBackfill } = await supabaseClient.from("doencas").upsert(doencasAtualizadas);
+  if (erroBackfill) {
+    return { erro: `Categoria "${cat.label}" criada, mas não deu pra atualizar as ${doencasAtualizadas.length} doenças existentes: ` + erroBackfill.message +
+      " — elas vão aparecer como incompletas até isso ser corrigido (edite e salve cada uma, ou tente de novo)." };
+  }
+
+  BANCO_DOENCAS = doencasAtualizadas;
+  MAPA_DOENCAS = indexarBancoDoencas(BANCO_DOENCAS);
+  return { ok: true };
+}
+
+function renderCategorias() {
+  if (!sessao.isAdmin) { renderIntro(); return; }
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "🏷️ Categorias" }),
+    el("p", { text: "Categorias (parâmetros) são as \"perguntas\" que os jogadores respondem sobre cada doença. Criar uma aqui adiciona automaticamente essa característica (com valor padrão) em todas as doenças já cadastradas — depois é só editar cada doença relevante pra refletir o valor real." }),
+    el("button", { class: "btn fantasma", text: "⬅ Voltar à Administração", onclick: renderAdmin }),
+  ]));
+
+  const erroEl = el("p", { class: "campo-erro" });
+
+  const campoId = document.createElement("input");
+  campoId.type = "text"; campoId.className = "campo";
+  campoId.placeholder = "ex.: requer_biopsia_pele (minúsculo, sem espaço/acento)";
+
+  const campoLabel = document.createElement("input");
+  campoLabel.type = "text"; campoLabel.className = "campo";
+  campoLabel.placeholder = "Texto exibido pro jogador, ex.: \"Requer biópsia de pele\"";
+
+  const campoGrupo = document.createElement("select");
+  campoGrupo.className = "campo";
+  campoGrupo.appendChild(new Option("Binária (sim/não)", "binario"));
+  campoGrupo.appendChild(new Option("Graduada (nota de 0 a 100)", "gradual"));
+
+  const campoTema = document.createElement("select");
+  campoTema.className = "campo";
+  ORDEM_GRUPOS_TEMATICOS.forEach((id) => campoTema.appendChild(new Option(NOMES_GRUPO_TEMATICO[id], id)));
+
+  const linhaCriterio = document.createElement("div");
+  const campoCriterio = document.createElement("textarea");
+  campoCriterio.className = "campo"; campoCriterio.rows = 2;
+  campoCriterio.placeholder = "Ex.: \"0 = nunca precisa; 100 = quase sempre precisa.\" — só usado em categorias graduadas.";
+  linhaCriterio.appendChild(el("label", { class: "rotulo-campo", text: "Critério de referência (0 e 100 significam o quê)" }));
+  linhaCriterio.appendChild(campoCriterio);
+
+  function atualizarVisibilidadeCriterio() {
+    linhaCriterio.style.display = campoGrupo.value === "gradual" ? "" : "none";
+  }
+  campoGrupo.addEventListener("change", atualizarVisibilidadeCriterio);
+  atualizarVisibilidadeCriterio();
+
+  const btnCriar = el("button", { class: "btn", text: "Criar categoria" });
+  btnCriar.addEventListener("click", async () => {
+    erroEl.textContent = "";
+    const id = campoId.value.trim();
+    const label = campoLabel.value.trim();
+    const grupo = campoGrupo.value;
+    const grupo_tematico = campoTema.value;
+    const criterio_referencia = campoCriterio.value.trim();
+
+    if (!id || !/^[a-z][a-z0-9_]*$/.test(id)) {
+      erroEl.textContent = "Id inválido: use só letras minúsculas, números e underscore, começando com letra.";
+      return;
+    }
+    if (CATALOGO_PARAMETROS.binarios[id] || CATALOGO_PARAMETROS.graduais[id]) {
+      erroEl.textContent = `Já existe uma categoria com o id "${id}".`;
+      return;
+    }
+    if (!label) { erroEl.textContent = "Preencha o texto exibido pro jogador."; return; }
+    if (grupo === "gradual" && !criterio_referencia) {
+      erroEl.textContent = "Categorias graduadas precisam do critério de referência (o que 0 e 100 significam).";
+      return;
+    }
+
+    btnCriar.disabled = true;
+    btnCriar.textContent = `Criando e atualizando ${BANCO_DOENCAS.length} doenças…`;
+    const resultado = await adicionarCategoria({ id, label, grupo, grupo_tematico, criterio_referencia });
+    btnCriar.disabled = false;
+    btnCriar.textContent = "Criar categoria";
+
+    if (resultado.erro) { erroEl.textContent = resultado.erro; return; }
+    renderCategorias();
+  });
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Nova categoria" }),
+    erroEl,
+    el("label", { class: "rotulo-campo", text: "Id (uso interno — não dá pra mudar depois)" }),
+    campoId,
+    el("label", { class: "rotulo-campo", text: "Texto exibido pro jogador" }),
+    campoLabel,
+    el("label", { class: "rotulo-campo", text: "Tipo" }),
+    campoGrupo,
+    el("label", { class: "rotulo-campo", text: "Tema (agrupamento na tela de edição de doença)" }),
+    campoTema,
+    linhaCriterio,
+    btnCriar,
+  ]));
+
+  const cardLista = el("section", { class: "card" }, [el("h2", { text: "Categorias existentes" })]);
+  ORDEM_GRUPOS_TEMATICOS.forEach((tema) => {
+    const binarias = Object.entries(CATALOGO_PARAMETROS.binarios).filter(([, def]) => def.grupo_tematico === tema);
+    const graduais = Object.entries(CATALOGO_PARAMETROS.graduais).filter(([, def]) => def.grupo_tematico === tema);
+    if (binarias.length === 0 && graduais.length === 0) return;
+    cardLista.appendChild(el("h3", { text: NOMES_GRUPO_TEMATICO[tema], style: "margin-bottom:6px;" }));
+    const lista = document.createElement("ul");
+    lista.style.cssText = "margin:0 0 14px; padding-left:20px; font-size:14px; color:var(--cor-texto-suave);";
+    [...binarias.map(([id, d]) => `${d.label} (binária)`), ...graduais.map(([id, d]) => `${d.label} (graduada)`)]
+      .forEach((texto) => { const li = document.createElement("li"); li.textContent = texto; lista.appendChild(li); });
+    cardLista.appendChild(lista);
+  });
+  appEl.appendChild(cardLista);
 }
 
 /* --------- Painel do professor: desempenho de todos os alunos --------- */
@@ -9629,10 +9807,12 @@ async function init() {
   // um desafio quebrado pra turma por causa de um campo esquecido/errado).
   validarBancoDoencas();
 
-  // Renderiza a tela inicial já, sem esperar a verificação de sessão nem o
-  // carregamento do banco remoto (ambos assíncronos) — evita tela em branco.
-  // Atualiza de novo assim que qualquer um dos dois terminar.
+  // Renderiza a tela inicial já, sem esperar nada assíncrono — evita tela em
+  // branco. Categorias extras carregam ANTES do banco de doenças (que
+  // valida as doenças contra CATALOGO_PARAMETROS — precisa estar completo
+  // primeiro); sessão e banco remoto podem rodar em paralelo com isso.
   renderIntro();
+  await carregarCategoriasRemoto();
   const [, bancoTrocou] = await Promise.all([verificarSessaoAtual(), carregarBancoRemoto()]);
   if (sessao.usuario || bancoTrocou) renderIntro();
 }

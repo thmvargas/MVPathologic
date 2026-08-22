@@ -16,6 +16,7 @@ Arquivos desta pasta:
 | `GUIA_MANUTENCAO.md` | Este arquivo. |
 | `supabase_migration_002_doencas.sql` | Migração que cria a tabela `doencas` no Supabase e migra as que já existem — precisa rodar uma vez (ver seção 0). |
 | `supabase_migration_003_tentativas_duelos.sql` | Migração que cria o acompanhamento de alunos (tabela `tentativas`) e o duelo 1v1 (tabela `duelos`) — precisa rodar uma vez, depois da 002 (ver seção 0). |
+| `supabase_migration_004_categorias.sql` | Migração que permite criar categorias novas pelo painel de admin — precisa rodar uma vez, depois da 002 e 003 (ver seção 0.3). |
 
 ---
 
@@ -82,6 +83,26 @@ quiser (não precisa ser ao mesmo tempo) e joga o **mesmo** conjunto de
 doenças/categorias. Assim que os dois tiverem jogado, qualquer um vê o
 comparativo lado a lado. Não entra no ranking oficial nem depende dos dois
 estarem online juntos.
+
+### 0.3 Adicionar categoria pelo painel (recomendado)
+
+Depois de rodar `supabase_migration_004_categorias.sql`, a tela
+**Administração → 🏷️ Categorias** deixa criar uma característica nova (a
+"pergunta" que o jogador responde sobre a doença) sem editar código. Duas
+coisas importantes:
+
+- **Toda categoria nova entra automaticamente com valor padrão em TODAS as
+  doenças já cadastradas** (binária = não/false; graduada = 0) — senão elas
+  ficariam incompletas. Depois de criar, vá em cada doença relevante
+  (Administração → editar a doença) e ajuste o valor de verdade.
+- Categorias graduadas exigem o **critério de referência** (o que 0 e 100
+  significam) — é o texto que ajuda a manter a nota consistente entre
+  doenças diferentes, igual às ~8 categorias graduadas originais.
+
+A seção 2 abaixo (editar `CATALOGO_PARAMETROS` no HTML à mão) continua
+válida como alternativa — ela é a única forma de criar um **tema** novo
+(hoje só dá pra encaixar a categoria num dos 8 temas já existentes pelo
+painel).
 
 ---
 
