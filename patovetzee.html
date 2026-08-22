@@ -457,6 +457,27 @@ body{
 .campo-numero{ max-width:120px; }
 .ajuda-campo{ font-size:12px; color: var(--cor-texto-suave); margin:4px 0 0; }
 
+/* --------- Duelo 1v1 --------- */
+.codigo-duelo{
+  font-size: clamp(32px, 9vw, 48px); font-weight:800; letter-spacing:6px;
+  color: var(--cor-primaria-escura); background:#FFF6E9;
+  border:3px solid var(--cor-card-borda); border-radius: var(--raio-pequeno);
+  padding: 12px 20px; margin: 14px auto; display:inline-block;
+}
+.comparativo-duelo{
+  display:flex; align-items:center; justify-content:center; gap:16px;
+  flex-wrap:wrap; margin-top:10px;
+}
+.lado-duelo{
+  flex:1; min-width:130px; text-align:center; padding:14px;
+  border:3px solid var(--cor-card-borda); border-radius: var(--raio-pequeno);
+  background: #FFF6E9;
+}
+.lado-duelo.vencedor{ background: #E9FBF2; border-color: var(--cor-sucesso); }
+.lado-duelo strong{ display:block; font-size:15px; margin-bottom:6px; }
+.placar-duelo{ font-size: clamp(20px,5vw,28px); font-weight:800; color: var(--cor-primaria-escura); }
+.versus-duelo{ font-size:22px; font-weight:800; color: var(--cor-texto-suave); }
+
 @media (max-width:420px){
   .card{ padding:16px; }
 }
@@ -7737,14 +7758,23 @@ function renderIntro() {
 
   const partes = [renderMarca()];
 
+  // Cadastro é obrigatório pra jogar (pra dar pra acompanhar o desempenho da
+  // turma) — só cai de volta pra "modo convidado" se o Supabase nem estiver
+  // configurado neste arquivo (aí não existe sistema de login pra exigir).
+  const loginObrigatorio = SUPABASE_CONFIGURADO && !sessao.usuario;
+
   const faixaSessao = sessao.usuario
     ? el("div", { class: "faixa-sessao" }, [
         el("span", {}, [document.createTextNode("Jogando como "), el("strong", { text: sessao.apelido || "(definindo apelido…)" })]),
         el("button", { class: "btn fantasma", text: "Sair", onclick: fazerLogout }),
       ])
+    : SUPABASE_CONFIGURADO
+    ? el("div", { class: "faixa-sessao" }, [
+        el("span", { text: "É preciso ter uma conta pra jogar (assim dá pra acompanhar o desempenho de cada aluno)." }),
+        el("button", { class: "btn secundario", text: "Entrar / Criar conta", onclick: renderLogin }),
+      ])
     : el("div", { class: "faixa-sessao" }, [
         el("span", { text: "Você está jogando sem login — seu desempenho não entra no ranking." }),
-        el("button", { class: "btn secundario", text: "Entrar / Criar conta", onclick: renderLogin }),
       ]);
   partes.push(faixaSessao);
 
@@ -7765,7 +7795,13 @@ function renderIntro() {
   ]);
   partes.push(cardRegras);
 
-  if (progressoHoje && progressoHoje.completed) {
+  if (loginObrigatorio) {
+    partes.push(el("section", { class: "card", style: "text-align:center" }, [
+      el("h2", { text: "Crie sua conta pra jogar" }),
+      el("p", { text: "Leva menos de 1 minuto. Depois disso você joga o desafio diário, o Modo por Sistemas e pode duelar com colegas." }),
+      el("button", { class: "btn", text: "Entrar / Criar conta", onclick: renderLogin }),
+    ]));
+  } else if (progressoHoje && progressoHoje.completed) {
     const cardFeito = el("section", { class: "card" }, [
       el("h2", { text: "Você já jogou o desafio de hoje" }),
       el("p", { text: `Sua pontuação: ${progressoHoje.totalScore} / ${progressoHoje.optimalScore} ` +
@@ -7787,14 +7823,18 @@ function renderIntro() {
     partes.push(cardIniciar);
   }
 
+  const botoesExtras = [];
+  if (!loginObrigatorio) {
+    botoesExtras.push(el("button", { class: "btn secundario", text: "🩺 Modo por sistemas", onclick: renderEscolherSistema }));
+    botoesExtras.push(el("button", { class: "btn secundario", text: "⚔️ Duelo 1v1", onclick: renderDuelos }));
+  }
+  botoesExtras.push(el("button", { class: "btn secundario", text: "📋 Carregar desafio personalizado", onclick: abrirModalPersonalizado }));
+  botoesExtras.push(el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }));
+  botoesExtras.push(el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }));
+
   const cardExtras = el("section", { class: "card" }, [
     el("h2", { text: "Outras opções" }),
-    el("div", {}, [
-      el("button", { class: "btn secundario", text: "🩺 Modo por sistemas", onclick: renderEscolherSistema }),
-      el("button", { class: "btn secundario", text: "📋 Carregar desafio personalizado", onclick: abrirModalPersonalizado }),
-      el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }),
-      el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }),
-    ]),
+    el("div", {}, botoesExtras),
   ]);
   partes.push(cardExtras);
 
@@ -8105,9 +8145,28 @@ function calcularResultadoFinal() {
   return { totalScore, optimalScore, efficiency, alocacaoOtima, hasMultipleOptima: otimo.hasMultipleOptima };
 }
 
+// Identifica o "modo" de uma partida pra fins de acompanhamento (tabela
+// `tentativas`, seção 10) — não afeta o ranking oficial, que continua
+// governado só por `estado.modoPratica`/`estado.desafio.personalizado`
+// dentro de salvarResultadoRemoto.
+function determinarModoTentativa() {
+  if (estado.duelo) return null; // duelos são registrados à parte, em finalizarDuelo()
+  // Checa o id ANTES de olhar `personalizado`: Modo por Sistemas também usa
+  // personalizado=true (só pra reaproveitar a lógica de "fora do ranking
+  // oficial"), mas ainda assim deve ser rastreado aqui pro painel do
+  // professor — só um desafio custom colado via JSON de verdade fica fora.
+  const id = String(estado.desafio.id || "");
+  if (id.startsWith("sistema-")) return { modo: "sistema", detalhe: id.slice("sistema-".length) };
+  if (estado.desafio.id === DESAFIO_DO_DIA.id) return { modo: "diario", detalhe: null };
+  return null; // desafio personalizado (JSON colado) ou outro caso não mapeado — não rastreado
+}
+
 function renderResultado() {
   const resultado = calcularResultadoFinal();
+  if (estado.duelo) { finalizarDuelo(resultado); return; }
   salvarResultado(resultado);
+  const infoModo = determinarModoTentativa();
+  if (infoModo) salvarTentativa(resultado, infoModo.modo, infoModo.detalhe);
   renderTelaResultado(resultado);
 }
 
@@ -8445,6 +8504,26 @@ async function salvarResultadoRemoto(resultado) {
   }
 }
 
+// Registra QUALQUER partida completada (diário, sistema, duelo) na tabela
+// `tentativas` (migração 003) — alimenta o painel do professor (seção 12).
+// Nunca afeta o ranking público, que só olha pra `resultados`. Best-effort,
+// igual salvarResultadoRemoto.
+async function salvarTentativa(resultado, modo, modoDetalhe) {
+  if (!supabaseClient || !sessao.usuario) return;
+  const { error } = await supabaseClient.from("tentativas").insert({
+    user_id: sessao.usuario.id,
+    modo,
+    modo_detalhe: modoDetalhe || null,
+    desafio_id: estado.desafio.id,
+    total_score: resultado.totalScore,
+    optimal_score: resultado.optimalScore,
+    efficiency: resultado.efficiency,
+  });
+  if (error) {
+    console.warn("[PatoVetZee] Não foi possível registrar a tentativa para o painel do professor:", error.message);
+  }
+}
+
 /* --------- Tela: login / cadastro --------- */
 function renderLogin() {
   limparApp();
@@ -8473,6 +8552,10 @@ function renderLogin() {
 
   const card = el("section", { class: "card" }, [
     el("h2", { text: "Entrar ou criar conta" }),
+    el("p", { class: "aviso-config", text:
+      "💡 Vai jogar como atividade de aula? Cadastre-se com seu e-mail institucional " +
+      "(ex.: @unifeob.pro.br ou o e-mail da sua instituição) — assim o professor consegue " +
+      "identificar quem é quem no acompanhamento de desempenho." }),
     el("label", { class: "rotulo-campo", text: "E-mail" }),
     campoEmail,
     el("label", { class: "rotulo-campo", text: "Senha" }),
@@ -8509,8 +8592,7 @@ function renderLogin() {
   appEl.appendChild(card);
 
   appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
-    el("p", { text: "Prefere não criar conta agora?" }),
-    el("button", { class: "btn fantasma", text: "Jogar sem salvar desempenho", onclick: renderIntro }),
+    el("button", { class: "btn fantasma", text: "⬅ Voltar", onclick: renderIntro }),
   ]));
 
   campoEmail.focus();
@@ -8798,6 +8880,7 @@ function renderAdmin() {
     el("p", { text: `${BANCO_DOENCAS.length} doenças cadastradas hoje. Mudanças aqui valem pra todo mundo assim que salvas — sem precisar de deploy novo.` }),
     el("div", {}, [
       el("button", { class: "btn", text: "+ Nova doença", onclick: () => renderEditorDoenca(null) }),
+      el("button", { class: "btn secundario", text: "📊 Desempenho dos alunos", onclick: () => renderPainelProfessor() }),
       el("button", { class: "btn fantasma", text: "⬅ Voltar ao início", onclick: renderIntro }),
     ]),
   ]));
@@ -9058,6 +9141,388 @@ function renderEditorDoenca(doencaIdExistente) {
     btnSalvar,
     el("button", { class: "btn fantasma", text: "Cancelar", onclick: renderAdmin }),
   ]));
+}
+
+/* --------- Painel do professor: desempenho de todos os alunos --------- */
+// Diferente do ranking público (que só olha o desafio diário oficial), este
+// painel lê `tentativas` (migração 003) e mostra QUALQUER partida
+// completada por QUALQUER aluno, em qualquer modo — só visível pra admin,
+// via RLS "tentativas_admin_le_todas" do lado do banco.
+const NOMES_MODO_TENTATIVA = { diario: "Desafio diário", sistema: "Modo por sistemas", duelo: "Duelo 1v1" };
+let estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {} };
+
+async function renderPainelProfessor() {
+  if (!sessao.isAdmin) { renderIntro(); return; }
+  estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {} };
+  limparApp();
+  appEl.appendChild(renderMarca());
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "📊 Desempenho dos alunos" }),
+    el("p", { text: "Toda partida completada por qualquer aluno logado, em qualquer modo (desafio diário, modo por sistemas, duelos)." }),
+    el("button", { class: "btn fantasma", text: "⬅ Voltar à Administração", onclick: renderAdmin }),
+  ]));
+
+  const cardCarregando = el("section", { class: "card" }, [el("p", { text: "Carregando…" })]);
+  appEl.appendChild(cardCarregando);
+
+  const { data: tentativas, error } = await supabaseClient
+    .from("tentativas")
+    .select("*")
+    .order("criado_em", { ascending: false })
+    .limit(1000);
+
+  if (error) {
+    cardCarregando.replaceChildren(el("p", { class: "campo-erro", text:
+      "Não foi possível carregar: " + error.message +
+      (/relation .* does not exist/i.test(error.message) ? " (rode a migração 003 no SQL Editor do Supabase?)" : "") }));
+    return;
+  }
+
+  const idsAlunos = [...new Set((tentativas || []).map((t) => t.user_id))];
+  let apelidoPorId = {};
+  if (idsAlunos.length > 0) {
+    const { data: perfis } = await supabaseClient.from("perfis").select("id, apelido").in("id", idsAlunos);
+    apelidoPorId = Object.fromEntries((perfis || []).map((p) => [p.id, p.apelido]));
+  }
+
+  estadoPainelProfessor.tentativas = tentativas || [];
+  estadoPainelProfessor.apelidoPorId = apelidoPorId;
+  cardCarregando.remove();
+  renderizarTabelaPainelProfessor();
+}
+
+// Refaz só a parte de filtros+tabela, reaproveitando os dados já buscados
+// (sem round-trip novo ao Supabase a cada tecla digitada na busca).
+function renderizarTabelaPainelProfessor() {
+  const foco = guardaFoco("painel-professor-busca");
+  const existente = document.getElementById("painel-professor-conteudo");
+  if (existente) existente.remove();
+
+  const container = el("div", { id: "painel-professor-conteudo" });
+  appEl.appendChild(container);
+
+  const cardFiltros = el("section", { class: "card" });
+  const campoBusca = document.createElement("input");
+  campoBusca.type = "search"; campoBusca.className = "campo"; campoBusca.id = "painel-professor-busca";
+  campoBusca.placeholder = "Buscar por apelido…";
+  campoBusca.value = estadoPainelProfessor.busca;
+  campoBusca.addEventListener("input", () => { estadoPainelProfessor.busca = campoBusca.value; renderizarTabelaPainelProfessor(); });
+  cardFiltros.appendChild(el("h2", { text: "Filtrar" }));
+  cardFiltros.appendChild(campoBusca);
+
+  const filtroModo = document.createElement("select");
+  filtroModo.className = "campo"; filtroModo.style.marginTop = "10px";
+  filtroModo.appendChild(new Option("Todos os modos", ""));
+  Object.entries(NOMES_MODO_TENTATIVA).forEach(([id, label]) => filtroModo.appendChild(new Option(label, id)));
+  filtroModo.value = estadoPainelProfessor.modo;
+  filtroModo.addEventListener("change", () => { estadoPainelProfessor.modo = filtroModo.value; renderizarTabelaPainelProfessor(); });
+  cardFiltros.appendChild(filtroModo);
+  container.appendChild(cardFiltros);
+
+  const { tentativas, apelidoPorId, busca, modo } = estadoPainelProfessor;
+  const termo = busca.trim().toLowerCase();
+  const filtradas = tentativas.filter((t) => {
+    if (modo && t.modo !== modo) return false;
+    if (termo && !(apelidoPorId[t.user_id] || "").toLowerCase().includes(termo)) return false;
+    return true;
+  });
+
+  const cardTabela = el("section", { class: "card" }, [el("h2", { text: `Tentativas (${filtradas.length})` })]);
+  if (filtradas.length === 0) {
+    cardTabela.appendChild(el("p", { text: "Nenhuma tentativa encontrada com esse filtro." }));
+  } else {
+    const tabela = document.createElement("table");
+    tabela.className = "tabela-ranking";
+    tabela.appendChild(el("thead", {}, [el("tr", {}, [
+      el("th", { text: "Aluno" }), el("th", { text: "Modo" }), el("th", { text: "Detalhe" }),
+      el("th", { text: "Pontuação" }), el("th", { text: "Eficiência" }), el("th", { text: "Quando" }),
+    ])]));
+    const corpo = document.createElement("tbody");
+    filtradas.forEach((t) => {
+      corpo.appendChild(el("tr", {}, [
+        el("td", { text: apelidoPorId[t.user_id] || t.user_id.slice(0, 8) }),
+        el("td", { text: NOMES_MODO_TENTATIVA[t.modo] || t.modo }),
+        el("td", { text: t.modo === "sistema" ? (CATALOGO_SISTEMAS[t.modo_detalhe] || t.modo_detalhe || "") : (t.modo_detalhe || "") }),
+        el("td", { text: `${t.total_score} / ${t.optimal_score}` }),
+        el("td", { text: `${Math.round(t.efficiency)}%` }),
+        el("td", { text: new Date(t.criado_em).toLocaleString("pt-BR") }),
+      ]));
+    });
+    tabela.appendChild(corpo);
+    const wrapper = document.createElement("div");
+    wrapper.style.overflowX = "auto";
+    wrapper.appendChild(tabela);
+    cardTabela.appendChild(wrapper);
+  }
+  container.appendChild(cardTabela);
+
+  restauraFoco(foco);
+}
+
+
+/* =========================================================================
+ * 13. DUELO 1V1 (assíncrono)
+ * -------------------------------------------------------------------------
+ * Um aluno cria um duelo (sorteia 9 doenças de todo o banco + 9 categorias,
+ * igual ao Modo por Sistemas, mas sem restringir a um sistema só), gera um
+ * código curto e joga na hora. O adversário entra com o código quando
+ * quiser (não precisa ser ao mesmo tempo) e joga o MESMO desafio salvo. Ao
+ * final dos dois terem jogado, qualquer um vê o comparativo lado a lado.
+ * Nunca entra no ranking oficial nem precisa dos dois online juntos.
+ * ======================================================================= */
+
+function gerarCodigoDuelo() {
+  const alfabeto = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // sem 0/O, 1/I/L (evita confusão ao digitar)
+  let codigo = "";
+  for (let i = 0; i < 6; i++) codigo += alfabeto[Math.floor(Math.random() * alfabeto.length)];
+  return codigo;
+}
+
+// Sorteia 9 doenças de TODO o banco (não só de um sistema) + 9 categorias
+// escolhidas pela mesma busca gulosa do Modo por Sistemas (seção 11) — o
+// seed é só pra reaproveitar embaralharComSeed, não precisa ser
+// reproduzível depois (o desafio gerado fica salvo em `duelos.desafio`).
+function gerarDesafioDuelo() {
+  const seed = "duelo|" + Date.now() + "|" + Math.random();
+  const doencaIds = embaralharComSeed(BANCO_DOENCAS.map((d) => d.id), seed).slice(0, 9);
+  const parametrosSelecionados = escolherCategoriasAutomaticamente(doencaIds, 9);
+  return { doencas_selecionadas: doencaIds, parametros_selecionados: parametrosSelecionados };
+}
+
+function construirDesafioDeDuelo(duelo) {
+  return {
+    id: "duelo-" + duelo.id,
+    data: null,
+    titulo: "Duelo 1v1",
+    personalizado: true, // reaproveita a lógica "não entra no ranking oficial"
+    doencas_selecionadas: duelo.desafio.doencas_selecionadas,
+    parametros_selecionados: duelo.desafio.parametros_selecionados,
+    explicacoes: {},
+  };
+}
+
+async function criarDuelo() {
+  if (!sessao.usuario) { renderLogin(); return; }
+  const conteudo = gerarDesafioDuelo();
+  const codigo = gerarCodigoDuelo();
+
+  const { data, error } = await supabaseClient
+    .from("duelos")
+    .insert({ codigo, criador_id: sessao.usuario.id, desafio: conteudo })
+    .select()
+    .single();
+
+  if (error) {
+    window.alert("Não foi possível criar o duelo: " + error.message);
+    return;
+  }
+
+  iniciarPartida(construirDesafioDeDuelo(data), { pratica: true });
+  estado.duelo = { id: data.id, codigo: data.codigo, papel: "criador" };
+  renderDoencaAtual();
+}
+
+async function entrarDuelo(codigoDigitado) {
+  if (!sessao.usuario) { renderLogin(); return { erro: null }; }
+  const codigo = codigoDigitado.trim().toUpperCase();
+  if (!codigo) return { erro: "Digite um código." };
+
+  const { data: duelo, error } = await supabaseClient.from("duelos").select("*").eq("codigo", codigo).maybeSingle();
+  if (error) return { erro: "Erro ao buscar o duelo: " + error.message };
+  if (!duelo) return { erro: "Duelo não encontrado — confira o código." };
+  if (duelo.criador_id === sessao.usuario.id) return { erro: "Você criou esse duelo — espere um colega entrar com o código." };
+  if (duelo.desafiante_id && duelo.desafiante_id !== sessao.usuario.id) return { erro: "Esse duelo já tem os dois jogadores." };
+
+  if (duelo.status === "concluido") {
+    renderResultadoDuelo(duelo.id);
+    return { ok: true };
+  }
+
+  if (!duelo.desafiante_id) {
+    const { error: erroEntrar } = await supabaseClient
+      .from("duelos").update({ desafiante_id: sessao.usuario.id }).eq("id", duelo.id).is("desafiante_id", null);
+    if (erroEntrar) return { erro: "Não foi possível entrar no duelo: " + erroEntrar.message };
+  }
+
+  iniciarPartida(construirDesafioDeDuelo(duelo), { pratica: true });
+  estado.duelo = { id: duelo.id, codigo: duelo.codigo, papel: "desafiante" };
+  renderDoencaAtual();
+  return { ok: true };
+}
+
+function continuarDuelo(duelo) {
+  iniciarPartida(construirDesafioDeDuelo(duelo), { pratica: true });
+  estado.duelo = { id: duelo.id, codigo: duelo.codigo, papel: "desafiante" };
+  renderDoencaAtual();
+}
+
+// Chamado por renderResultado() (seção 8) quando estado.duelo existe, no
+// lugar do fluxo normal de resultado.
+async function finalizarDuelo(resultado) {
+  const { id, papel } = estado.duelo;
+  const campos = papel === "criador"
+    ? { criador_score: resultado.totalScore, criador_optimal: resultado.optimalScore, criador_alocacoes: estado.alocacoes }
+    : { desafiante_score: resultado.totalScore, desafiante_optimal: resultado.optimalScore, desafiante_alocacoes: estado.alocacoes, status: "concluido" };
+
+  const { error } = await supabaseClient.from("duelos").update(campos).eq("id", id);
+  if (error) console.warn("[PatoVetZee] Não foi possível salvar o resultado do duelo:", error.message);
+
+  salvarTentativa(resultado, "duelo", estado.duelo.codigo);
+
+  if (papel === "criador") renderTelaDueloCriado(estado.duelo.codigo);
+  else renderResultadoDuelo(id);
+}
+
+function renderTelaDueloCriado(codigo) {
+  limparApp();
+  appEl.appendChild(renderMarca());
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("h2", { text: "Duelo criado! 🎉" }),
+    el("p", { text: "Sua partida foi registrada. Compartilhe este código com seu adversário:" }),
+    el("div", { class: "codigo-duelo", text: codigo }),
+    el("p", { text: "Assim que ele(a) jogar (na hora que quiser, não precisa ser agora), o comparativo aparece na lista de duelos." }),
+    el("button", { class: "btn", text: "Ver meus duelos", onclick: renderDuelos }),
+    el("button", { class: "btn fantasma", text: "⬅ Início", onclick: renderIntro }),
+  ]));
+}
+
+async function renderResultadoDuelo(dueloId) {
+  limparApp();
+  appEl.appendChild(renderMarca());
+  const cardCarregando = el("section", { class: "card" }, [el("p", { text: "Carregando duelo…" })]);
+  appEl.appendChild(cardCarregando);
+
+  const { data: duelo, error } = await supabaseClient.from("duelos").select("*").eq("id", dueloId).maybeSingle();
+  if (error || !duelo) {
+    cardCarregando.replaceChildren(
+      el("p", { text: "Duelo não encontrado." }),
+      el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderDuelos })
+    );
+    return;
+  }
+
+  const idsRelevantes = [duelo.criador_id, duelo.desafiante_id].filter(Boolean);
+  const { data: perfis } = await supabaseClient.from("perfis").select("id, apelido").in("id", idsRelevantes);
+  const apelidoPorId = Object.fromEntries((perfis || []).map((p) => [p.id, p.apelido]));
+
+  cardCarregando.remove();
+
+  if (duelo.status !== "concluido") {
+    appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+      el("h2", { text: "Aguardando o adversário" }),
+      el("p", { text: `Código: ${duelo.codigo}` }),
+      el("p", { text: "Assim que a outra pessoa jogar, o comparativo aparece aqui." }),
+      el("button", { class: "btn secundario", text: "⬅ Meus duelos", onclick: renderDuelos }),
+    ]));
+    return;
+  }
+
+  const criadorNome = apelidoPorId[duelo.criador_id] || "Jogador 1";
+  const desafianteNome = apelidoPorId[duelo.desafiante_id] || "Jogador 2";
+  const vencedor = duelo.criador_score === duelo.desafiante_score ? "empate"
+    : duelo.criador_score > duelo.desafiante_score ? "criador" : "desafiante";
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Resultado do duelo" }),
+    el("div", { class: "comparativo-duelo" }, [
+      el("div", { class: "lado-duelo" + (vencedor === "criador" ? " vencedor" : "") }, [
+        el("strong", { text: criadorNome }),
+        el("div", { class: "placar-duelo", text: `${duelo.criador_score} / ${duelo.criador_optimal}` }),
+      ]),
+      el("div", { class: "versus-duelo", text: "×" }),
+      el("div", { class: "lado-duelo" + (vencedor === "desafiante" ? " vencedor" : "") }, [
+        el("strong", { text: desafianteNome }),
+        el("div", { class: "placar-duelo", text: `${duelo.desafiante_score} / ${duelo.desafiante_optimal}` }),
+      ]),
+    ]),
+    el("p", { style: "text-align:center; font-weight:800; margin-top:14px;", text:
+      vencedor === "empate" ? "Empate! 🤝" : `${vencedor === "criador" ? criadorNome : desafianteNome} venceu esse duelo! 🏆` }),
+  ]));
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn secundario", text: "⬅ Meus duelos", onclick: renderDuelos }),
+  ]));
+}
+
+async function renderDuelos() {
+  if (!sessao.usuario) { renderLogin(); return; }
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "⚔️ Duelo 1v1" }),
+    el("p", { text: "Desafie um colega: os dois jogam o MESMO conjunto de 9 doenças (em momentos diferentes, sem pressa) e comparam quem pontuou mais. Não conta pro ranking oficial." }),
+    el("button", { class: "btn", text: "+ Criar novo duelo", onclick: criarDuelo }),
+  ]));
+
+  const campoCodigo = document.createElement("input");
+  campoCodigo.type = "text"; campoCodigo.className = "campo"; campoCodigo.maxLength = 8;
+  campoCodigo.placeholder = "Código do duelo (ex.: 7F3K9A)";
+  const erroEntrar = el("p", { class: "campo-erro" });
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Entrar com um código" }),
+    campoCodigo,
+    erroEntrar,
+    el("button", { class: "btn secundario", text: "Entrar no duelo", onclick: async () => {
+      erroEntrar.textContent = "";
+      const resultado = await entrarDuelo(campoCodigo.value);
+      if (resultado && resultado.erro) erroEntrar.textContent = resultado.erro;
+    }}),
+  ]));
+
+  const cardLista = el("section", { class: "card" }, [el("h2", { text: "Meus duelos" }), el("p", { text: "Carregando…" })]);
+  appEl.appendChild(cardLista);
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn fantasma", text: "⬅ Início", onclick: renderIntro }),
+  ]));
+
+  const { data: meusDuelos, error } = await supabaseClient
+    .from("duelos")
+    .select("*")
+    .or(`criador_id.eq.${sessao.usuario.id},desafiante_id.eq.${sessao.usuario.id}`)
+    .order("criado_em", { ascending: false });
+
+  cardLista.replaceChildren(el("h2", { text: "Meus duelos" }));
+
+  if (error) {
+    cardLista.appendChild(el("p", { class: "campo-erro", text: "Não foi possível carregar seus duelos: " + error.message +
+      (/relation .* does not exist/i.test(error.message) ? " (rode a migração 003?)" : "") }));
+    return;
+  }
+  if (!meusDuelos || meusDuelos.length === 0) {
+    cardLista.appendChild(el("p", { text: "Você ainda não tem duelos. Crie um acima!" }));
+    return;
+  }
+
+  const idsRelevantes = [...new Set(meusDuelos.flatMap((d) => [d.criador_id, d.desafiante_id]).filter(Boolean))];
+  const { data: perfis } = await supabaseClient.from("perfis").select("id, apelido").in("id", idsRelevantes);
+  const apelidoPorId = Object.fromEntries((perfis || []).map((p) => [p.id, p.apelido]));
+
+  meusDuelos.forEach((d) => {
+    const souCriador = d.criador_id === sessao.usuario.id;
+    const nomeOponente = souCriador ? apelidoPorId[d.desafiante_id] : apelidoPorId[d.criador_id];
+    const statusTexto = d.status === "concluido" ? "Concluído"
+      : souCriador ? "Aguardando oponente" : "Você ainda não jogou";
+
+    let botaoAcao;
+    if (d.status === "concluido") {
+      botaoAcao = el("button", { class: "btn secundario btn-pequeno", text: "Ver resultado", onclick: () => renderResultadoDuelo(d.id) });
+    } else if (!souCriador && d.desafiante_score == null) {
+      botaoAcao = el("button", { class: "btn btn-pequeno", text: "Jogar agora", onclick: () => continuarDuelo(d) });
+    } else {
+      botaoAcao = el("span", { class: "linha-admin-meta", text: "—" });
+    }
+
+    cardLista.appendChild(el("div", { class: "linha-admin-doenca" }, [
+      el("div", { class: "linha-admin-info" }, [
+        el("strong", { text: `Código ${d.codigo}` }),
+        el("span", { class: "linha-admin-meta", text: `${nomeOponente ? "vs. " + nomeOponente : "aguardando oponente"} · ${statusTexto}` }),
+      ]),
+      el("div", { class: "linha-admin-acoes" }, [botaoAcao]),
+    ]));
+  });
 }
 
 

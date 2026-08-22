@@ -15,6 +15,7 @@ Arquivos desta pasta:
 | `revisao_conteudo_patovetzee.md` | Documento de revisão do conteúdo original (histórico — não precisa editar). |
 | `GUIA_MANUTENCAO.md` | Este arquivo. |
 | `supabase_migration_002_doencas.sql` | Migração que cria a tabela `doencas` no Supabase e migra as que já existem — precisa rodar uma vez (ver seção 0). |
+| `supabase_migration_003_tentativas_duelos.sql` | Migração que cria o acompanhamento de alunos (tabela `tentativas`) e o duelo 1v1 (tabela `duelos`) — precisa rodar uma vez, depois da 002 (ver seção 0). |
 
 ---
 
@@ -52,6 +53,35 @@ Se o Supabase cair ou a migração não tiver sido rodada ainda, o jogo
 camada extra, não uma dependência obrigatória. As seções 1 e 2 abaixo (editar
 o arquivo à mão) continuam válidas como alternativa, ou para quem prefere
 manter tudo versionado no HTML.
+
+### 0.1 Cadastro obrigatório e acompanhamento em aula
+
+Desde esta versão, é **obrigatório criar conta** (e-mail + senha) pra jogar
+qualquer modo (desafio diário, Modo por Sistemas, Duelo) — sem isso não dá
+pra saber quem é quem no acompanhamento. A tela de login mostra um aviso
+pedindo e-mail institucional quando o uso é em aula. (Exceção: se o Supabase
+não estiver configurado neste arquivo, o jogo libera modo convidado — não
+tem como exigir login sem sistema de login.)
+
+Depois de rodar `supabase_migration_003_tentativas_duelos.sql`, toda partida
+completada (diário, sistema ou duelo) fica registrada. Pra ver o
+desempenho da turma: **Administração → 📊 Desempenho dos alunos** — lista
+todo mundo que jogou, em qualquer modo, com pontuação/eficiência/data, com
+busca por aluno e filtro por modo. É separado do ranking público (que
+continua só com o desafio diário oficial) porque o Modo por Sistemas sorteia
+doenças diferentes pra cada aluno — comparar pontuação bruta ali não seria
+justo, mas dá pra acompanhar quem praticou e como foi.
+
+### 0.2 Duelo 1v1
+
+Aba **"⚔️ Duelo 1v1"** na tela inicial (só aparece logado). Um aluno cria um
+duelo — o jogo sorteia 9 doenças de todo o banco (não só de um sistema) + 9
+categorias, igual ao Modo por Sistemas — e joga na hora. Isso gera um
+código de 6 caracteres pra compartilhar. O colega entra com o código quando
+quiser (não precisa ser ao mesmo tempo) e joga o **mesmo** conjunto de
+doenças/categorias. Assim que os dois tiverem jogado, qualquer um vê o
+comparativo lado a lado. Não entra no ranking oficial nem depende dos dois
+estarem online juntos.
 
 ---
 
