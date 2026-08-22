@@ -380,20 +380,6 @@ body{
   100%{ transform: translateY(110vh) rotate(var(--rot,360deg)); opacity:0.9; }
 }
 
-/* --------- Modal desafio personalizado --------- */
-.modal-fundo{
-  position:fixed; inset:0; background: rgba(58,46,57,0.55);
-  display:flex; align-items:center; justify-content:center; padding:16px; z-index:1000;
-}
-.modal-caixa{
-  background:#fff; border-radius: var(--raio); border:3px solid var(--cor-card-borda);
-  max-width:560px; width:100%; max-height:88vh; overflow:auto; padding:22px;
-  box-shadow: var(--sombra-sticker);
-}
-.modal-caixa textarea{
-  width:100%; min-height:160px; font-family: monospace; font-size:13px;
-  border-radius: var(--raio-pequeno); border:2px solid #ccc; padding:10px;
-}
 .campo-erro{ color:#B00020; font-size:14px; white-space:pre-wrap; }
 
 .rodape-nota{ text-align:center; font-size:12px; color: var(--cor-texto-suave); margin-top:24px; }
@@ -7828,7 +7814,6 @@ function renderIntro() {
     botoesExtras.push(el("button", { class: "btn secundario", text: "🩺 Modo por sistemas", onclick: renderEscolherSistema }));
     botoesExtras.push(el("button", { class: "btn secundario", text: "⚔️ Duelo 1v1", onclick: renderDuelos }));
   }
-  botoesExtras.push(el("button", { class: "btn secundario", text: "📋 Carregar desafio personalizado", onclick: abrirModalPersonalizado }));
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }));
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }));
 
@@ -8582,9 +8567,9 @@ function renderLogin() {
   const card = el("section", { class: "card" }, [
     el("h2", { text: "Entrar ou criar conta" }),
     el("p", { class: "aviso-config", text:
-      "💡 Vai jogar como atividade de aula? Cadastre-se com seu e-mail institucional " +
-      "(ex.: @unifeob.pro.br ou o e-mail da sua instituição) — assim o professor consegue " +
-      "identificar quem é quem no acompanhamento de desempenho." }),
+      "💡 Vai jogar como atividade de aula? Cadastre-se com o e-mail institucional da sua " +
+      "instituição de ensino — assim o professor consegue identificar quem é quem no " +
+      "acompanhamento de desempenho." }),
     el("label", { class: "rotulo-campo", text: "E-mail" }),
     campoEmail,
     el("label", { class: "rotulo-campo", text: "Senha" }),
@@ -9701,96 +9686,6 @@ async function renderDuelos() {
       el("div", { class: "linha-admin-acoes" }, [botaoAcao]),
     ]));
   });
-}
-
-
-/* =========================================================================
- * MODO PERSONALIZADO (colar/upload de um JSON de desafio)
- * -------------------------------------------------------------------------
- * Aceita um objeto no mesmo formato de DESAFIO_DO_DIA (seção 2), referenciando
- * doenças e parâmetros que já existem no BANCO_DOENCAS/CATALOGO_PARAMETROS
- * embutidos nesta página. Útil para montar desafios de aula sem editar o
- * arquivo — basta manter uma cópia deste HTML e trocar o JSON colado.
- * ======================================================================= */
-
-function validarDesafioPersonalizado(json) {
-  const erros = [];
-  if (!json || typeof json !== "object") { erros.push("O conteúdo não é um objeto JSON válido."); return { valido: false, erros }; }
-
-  if (!Array.isArray(json.doencas_selecionadas) || json.doencas_selecionadas.length !== 9) {
-    erros.push("`doencas_selecionadas` precisa ser uma lista com exatamente 9 ids de doença.");
-  } else {
-    json.doencas_selecionadas.forEach((id) => { if (!MAPA_DOENCAS[id]) erros.push(`Doença desconhecida: "${id}".`); });
-    const unicos = new Set(json.doencas_selecionadas);
-    if (unicos.size !== json.doencas_selecionadas.length) erros.push("`doencas_selecionadas` tem ids repetidos.");
-  }
-
-  if (!Array.isArray(json.parametros_selecionados) || json.parametros_selecionados.length !== 9) {
-    erros.push("`parametros_selecionados` precisa ser uma lista com exatamente 9 itens {id, grupo}.");
-  } else {
-    json.parametros_selecionados.forEach((ref) => {
-      if (!ref || (ref.grupo !== "binario" && ref.grupo !== "gradual")) {
-        erros.push(`Parâmetro com \`grupo\` inválido: ${JSON.stringify(ref)} (use "binario" ou "gradual").`);
-        return;
-      }
-      const catalogoDoGrupo = ref.grupo === "binario" ? CATALOGO_PARAMETROS.binarios : CATALOGO_PARAMETROS.graduais;
-      if (!catalogoDoGrupo[ref.id]) erros.push(`Parâmetro desconhecido no grupo "${ref.grupo}": "${ref.id}".`);
-    });
-    const chaves = json.parametros_selecionados.map((r) => r && r.grupo + ":" + r.id);
-    if (new Set(chaves).size !== chaves.length) erros.push("`parametros_selecionados` tem itens repetidos.");
-  }
-
-  if (!json.id) erros.push("Falta o campo `id` (identificador único do desafio).");
-
-  return { valido: erros.length === 0, erros };
-}
-
-function abrirModalPersonalizado() {
-  const fundo = el("div", { class: "modal-fundo", onclick: (ev) => { if (ev.target === fundo) fundo.remove(); } });
-  const erroEl = el("div", { class: "campo-erro" });
-  const textarea = document.createElement("textarea");
-  textarea.setAttribute("aria-label", "Cole aqui o JSON do desafio personalizado");
-  textarea.placeholder = '{\n  "id": "aula-neoplasias-1",\n  "doencas_selecionadas": [...9 ids...],\n  "parametros_selecionados": [...9 {id, grupo}...],\n  "explicacoes": { ... } // opcional\n}';
-
-  const inputArquivo = document.createElement("input");
-  inputArquivo.type = "file";
-  inputArquivo.accept = "application/json,.json";
-  inputArquivo.addEventListener("change", () => {
-    const arquivo = inputArquivo.files[0];
-    if (!arquivo) return;
-    const leitor = new FileReader();
-    leitor.onload = () => { textarea.value = String(leitor.result); };
-    leitor.readAsText(arquivo);
-  });
-
-  const caixa = el("div", { class: "modal-caixa" }, [
-    el("h2", { text: "Carregar desafio personalizado" }),
-    el("p", { text: "Cole o JSON abaixo ou selecione um arquivo .json com o mesmo formato do desafio do dia." }),
-    inputArquivo,
-    textarea,
-    erroEl,
-    el("div", {}, [
-      el("button", { class: "btn", text: "Carregar e começar", onclick: () => {
-        let json;
-        try { json = JSON.parse(textarea.value); }
-        catch (e) { erroEl.textContent = "JSON inválido: " + e.message; return; }
-
-        const { valido, erros } = validarDesafioPersonalizado(json);
-        if (!valido) { erroEl.textContent = erros.join("\n"); return; }
-
-        json.personalizado = true;
-        json.explicacoes = json.explicacoes || {};
-        json.titulo = json.titulo || "Desafio personalizado";
-        fundo.remove();
-        iniciarPartida(json, { pratica: true });
-        renderDoencaAtual();
-      }}),
-      el("button", { class: "btn fantasma", text: "Cancelar", onclick: () => fundo.remove() }),
-    ]),
-  ]);
-  fundo.appendChild(caixa);
-  document.body.appendChild(fundo);
-  textarea.focus();
 }
 
 
