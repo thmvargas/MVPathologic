@@ -66,12 +66,17 @@ tem como exigir login sem sistema de login.)
 
 Depois de rodar `supabase_migration_003_tentativas_duelos.sql`, toda partida
 completada (diário, sistema ou duelo) fica registrada. Pra ver o
-desempenho da turma: **Administração → 📊 Desempenho dos alunos** — lista
-todo mundo que jogou, em qualquer modo, com pontuação/eficiência/data, com
-busca por aluno e filtro por modo. É separado do ranking público (que
+desempenho da turma: **Administração → 📊 Desempenho dos alunos** — mostra
+um resumo por aluno (nº de tentativas, eficiência média e uma tendência de
+📈 melhora / 📉 piora / ➡️ estável, comparando o início do histórico dele com
+o mais recente), com busca por aluno e filtro por modo. Clique em "Ver
+histórico" pra ver a linha do tempo completa daquele aluno, tentativa por
+tentativa, da mais antiga pra mais nova. É separado do ranking público (que
 continua só com o desafio diário oficial) porque o Modo por Sistemas sorteia
 doenças diferentes pra cada aluno — comparar pontuação bruta ali não seria
-justo, mas dá pra acompanhar quem praticou e como foi.
+justo. Dica: filtre por um modo só (ex.: "Desafio diário") antes de olhar a
+tendência de um aluno específico, pra comparar tentativas com o mesmo nível
+de dificuldade.
 
 ### 0.2 Duelo 1v1
 

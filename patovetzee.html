@@ -464,6 +464,15 @@ body{
 .placar-duelo{ font-size: clamp(20px,5vw,28px); font-weight:800; color: var(--cor-primaria-escura); }
 .versus-duelo{ font-size:22px; font-weight:800; color: var(--cor-texto-suave); }
 
+/* --------- Badge de tendência (painel do professor) --------- */
+.tendencia-badge{
+  display:inline-block; font-size:13px; font-weight:800; padding:4px 10px;
+  border-radius:999px; white-space:nowrap;
+}
+.tendencia-melhora{ background:#E9FBF2; color: var(--cor-sucesso); }
+.tendencia-piora{ background:#FFEDEE; color: var(--cor-primaria-escura); }
+.tendencia-estavel{ background:#FFF6E9; color: var(--cor-texto-suave); }
+
 @media (max-width:420px){
   .card{ padding:16px; }
 }
@@ -9312,16 +9321,68 @@ function renderCategorias() {
 // completada por QUALQUER aluno, em qualquer modo — só visível pra admin,
 // via RLS "tentativas_admin_le_todas" do lado do banco.
 const NOMES_MODO_TENTATIVA = { diario: "Desafio diário", sistema: "Modo por sistemas", duelo: "Duelo 1v1" };
-let estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {} };
+let estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {}, alunoSelecionado: null };
+
+// Compara desempenho recente com o início do histórico do aluno (nas
+// tentativas que já passaram pelo filtro de modo, pra comparar coisas
+// comparáveis). Com poucos registros (2-3), compara só a primeira com a
+// última; com 4+, compara a média da primeira metade com a da segunda —
+// mais resistente a uma tentativa isolada muito boa/ruim distorcer a leitura.
+function calcularTendencia(eficienciasEmOrdemCronologica) {
+  const n = eficienciasEmOrdemCronologica.length;
+  if (n < 2) return null;
+  if (n >= 4) {
+    const meio = Math.floor(n / 2);
+    const primeira = eficienciasEmOrdemCronologica.slice(0, meio);
+    const segunda = eficienciasEmOrdemCronologica.slice(meio);
+    const media = (arr) => arr.reduce((s, v) => s + v, 0) / arr.length;
+    return media(segunda) - media(primeira);
+  }
+  return eficienciasEmOrdemCronologica[n - 1] - eficienciasEmOrdemCronologica[0];
+}
+
+function construirBadgeTendencia(tendencia) {
+  if (tendencia === null) return el("span", { class: "linha-admin-meta", text: "— (só 1 tentativa)" });
+  const LIMIAR_ESTAVEL = 3; // pontos percentuais — abaixo disso, chama de "estável" em vez de melhora/piora
+  if (Math.abs(tendencia) < LIMIAR_ESTAVEL) return el("span", { class: "tendencia-badge tendencia-estavel", text: "➡️ Estável" });
+  const sinal = tendencia > 0 ? "+" : "";
+  return tendencia > 0
+    ? el("span", { class: "tendencia-badge tendencia-melhora", text: `📈 ${sinal}${Math.round(tendencia)} p.p.` })
+    : el("span", { class: "tendencia-badge tendencia-piora", text: `📉 ${Math.round(tendencia)} p.p.` });
+}
+
+// Agrupa as tentativas (já filtradas por modo/busca) por aluno, calculando
+// nº de tentativas, eficiência média e tendência de melhora/piora — é a
+// visão principal do painel (por aluno, não por tentativa avulsa).
+function computarResumoPorAluno(tentativasFiltradas, apelidoPorId) {
+  const porAluno = {};
+  tentativasFiltradas.forEach((t) => {
+    (porAluno[t.user_id] = porAluno[t.user_id] || []).push(t);
+  });
+  return Object.entries(porAluno).map(([userId, lista]) => {
+    const ordenadas = lista.slice().sort((a, b) => new Date(a.criado_em) - new Date(b.criado_em));
+    const eficiencias = ordenadas.map((t) => t.efficiency);
+    const mediaEficiencia = eficiencias.reduce((s, v) => s + v, 0) / eficiencias.length;
+    return {
+      userId,
+      apelido: apelidoPorId[userId] || userId.slice(0, 8),
+      tentativas: ordenadas,
+      nTentativas: ordenadas.length,
+      mediaEficiencia,
+      tendencia: calcularTendencia(eficiencias),
+      ultimaData: ordenadas[ordenadas.length - 1].criado_em,
+    };
+  }).sort((a, b) => a.apelido.localeCompare(b.apelido, "pt-BR"));
+}
 
 async function renderPainelProfessor() {
   if (!sessao.isAdmin) { renderIntro(); return; }
-  estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {} };
+  estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {}, alunoSelecionado: null };
   limparApp();
   appEl.appendChild(renderMarca());
   appEl.appendChild(el("section", { class: "card" }, [
     el("h2", { text: "📊 Desempenho dos alunos" }),
-    el("p", { text: "Toda partida completada por qualquer aluno logado, em qualquer modo (desafio diário, modo por sistemas, duelos)." }),
+    el("p", { text: "Resumo por aluno, com todas as tentativas em qualquer modo (desafio diário, modo por sistemas, duelos) — veja a tendência de melhora e o histórico completo de cada um." }),
     el("button", { class: "btn fantasma", text: "⬅ Voltar à Administração", onclick: renderAdmin }),
   ]));
 
@@ -9354,8 +9415,10 @@ async function renderPainelProfessor() {
   renderizarTabelaPainelProfessor();
 }
 
-// Refaz só a parte de filtros+tabela, reaproveitando os dados já buscados
-// (sem round-trip novo ao Supabase a cada tecla digitada na busca).
+// Refaz só a parte de filtros+conteúdo, reaproveitando os dados já buscados
+// (sem round-trip novo ao Supabase a cada tecla digitada na busca). Alterna
+// entre a visão-resumo (todos os alunos) e o histórico de um aluno só,
+// conforme estadoPainelProfessor.alunoSelecionado.
 function renderizarTabelaPainelProfessor() {
   const foco = guardaFoco("painel-professor-busca");
   const existente = document.getElementById("painel-professor-conteudo");
@@ -9380,30 +9443,106 @@ function renderizarTabelaPainelProfessor() {
   filtroModo.value = estadoPainelProfessor.modo;
   filtroModo.addEventListener("change", () => { estadoPainelProfessor.modo = filtroModo.value; renderizarTabelaPainelProfessor(); });
   cardFiltros.appendChild(filtroModo);
+  cardFiltros.appendChild(el("p", { class: "ajuda-campo", text:
+    "Dica: filtre por um modo só (ex.: só \"Desafio diário\") pra comparar tendência com critério igual entre tentativas — o Modo por Sistemas e o Duelo sorteiam doenças diferentes a cada vez." }));
   container.appendChild(cardFiltros);
 
-  const { tentativas, apelidoPorId, busca, modo } = estadoPainelProfessor;
+  const { tentativas, apelidoPorId, busca, modo, alunoSelecionado } = estadoPainelProfessor;
   const termo = busca.trim().toLowerCase();
-  const filtradas = tentativas.filter((t) => {
-    if (modo && t.modo !== modo) return false;
-    if (termo && !(apelidoPorId[t.user_id] || "").toLowerCase().includes(termo)) return false;
-    return true;
-  });
+  const filtradasPorModo = modo ? tentativas.filter((t) => t.modo === modo) : tentativas;
 
-  const cardTabela = el("section", { class: "card" }, [el("h2", { text: `Tentativas (${filtradas.length})` })]);
-  if (filtradas.length === 0) {
-    cardTabela.appendChild(el("p", { text: "Nenhuma tentativa encontrada com esse filtro." }));
+  if (alunoSelecionado) {
+    renderizarHistoricoAluno(container, filtradasPorModo, apelidoPorId, alunoSelecionado);
+    restauraFoco(foco);
+    return;
+  }
+
+  const filtradasPorBusca = termo
+    ? filtradasPorModo.filter((t) => (apelidoPorId[t.user_id] || "").toLowerCase().includes(termo))
+    : filtradasPorModo;
+  const resumos = computarResumoPorAluno(filtradasPorBusca, apelidoPorId);
+
+  const cardResumo = el("section", { class: "card" }, [el("h2", { text: `Alunos (${resumos.length})` })]);
+  if (resumos.length === 0) {
+    cardResumo.appendChild(el("p", { text: "Nenhum aluno encontrado com esse filtro." }));
   } else {
     const tabela = document.createElement("table");
     tabela.className = "tabela-ranking";
     tabela.appendChild(el("thead", {}, [el("tr", {}, [
-      el("th", { text: "Aluno" }), el("th", { text: "Modo" }), el("th", { text: "Detalhe" }),
+      el("th", { text: "Aluno" }), el("th", { text: "Tentativas" }), el("th", { text: "Eficiência média" }),
+      el("th", { text: "Tendência" }), el("th", { text: "Última vez" }), el("th", { text: "" }),
+    ])]));
+    const corpo = document.createElement("tbody");
+    resumos.forEach((r) => {
+      corpo.appendChild(el("tr", {}, [
+        el("td", { text: r.apelido }),
+        el("td", { text: String(r.nTentativas) }),
+        el("td", { text: `${Math.round(r.mediaEficiencia)}%` }),
+        el("td", {}, [construirBadgeTendencia(r.tendencia)]),
+        el("td", { text: new Date(r.ultimaData).toLocaleDateString("pt-BR") }),
+        el("td", {}, [el("button", { class: "btn secundario btn-pequeno", text: "Ver histórico",
+          onclick: () => { estadoPainelProfessor.alunoSelecionado = r.userId; renderizarTabelaPainelProfessor(); } })]),
+      ]));
+    });
+    tabela.appendChild(corpo);
+    const wrapper = document.createElement("div");
+    wrapper.style.overflowX = "auto";
+    wrapper.appendChild(tabela);
+    cardResumo.appendChild(wrapper);
+  }
+  container.appendChild(cardResumo);
+
+  restauraFoco(foco);
+}
+
+// Histórico completo de UM aluno — tentativas em ordem cronológica (mais
+// antiga primeiro), pra ler a evolução de cima pra baixo como uma linha do
+// tempo. Respeita o filtro de modo já aplicado (não a busca por apelido,
+// que não faz sentido aqui).
+function renderizarHistoricoAluno(container, tentativasFiltradasPorModo, apelidoPorId, userId) {
+  const doAluno = tentativasFiltradasPorModo
+    .filter((t) => t.user_id === userId)
+    .sort((a, b) => new Date(a.criado_em) - new Date(b.criado_em));
+  const apelido = apelidoPorId[userId] || userId.slice(0, 8);
+  const eficiencias = doAluno.map((t) => t.efficiency);
+  const tendencia = calcularTendencia(eficiencias);
+  const mediaEficiencia = eficiencias.length ? eficiencias.reduce((s, v) => s + v, 0) / eficiencias.length : 0;
+
+  const cardResumo = el("section", { class: "card" }, [
+    el("h2", { text: `Histórico de ${apelido}` }),
+    el("div", { class: "rodada-stats", style: "margin-top:10px;" }, [
+      el("div", { class: "bloco-stat" }, [
+        el("div", { class: "rotulo-stat", text: "Tentativas" }),
+        el("div", { class: "valor-doenca", text: String(doAluno.length) }),
+      ]),
+      el("div", { class: "bloco-stat" }, [
+        el("div", { class: "rotulo-stat", text: "Eficiência média" }),
+        el("div", { class: "valor-doenca", text: `${Math.round(mediaEficiencia)}%` }),
+      ]),
+      el("div", { class: "bloco-stat" }, [
+        el("div", { class: "rotulo-stat", text: "Tendência" }),
+        construirBadgeTendencia(tendencia),
+      ]),
+    ]),
+    el("button", { class: "btn fantasma", text: "⬅ Todos os alunos",
+      onclick: () => { estadoPainelProfessor.alunoSelecionado = null; renderizarTabelaPainelProfessor(); } }),
+  ]);
+  container.appendChild(cardResumo);
+
+  const cardTabela = el("section", { class: "card" }, [el("h2", { text: "Linha do tempo (mais antiga primeiro)" }) ]);
+  if (doAluno.length === 0) {
+    cardTabela.appendChild(el("p", { text: "Nenhuma tentativa encontrada com o filtro de modo atual." }));
+  } else {
+    const tabela = document.createElement("table");
+    tabela.className = "tabela-ranking";
+    tabela.appendChild(el("thead", {}, [el("tr", {}, [
+      el("th", { text: "#" }), el("th", { text: "Modo" }), el("th", { text: "Detalhe" }),
       el("th", { text: "Pontuação" }), el("th", { text: "Eficiência" }), el("th", { text: "Quando" }),
     ])]));
     const corpo = document.createElement("tbody");
-    filtradas.forEach((t) => {
+    doAluno.forEach((t, i) => {
       corpo.appendChild(el("tr", {}, [
-        el("td", { text: apelidoPorId[t.user_id] || t.user_id.slice(0, 8) }),
+        el("td", { text: String(i + 1) }),
         el("td", { text: NOMES_MODO_TENTATIVA[t.modo] || t.modo }),
         el("td", { text: t.modo === "sistema" ? (CATALOGO_SISTEMAS[t.modo_detalhe] || t.modo_detalhe || "") : (t.modo_detalhe || "") }),
         el("td", { text: `${t.total_score} / ${t.optimal_score}` }),
@@ -9418,8 +9557,6 @@ function renderizarTabelaPainelProfessor() {
     cardTabela.appendChild(wrapper);
   }
   container.appendChild(cardTabela);
-
-  restauraFoco(foco);
 }
 
 
