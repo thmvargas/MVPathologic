@@ -111,6 +111,34 @@ painel).
 
 ---
 
+## ⚠️ Importante: o Supabase manda, o arquivo é só o plano B
+
+Desde a migração 002, sempre que o jogo carrega ele tenta puxar o banco de
+doenças (e as categorias) do Supabase primeiro — só usa o
+`BANCO_DOENCAS_EMBUTIDO` deste arquivo se o Supabase estiver fora do ar ou
+não configurado. Na prática isso significa:
+
+- Uma doença criada/editada pelo painel de admin (seção 0) já aparece pros
+  alunos na hora — **não precisa editar o arquivo nem fazer deploy**.
+- Se você (ou eu) editar `BANCO_DOENCAS_EMBUTIDO` diretamente no arquivo
+  (seção 1 abaixo) e publicar, isso **não muda nada pros alunos** enquanto
+  o Supabase estiver no ar — o banco remoto continua sendo usado. Editar o
+  arquivo só atualiza o "plano B" (o que roda se o Supabase cair um dia).
+- Por isso, toda vez que eu adicionar doenças editando o arquivo (em vez de
+  usar o painel), eu também preciso te mandar um `.sql` com essas mesmas
+  doenças pra você rodar no SQL Editor — senão elas só existem no plano B,
+  nunca aparecem de verdade pro aluno. Se algum dia eu esquecer de mandar
+  esse arquivo depois de dizer que adicionei doenças novas, é sinal de que
+  ficou faltando esse passo — me cobre.
+- O mesmo vale ao contrário: se você criar uma categoria nova pelo painel
+  (seção 0.3), ela passa a existir no Supabase, mas o
+  `BANCO_DOENCAS_EMBUTIDO` só recebe aquele campo se alguém (eu, numa
+  próxima sessão) rodar uma correção pontual nele — do contrário o plano B
+  fica "incompleto" pra essa categoria (sem impacto nos alunos enquanto o
+  Supabase estiver no ar, mas vale eu manter isso em dia).
+
+---
+
 ## 1. Adicionar uma doença nova (editando o arquivo à mão)
 
 1. Abra `MODELO_NOVA_DOENCA.js` e copie o bloco entre `COPIE A PARTIR DAQUI`
