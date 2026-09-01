@@ -223,31 +223,47 @@ trabalhoso porque toda doença já cadastrada precisa ganhar esse campo.
 
 ---
 
-## 3. Trocar o desafio do dia (o que os alunos jogam)
+## 3. O desafio do dia (o que os alunos jogam)
 
-Procure `const DESAFIO_DO_DIA = {` em `patovetzee.html`. Edite:
+**Desde 31/08/2026 isso é automático — não precisa mais editar nada todo
+dia.** `DESAFIO_DO_DIA` é gerado pela função `gerarDesafioDiario()` em
+`patovetzee.html` (seção 2) a partir da data de hoje: sorteia 9 doenças +
+9 categorias do banco inteiro com uma seed determinística (a própria
+data), então a turma toda cai no mesmo sorteio no mesmo dia, em qualquer
+navegador, e o "dia" sempre avança sozinho à meia-noite.
 
-- **`id` e `data`**: use a data do dia em que vai liberar o jogo, formato
-  `"AAAA-MM-DD"` (ex.: `"2026-08-12"`). Esse valor é o que garante que todos
-  os alunos vejam a mesma ordem de doenças/categorias naquele dia — troque
-  sempre que publicar um desafio novo, mesmo que o conteúdo seja parecido
-  com o anterior (senão a ordem embaralhada fica igual à do desafio
-  antigo).
-- **`titulo`**: um texto curto pra identificar o desafio (aparece no topo da
-  tela inicial).
-- **`doencas_selecionadas`**: lista de 9 ids de doença (do `BANCO_DOENCAS`)
-  que vão participar. Hoje o banco tem exatamente 9 doenças, então essa
-  lista é o banco inteiro — quando você tiver mais de 9 cadastradas, aqui é
-  onde escolhe o subconjunto do dia (ex.: focar num assunto de aula
-  específico).
-- **`parametros_selecionados`**: lista de 9 `{ id, grupo }`, misturando
-  parâmetros binários e graduais. Recomendo manter a mistura de 5-6
-  binários + 3-4 graduais (constante `MIX_RECOMENDADO`, só um alerta — não
-  trava o jogo se você fugir um pouco disso).
-- **`explicacoes`**: `explicacoes[doencaId][parametroId]` = texto de 1-2
-  frases, para cada uma das 9 doenças × 9 categorias escolhidas (81 textos).
-  Se você deixar algum par sem explicação, o jogo mostra um texto genérico
-  no lugar — não quebra, só fica menos rico para o aluno.
+**Isso corrige um bug real:** até 30/08/2026 o desafio era um objeto fixo
+publicado manualmente (trocando `id`/`data` a cada dia). O `id` ficou
+parado em `"2026-08-13"` por quase 3 semanas sem ninguém atualizar — quem
+já tinha jogado uma vez via "Você já jogou o desafio de hoje" pra sempre,
+porque o progresso salvo no navegador (localStorage) é indexado por
+`desafio.id`, e esse valor nunca mudava. Agora não tem mais essa
+dependência de alguém lembrar de editar o código todo dia.
+
+### Curadoria manual pontual (opcional)
+
+Se quiser preparar um desafio temático pra uma aula específica (com
+espécies escolhidas de propósito e explicações escritas à mão, como era
+antes), adicione uma entrada em `DESAFIOS_MANUAIS` (logo acima de
+`gerarDesafioDiario()`) pela data — ela tem prioridade sobre o sorteio
+automático só naquele dia, sem afetar os demais:
+
+```js
+const DESAFIOS_MANUAIS = {
+  "2026-09-01": {
+    titulo: "Patologia animal — foco em neoplasias",
+    doencas_selecionadas: [ /* 9 ids do BANCO_DOENCAS */ ],
+    parametros_selecionados: [ /* 9 { id, grupo } */ ],
+    explicacoes: { /* opcional — sem isso, cai no texto genérico automático */ },
+  },
+};
+```
+
+Mesmas regras de sempre pra essa entrada manual: mistura recomendada de
+5-6 binários + 3-4 graduais (constante `MIX_RECOMENDADO`, só um alerta —
+não trava o jogo); `explicacoes[doencaId][parametroId]` é opcional por
+par — sem ela, o jogo mostra um texto genérico automático (não quebra, só
+fica menos rico).
 
 Depois de editar, abra com `?debug=1` e olhe o console — a linha
 `[PatoVetZee] Checagem de qualidade do desafio "..."` te diz:
@@ -257,14 +273,8 @@ Depois de editar, abra com `?debug=1` e olhe o console — a linha
 - quantas doenças têm um valor isolado (sem empate) nalguma categoria;
 - se a mistura objetivo/gradual está dentro do recomendado.
 
-Ajuste a escolha de parâmetros até essa checagem ficar satisfatória.
-
-### Dica para variar o desafio sem mexer no conteúdo clínico
-
-Como a pontuação nunca é armazenada (é sempre calculada a partir do banco),
-trocar só a lista `parametros_selecionados` (mantendo as mesmas 9 doenças)
-já gera um puzzle totalmente diferente. Você pode preparar vários desafios
-com antecedência só variando essa lista + as explicações correspondentes.
+Isso vale tanto pro sorteio automático (raro precisar mexer) quanto pra
+uma entrada manual em `DESAFIOS_MANUAIS`.
 
 ---
 
