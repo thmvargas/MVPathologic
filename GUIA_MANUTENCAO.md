@@ -17,6 +17,7 @@ Arquivos desta pasta:
 | `supabase_migration_002_doencas.sql` | Migração que cria a tabela `doencas` no Supabase e migra as que já existem — precisa rodar uma vez (ver seção 0). |
 | `supabase_migration_003_tentativas_duelos.sql` | Migração que cria o acompanhamento de alunos (tabela `tentativas`) e o duelo 1v1 (tabela `duelos`) — precisa rodar uma vez, depois da 002 (ver seção 0). |
 | `supabase_migration_004_categorias.sql` | Migração que permite criar categorias novas pelo painel de admin — precisa rodar uma vez, depois da 002 e 003 (ver seção 0.3). |
+| `supabase_migration_005_email_professor.sql` | Migração que salva o e-mail de cada aluno (tabela separada, só o professor/admin lê) e mostra no painel "📊 Desempenho dos alunos" — precisa rodar uma vez, depois da 002. |
 
 ---
 
@@ -77,6 +78,14 @@ doenças diferentes pra cada aluno — comparar pontuação bruta ali não seria
 justo. Dica: filtre por um modo só (ex.: "Desafio diário") antes de olhar a
 tendência de um aluno específico, pra comparar tentativas com o mesmo nível
 de dificuldade.
+
+Depois de rodar `supabase_migration_005_email_professor.sql`, esse mesmo
+painel também mostra o **e-mail** de cada aluno (coluna na tabela-resumo e
+na busca, e uma linha abaixo do nome no histórico individual) — só quem tem
+`is_admin = true` consegue ver; para os próprios alunos e pro público em
+geral o e-mail continua invisível (só o apelido é público, igual sempre
+foi). A migração faz backfill automático dos alunos que já tinham conta;
+quem se cadastrar depois disso já tem o e-mail salvo na hora.
 
 ### 0.2 Duelo 1v1
 

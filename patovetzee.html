@@ -9306,6 +9306,18 @@ function renderEscolherApelido() {
           : error.message;
         return;
       }
+      // Salva o e-mail numa tabela separada (perfis_contato, migração 005)
+      // pro professor conseguir identificar o aluno no painel de
+      // acompanhamento — perfis fica só com o apelido porque é de leitura
+      // pública (ranking/duelo). Best-effort: se a migração 005 ainda não
+      // rodou (tabela não existe) ou falhar por qualquer motivo, não
+      // bloqueia o cadastro — só fica sem e-mail salvo até rodar de novo.
+      if (sessao.usuario.email) {
+        const { error: erroContato } = await supabaseClient
+          .from("perfis_contato")
+          .upsert({ id: sessao.usuario.id, email: sessao.usuario.email });
+        if (erroContato) console.warn("[PatoVetZee] Não foi possível salvar o e-mail de contato (rode a migração 005?):", erroContato.message);
+      }
       sessao.apelido = apelido;
       renderIntro();
     }}),
@@ -10009,7 +10021,7 @@ function construirBadgeTendencia(tendencia) {
 // Agrupa as tentativas (já filtradas por modo/busca) por aluno, calculando
 // nº de tentativas, eficiência média e tendência de melhora/piora — é a
 // visão principal do painel (por aluno, não por tentativa avulsa).
-function computarResumoPorAluno(tentativasFiltradas, apelidoPorId) {
+function computarResumoPorAluno(tentativasFiltradas, apelidoPorId, emailPorId) {
   const porAluno = {};
   tentativasFiltradas.forEach((t) => {
     (porAluno[t.user_id] = porAluno[t.user_id] || []).push(t);
@@ -10021,6 +10033,7 @@ function computarResumoPorAluno(tentativasFiltradas, apelidoPorId) {
     return {
       userId,
       apelido: apelidoPorId[userId] || userId.slice(0, 8),
+      email: (emailPorId && emailPorId[userId]) || "",
       tentativas: ordenadas,
       nTentativas: ordenadas.length,
       mediaEficiencia,
@@ -10032,7 +10045,7 @@ function computarResumoPorAluno(tentativasFiltradas, apelidoPorId) {
 
 async function renderPainelProfessor() {
   if (!sessao.isAdmin) { renderIntro(); return; }
-  estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {}, alunoSelecionado: null };
+  estadoPainelProfessor = { busca: "", modo: "", tentativas: null, apelidoPorId: {}, emailPorId: {}, alunoSelecionado: null };
   limparApp();
   appEl.appendChild(renderMarca());
   appEl.appendChild(el("section", { class: "card" }, [
@@ -10059,13 +10072,23 @@ async function renderPainelProfessor() {
 
   const idsAlunos = [...new Set((tentativas || []).map((t) => t.user_id))];
   let apelidoPorId = {};
+  let emailPorId = {};
   if (idsAlunos.length > 0) {
     const { data: perfis } = await supabaseClient.from("perfis").select("id, apelido").in("id", idsAlunos);
     apelidoPorId = Object.fromEntries((perfis || []).map((p) => [p.id, p.apelido]));
+
+    // Tabela separada (migração 005) — só admin ou o próprio usuário
+    // conseguem ler e-mail (RLS), diferente do apelido, que é público. Se a
+    // migração ainda não rodou, a tabela não existe: erro tratado como
+    // "sem e-mails ainda" em vez de quebrar o painel inteiro.
+    const { data: contatos, error: erroContatos } = await supabaseClient.from("perfis_contato").select("id, email").in("id", idsAlunos);
+    if (erroContatos) console.warn("[PatoVetZee] Não foi possível carregar e-mails (rode a migração 005?):", erroContatos.message);
+    emailPorId = Object.fromEntries((contatos || []).map((c) => [c.id, c.email]));
   }
 
   estadoPainelProfessor.tentativas = tentativas || [];
   estadoPainelProfessor.apelidoPorId = apelidoPorId;
+  estadoPainelProfessor.emailPorId = emailPorId;
   cardCarregando.remove();
   renderizarTabelaPainelProfessor();
 }
@@ -10085,7 +10108,7 @@ function renderizarTabelaPainelProfessor() {
   const cardFiltros = el("section", { class: "card" });
   const campoBusca = document.createElement("input");
   campoBusca.type = "search"; campoBusca.className = "campo"; campoBusca.id = "painel-professor-busca";
-  campoBusca.placeholder = "Buscar por apelido…";
+  campoBusca.placeholder = "Buscar por apelido ou e-mail…";
   campoBusca.value = estadoPainelProfessor.busca;
   campoBusca.addEventListener("input", () => { estadoPainelProfessor.busca = campoBusca.value; renderizarTabelaPainelProfessor(); });
   cardFiltros.appendChild(el("h2", { text: "Filtrar" }));
@@ -10102,20 +10125,22 @@ function renderizarTabelaPainelProfessor() {
     "Dica: filtre por um modo só (ex.: só \"Desafio diário\") pra comparar tendência com critério igual entre tentativas — o Modo por Sistemas e o Duelo sorteiam doenças diferentes a cada vez." }));
   container.appendChild(cardFiltros);
 
-  const { tentativas, apelidoPorId, busca, modo, alunoSelecionado } = estadoPainelProfessor;
+  const { tentativas, apelidoPorId, emailPorId, busca, modo, alunoSelecionado } = estadoPainelProfessor;
   const termo = busca.trim().toLowerCase();
   const filtradasPorModo = modo ? tentativas.filter((t) => t.modo === modo) : tentativas;
 
   if (alunoSelecionado) {
-    renderizarHistoricoAluno(container, filtradasPorModo, apelidoPorId, alunoSelecionado);
+    renderizarHistoricoAluno(container, filtradasPorModo, apelidoPorId, emailPorId, alunoSelecionado);
     restauraFoco(foco);
     return;
   }
 
   const filtradasPorBusca = termo
-    ? filtradasPorModo.filter((t) => (apelidoPorId[t.user_id] || "").toLowerCase().includes(termo))
+    ? filtradasPorModo.filter((t) =>
+        (apelidoPorId[t.user_id] || "").toLowerCase().includes(termo) ||
+        (emailPorId[t.user_id] || "").toLowerCase().includes(termo))
     : filtradasPorModo;
-  const resumos = computarResumoPorAluno(filtradasPorBusca, apelidoPorId);
+  const resumos = computarResumoPorAluno(filtradasPorBusca, apelidoPorId, emailPorId);
 
   const cardResumo = el("section", { class: "card" }, [el("h2", { text: `Alunos (${resumos.length})` })]);
   if (resumos.length === 0) {
@@ -10124,13 +10149,14 @@ function renderizarTabelaPainelProfessor() {
     const tabela = document.createElement("table");
     tabela.className = "tabela-ranking";
     tabela.appendChild(el("thead", {}, [el("tr", {}, [
-      el("th", { text: "Aluno" }), el("th", { text: "Tentativas" }), el("th", { text: "Eficiência média" }),
+      el("th", { text: "Aluno" }), el("th", { text: "E-mail" }), el("th", { text: "Tentativas" }), el("th", { text: "Eficiência média" }),
       el("th", { text: "Tendência" }), el("th", { text: "Última vez" }), el("th", { text: "" }),
     ])]));
     const corpo = document.createElement("tbody");
     resumos.forEach((r) => {
       corpo.appendChild(el("tr", {}, [
         el("td", { text: r.apelido }),
+        el("td", { text: r.email || "—" }),
         el("td", { text: String(r.nTentativas) }),
         el("td", { text: `${Math.round(r.mediaEficiencia)}%` }),
         el("td", {}, [construirBadgeTendencia(r.tendencia)]),
@@ -10154,17 +10180,19 @@ function renderizarTabelaPainelProfessor() {
 // antiga primeiro), pra ler a evolução de cima pra baixo como uma linha do
 // tempo. Respeita o filtro de modo já aplicado (não a busca por apelido,
 // que não faz sentido aqui).
-function renderizarHistoricoAluno(container, tentativasFiltradasPorModo, apelidoPorId, userId) {
+function renderizarHistoricoAluno(container, tentativasFiltradasPorModo, apelidoPorId, emailPorId, userId) {
   const doAluno = tentativasFiltradasPorModo
     .filter((t) => t.user_id === userId)
     .sort((a, b) => new Date(a.criado_em) - new Date(b.criado_em));
   const apelido = apelidoPorId[userId] || userId.slice(0, 8);
+  const email = (emailPorId && emailPorId[userId]) || "";
   const eficiencias = doAluno.map((t) => t.efficiency);
   const tendencia = calcularTendencia(eficiencias);
   const mediaEficiencia = eficiencias.length ? eficiencias.reduce((s, v) => s + v, 0) / eficiencias.length : 0;
 
   const cardResumo = el("section", { class: "card" }, [
     el("h2", { text: `Histórico de ${apelido}` }),
+    ...(email ? [el("p", { class: "ajuda-campo", text: email })] : []),
     el("div", { class: "rodada-stats", style: "margin-top:10px;" }, [
       el("div", { class: "bloco-stat" }, [
         el("div", { class: "rotulo-stat", text: "Tentativas" }),
