@@ -118,6 +118,28 @@ válida como alternativa — ela é a única forma de criar um **tema** novo
 (hoje só dá pra encaixar a categoria num dos 8 temas já existentes pelo
 painel).
 
+### 0.4 Resetar senha de aluno que perdeu acesso
+
+Dentro de **Administração → 📊 Desempenho dos alunos → Ver histórico** (de
+um aluno específico), tem um botão **🔑 Resetar senha** do lado do e-mail
+dele. Ao clicar, o jogo dispara o e-mail padrão de redefinição de senha do
+Supabase Auth pra esse aluno — ele recebe um link, clica, e o próprio jogo
+mostra a tela "Defina sua nova senha" pra ele escolher uma senha nova. Não
+precisa de nenhuma senha antiga nem de você saber qual era a senha do
+aluno.
+
+Só funciona pra aluno que já tem e-mail salvo (migração 005 — veja a
+coluna "E-mail" no painel). Não precisa de nenhuma migração nova: é só
+Supabase Auth, sem mexer nas tabelas do jogo.
+
+**Configuração única no Supabase (se o link não voltar pro jogo):** no
+painel do projeto, vá em **Authentication → URL Configuration** e
+confirme que a URL do GitHub Pages (ex.:
+`https://SEU-USUARIO.github.io/SEU-REPO/patovetzee.html`) está em **Site
+URL** ou na lista de **Redirect URLs**. Sem isso, o Supabase pode recusar
+o redirecionamento de volta pro jogo depois que o aluno clica no link do
+e-mail.
+
 ---
 
 ## ⚠️ Importante: o Supabase manda, o arquivo é só o plano B

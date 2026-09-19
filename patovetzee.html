@@ -9238,6 +9238,19 @@ const supabaseClient = SUPABASE_CONFIGURADO
 // Estado de sessão do jogador. usuario=null significa "modo convidado".
 let sessao = { usuario: null, apelido: null, isAdmin: false };
 
+// Quando um aluno clica no link de redefinição de senha (enviado via
+// enviarResetSenha(), seção 12 — painel do professor), o SDK do Supabase
+// detecta o token na URL sozinho (createClient com detectSessionInUrl,
+// padrão) e dispara este evento antes de qualquer outra coisa rodar —
+// registrado aqui, no topo do módulo, pra nunca perder o evento por causa
+// de ordem de carregamento. Interrompe o fluxo normal (login/intro) e
+// mostra a tela de "defina uma nova senha" até o aluno salvar.
+if (supabaseClient) {
+  supabaseClient.auth.onAuthStateChange((evento) => {
+    if (evento === "PASSWORD_RECOVERY") renderDefinirNovaSenha();
+  });
+}
+
 // Roda no carregamento da página: o SDK do Supabase já guarda o token de
 // sessão no localStorage por conta própria, então isto só recupera a sessão
 // existente (se houver) sem exigir login de novo a cada visita.
@@ -9527,6 +9540,48 @@ function renderEscolherApelido() {
     }}),
   ]));
   campo.focus();
+}
+
+/* --------- Tela: definir nova senha (depois de clicar no link de reset) --------- */
+// Chegamos aqui só pelo evento PASSWORD_RECOVERY (ver listener logo após
+// `let sessao`, seção 8) — o SDK já autenticou o aluno com uma sessão
+// temporária a partir do token do e-mail, então updateUser() aqui não
+// precisa (nem pode) pedir a senha antiga.
+function renderDefinirNovaSenha() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const campoSenha = document.createElement("input");
+  campoSenha.type = "password"; campoSenha.className = "campo"; campoSenha.autocomplete = "new-password";
+  campoSenha.placeholder = "Nova senha (mínimo 6 caracteres)";
+
+  const campoConfirma = document.createElement("input");
+  campoConfirma.type = "password"; campoConfirma.className = "campo"; campoConfirma.autocomplete = "new-password";
+  campoConfirma.placeholder = "Confirme a nova senha";
+
+  const erroEl = el("p", { class: "campo-erro" });
+
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Defina sua nova senha" }),
+    el("p", { text: "Você abriu um link de redefinição de senha. Escolha uma senha nova para continuar jogando." }),
+    el("label", { class: "rotulo-campo", text: "Nova senha" }),
+    campoSenha,
+    el("label", { class: "rotulo-campo", text: "Confirmar nova senha" }),
+    campoConfirma,
+    erroEl,
+    el("button", { class: "btn", text: "Salvar nova senha", onclick: async () => {
+      erroEl.style.color = ""; erroEl.textContent = "";
+      if (campoSenha.value.length < 6) { erroEl.textContent = "A senha precisa ter pelo menos 6 caracteres."; return; }
+      if (campoSenha.value !== campoConfirma.value) { erroEl.textContent = "As senhas não coincidem."; return; }
+      const { data, error } = await supabaseClient.auth.updateUser({ password: campoSenha.value });
+      if (error) { erroEl.textContent = traduzirErroAuth(error); return; }
+      await carregarPerfilDaSessao(data.user);
+      erroEl.style.color = "#1a7a3c";
+      erroEl.textContent = "Senha atualizada! Redirecionando…";
+      setTimeout(() => { if (!sessao.apelido) renderEscolherApelido(); else renderIntro(); }, 900);
+    }}),
+  ]));
+  campoSenha.focus();
 }
 
 /* --------- Tela: ranking (diário / semanal / mensal) --------- */
@@ -10380,6 +10435,25 @@ function renderizarTabelaPainelProfessor() {
   restauraFoco(foco);
 }
 
+// Botão do professor pra aluno que perdeu acesso: dispara o e-mail padrão
+// de redefinição de senha do Supabase Auth (auth.resetPasswordForEmail) —
+// é a única forma seguro de resetar senha sem expor a service_role key no
+// HTML estático (essa key permitiria driblar todo o RLS pra qualquer
+// visitante). O aluno recebe o link, clica, e cai em
+// renderDefinirNovaSenha() (seção 8) pra escolher a senha nova.
+async function enviarResetSenha(email) {
+  const confirmado = window.confirm(`Enviar e-mail de redefinição de senha para ${email}?`);
+  if (!confirmado) return;
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname,
+  });
+  if (error) {
+    window.alert("Não foi possível enviar: " + error.message);
+    return;
+  }
+  window.alert(`E-mail de redefinição enviado para ${email}. O aluno precisa abrir o link recebido e definir uma senha nova.`);
+}
+
 // Histórico completo de UM aluno — tentativas em ordem cronológica (mais
 // antiga primeiro), pra ler a evolução de cima pra baixo como uma linha do
 // tempo. Respeita o filtro de modo já aplicado (não a busca por apelido,
@@ -10396,7 +10470,13 @@ function renderizarHistoricoAluno(container, tentativasFiltradasPorModo, apelido
 
   const cardResumo = el("section", { class: "card" }, [
     el("h2", { text: `Histórico de ${apelido}` }),
-    ...(email ? [el("p", { class: "ajuda-campo", text: email })] : []),
+    ...(email ? [
+      el("div", { class: "faixa-sessao", style: "margin-top:6px;" }, [
+        el("span", { class: "ajuda-campo", text: email }),
+        el("button", { class: "btn secundario btn-pequeno", text: "🔑 Resetar senha",
+          onclick: () => enviarResetSenha(email) }),
+      ]),
+    ] : []),
     el("div", { class: "rodada-stats", style: "margin-top:10px;" }, [
       el("div", { class: "bloco-stat" }, [
         el("div", { class: "rotulo-stat", text: "Tentativas" }),
