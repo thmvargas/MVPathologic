@@ -648,6 +648,16 @@ const CATALOGO_PARAMETROS = {
       grupo_tematico: "tratamento",
       criterio_referencia: "0 = tratamento de baixo custo; 100 = tratamento caro e/ou prolongado.",
     },
+    reversibilidade_lesao: {
+      label: "Reversibilidade da lesão",
+      grupo_tematico: "natureza_lesao",
+      criterio_referencia: "0 = dano totalmente reversível com tratamento adequado; 100 = dano estrutural permanente/irreversível.",
+    },
+    especificidade_sinais_clinicos: {
+      label: "Especificidade dos sinais clínicos",
+      grupo_tematico: "sinais_clinicos",
+      criterio_referencia: "0 = sinais inespecíficos, sobrepõem com muitos diferenciais; 100 = apresentação patognomônica/muito característica.",
+    },
   },
 };
 
@@ -714,6 +724,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 60, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 5, relevancia_diferencial_rotina: 70,
       invasividade_tratamento_padrao: 85, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -748,6 +759,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 50,
     },
   },
   {
@@ -782,6 +794,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 35, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -816,6 +829,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 85, velocidade_progressao: 90, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 95, relevancia_diferencial_rotina: 80,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -850,6 +864,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 25, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 15, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -884,6 +899,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 70, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -918,6 +934,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 90, velocidade_progressao: 75, custo_complexidade_diagnostica: 60,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 75,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -952,6 +969,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 50, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 30, disseminacao_ambiente_coletivo: 25, relevancia_diferencial_rotina: 85,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -986,6 +1004,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 30, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 75,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 20,
     },
   },
 
@@ -1022,6 +1041,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 45, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 15, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -1056,6 +1076,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 75, velocidade_progressao: 70, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 85, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -1090,6 +1111,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 15, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -1124,6 +1146,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 35, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -1158,6 +1181,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 85, velocidade_progressao: 65, custo_complexidade_diagnostica: 60,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 90, impacto_economico_tratamento: 80,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -1192,6 +1216,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 35, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 75,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -1226,6 +1251,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 40, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 75, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -1260,6 +1286,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 30, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 45, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 85,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -1294,6 +1321,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 20, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 55, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -1328,6 +1356,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 10, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 60, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -1362,6 +1391,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 95, velocidade_progressao: 60, custo_complexidade_diagnostica: 75,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 10, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 85,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -1396,6 +1426,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 95, velocidade_progressao: 98, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 90, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 90, impacto_economico_tratamento: 75,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 85,
     },
   },
   {
@@ -1430,6 +1461,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 30, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 70,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -1464,6 +1496,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 70, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 90, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 70,
       invasividade_tratamento_padrao: 40, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -1498,6 +1531,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 75, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 5, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 50,
     },
   },
   {
@@ -1532,6 +1566,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 90, custo_complexidade_diagnostica: 10,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 5, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -1566,6 +1601,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 100, velocidade_progressao: 85, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 100, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 10,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -1600,6 +1636,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 100, velocidade_progressao: 75, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 100, disseminacao_ambiente_coletivo: 40, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -1634,6 +1671,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 100, velocidade_progressao: 80, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 100, disseminacao_ambiente_coletivo: 35, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -1668,6 +1706,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 15, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -1702,6 +1741,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 10, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -1736,6 +1776,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 30, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 70,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -1770,6 +1811,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 15, custo_complexidade_diagnostica: 80,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 80,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -1804,6 +1846,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 75, velocidade_progressao: 55, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -1838,6 +1881,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 25, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 75,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -1872,6 +1916,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 35, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -1906,6 +1951,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 90, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -1940,6 +1986,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 30, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 55,
     },
   },
 
@@ -1976,6 +2023,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 60, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 85, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -2010,6 +2058,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 55, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 80, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -2044,6 +2093,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 65, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 30, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -2078,6 +2128,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 20, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 70, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -2112,6 +2163,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 40, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -2146,6 +2198,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 35, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -2180,6 +2233,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 40, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 60, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -2214,6 +2268,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 10, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 90,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -2248,6 +2303,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 55, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -2282,6 +2338,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 65, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 75, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -2316,6 +2373,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 40, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -2350,6 +2408,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 30, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 80,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -2384,6 +2443,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 40, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 80, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -2418,6 +2478,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 55, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 40,
     },
   },
 
@@ -2454,6 +2515,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 25, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -2488,6 +2550,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 15, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -2522,6 +2585,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 15, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -2556,6 +2620,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 75, velocidade_progressao: 30, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -2590,6 +2655,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 35, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 70, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 50, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -2624,6 +2690,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 35, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -2658,6 +2725,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 15, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 75,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -2692,6 +2760,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 55, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -2726,6 +2795,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 55, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -2760,6 +2830,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 20, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -2794,6 +2865,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 25, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 25,
     },
   },
   // ===== Sistema Reprodutor (lote extraido de Doencas_por_sistema_Patologia_Veterinaria.docx) =====
@@ -2829,6 +2901,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 0, velocidade_progressao: 0, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 5, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -2863,6 +2936,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 15, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -2897,6 +2971,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 20, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -2931,6 +3006,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 85, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -2965,6 +3041,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 80, custo_complexidade_diagnostica: 10,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 90,
     },
   },
   {
@@ -2999,6 +3076,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -3033,6 +3111,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 70, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -3067,6 +3146,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 15, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -3101,6 +3181,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 15, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -3135,6 +3216,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 0, velocidade_progressao: 20, custo_complexidade_diagnostica: 10,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 10,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -3169,6 +3251,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 10, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -3203,6 +3286,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 8, velocidade_progressao: 35, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 60, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -3237,6 +3321,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -3271,6 +3356,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 35, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 30, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 80,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 85,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -3305,6 +3391,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 60, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -3339,6 +3426,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 10, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -3373,6 +3461,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 35, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -3407,6 +3496,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 90, velocidade_progressao: 85, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -3441,6 +3531,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 0, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 90,
     },
   },
   {
@@ -3475,6 +3566,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 45, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -3509,6 +3601,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -3543,6 +3636,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 8, velocidade_progressao: 15, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -3577,6 +3671,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 10, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -3611,6 +3706,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -3645,6 +3741,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 10, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -3679,6 +3776,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 50, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -3713,6 +3811,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 25, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 45, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -3747,6 +3846,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 8, velocidade_progressao: 35, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -3781,6 +3881,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 80, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 95, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 95,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -3815,6 +3916,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 10, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -3849,6 +3951,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 55, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -3883,6 +3986,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 25, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -3917,6 +4021,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 30, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -3951,6 +4056,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 25, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 15, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -3985,6 +4091,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 60, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -4019,6 +4126,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -4053,6 +4161,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 35, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -4087,6 +4196,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 35, custo_complexidade_diagnostica: 70,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -4121,6 +4231,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 30, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -4155,6 +4266,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 40, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -4189,6 +4301,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 45, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -4223,6 +4336,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 70, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 80, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -4257,6 +4371,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 50, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 70, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -4291,6 +4406,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 85, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 90, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -4325,6 +4441,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 70, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -4359,6 +4476,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 80, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 80, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -4393,6 +4511,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 20, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -4427,6 +4546,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 50, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -4461,6 +4581,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 75, velocidade_progressao: 60, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -4495,6 +4616,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 10, custo_complexidade_diagnostica: 60,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -4529,6 +4651,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 35, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -4563,6 +4686,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 20, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 75, impacto_economico_tratamento: 75,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -4597,6 +4721,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 65, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -4631,6 +4756,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 55, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 35, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -4665,6 +4791,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -4699,6 +4826,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 90, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -4733,6 +4861,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 25, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -4767,6 +4896,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 35, custo_complexidade_diagnostica: 70,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -4801,6 +4931,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 20, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 40, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -4835,6 +4966,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 10, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 5, disseminacao_ambiente_coletivo: 30, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 5,
     },
   },
   {
@@ -4869,6 +5001,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 15, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 90, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -4903,6 +5036,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 25, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 80, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -4937,6 +5071,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 35, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 75, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -4971,6 +5106,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 20, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -5005,6 +5141,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -5039,6 +5176,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 70, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5073,6 +5211,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 15, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -5107,6 +5246,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 85, velocidade_progressao: 60, custo_complexidade_diagnostica: 60,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 65,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -5141,6 +5281,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 80, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -5175,6 +5316,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 30, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -5209,6 +5351,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 15, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 30,
     },
   },
   {
@@ -5243,6 +5386,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 5, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 90, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -5277,6 +5421,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 15, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 50, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -5311,6 +5456,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 30, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -5345,6 +5491,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 10, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 40, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5379,6 +5526,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 45, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5413,6 +5561,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 5, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 45, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -5447,6 +5596,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 25, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 75, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5481,6 +5631,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 10, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -5515,6 +5666,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 60, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -5549,6 +5701,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 90, velocidade_progressao: 90, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 55, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 95, especificidade_sinais_clinicos: 75,
     },
   },
   {
@@ -5583,6 +5736,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 90, velocidade_progressao: 90, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 10, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 90, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -5617,6 +5771,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 40, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5651,6 +5806,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 20, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 95, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5685,6 +5841,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 0, custo_complexidade_diagnostica: 10,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 85,
     },
   },
   {
@@ -5719,6 +5876,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 95, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 90, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 90,
     },
   },
   {
@@ -5753,6 +5911,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 50, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -5787,6 +5946,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 20, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -5821,6 +5981,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 15, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 65, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -5855,6 +6016,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 90, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5889,6 +6051,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 65, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -5923,6 +6086,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 60, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 15, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 65,
     },
   },
   {
@@ -5957,6 +6121,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 85, velocidade_progressao: 75, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 90, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -5991,6 +6156,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 50, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 50,
     },
   },
   {
@@ -6025,6 +6191,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 100, velocidade_progressao: 10, custo_complexidade_diagnostica: 60,
       impacto_qualidade_vida: 75, disseminacao_ambiente_coletivo: 30, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 70,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6059,6 +6226,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 100, velocidade_progressao: 15, custo_complexidade_diagnostica: 65,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 20, relevancia_diferencial_rotina: 10,
       invasividade_tratamento_padrao: 0, impacto_economico_tratamento: 90,
+      reversibilidade_lesao: 100, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -6093,6 +6261,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 25, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6127,6 +6296,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 80, velocidade_progressao: 80, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 85, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -6161,6 +6331,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 70,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6195,6 +6366,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 40, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -6229,6 +6401,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 40, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 65, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -6263,6 +6436,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 25, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 45,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -6297,6 +6471,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 25, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6331,6 +6506,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 30, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 60, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -6365,6 +6541,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -6399,6 +6576,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 15, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6433,6 +6611,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 25, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 55, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6467,6 +6646,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -6501,6 +6681,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 10, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 30, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -6535,6 +6716,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 25, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 40, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6569,6 +6751,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6603,6 +6786,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 20, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6637,6 +6821,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 20, velocidade_progressao: 25, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 45, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6671,6 +6856,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 40, velocidade_progressao: 25, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 10, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6705,6 +6891,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 5, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 50,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -6739,6 +6926,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 20, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -6773,6 +6961,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 2, velocidade_progressao: 5, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -6807,6 +6996,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -6841,6 +7031,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 15, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 20, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -6875,6 +7066,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 1, velocidade_progressao: 5, custo_complexidade_diagnostica: 15,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 40,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -6909,6 +7101,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 1, velocidade_progressao: 15, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -6943,6 +7136,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 15, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 15, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 10, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -6977,6 +7171,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 30, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 25, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7011,6 +7206,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 30, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 30, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7045,6 +7241,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 1, velocidade_progressao: 20, custo_complexidade_diagnostica: 10,
       impacto_qualidade_vida: 10, disseminacao_ambiente_coletivo: 40, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -7079,6 +7276,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 30, custo_complexidade_diagnostica: 70,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 80, impacto_economico_tratamento: 75,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -7113,6 +7311,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -7147,6 +7346,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 15, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 25, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -7181,6 +7381,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 60, velocidade_progressao: 70, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -7215,6 +7416,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 45, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 60, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 35, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -7249,6 +7451,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 50, velocidade_progressao: 35, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 40, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -7283,6 +7486,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 25, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 80, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -7317,6 +7521,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 60,
     },
   },
   {
@@ -7351,6 +7556,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 25, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 50,
     },
   },
   {
@@ -7385,6 +7591,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 15, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 25,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 50,
     },
   },
   {
@@ -7419,6 +7626,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 20, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 60, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 70,
     },
   },
   {
@@ -7453,6 +7661,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 30, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 20,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -7487,6 +7696,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 35, velocidade_progressao: 20, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 50, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 15, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 15,
     },
   },
   {
@@ -7521,6 +7731,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 5, velocidade_progressao: 35, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 30,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -7555,6 +7766,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 75, velocidade_progressao: 90, custo_complexidade_diagnostica: 25,
       impacto_qualidade_vida: 90, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 50,
       invasividade_tratamento_padrao: 40, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 80,
     },
   },
   {
@@ -7589,6 +7801,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 10, velocidade_progressao: 30, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 45, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 40, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 15, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -7623,6 +7836,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 3, velocidade_progressao: 30, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 65,
       invasividade_tratamento_padrao: 5, impacto_economico_tratamento: 15,
+      reversibilidade_lesao: 5, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7657,6 +7871,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 45, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 35,
+      reversibilidade_lesao: 30, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7691,6 +7906,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 30, velocidade_progressao: 15, custo_complexidade_diagnostica: 35,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 40,
+      reversibilidade_lesao: 90, especificidade_sinais_clinicos: 40,
     },
   },
   {
@@ -7725,6 +7941,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 35, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 30,
       invasividade_tratamento_padrao: 50, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 60, especificidade_sinais_clinicos: 25,
     },
   },
   {
@@ -7759,6 +7976,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 65, velocidade_progressao: 65, custo_complexidade_diagnostica: 20,
       impacto_qualidade_vida: 70, disseminacao_ambiente_coletivo: 50, relevancia_diferencial_rotina: 25,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -7793,6 +8011,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 45, velocidade_progressao: 30, custo_complexidade_diagnostica: 30,
       impacto_qualidade_vida: 55, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 10, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7827,6 +8046,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 30, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 60,
       invasividade_tratamento_padrao: 30, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 85, especificidade_sinais_clinicos: 20,
     },
   },
   {
@@ -7861,6 +8081,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 70, velocidade_progressao: 35, custo_complexidade_diagnostica: 50,
       impacto_qualidade_vida: 65, disseminacao_ambiente_coletivo: 25, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 20, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 70, especificidade_sinais_clinicos: 35,
     },
   },
   {
@@ -7895,6 +8116,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 85, velocidade_progressao: 90, custo_complexidade_diagnostica: 45,
       impacto_qualidade_vida: 80, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 55,
       invasividade_tratamento_padrao: 55, impacto_economico_tratamento: 60,
+      reversibilidade_lesao: 35, especificidade_sinais_clinicos: 55,
     },
   },
   {
@@ -7929,6 +8151,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 20, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 35, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 35,
       invasividade_tratamento_padrao: 45, impacto_economico_tratamento: 45,
+      reversibilidade_lesao: 20, especificidade_sinais_clinicos: 10,
     },
   },
   {
@@ -7963,6 +8186,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 55, velocidade_progressao: 40, custo_complexidade_diagnostica: 55,
       impacto_qualidade_vida: 40, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 20,
       invasividade_tratamento_padrao: 70, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 45, especificidade_sinais_clinicos: 45,
     },
   },
   {
@@ -7997,6 +8221,7 @@ const BANCO_DOENCAS_EMBUTIDO = [
       letalidade_nao_tratada: 15, velocidade_progressao: 20, custo_complexidade_diagnostica: 40,
       impacto_qualidade_vida: 25, disseminacao_ambiente_coletivo: 0, relevancia_diferencial_rotina: 15,
       invasividade_tratamento_padrao: 60, impacto_economico_tratamento: 55,
+      reversibilidade_lesao: 65, especificidade_sinais_clinicos: 15,
     },
   },
 ];
