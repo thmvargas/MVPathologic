@@ -114,6 +114,14 @@ body{
 .ponto-legenda.cor-laranja{ background: var(--cor-laranja-bg); border-color: var(--cor-laranja); }
 .ponto-legenda.cor-vermelho{ background: var(--cor-vermelho-bg); border-color: var(--cor-vermelho); }
 
+/* --------- Arquivo (dias anteriores) --------- */
+.linha-arquivo{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 0; border-bottom:2px dashed #dde6f5; flex-wrap:wrap; }
+.linha-arquivo:last-child{ border-bottom:none; }
+.linha-arquivo-info{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+.linha-admin-meta{ font-size:13px; color: var(--cor-texto-suave); }
+.btn-pequeno{ font-size:14px; padding:8px 16px; min-height:36px; }
+
 /* --------- Resultado / compartilhar --------- */
 .resumo-total{ text-align:center; padding: 18px; }
 .resumo-total .numero-grande{ font-size: clamp(40px,10vw,64px); font-weight:800; color: var(--cor-primaria-escura); line-height:1; }
@@ -711,6 +719,28 @@ function numeroRodada(dataStr) {
   const alvo = new Date((dataStr || DATA_LANCAMENTO_JOGO) + "T00:00:00");
   return Math.max(1, Math.round((alvo - inicio) / 86400000) + 1);
 }
+const DIAS_SEMANA_PT = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+const MESES_PT = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+function formatarDataExtenso(dataStr) {
+  const d = new Date(dataStr + "T00:00:00");
+  if (isNaN(d)) return "";
+  const dia = DIAS_SEMANA_PT[d.getDay()];
+  return `${dia.charAt(0).toUpperCase()}${dia.slice(1)}, ${d.getDate()} de ${MESES_PT[d.getMonth()]}`;
+}
+
+// Datas jogáveis no "arquivo" (dias anteriores a hoje, desde o lançamento),
+// da mais recente pra mais antiga.
+function listarDatasAnteriores() {
+  const out = [];
+  const cursor = new Date(dataDeHojeYMD() + "T00:00:00");
+  cursor.setDate(cursor.getDate() - 1);
+  const limite = new Date(DATA_LANCAMENTO_JOGO + "T00:00:00");
+  while (cursor >= limite) {
+    out.push(`${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`);
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return out;
+}
 
 // Curadoria manual opcional por data (mesmo mecanismo do PatoVetZee) — se
 // vazio, sorteia automaticamente a partir do banco atual.
@@ -971,10 +1001,56 @@ function renderIntro() {
     ]));
   }
 
+  if (!loginObrigatorio) {
+    partes.push(el("section", { class: "card", style: "text-align:center" }, [
+      el("button", { class: "btn secundario", text: "🗓️ Jogar dias anteriores", onclick: renderArquivo }),
+    ]));
+  }
+
   partes.push(el("section", { class: "card", style: "text-align:center" }, [
     el("button", { class: "btn fantasma", text: "🐾 Voltar pro PatoVetZee", onclick: () => { location.href = "patovetzee.html"; } }),
   ]));
   partes.push(el("p", { class: "rodape-nota", text: "Patological — jogo irmão do PatoVetZee. Mecânica inspirada no Spotle." }));
+  partes.forEach((p) => appEl.appendChild(p));
+}
+
+/* --------- Arquivo: jogar o desafio de um dia anterior --------- */
+function renderArquivo() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const datas = listarDatasAnteriores();
+  const partes = [el("section", { class: "card" }, [
+    el("h2", { text: "🗓️ Dias anteriores" }),
+    el("p", { text: "Jogue (ou reveja) o desafio de qualquer dia anterior ao de hoje — mesma mecânica, só muda a doença-alvo." }),
+  ])];
+
+  if (datas.length === 0) {
+    partes.push(el("section", { class: "card" }, [el("p", { text: "Ainda não tem dia anterior — o jogo começou hoje." })]));
+  } else {
+    const cardLista = el("section", { class: "card" });
+    datas.forEach((data) => {
+      const progresso = carregarProgressoLocal(data);
+      const jaJogado = progresso && progresso.completed;
+      cardLista.appendChild(el("div", { class: "linha-arquivo" }, [
+        el("div", { class: "linha-arquivo-info" }, [
+          el("strong", { text: `#${numeroRodada(data)} · ${formatarDataExtenso(data)}` }),
+          el("div", { class: "linha-admin-meta", text: jaJogado
+            ? (progresso.acertou ? `Você acertou em ${progresso.numeroTentativas} palpite${progresso.numeroTentativas === 1 ? "" : "s"}` : `Não acertou (${progresso.numeroTentativas} palpites)`)
+            : "Ainda não jogado" }),
+        ]),
+        el("button", { class: "btn secundario btn-pequeno", text: jaJogado ? "Ver resultado" : "Jogar", onclick: () => {
+          if (jaJogado) renderResultadoDeProgresso(progresso, data);
+          else { iniciarJogo({ pratica: false, data }); renderJogo(); }
+        }}),
+      ]));
+    });
+    partes.push(cardLista);
+  }
+
+  partes.push(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn fantasma", text: "⬅ Voltar", onclick: renderIntro }),
+  ]));
   partes.forEach((p) => appEl.appendChild(p));
 }
 
@@ -1058,8 +1134,13 @@ function renderEscolherApelido() {
  * ======================================================================= */
 let estado = { desafio: null, alvo: null, tentativas: [], resolvido: false, modoPratica: false };
 
-function iniciarJogo({ pratica }) {
-  estado = { desafio: DESAFIO_DO_DIA, alvo: MAPA_DOENCAS[DESAFIO_DO_DIA.doencaAlvoId], tentativas: [], resolvido: false, modoPratica: pratica };
+// `data`: opcional — quando informado, joga o desafio DAQUELE dia (arquivo
+// de dias anteriores) em vez do de hoje. Mesmo mecanismo de
+// salvar/carregar progresso (indexado por `estado.desafio.data`), então
+// um dia antigo já jogado também mostra "você já jogou" se reaberto.
+function iniciarJogo({ pratica, data }) {
+  const desafio = data ? gerarDesafioDiario(data) : DESAFIO_DO_DIA;
+  estado = { desafio, alvo: MAPA_DOENCAS[desafio.doencaAlvoId], tentativas: [], resolvido: false, modoPratica: pratica };
 }
 function iniciarJogoPratica() {
   const idAleatorio = embaralharComSeed(BANCO_DOENCAS.map((d) => d.id), "pratica|" + Date.now() + "|" + Math.random())[0];
@@ -1098,7 +1179,7 @@ function renderJogo() {
   const opcoesDisponiveis = BANCO_DOENCAS.filter((d) => !idsJaPalpitados.has(d.id));
 
   const cardForm = el("section", { class: "card" }, [
-    el("h2", { text: estado.modoPratica ? "Modo prática" : `Desafio #${numeroRodada(estado.desafio.data)}` }),
+    el("h2", { text: estado.modoPratica ? "Modo prática" : `Desafio #${numeroRodada(estado.desafio.data)} · ${formatarDataExtenso(estado.desafio.data)}` }),
     el("p", { class: "contador-tentativas", text: `${estado.tentativas.length} palpite${estado.tentativas.length === 1 ? "" : "s"} até agora.` }),
   ]);
 
@@ -1195,8 +1276,9 @@ function renderResultado(registro) {
   ]));
 }
 
-function renderResultadoDeProgresso(progresso) {
-  estado = { desafio: DESAFIO_DO_DIA, alvo: MAPA_DOENCAS[progresso.doencaAlvoId], tentativas: [], resolvido: true, modoPratica: false };
+function renderResultadoDeProgresso(progresso, data) {
+  const desafio = data ? gerarDesafioDiario(data) : DESAFIO_DO_DIA;
+  estado = { desafio, alvo: MAPA_DOENCAS[progresso.doencaAlvoId], tentativas: [], resolvido: true, modoPratica: false };
   renderResultado(progresso);
 }
 
