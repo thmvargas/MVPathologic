@@ -18,6 +18,8 @@ Arquivos desta pasta:
 | `supabase_migration_003_tentativas_duelos.sql` | Migração que cria o acompanhamento de alunos (tabela `tentativas`) e o duelo 1v1 (tabela `duelos`) — precisa rodar uma vez, depois da 002 (ver seção 0). |
 | `supabase_migration_004_categorias.sql` | Migração que permite criar categorias novas pelo painel de admin — precisa rodar uma vez, depois da 002 e 003 (ver seção 0.3). |
 | `supabase_migration_005_email_professor.sql` | Migração que salva o e-mail de cada aluno (tabela separada, só o professor/admin lê) e mostra no painel "📊 Desempenho dos alunos" — precisa rodar uma vez, depois da 002. |
+| `patological.html` | Jogo irmão: "adivinhe a doença do dia" (estilo Spotle). Arquivo separado, ver seção 0.4. |
+| `supabase_migration_patological_001.sql` | Cria as tabelas do Patological (`patological_doencas`, `patological_tentativas`) e insere o lote inicial de 39 doenças — precisa rodar uma vez. |
 
 ---
 
@@ -139,6 +141,34 @@ confirme que a URL do GitHub Pages (ex.:
 URL** ou na lista de **Redirect URLs**. Sem isso, o Supabase pode recusar
 o redirecionamento de volta pro jogo depois que o aluno clica no link do
 e-mail.
+
+### 0.5 Patological — o jogo irmão ("adivinhe a doença")
+
+`patological.html` é um jogo separado (arquivo próprio, botão de ida/volta
+na tela inicial de cada um), estilo Spotle: o aluno palpita o nome de uma
+doença e o jogo compara espécie, sistema, categoria etiológica, zoonose,
+transmissão, letalidade, cura e reversibilidade da lesão com a doença-alvo
+do dia, célula por célula. Mesmo projeto Supabase do PatoVetZee — login e
+apelido (tabela `perfis`) são **compartilhados**, então quem já tem conta
+num dos dois já entra logado no outro. As tabelas de conteúdo/tentativas
+(`patological_doencas`, `patological_tentativas`) são **próprias**, sem
+relação com `doencas`/`tentativas` do PatoVetZee.
+
+Lançou com um lote inicial de **39 doenças** (~3 por sistema, reaproveitando
+os mesmos critérios de letalidade/cura/reversibilidade já usados no
+PatoVetZee onde a doença coincide). Pra adicionar mais doenças: edite o
+array `BANCO_DOENCAS_EMBUTIDO` em `patological.html` (mesmo formato:
+`id, nome, especie, sistema, categorias, zoonose, contagiosa, letalidade,
+cura, reversibilidade`) e gere/rode um `insert ... on conflict (id) do
+nothing` equivalente pra tabela `patological_doencas` remota — mesma
+lógica de duplo-sync (arquivo + Supabase) do PatoVetZee. `categorias` é uma
+lista (pode ter mais de um valor) usada só pra comparação "categoria
+etiológica" — os valores válidos estão em `CATALOGO_CATEGORIAS`, no topo do
+arquivo.
+
+Ainda não tem: painel de admin (editar doenças pelo navegador) e painel do
+professor (acompanhar tentativas da turma) — a tabela `patological_tentativas`
+já está pronta com RLS pra isso (admin lê todas), só falta construir a tela.
 
 ---
 

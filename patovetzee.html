@@ -8908,6 +8908,8 @@ function renderIntro() {
   }
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }));
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }));
+  // Jogo irmão: mesma conta (login/perfis compartilhados), tabelas próprias.
+  botoesExtras.push(el("button", { class: "btn acento", text: "🔎 Patological — adivinhe a doença", onclick: () => { location.href = "patological.html"; } }));
 
   const cardExtras = el("section", { class: "card" }, [
     el("h2", { text: "Outras opções" }),

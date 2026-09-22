@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Patological — Adivinhe a doença do dia</title>
+<meta name="description" content="Jogo diário: adivinhe a doença veterinária de hoje comparando espécie, sistema, letalidade e outros parâmetros clínicos a cada palpite.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
+
+:root{
+  --cor-fundo-1:#E4F4FF;
+  --cor-fundo-2:#DCEBFF;
+  --cor-primaria:#4E7CFF;
+  --cor-primaria-escura:#3557CC;
+  --cor-secundaria:#4ECDC4;
+  --cor-secundaria-escura:#33A79F;
+  --cor-acento:#C77DFF;
+  --cor-sucesso:#2FBF71;
+  --cor-alerta:#FFB800;
+  --cor-texto:#25324B;
+  --cor-texto-suave:#5b6a85;
+  --cor-card:#FFFFFF;
+  --cor-card-borda:#25324B;
+  --raio:22px;
+  --raio-pequeno:14px;
+  --sombra-sticker:0 6px 0 rgba(37,50,75,0.18), 0 10px 20px rgba(37,50,75,0.12);
+  --sombra-sticker-pequena:0 4px 0 rgba(37,50,75,0.18), 0 6px 14px rgba(37,50,75,0.10);
+  --fonte: 'Baloo 2', 'Comic Sans MS', 'Segoe UI Rounded', 'Trebuchet MS', Verdana, sans-serif;
+  --cor-verde:#2FBF71; --cor-verde-bg:#E9FBF2;
+  --cor-amarelo:#C99A00; --cor-amarelo-bg:#FFF6D9;
+  --cor-laranja:#D9682D; --cor-laranja-bg:#FFE7D6;
+  --cor-vermelho:#D9455F; --cor-vermelho-bg:#FFE7EC;
+  color-scheme: light;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0; min-height:100%;
+  font-family: var(--fonte); color: var(--cor-texto);
+  background: radial-gradient(circle at 15% 10%, var(--cor-fundo-2), transparent 55%),
+              radial-gradient(circle at 85% 90%, var(--cor-secundaria), transparent 40%),
+              linear-gradient(160deg, var(--cor-fundo-1), var(--cor-fundo-2));
+  background-attachment: fixed;
+  overflow-x:hidden;
+}
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+#app{ max-width: 720px; margin: 0 auto; padding: 20px 16px 64px; }
+
+.marca{ display:flex; align-items:center; justify-content:center; gap:10px; margin: 4px 0 18px; }
+.marca h1{ font-size: clamp(26px, 6vw, 38px); margin:0; letter-spacing: 0.5px; color: var(--cor-primaria-escura);
+  text-shadow: 2px 2px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; }
+.marca .mascote{ width:60px; height:52px; flex-shrink:0; }
+
+.card{ background: var(--cor-card); border: 3px solid var(--cor-card-borda); border-radius: var(--raio);
+  box-shadow: var(--sombra-sticker); padding: 22px; margin-bottom: 18px; }
+.card h2{ margin-top:0; }
+
+.btn{ font-family: inherit; font-size: 17px; font-weight: 700; color: #fff; background: var(--cor-primaria);
+  border: 3px solid var(--cor-card-borda); border-radius: 999px; padding: 14px 26px; min-height: 48px; min-width: 44px;
+  cursor: pointer; box-shadow: var(--sombra-sticker-pequena); transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+  touch-action: manipulation; }
+.btn:hover{ filter: brightness(1.05); }
+.btn:active{ transform: translateY(3px) scale(0.97); box-shadow: 0 1px 0 rgba(37,50,75,0.18); }
+.btn:focus-visible{ outline: 3px solid var(--cor-acento); outline-offset: 3px; }
+.btn.secundario{ background: var(--cor-secundaria); }
+.btn.acento{ background: var(--cor-acento); }
+.btn.fantasma{ background: #fff; color: var(--cor-texto); }
+.btn:disabled{ opacity:0.55; cursor:not-allowed; transform:none; }
+.btn-pequeno{ font-size:14px; padding:8px 16px; min-height:36px; }
+
+.campo{ width:100%; font-family:inherit; font-size:16px; border:2px solid #ccc; border-radius: var(--raio-pequeno);
+  padding:12px 14px; margin-bottom:12px; min-height:44px; }
+.campo:focus{ outline:3px solid var(--cor-acento); outline-offset:1px; border-color: var(--cor-acento); }
+.rotulo-campo{ display:block; font-weight:700; margin-bottom:6px; }
+.faixa-sessao{ display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff;
+  border:3px solid var(--cor-card-borda); border-radius: var(--raio-pequeno); padding:10px 16px; margin-bottom:16px; flex-wrap:wrap; }
+.faixa-sessao strong{ color: var(--cor-primaria-escura); }
+.aviso-config{ background:#FFF3CD; border:2px dashed #B08900; color:#6b5400; border-radius: var(--raio-pequeno); padding:12px 16px; font-size:14px; }
+.campo-erro{ color:#B00020; font-size:14px; white-space:pre-wrap; }
+.ajuda-campo{ font-size:12px; color: var(--cor-texto-suave); margin:4px 0 0; }
+.rodape-nota{ text-align:center; font-size:12px; color: var(--cor-texto-suave); margin-top:24px; }
+
+/* --------- Formulário de palpite --------- */
+.linha-palpite-form{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-start; }
+.linha-palpite-form .campo{ flex:1; min-width:200px; margin-bottom:0; }
+.contador-tentativas{ font-size:14px; color: var(--cor-texto-suave); margin:0 0 10px; }
+
+/* --------- Cartão de um palpite (linha do histórico) --------- */
+.cartao-palpite{ border:3px solid var(--cor-card-borda); border-radius: var(--raio-pequeno);
+  background:#fff; padding:14px 16px; margin-bottom:12px; box-shadow: var(--sombra-sticker-pequena); }
+.cartao-palpite.acertou{ border-color: var(--cor-sucesso); background:#F2FFF8; }
+.cartao-palpite h3{ margin:0 0 10px; font-size:17px; display:flex; align-items:center; gap:8px; }
+.numero-palpite{ display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px;
+  border-radius:50%; background: var(--cor-texto); color:#fff; font-size:13px; font-weight:800; flex-shrink:0; }
+.grade-atributos{ display:grid; grid-template-columns: repeat(auto-fit, minmax(96px,1fr)); gap:8px; }
+.celula-atributo{ border-radius:12px; padding:8px 9px; text-align:center; border:2px solid transparent; min-width:0; overflow-wrap:break-word; }
+.celula-atributo .rotulo-atributo{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; opacity:0.75; margin-bottom:3px; overflow-wrap:break-word; }
+.celula-atributo .valor-atributo{ font-size:13px; font-weight:800; line-height:1.25; overflow-wrap:break-word; }
+.celula-atributo.cor-verde{ background: var(--cor-verde-bg); color: var(--cor-verde); border-color: var(--cor-verde); }
+.celula-atributo.cor-amarelo{ background: var(--cor-amarelo-bg); color: var(--cor-amarelo); border-color: var(--cor-amarelo); }
+.celula-atributo.cor-laranja{ background: var(--cor-laranja-bg); color: var(--cor-laranja); border-color: var(--cor-laranja); }
+.celula-atributo.cor-vermelho{ background: var(--cor-vermelho-bg); color: var(--cor-vermelho); border-color: var(--cor-vermelho); }
+
+/* --------- Legenda --------- */
+.legenda{ display:flex; flex-wrap:wrap; gap:12px; font-size:12px; color: var(--cor-texto-suave); margin-top:2px; }
+.legenda .item-legenda{ display:flex; align-items:center; gap:5px; }
+.ponto-legenda{ width:12px; height:12px; border-radius:4px; display:inline-block; border:2px solid; }
+.ponto-legenda.cor-verde{ background: var(--cor-verde-bg); border-color: var(--cor-verde); }
+.ponto-legenda.cor-amarelo{ background: var(--cor-amarelo-bg); border-color: var(--cor-amarelo); }
+.ponto-legenda.cor-laranja{ background: var(--cor-laranja-bg); border-color: var(--cor-laranja); }
+.ponto-legenda.cor-vermelho{ background: var(--cor-vermelho-bg); border-color: var(--cor-vermelho); }
+
+/* --------- Resultado / compartilhar --------- */
+.resumo-total{ text-align:center; padding: 18px; }
+.resumo-total .numero-grande{ font-size: clamp(40px,10vw,64px); font-weight:800; color: var(--cor-primaria-escura); line-height:1; }
+.grade-compartilhar{ display:inline-flex; flex-direction:column; gap:4px; font-size:22px; line-height:1; margin:14px 0; }
+.linha-compartilhar{ display:flex; gap:4px; justify-content:center; }
+.quadrado-compartilhar{ width:26px; height:26px; border-radius:6px; }
+
+/* --------- Confete --------- */
+#confetti-layer{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:999; }
+.confete{ position:absolute; top:-20px; width:10px; height:16px; animation-name: cair; animation-timing-function: linear; animation-fill-mode: forwards; border-radius:3px; }
+@keyframes cair{ 0%{ transform: translateY(0) rotate(0deg); opacity:1; } 100%{ transform: translateY(110vh) rotate(var(--rot,360deg)); opacity:0.9; } }
+
+@media (max-width:420px){ .card{ padding:16px; } }
+</style>
+</head>
+<body>
+<div id="app" role="main" aria-live="off"></div>
+<div id="confetti-layer" aria-hidden="true"></div>
+<div id="live-region" class="sr-only" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+/* =========================================================================
+ * PATOLOGICAL — jogo diário "adivinhe a doença" (estilo Spotle)
+ * -------------------------------------------------------------------------
+ * Jogo irmão do PatoVetZee, mesmo projeto Supabase (login/perfis
+ * compartilhados — se o aluno já tem conta no PatoVetZee, já entra logado
+ * aqui também), mas com tabelas PRÓPRIAS (patological_doencas,
+ * patological_tentativas) — não mexe em nada do outro jogo.
+ *
+ * Mecânica: a cada palpite (nome de uma doença do banco), o jogo compara 8
+ * atributos do palpite com os da doença-alvo do dia e mostra o resultado
+ * célula a célula (verde = igual, amarelo/laranja = parcial/perto,
+ * vermelho = diferente) — like Wordle, mas com atributos clínicos em vez
+ * de letras. Tentativas ilimitadas; a pontuação é "em quantos palpites
+ * você acertou".
+ * ======================================================================= */
+
+const DEBUG = new URLSearchParams(location.search).get("debug") === "1";
+
+/* =========================================================================
+ * 1. CATÁLOGOS (sistemas e categorias etiológicas)
+ * ======================================================================= */
+const CATALOGO_SISTEMAS = {
+  sistema_tegumentar: "Tegumentar (pele e anexos)",
+  sistema_digestorio: "Digestório",
+  sistema_hepatobiliar: "Hepatobiliar",
+  sistema_pancreatico: "Pâncreas",
+  sistema_respiratorio: "Respiratório",
+  sistema_cardiovascular: "Cardiovascular",
+  sistema_urinario: "Urinário",
+  sistema_reprodutor: "Reprodutor",
+  sistema_musculoesqueletico: "Musculoesquelético",
+  sistema_nervoso: "Nervoso",
+  sistema_endocrino: "Endócrino",
+  sistema_hematopoietico_linfatico: "Hematopoiético/linfático",
+  doencas_infecciosas_sistemicas: "Infecciosas sistêmicas",
+};
+
+const CATALOGO_CATEGORIAS = {
+  infecciosa_viral: "Infecciosa (viral)",
+  infecciosa_bacteriana: "Infecciosa (bacteriana)",
+  infecciosa_parasitaria: "Infecciosa (parasitária)",
+  infecciosa_fungica: "Infecciosa (fúngica)",
+  neoplasica: "Neoplásica",
+  degenerativa: "Degenerativa",
+  congenita_genetica: "Congênita/genética",
+  toxica: "Tóxica",
+  traumatica_mecanica: "Traumática/mecânica",
+  metabolica_endocrina: "Metabólica/endócrina",
+  imunomediada: "Imunomediada",
+};
+
+/* =========================================================================
+ * 2. BANCO DE DOENÇAS (lote inicial — 39 doenças, ~3 por sistema)
+ * -------------------------------------------------------------------------
+ * Valores de letalidade/cura/reversibilidade/zoonose puxados do mesmo
+ * critério clínico já usado no PatoVetZee (mesmas doenças, quando
+ * coincidem) — tabela PRÓPRIA deste jogo, sem relação de leitura com a
+ * tabela `doencas` do PatoVetZee. `categorias` é uma lista (pode ter mais
+ * de uma) usada na comparação "categoria etiológica" — ver CATALOGO_CATEGORIAS.
+ * ======================================================================= */
+const BANCO_DOENCAS_EMBUTIDO = [
+  { id: "papilomatose_bovina", nome: "Papilomatose bovina", especie: "Bovina", sistema: "sistema_tegumentar",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: true, letalidade: 2, cura: true, reversibilidade: 10 },
+  { id: "mastocitoma_canino", nome: "Mastocitoma cutâneo canino", especie: "Canina", sistema: "sistema_tegumentar",
+    categorias: ["neoplasica"], zoonose: false, contagiosa: false, letalidade: 40, cura: true, reversibilidade: 45 },
+  { id: "dermatite_atopica_canina", nome: "Dermatite atópica canina", especie: "Canina", sistema: "sistema_tegumentar",
+    categorias: ["imunomediada", "congenita_genetica"], zoonose: false, contagiosa: false, letalidade: 2, cura: false, reversibilidade: 55 },
+
+  { id: "parvovirose_canina", nome: "Parvovirose canina", especie: "Canina", sistema: "sistema_digestorio",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: true, letalidade: 85, cura: true, reversibilidade: 20 },
+  { id: "volvulo_gastrico_canino", nome: "Síndrome de dilatação-vólvulo gástrico", especie: "Canina", sistema: "sistema_digestorio",
+    categorias: ["traumatica_mecanica"], zoonose: false, contagiosa: false, letalidade: 95, cura: true, reversibilidade: 15 },
+  { id: "febre_aftosa_bovina", nome: "Febre aftosa", especie: "Bovina", sistema: "sistema_digestorio",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: true, letalidade: 15, cura: false, reversibilidade: 35 },
+
+  { id: "cirrose_hepatica_canina", nome: "Cirrose hepática", especie: "Canina", sistema: "sistema_hepatobiliar",
+    categorias: ["degenerativa"], zoonose: false, contagiosa: false, letalidade: 65, cura: false, reversibilidade: 90 },
+  { id: "leptospirose_canina", nome: "Leptospirose canina", especie: "Canina", sistema: "sistema_hepatobiliar",
+    categorias: ["infecciosa_bacteriana"], zoonose: true, contagiosa: true, letalidade: 55, cura: true, reversibilidade: 35 },
+  { id: "lipidose_hepatica_felina", nome: "Lipidose hepática felina", especie: "Felina", sistema: "sistema_hepatobiliar",
+    categorias: ["metabolica_endocrina"], zoonose: false, contagiosa: false, letalidade: 65, cura: true, reversibilidade: 30 },
+
+  { id: "insulinoma_canino", nome: "Insulinoma", especie: "Canina", sistema: "sistema_pancreatico",
+    categorias: ["neoplasica", "metabolica_endocrina"], zoonose: false, contagiosa: false, letalidade: 55, cura: false, reversibilidade: 45 },
+  { id: "cetoacidose_diabetica_canina", nome: "Cetoacidose diabética", especie: "Canina", sistema: "sistema_pancreatico",
+    categorias: ["metabolica_endocrina"], zoonose: false, contagiosa: false, letalidade: 65, cura: true, reversibilidade: 20 },
+  { id: "insuficiencia_pancreatica_exocrina_canina", nome: "Insuficiência pancreática exócrina (IPE)", especie: "Canina", sistema: "sistema_pancreatico",
+    categorias: ["congenita_genetica", "degenerativa"], zoonose: false, contagiosa: false, letalidade: 15, cura: false, reversibilidade: 70 },
+
+  { id: "garrotilho_equino", nome: "Garrotilho equino", especie: "Equina", sistema: "sistema_respiratorio",
+    categorias: ["infecciosa_bacteriana"], zoonose: false, contagiosa: true, letalidade: 15, cura: true, reversibilidade: 20 },
+  { id: "hemiplegia_laringea_equina", nome: "Hemiplegia laríngea equina (\"roarer\")", especie: "Equina", sistema: "sistema_respiratorio",
+    categorias: ["degenerativa"], zoonose: false, contagiosa: false, letalidade: 5, cura: false, reversibilidade: 85 },
+  { id: "tuberculose_bovina", nome: "Tuberculose bovina", especie: "Bovina", sistema: "sistema_respiratorio",
+    categorias: ["infecciosa_bacteriana"], zoonose: true, contagiosa: true, letalidade: 50, cura: false, reversibilidade: 75 },
+
+  { id: "dirofilariose_canina", nome: "Dirofilariose canina", especie: "Canina", sistema: "sistema_cardiovascular",
+    categorias: ["infecciosa_parasitaria"], zoonose: false, contagiosa: true, letalidade: 55, cura: true, reversibilidade: 55 },
+  { id: "cardiomiopatia_dilatada_canina", nome: "Cardiomiopatia dilatada", especie: "Canina", sistema: "sistema_cardiovascular",
+    categorias: ["degenerativa", "congenita_genetica"], zoonose: false, contagiosa: false, letalidade: 70, cura: false, reversibilidade: 80 },
+  { id: "persistencia_ducto_arterioso_canina", nome: "Persistência do ducto arterioso (PDA)", especie: "Canina", sistema: "sistema_cardiovascular",
+    categorias: ["congenita_genetica"], zoonose: false, contagiosa: false, letalidade: 60, cura: true, reversibilidade: 45 },
+
+  { id: "drc_felina", nome: "Doença renal crônica felina", especie: "Felina", sistema: "sistema_urinario",
+    categorias: ["degenerativa"], zoonose: false, contagiosa: false, letalidade: 65, cura: false, reversibilidade: 85 },
+  { id: "obstrucao_uretral_felina", nome: "Obstrução uretral felina", especie: "Felina", sistema: "sistema_urinario",
+    categorias: ["traumatica_mecanica"], zoonose: false, contagiosa: false, letalidade: 75, cura: true, reversibilidade: 30 },
+  { id: "nefropatia_leishmaniose_canina", nome: "Nefropatia da leishmaniose visceral canina", especie: "Canina", sistema: "sistema_urinario",
+    categorias: ["infecciosa_parasitaria", "imunomediada"], zoonose: true, contagiosa: true, letalidade: 70, cura: false, reversibilidade: 70 },
+
+  { id: "piometra_canina", nome: "Piometra canina", especie: "Canina", sistema: "sistema_reprodutor",
+    categorias: ["infecciosa_bacteriana"], zoonose: false, contagiosa: false, letalidade: 70, cura: true, reversibilidade: 35 },
+  { id: "tumor_venereo_transmissivel_canino", nome: "Tumor venéreo transmissível (TVT)", especie: "Canina", sistema: "sistema_reprodutor",
+    categorias: ["neoplasica"], zoonose: false, contagiosa: true, letalidade: 8, cura: true, reversibilidade: 20 },
+  { id: "criptorquidismo_canino", nome: "Criptorquidismo canino", especie: "Canina", sistema: "sistema_reprodutor",
+    categorias: ["congenita_genetica"], zoonose: false, contagiosa: false, letalidade: 2, cura: true, reversibilidade: 40 },
+
+  { id: "displasia_coxofemoral", nome: "Displasia coxofemoral", especie: "Canina", sistema: "sistema_musculoesqueletico",
+    categorias: ["congenita_genetica", "degenerativa"], zoonose: false, contagiosa: false, letalidade: 5, cura: false, reversibilidade: 75 },
+  { id: "osteossarcoma_canino", nome: "Osteossarcoma apendicular canino", especie: "Canina", sistema: "sistema_musculoesqueletico",
+    categorias: ["neoplasica"], zoonose: false, contagiosa: false, letalidade: 85, cura: false, reversibilidade: 85 },
+  { id: "laminite_equina", nome: "Laminite equina", especie: "Equina", sistema: "sistema_musculoesqueletico",
+    categorias: ["metabolica_endocrina", "toxica"], zoonose: false, contagiosa: false, letalidade: 60, cura: false, reversibilidade: 80 },
+
+  { id: "raiva_canina", nome: "Raiva canina", especie: "Canina", sistema: "sistema_nervoso",
+    categorias: ["infecciosa_viral"], zoonose: true, contagiosa: true, letalidade: 100, cura: false, reversibilidade: 100 },
+  { id: "encefalopatia_espongiforme_bovina", nome: "Encefalopatia espongiforme bovina (EEB, \"vaca louca\")", especie: "Bovina", sistema: "sistema_nervoso",
+    categorias: ["degenerativa"], zoonose: true, contagiosa: true, letalidade: 100, cura: false, reversibilidade: 100 },
+  { id: "traumatismo_cranioencefalico_canino", nome: "Traumatismo cranioencefálico (TCE)", especie: "Canina", sistema: "sistema_nervoso",
+    categorias: ["traumatica_mecanica"], zoonose: false, contagiosa: false, letalidade: 55, cura: true, reversibilidade: 40 },
+
+  { id: "hiperadrenocorticismo_canino", nome: "Hiperadrenocorticismo (Cushing)", especie: "Canina", sistema: "sistema_endocrino",
+    categorias: ["metabolica_endocrina", "neoplasica"], zoonose: false, contagiosa: false, letalidade: 30, cura: false, reversibilidade: 55 },
+  { id: "diabetes_mellitus_felina", nome: "Diabetes mellitus felina", especie: "Felina", sistema: "sistema_endocrino",
+    categorias: ["metabolica_endocrina"], zoonose: false, contagiosa: false, letalidade: 60, cura: true, reversibilidade: 35 },
+  { id: "ppid_equina", nome: "Disfunção da pars intermedia da hipófise (PPID, \"Cushing equino\")", especie: "Equina", sistema: "sistema_endocrino",
+    categorias: ["metabolica_endocrina", "neoplasica"], zoonose: false, contagiosa: false, letalidade: 35, cura: false, reversibilidade: 60 },
+
+  { id: "linfoma_multicentrico_canino", nome: "Linfoma multicêntrico canino", especie: "Canina", sistema: "sistema_hematopoietico_linfatico",
+    categorias: ["neoplasica"], zoonose: false, contagiosa: false, letalidade: 90, cura: false, reversibilidade: 60 },
+  { id: "felv_felina", nome: "Leucemia viral felina (FeLV)", especie: "Felina", sistema: "sistema_hematopoietico_linfatico",
+    categorias: ["infecciosa_viral", "neoplasica"], zoonose: false, contagiosa: true, letalidade: 60, cura: false, reversibilidade: 60 },
+  { id: "anemia_infecciosa_equina", nome: "Anemia infecciosa equina (AIE)", especie: "Equina", sistema: "sistema_hematopoietico_linfatico",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: true, letalidade: 50, cura: false, reversibilidade: 45 },
+
+  { id: "cinomose_canina", nome: "Cinomose canina", especie: "Canina", sistema: "doencas_infecciosas_sistemicas",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: true, letalidade: 75, cura: false, reversibilidade: 60 },
+  { id: "pif_felina", nome: "Peritonite infecciosa felina (PIF)", especie: "Felina", sistema: "doencas_infecciosas_sistemicas",
+    categorias: ["infecciosa_viral"], zoonose: false, contagiosa: false, letalidade: 95, cura: true, reversibilidade: 65 },
+  { id: "leishmaniose_visceral_canina", nome: "Leishmaniose visceral canina", especie: "Canina", sistema: "doencas_infecciosas_sistemicas",
+    categorias: ["infecciosa_parasitaria"], zoonose: true, contagiosa: true, letalidade: 80, cura: false, reversibilidade: 55 },
+];
+
+function indexarBanco(banco) { return Object.fromEntries(banco.map((d) => [d.id, d])); }
+let BANCO_DOENCAS = BANCO_DOENCAS_EMBUTIDO;
+let MAPA_DOENCAS = indexarBanco(BANCO_DOENCAS);
+
+function validarBancoDoencas() {
+  const campos = ["id", "nome", "especie", "sistema", "categorias", "zoonose", "contagiosa", "letalidade", "cura", "reversibilidade"];
+  let problemas = 0;
+  const ids = new Set();
+  BANCO_DOENCAS.forEach((d) => {
+    const faltando = campos.filter((c) => !(c in d));
+    if (faltando.length) { problemas++; console.warn(`[Patological] Doença "${d.id}" com campos faltando: ${faltando.join(", ")}`); }
+    if (!CATALOGO_SISTEMAS[d.sistema]) { problemas++; console.warn(`[Patological] Doença "${d.id}" com sistema desconhecido: ${d.sistema}`); }
+    (d.categorias || []).forEach((c) => { if (!CATALOGO_CATEGORIAS[c]) { problemas++; console.warn(`[Patological] Doença "${d.id}" com categoria desconhecida: ${c}`); } });
+    if (ids.has(d.id)) { problemas++; console.warn(`[Patological] Id duplicado: ${d.id}`); }
+    ids.add(d.id);
+  });
+  if (problemas === 0) console.log(`[Patological] Banco de doenças OK: ${BANCO_DOENCAS.length} doenças.`);
+  return problemas === 0;
+}
+
+/* =========================================================================
+ * 3. SEED DETERMINÍSTICO POR DATA (mesma técnica do PatoVetZee, copiada —
+ *    arquivos são intencionalmente independentes, sem import entre eles)
+ * ======================================================================= */
+function hashStringParaSeed(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  return h >>> 0;
+}
+function criarGeradorPseudoAleatorio(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function embaralharComSeed(array, seedTexto) {
+  const rand = criarGeradorPseudoAleatorio(hashStringParaSeed(seedTexto));
+  const copia = array.slice();
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+function dataDeHojeYMD() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+const DATA_LANCAMENTO_JOGO = "2026-09-22";
+function numeroRodada(dataStr) {
+  const inicio = new Date(DATA_LANCAMENTO_JOGO + "T00:00:00");
+  const alvo = new Date((dataStr || DATA_LANCAMENTO_JOGO) + "T00:00:00");
+  return Math.max(1, Math.round((alvo - inicio) / 86400000) + 1);
+}
+
+// Curadoria manual opcional por data (mesmo mecanismo do PatoVetZee) — se
+// vazio, sorteia automaticamente a partir do banco atual.
+const DESAFIOS_MANUAIS = {
+  // "2026-10-01": "raiva_canina",
+};
+function gerarDesafioDiario(dataStr) {
+  const alvoManual = DESAFIOS_MANUAIS[dataStr];
+  const doencaAlvoId = alvoManual || embaralharComSeed(BANCO_DOENCAS.map((d) => d.id).sort(), "patological|" + dataStr)[0];
+  return { data: dataStr, doencaAlvoId };
+}
+let DESAFIO_DO_DIA = gerarDesafioDiario(dataDeHojeYMD());
+
+/* =========================================================================
+ * 4. LÓGICA DE COMPARAÇÃO (o coração do jogo)
+ * ======================================================================= */
+function compararIgual(a, b) { return a === b ? "verde" : "vermelho"; }
+
+function compararCategorias(catsPalpite, catsAlvo) {
+  const setAlvo = new Set(catsAlvo);
+  const setPalpite = new Set(catsPalpite);
+  const mesmoConjunto = setPalpite.size === setAlvo.size && [...setPalpite].every((c) => setAlvo.has(c));
+  if (mesmoConjunto) return "verde";
+  const temComum = catsPalpite.some((c) => setAlvo.has(c));
+  return temComum ? "amarelo" : "vermelho";
+}
+
+// Numérico 0-100: cor por proximidade + seta indicando se o alvo é maior/menor.
+function compararNumerico(valorPalpite, valorAlvo) {
+  const diff = Math.abs(valorPalpite - valorAlvo);
+  let cor;
+  if (diff === 0) cor = "verde";
+  else if (diff <= 15) cor = "amarelo";
+  else if (diff <= 35) cor = "laranja";
+  else cor = "vermelho";
+  const seta = valorPalpite === valorAlvo ? "" : valorAlvo > valorPalpite ? " ↑" : " ↓";
+  return { cor, seta };
+}
+
+function avaliarPalpite(palpite, alvo) {
+  const letal = compararNumerico(palpite.letalidade, alvo.letalidade);
+  const revers = compararNumerico(palpite.reversibilidade, alvo.reversibilidade);
+  return {
+    especie: { cor: compararIgual(palpite.especie, alvo.especie), texto: palpite.especie },
+    sistema: { cor: compararIgual(palpite.sistema, alvo.sistema), texto: CATALOGO_SISTEMAS[palpite.sistema] },
+    categorias: { cor: compararCategorias(palpite.categorias, alvo.categorias), texto: palpite.categorias.map((c) => CATALOGO_CATEGORIAS[c]).join(", ") },
+    zoonose: { cor: compararIgual(palpite.zoonose, alvo.zoonose), texto: palpite.zoonose ? "Sim" : "Não" },
+    contagiosa: { cor: compararIgual(palpite.contagiosa, alvo.contagiosa), texto: palpite.contagiosa ? "Sim" : "Não" },
+    letalidade: { cor: letal.cor, texto: palpite.letalidade + letal.seta },
+    cura: { cor: compararIgual(palpite.cura, alvo.cura), texto: palpite.cura ? "Sim" : "Não" },
+    reversibilidade: { cor: revers.cor, texto: palpite.reversibilidade + revers.seta },
+  };
+}
+
+const ORDEM_ATRIBUTOS = [
+  ["especie", "Espécie"], ["sistema", "Sistema"], ["categorias", "Categoria"], ["zoonose", "Zoonose"],
+  ["contagiosa", "Contagiosa"], ["letalidade", "Letalidade"], ["cura", "Cura definitiva"], ["reversibilidade", "Reversibilidade"],
+];
+
+/* =========================================================================
+ * 5. PERSISTÊNCIA LOCAL
+ * ======================================================================= */
+const STORAGE_PREFIXO_PROGRESSO = "patological_progresso_";
+function salvarProgressoLocal(registro) {
+  try { localStorage.setItem(STORAGE_PREFIXO_PROGRESSO + estado.desafio.data, JSON.stringify(registro)); }
+  catch (e) { console.warn("[Patological] Não foi possível salvar o progresso:", e); }
+}
+function carregarProgressoLocal(data) {
+  try { const raw = localStorage.getItem(STORAGE_PREFIXO_PROGRESSO + data); return raw ? JSON.parse(raw) : null; }
+  catch (e) { return null; }
+}
+
+/* =========================================================================
+ * 6. SUPABASE (mesmo projeto do PatoVetZee — login e `perfis` compartilhados;
+ *    `patological_doencas`/`patological_tentativas` são tabelas próprias)
+ * ======================================================================= */
+const SUPABASE_URL = "https://wyyxuvnrlutqjxtamhus.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_XVuuDOCgMTxtXCSMxq5IwQ_0uRk5M4s";
+const SUPABASE_CONFIGURADO = typeof supabase !== "undefined" && !SUPABASE_URL.startsWith("COLOQUE_AQUI") && !SUPABASE_ANON_KEY.startsWith("COLOQUE_AQUI");
+const supabaseClient = SUPABASE_CONFIGURADO ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+let sessao = { usuario: null, apelido: null, isAdmin: false };
+
+async function verificarSessaoAtual() {
+  if (!supabaseClient) return;
+  try {
+    const { data } = await supabaseClient.auth.getSession();
+    if (data && data.session && data.session.user) await carregarPerfilDaSessao(data.session.user);
+  } catch (e) { console.warn("[Patological] Não foi possível verificar a sessão:", e); }
+}
+
+async function carregarPerfilDaSessao(usuario) {
+  sessao.usuario = usuario;
+  const { data: perfil, error } = await supabaseClient.from("perfis").select("apelido, is_admin").eq("id", usuario.id).maybeSingle();
+  if (error) console.warn("[Patological] Não foi possível carregar o perfil:", error.message);
+  sessao.apelido = perfil ? perfil.apelido : null;
+  sessao.isAdmin = !!(perfil && perfil.is_admin);
+}
+
+async function fazerLogout() {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  sessao = { usuario: null, apelido: null, isAdmin: false };
+  renderIntro();
+}
+
+function traduzirErroAuth(error) {
+  const msg = (error && error.message) || "Erro desconhecido.";
+  if (/invalid login credentials/i.test(msg)) return "E-mail ou senha incorretos.";
+  if (/already registered/i.test(msg)) return "Já existe uma conta com este e-mail — tente entrar em vez de criar conta.";
+  if (/password should be at least/i.test(msg)) return "A senha precisa ter pelo menos 6 caracteres.";
+  return msg;
+}
+
+// Carrega `patological_doencas` do Supabase e, se der certo, substitui o
+// banco embutido — mesma lógica best-effort do PatoVetZee: qualquer falha
+// (sem Supabase, tabela não migrada, sem internet) mantém o embutido.
+async function carregarBancoRemoto() {
+  if (!supabaseClient) return false;
+  try {
+    const { data, error } = await supabaseClient.from("patological_doencas").select("*");
+    if (error) throw error;
+    if (!data || data.length === 0) return false;
+    const banco = data.map((linha) => ({
+      id: linha.id, nome: linha.nome, especie: linha.especie, sistema: linha.sistema,
+      categorias: linha.categorias || [], zoonose: linha.zoonose, contagiosa: linha.contagiosa,
+      letalidade: linha.letalidade, cura: linha.cura, reversibilidade: linha.reversibilidade,
+    }));
+    BANCO_DOENCAS = banco;
+    MAPA_DOENCAS = indexarBanco(BANCO_DOENCAS);
+    console.log(`[Patological] Banco de doenças carregado do Supabase: ${banco.length} doenças.`);
+    return true;
+  } catch (e) {
+    console.warn("[Patological] Não foi possível carregar o banco remoto (usando o embutido):", e.message || e);
+    return false;
+  }
+}
+
+// Registra a tentativa oficial do dia — best-effort, nunca bloqueia o jogo.
+async function salvarTentativaRemota(registro) {
+  if (!supabaseClient || !sessao.usuario || estado.modoPratica) return;
+  const { error } = await supabaseClient.from("patological_tentativas").upsert({
+    user_id: sessao.usuario.id,
+    data_desafio: estado.desafio.data,
+    doenca_alvo_id: estado.alvo.id,
+    numero_tentativas: registro.numeroTentativas,
+    acertou: registro.acertou,
+    tentativas: registro.tentativas,
+  });
+  if (error) console.warn("[Patological] Não foi possível salvar a tentativa remota:", error.message);
+}
+
+/* =========================================================================
+ * 7. DOM / RENDERIZAÇÃO — utilitários
+ * ======================================================================= */
+const appEl = document.getElementById("app");
+const liveRegionEl = document.getElementById("live-region");
+function anunciar(texto) { liveRegionEl.textContent = ""; requestAnimationFrame(() => { liveRegionEl.textContent = texto; }); }
+function limparApp() { appEl.replaceChildren(); }
+function el(tag, attrs, children) {
+  const node = document.createElement(tag);
+  if (attrs) {
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") node.className = v;
+      else if (k === "text") node.textContent = v;
+      else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+      else if (v !== false && v !== null && v !== undefined) node.setAttribute(k, v);
+    }
+  }
+  (children || []).forEach((c) => { if (c) node.appendChild(c); });
+  return node;
+}
+function svgMascote() {
+  // Mesmo pato do PatoVetZee, mas com lupa de detetive em vez de
+  // microscópio — reforça a identidade visual da "família" de jogos sem
+  // ser um clone 1:1.
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML =
+    '<svg class="mascote" viewBox="0 0 84 64" aria-hidden="true">' +
+    '<path d="M14 62 Q14 40 30 37 Q46 40 46 62 Z" fill="#FFFFFF" stroke="#25324B" stroke-width="2.5"/>' +
+    '<path d="M22 40 L30 52 L26.5 39.5 Z" fill="#FFFFFF" stroke="#25324B" stroke-width="1.8"/>' +
+    '<path d="M38 40 L30 52 L33.5 39.5 Z" fill="#FFFFFF" stroke="#25324B" stroke-width="1.8"/>' +
+    '<circle cx="30" cy="23" r="15" fill="#FFDE59" stroke="#25324B" stroke-width="2.5"/>' +
+    '<path d="M23 9 Q26 2 33 7" fill="none" stroke="#25324B" stroke-width="2" stroke-linecap="round"/>' +
+    '<circle cx="34" cy="21" r="2.3" fill="#25324B"/>' +
+    '<path d="M40 24 Q51 24 48.5 30.5 Q42 33 37.5 28.5 Z" fill="#FF9F1C" stroke="#25324B" stroke-width="2"/>' +
+    '<circle cx="68" cy="30" r="11" fill="#DCEBFF" fill-opacity="0.5" stroke="#25324B" stroke-width="3"/>' +
+    '<line x1="76" y1="38" x2="82" y2="44" stroke="#25324B" stroke-width="4" stroke-linecap="round"/>' +
+    "</svg>";
+  return wrapper.firstElementChild;
+}
+function renderMarca() { return el("div", { class: "marca" }, [svgMascote(), el("h1", { text: "Patological" })]); }
+
+function dispararConfete(intensidade) {
+  const cores = ["#4E7CFF", "#FFD166", "#06D6A0", "#4ECDC4", "#C77DFF"];
+  const camada = document.getElementById("confetti-layer");
+  const n = intensidade === "alta" ? 70 : 28;
+  for (let i = 0; i < n; i++) {
+    const c = document.createElement("div");
+    c.className = "confete";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = cores[Math.floor(Math.random() * cores.length)];
+    c.style.animationDuration = 2 + Math.random() * 1.5 + "s";
+    c.style.animationDelay = Math.random() * 0.4 + "s";
+    c.style.setProperty("--rot", Math.random() * 360 + "deg");
+    camada.appendChild(c);
+    setTimeout(() => c.remove(), 4200);
+  }
+}
+
+/* =========================================================================
+ * 8. TELA INICIAL
+ * ======================================================================= */
+function renderIntro() {
+  limparApp();
+  const progressoHoje = carregarProgressoLocal(DESAFIO_DO_DIA.data);
+  const loginObrigatorio = SUPABASE_CONFIGURADO && !sessao.usuario;
+
+  const partes = [renderMarca()];
+
+  const faixaSessao = sessao.usuario
+    ? el("div", { class: "faixa-sessao" }, [
+        el("span", {}, [document.createTextNode("Jogando como "), el("strong", { text: sessao.apelido || "(definindo apelido…)" })]),
+        el("button", { class: "btn fantasma", text: "Sair", onclick: fazerLogout }),
+      ])
+    : SUPABASE_CONFIGURADO
+    ? el("div", { class: "faixa-sessao" }, [
+        el("span", { text: "É preciso ter uma conta pra jogar — a mesma conta do PatoVetZee funciona aqui também." }),
+        el("button", { class: "btn secundario", text: "Entrar / Criar conta", onclick: renderLogin }),
+      ])
+    : el("div", { class: "faixa-sessao" }, [el("span", { text: "Você está jogando sem login — seu desempenho não é salvo." })]);
+  partes.push(faixaSessao);
+
+  partes.push(el("section", { class: "card" }, [
+    el("h2", { text: `Desafio #${numeroRodada(DESAFIO_DO_DIA.data)}` }),
+    el("p", { text: "Adivinhe a doença veterinária de hoje. A cada palpite, você vê como ele se compara à doença-alvo: espécie, sistema, categoria etiológica, zoonose, transmissão, letalidade, cura e reversibilidade da lesão." }),
+    el("p", { text: "🟢 igual · 🟡/🟠 perto ou parcialmente igual · 🔴 diferente. Pras notas numéricas (letalidade, reversibilidade), a seta mostra se o alvo é maior (↑) ou menor (↓) que seu palpite. Tentativas ilimitadas." }),
+  ]));
+
+  if (loginObrigatorio) {
+    partes.push(el("section", { class: "card", style: "text-align:center" }, [
+      el("h2", { text: "Crie sua conta pra jogar" }),
+      el("button", { class: "btn", text: "Entrar / Criar conta", onclick: renderLogin }),
+    ]));
+  } else if (progressoHoje && progressoHoje.completed) {
+    partes.push(el("section", { class: "card" }, [
+      el("h2", { text: "Você já jogou o desafio de hoje" }),
+      el("p", { text: progressoHoje.acertou
+        ? `Você acertou em ${progressoHoje.numeroTentativas} palpite${progressoHoje.numeroTentativas === 1 ? "" : "s"}!`
+        : `Você não acertou hoje (${progressoHoje.numeroTentativas} palpites).` }),
+      el("div", {}, [
+        el("button", { class: "btn secundario", text: "Ver resultado novamente", onclick: () => renderResultadoDeProgresso(progressoHoje) }),
+        el("button", { class: "btn fantasma", text: "Jogar de novo (prática, não substitui seu resultado)", onclick: () => iniciarJogoPratica() }),
+      ]),
+    ]));
+  } else {
+    partes.push(el("section", { class: "card", style: "text-align:center" }, [
+      el("button", { class: "btn", text: "🔎 Começar desafio de hoje", onclick: () => { iniciarJogo({ pratica: false }); renderJogo(); } }),
+    ]));
+  }
+
+  partes.push(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn fantasma", text: "🐾 Voltar pro PatoVetZee", onclick: () => { location.href = "patovetzee.html"; } }),
+  ]));
+  partes.push(el("p", { class: "rodape-nota", text: "Patological — jogo irmão do PatoVetZee. Mecânica inspirada no Spotle." }));
+  partes.forEach((p) => appEl.appendChild(p));
+}
+
+/* --------- Login / cadastro (idêntico ao PatoVetZee — mesma conta) ------ */
+function renderLogin() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+  if (!SUPABASE_CONFIGURADO) {
+    appEl.appendChild(el("section", { class: "card" }, [
+      el("h2", { text: "Login ainda não configurado" }),
+      el("button", { class: "btn secundario", text: "⬅ Voltar", onclick: renderIntro }),
+    ]));
+    return;
+  }
+  const campoEmail = document.createElement("input");
+  campoEmail.type = "email"; campoEmail.className = "campo"; campoEmail.autocomplete = "email";
+  campoEmail.placeholder = "seuemail@exemplo.com";
+  const campoSenha = document.createElement("input");
+  campoSenha.type = "password"; campoSenha.className = "campo"; campoSenha.autocomplete = "current-password";
+  campoSenha.placeholder = "Sua senha (mínimo 6 caracteres)";
+  const erroEl = el("p", { class: "campo-erro" });
+
+  const card = el("section", { class: "card" }, [
+    el("h2", { text: "Entrar ou criar conta" }),
+    el("p", { class: "aviso-config", text: "💡 Já tem conta no PatoVetZee? Use o mesmo e-mail e senha — é a mesma conta." }),
+    el("label", { class: "rotulo-campo", text: "E-mail" }), campoEmail,
+    el("label", { class: "rotulo-campo", text: "Senha" }), campoSenha,
+    erroEl,
+  ]);
+  card.appendChild(el("div", {}, [
+    el("button", { class: "btn", text: "Entrar", onclick: async () => {
+      erroEl.style.color = ""; erroEl.textContent = "";
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email: campoEmail.value, password: campoSenha.value });
+      if (error) { erroEl.textContent = traduzirErroAuth(error); return; }
+      await carregarPerfilDaSessao(data.user);
+      if (!sessao.apelido) renderEscolherApelido(); else renderIntro();
+    }}),
+    el("button", { class: "btn secundario", text: "Criar conta", onclick: async () => {
+      erroEl.style.color = ""; erroEl.textContent = "";
+      const { data, error } = await supabaseClient.auth.signUp({ email: campoEmail.value, password: campoSenha.value });
+      if (error) { erroEl.textContent = traduzirErroAuth(error); return; }
+      if (!data.session) { erroEl.style.color = "#1a7a3c"; erroEl.textContent = "Conta criada! Verifique seu e-mail para confirmar antes de entrar."; return; }
+      await carregarPerfilDaSessao(data.user);
+      renderEscolherApelido();
+    }}),
+  ]));
+  appEl.appendChild(card);
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [el("button", { class: "btn fantasma", text: "⬅ Voltar", onclick: renderIntro })]));
+  campoEmail.focus();
+}
+
+function renderEscolherApelido() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+  const campo = document.createElement("input");
+  campo.type = "text"; campo.className = "campo"; campo.maxLength = 24;
+  campo.placeholder = "Ex.: PatoVeterinario99";
+  const erroEl = el("p", { class: "campo-erro" });
+  appEl.appendChild(el("section", { class: "card" }, [
+    el("h2", { text: "Escolha seu apelido" }),
+    el("p", { text: "Esse apelido é compartilhado com o PatoVetZee. Pode ser diferente do seu nome real." }),
+    campo, erroEl,
+    el("button", { class: "btn", text: "Salvar e continuar", onclick: async () => {
+      const apelido = campo.value.trim();
+      erroEl.textContent = "";
+      if (apelido.length < 2 || apelido.length > 24) { erroEl.textContent = "O apelido precisa ter entre 2 e 24 caracteres."; return; }
+      const { error } = await supabaseClient.from("perfis").insert({ id: sessao.usuario.id, apelido });
+      if (error) {
+        erroEl.textContent = /duplicate key|unique/i.test(error.message) ? "Esse apelido já está em uso — escolha outro." : error.message;
+        return;
+      }
+      sessao.apelido = apelido;
+      renderIntro();
+    }}),
+  ]));
+  campo.focus();
+}
+
+/* =========================================================================
+ * 9. JOGO
+ * ======================================================================= */
+let estado = { desafio: null, alvo: null, tentativas: [], resolvido: false, modoPratica: false };
+
+function iniciarJogo({ pratica }) {
+  estado = { desafio: DESAFIO_DO_DIA, alvo: MAPA_DOENCAS[DESAFIO_DO_DIA.doencaAlvoId], tentativas: [], resolvido: false, modoPratica: pratica };
+}
+function iniciarJogoPratica() {
+  const idAleatorio = embaralharComSeed(BANCO_DOENCAS.map((d) => d.id), "pratica|" + Date.now() + "|" + Math.random())[0];
+  estado = { desafio: DESAFIO_DO_DIA, alvo: MAPA_DOENCAS[idAleatorio], tentativas: [], resolvido: false, modoPratica: true };
+  renderJogo();
+}
+
+function construirCartaoPalpite(palpiteId, resultado, numero, acertou) {
+  const doenca = MAPA_DOENCAS[palpiteId];
+  const grade = el("div", { class: "grade-atributos" }, ORDEM_ATRIBUTOS.map(([chave, rotulo]) =>
+    el("div", { class: `celula-atributo cor-${resultado[chave].cor}` }, [
+      el("div", { class: "rotulo-atributo", text: rotulo }),
+      el("div", { class: "valor-atributo", text: resultado[chave].texto }),
+    ])
+  ));
+  return el("div", { class: "cartao-palpite" + (acertou ? " acertou" : "") }, [
+    el("h3", {}, [el("span", { class: "numero-palpite", text: String(numero) }), document.createTextNode(doenca.nome + (acertou ? " 🎉" : ""))]),
+    grade,
+  ]);
+}
+
+function renderLegenda() {
+  return el("div", { class: "legenda" }, [
+    el("span", { class: "item-legenda" }, [el("span", { class: "ponto-legenda cor-verde" }), document.createTextNode("Igual")]),
+    el("span", { class: "item-legenda" }, [el("span", { class: "ponto-legenda cor-amarelo" }), document.createTextNode("Perto/parcial")]),
+    el("span", { class: "item-legenda" }, [el("span", { class: "ponto-legenda cor-laranja" }), document.createTextNode("Longe")]),
+    el("span", { class: "item-legenda" }, [el("span", { class: "ponto-legenda cor-vermelho" }), document.createTextNode("Diferente")]),
+  ]);
+}
+
+function renderJogo() {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const idsJaPalpitados = new Set(estado.tentativas.map((t) => t.doencaId));
+  const opcoesDisponiveis = BANCO_DOENCAS.filter((d) => !idsJaPalpitados.has(d.id));
+
+  const cardForm = el("section", { class: "card" }, [
+    el("h2", { text: estado.modoPratica ? "Modo prática" : `Desafio #${numeroRodada(estado.desafio.data)}` }),
+    el("p", { class: "contador-tentativas", text: `${estado.tentativas.length} palpite${estado.tentativas.length === 1 ? "" : "s"} até agora.` }),
+  ]);
+
+  const campoPalpite = document.createElement("input");
+  campoPalpite.type = "text"; campoPalpite.className = "campo"; campoPalpite.setAttribute("list", "lista-doencas-patological");
+  campoPalpite.placeholder = "Nome da doença…"; campoPalpite.autocomplete = "off";
+  const datalist = document.createElement("datalist");
+  datalist.id = "lista-doencas-patological";
+  opcoesDisponiveis.forEach((d) => { const opt = document.createElement("option"); opt.value = d.nome; datalist.appendChild(opt); });
+
+  const erroEl = el("p", { class: "campo-erro" });
+  const btnPalpitar = el("button", { class: "btn", text: "Palpitar" });
+
+  function submeterPalpite() {
+    erroEl.textContent = "";
+    const texto = campoPalpite.value.trim().toLowerCase();
+    const doenca = opcoesDisponiveis.find((d) => d.nome.toLowerCase() === texto);
+    if (!doenca) { erroEl.textContent = "Escolha uma doença válida da lista (ainda não palpitada)."; return; }
+    const resultado = avaliarPalpite(doenca, estado.alvo);
+    const acertou = doenca.id === estado.alvo.id;
+    estado.tentativas.push({ doencaId: doenca.id, resultado, acertou });
+    campoPalpite.value = "";
+    if (acertou) { estado.resolvido = true; finalizarPartida(true); }
+    else renderJogo();
+  }
+
+  campoPalpite.addEventListener("keydown", (ev) => { if (ev.key === "Enter") { ev.preventDefault(); submeterPalpite(); } });
+  btnPalpitar.addEventListener("click", submeterPalpite);
+
+  cardForm.appendChild(el("div", { class: "linha-palpite-form" }, [campoPalpite, datalist, btnPalpitar]));
+  cardForm.appendChild(erroEl);
+  cardForm.appendChild(renderLegenda());
+  appEl.appendChild(cardForm);
+
+  // Palpites mais recentes primeiro, pra não precisar rolar a tela.
+  estado.tentativas.slice().reverse().forEach((t, i) => {
+    const numero = estado.tentativas.length - i;
+    appEl.appendChild(construirCartaoPalpite(t.doencaId, t.resultado, numero, t.acertou));
+  });
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn fantasma", text: "⬅ Desistir e voltar ao início", onclick: renderIntro }),
+  ]));
+
+  campoPalpite.focus();
+}
+
+function finalizarPartida(acertou) {
+  const registro = {
+    completed: true, acertou, numeroTentativas: estado.tentativas.length,
+    doencaAlvoId: estado.alvo.id, tentativas: estado.tentativas.map((t) => t.doencaId), timestamp: Date.now(),
+  };
+  if (!estado.modoPratica) {
+    salvarProgressoLocal(registro);
+    salvarTentativaRemota(registro);
+  }
+  renderResultado(registro);
+}
+
+function gerarGradeCompartilhar(tentativas) {
+  const emojiPorCor = { verde: "🟩", amarelo: "🟨", laranja: "🟧", vermelho: "🟥" };
+  return tentativas.map((t) => ORDEM_ATRIBUTOS.map(([chave]) => emojiPorCor[t.resultado[chave].cor]).join(""));
+}
+
+function renderResultado(registro) {
+  limparApp();
+  appEl.appendChild(renderMarca());
+
+  const cardResumo = el("section", { class: "resumo-total card" }, [
+    el("h2", { text: registro.acertou ? "Você acertou! 🎉" : "Fim de jogo" }),
+    el("div", { class: "numero-grande", text: String(registro.numeroTentativas) }),
+    el("p", { text: `palpite${registro.numeroTentativas === 1 ? "" : "s"} até ${registro.acertou ? "acertar" : "desistir"} — a doença era "${MAPA_DOENCAS[registro.doencaAlvoId].nome}".` }),
+  ]);
+
+  if (registro.acertou) dispararConfete(registro.numeroTentativas <= 3 ? "alta" : "media");
+
+  const linhasEmoji = gerarGradeCompartilhar(estado.tentativas.length ? estado.tentativas : registro.tentativas.map((id) => ({ resultado: avaliarPalpite(MAPA_DOENCAS[id], MAPA_DOENCAS[registro.doencaAlvoId]) })));
+  const gradeEl = el("div", { class: "grade-compartilhar" }, linhasEmoji.map((linha) =>
+    el("div", { class: "linha-compartilhar", text: linha })
+  ));
+  cardResumo.appendChild(gradeEl);
+
+  const btnCopiar = el("button", { class: "btn secundario", text: "📋 Copiar resultado" });
+  btnCopiar.addEventListener("click", async () => {
+    const texto = `Patological #${numeroRodada(estado.desafio.data)} — ${registro.acertou ? registro.numeroTentativas + "/∞" : "❌"}\n${linhasEmoji.join("\n")}`;
+    try { await navigator.clipboard.writeText(texto); btnCopiar.textContent = "Copiado!"; setTimeout(() => { btnCopiar.textContent = "📋 Copiar resultado"; }, 1800); }
+    catch (e) { console.warn("[Patological] Não foi possível copiar:", e); }
+  });
+  cardResumo.appendChild(btnCopiar);
+  appEl.appendChild(cardResumo);
+
+  appEl.appendChild(el("section", { class: "card", style: "text-align:center" }, [
+    el("button", { class: "btn fantasma", text: "⬅ Voltar ao início", onclick: renderIntro }),
+  ]));
+}
+
+function renderResultadoDeProgresso(progresso) {
+  estado = { desafio: DESAFIO_DO_DIA, alvo: MAPA_DOENCAS[progresso.doencaAlvoId], tentativas: [], resolvido: true, modoPratica: false };
+  renderResultado(progresso);
+}
+
+/* =========================================================================
+ * 10. INICIALIZAÇÃO
+ * ======================================================================= */
+async function init() {
+  if (DEBUG) console.log("[Patological] Modo debug ativo (?debug=1).");
+  validarBancoDoencas();
+  renderIntro();
+  const [, bancoTrocou] = await Promise.all([verificarSessaoAtual(), carregarBancoRemoto()]);
+  if (bancoTrocou) DESAFIO_DO_DIA = gerarDesafioDiario(DESAFIO_DO_DIA.data);
+  if (sessao.usuario || bancoTrocou) renderIntro();
+}
+init();
+</script>
+</body>
+</html>
