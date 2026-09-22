@@ -94,10 +94,12 @@ body{
 .cartao-palpite h3{ margin:0 0 10px; font-size:17px; display:flex; align-items:center; gap:8px; }
 .numero-palpite{ display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px;
   border-radius:50%; background: var(--cor-texto); color:#fff; font-size:13px; font-weight:800; flex-shrink:0; }
-.grade-atributos{ display:grid; grid-template-columns: repeat(auto-fit, minmax(96px,1fr)); gap:8px; }
-.celula-atributo{ border-radius:12px; padding:8px 9px; text-align:center; border:2px solid transparent; min-width:0; overflow-wrap:break-word; }
-.celula-atributo .rotulo-atributo{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; opacity:0.75; margin-bottom:3px; overflow-wrap:break-word; }
-.celula-atributo .valor-atributo{ font-size:13px; font-weight:800; line-height:1.25; overflow-wrap:break-word; }
+.grade-atributos{ display:grid; grid-template-columns: repeat(2, 1fr); gap:8px; }
+@media (min-width:460px){ .grade-atributos{ grid-template-columns: repeat(3, 1fr); } }
+@media (min-width:620px){ .grade-atributos{ grid-template-columns: repeat(4, 1fr); } }
+.celula-atributo{ border-radius:12px; padding:8px 6px; text-align:center; border:2px solid transparent; min-width:0; overflow-wrap:normal; word-break:normal; }
+.celula-atributo .rotulo-atributo{ font-size:9.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; opacity:0.75; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.celula-atributo .valor-atributo{ font-size:12.5px; font-weight:800; line-height:1.3; hyphens:none; }
 .celula-atributo.cor-verde{ background: var(--cor-verde-bg); color: var(--cor-verde); border-color: var(--cor-verde); }
 .celula-atributo.cor-amarelo{ background: var(--cor-amarelo-bg); color: var(--cor-amarelo); border-color: var(--cor-amarelo); }
 .celula-atributo.cor-laranja{ background: var(--cor-laranja-bg); color: var(--cor-laranja); border-color: var(--cor-laranja); }
@@ -167,7 +169,7 @@ const CATALOGO_SISTEMAS = {
   sistema_musculoesqueletico: "Musculoesquelético",
   sistema_nervoso: "Nervoso",
   sistema_endocrino: "Endócrino",
-  sistema_hematopoietico_linfatico: "Hematopoiético/linfático",
+  sistema_hematopoietico_linfatico: "Hematopoiético / linfático",
   doencas_infecciosas_sistemicas: "Infecciosas sistêmicas",
 };
 
@@ -178,10 +180,10 @@ const CATALOGO_CATEGORIAS = {
   infecciosa_fungica: "Infecciosa (fúngica)",
   neoplasica: "Neoplásica",
   degenerativa: "Degenerativa",
-  congenita_genetica: "Congênita/genética",
+  congenita_genetica: "Congênita / genética",
   toxica: "Tóxica",
-  traumatica_mecanica: "Traumática/mecânica",
-  metabolica_endocrina: "Metabólica/endócrina",
+  traumatica_mecanica: "Traumática / mecânica",
+  metabolica_endocrina: "Metabólica / endócrina",
   imunomediada: "Imunomediada",
 };
 
