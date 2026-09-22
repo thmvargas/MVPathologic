@@ -86,6 +86,14 @@ body{
 }
 .card h2{ margin-top:0; }
 
+/* --------- Card de destaque do jogo irmão (Patological) --------- */
+.card-patological{
+  text-align:center;
+  background: linear-gradient(135deg, #F3E8FF, #E8FBFA);
+  border-color: var(--cor-acento);
+}
+.card-patological h2{ color: var(--cor-acento); }
+
 /* --------- Botões --------- */
 .btn{
   font-family: inherit;
@@ -8901,6 +8909,15 @@ function renderIntro() {
     partes.push(cardIniciar);
   }
 
+  // Jogo irmão: mesma conta (login/perfis compartilhados), tabelas próprias.
+  // Destacado num card próprio (não misturado com os modos internos do
+  // PatoVetZee) pra deixar claro que é outro jogo.
+  partes.push(el("section", { class: "card card-patological" }, [
+    el("h2", { text: "🔎 Conhece o Patological?" }),
+    el("p", { text: "Jogo irmão do PatoVetZee: adivinhe a doença veterinária do dia, estilo Wordle/Spotle. Mesma conta, desafio diferente." }),
+    el("button", { class: "btn acento", text: "Jogar Patological", onclick: () => { location.href = "patological.html"; } }),
+  ]));
+
   const botoesExtras = [];
   if (!loginObrigatorio) {
     botoesExtras.push(el("button", { class: "btn secundario", text: "🩺 Modo por sistemas", onclick: renderEscolherSistema }));
@@ -8908,8 +8925,6 @@ function renderIntro() {
   }
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🕘 Histórico", onclick: renderHistorico }));
   botoesExtras.push(el("button", { class: "btn fantasma", text: "🏆 Ranking", onclick: () => renderRanking() }));
-  // Jogo irmão: mesma conta (login/perfis compartilhados), tabelas próprias.
-  botoesExtras.push(el("button", { class: "btn acento", text: "🔎 Patological — adivinhe a doença", onclick: () => { location.href = "patological.html"; } }));
 
   const cardExtras = el("section", { class: "card" }, [
     el("h2", { text: "Outras opções" }),
