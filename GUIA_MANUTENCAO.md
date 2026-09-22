@@ -20,6 +20,7 @@ Arquivos desta pasta:
 | `supabase_migration_005_email_professor.sql` | Migração que salva o e-mail de cada aluno (tabela separada, só o professor/admin lê) e mostra no painel "📊 Desempenho dos alunos" — precisa rodar uma vez, depois da 002. |
 | `patological.html` | Jogo irmão: "adivinhe a doença do dia" (estilo Spotle). Arquivo separado, ver seção 0.4. |
 | `supabase_migration_patological_001.sql` | Cria as tabelas do Patological (`patological_doencas`, `patological_tentativas`) e insere o lote inicial de 39 doenças — precisa rodar uma vez. |
+| `supabase_migration_patological_002_resto_do_banco.sql` | Completa o banco do Patological com as 176 doenças restantes (total 215, igual ao PatoVetZee) — precisa rodar uma vez, depois da 001. |
 
 ---
 
@@ -154,9 +155,13 @@ num dos dois já entra logado no outro. As tabelas de conteúdo/tentativas
 (`patological_doencas`, `patological_tentativas`) são **próprias**, sem
 relação com `doencas`/`tentativas` do PatoVetZee.
 
-Lançou com um lote inicial de **39 doenças** (~3 por sistema, reaproveitando
-os mesmos critérios de letalidade/cura/reversibilidade já usados no
-PatoVetZee onde a doença coincide). Pra adicionar mais doenças: edite o
+Lançou com um lote inicial de 39 doenças pra validar a mecânica; depois de
+aprovado, portei o banco inteiro — hoje tem as **mesmas 215 doenças do
+PatoVetZee** (letalidade/cura/reversibilidade puxados direto de lá;
+categoria etiológica e "contagiosa" são específicas deste jogo, derivadas
+dos parâmetros binários já existentes + julgamento manual nos ~40 casos
+sem categoria óbvia — ex.: intoxicações, doenças mecânicas/obstrutivas).
+Pra adicionar mais doenças: edite o
 array `BANCO_DOENCAS_EMBUTIDO` em `patological.html` (mesmo formato:
 `id, nome, especie, sistema, categorias, zoonose, contagiosa, letalidade,
 cura, reversibilidade`) e gere/rode um `insert ... on conflict (id) do
