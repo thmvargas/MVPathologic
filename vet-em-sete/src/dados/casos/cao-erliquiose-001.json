@@ -1,6 +1,6 @@
 {
   "id": "cao-erliquiose-001",
-  "status": "rascunho",
+  "status": "revisado",
   "versao": 1,
   "especie": "canina",
   "grupo_especie": "caes",
@@ -97,16 +97,14 @@
         "unidade": "°C",
         "referencia": "37,5–39,2",
         "fonte": "feitosa2020",
-        "alterado": "alto",
-        "a_revisar": true
+        "alterado": "alto"
       },
       {
         "nome": "Frequência cardíaca",
         "valor": "128",
         "unidade": "bpm",
         "referencia": "60–160",
-        "fonte": "feitosa2020",
-        "a_revisar": true
+        "fonte": "feitosa2020"
       },
       {
         "nome": "Frequência respiratória",
@@ -114,8 +112,7 @@
         "unidade": "mpm",
         "referencia": "10–30",
         "fonte": "feitosa2020",
-        "alterado": "alto",
-        "a_revisar": true
+        "alterado": "alto"
       },
       {
         "nome": "Mucosas",
@@ -180,8 +177,7 @@
             "unidade": "×10⁶/µL",
             "referencia": "5,5–8,5",
             "fonte": "jain1993",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "Hemoglobina",
@@ -189,8 +185,7 @@
             "unidade": "g/dL",
             "referencia": "12–18",
             "fonte": "jain1993",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "Hematócrito",
@@ -198,24 +193,21 @@
             "unidade": "%",
             "referencia": "37–55",
             "fonte": "jain1993",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "VCM",
             "valor": "65,8",
             "unidade": "fL",
             "referencia": "60–77",
-            "fonte": "jain1993",
-            "a_revisar": true
+            "fonte": "jain1993"
           },
           {
             "analito": "CHCM",
             "valor": "33,6",
             "unidade": "g/dL",
             "referencia": "32–36",
-            "fonte": "jain1993",
-            "a_revisar": true
+            "fonte": "jain1993"
           },
           {
             "analito": "Leucócitos totais",
@@ -223,8 +215,7 @@
             "unidade": "×10³/µL",
             "referencia": "6,0–17,0",
             "fonte": "jain1993",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "Plaquetas",
@@ -232,8 +223,7 @@
             "unidade": "×10³/µL",
             "referencia": "200–500",
             "fonte": "jain1993",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "Proteína plasmática total",
@@ -241,8 +231,7 @@
             "unidade": "g/dL",
             "referencia": "6,0–8,0",
             "fonte": "jain1993",
-            "alterado": "alto",
-            "a_revisar": true
+            "alterado": "alto"
           }
         ],
         "descricao": [
@@ -268,8 +257,7 @@
             "unidade": "g/dL",
             "referencia": "5,4–7,1",
             "fonte": "kaneko2008",
-            "alterado": "alto",
-            "a_revisar": true
+            "alterado": "alto"
           },
           {
             "analito": "Albumina",
@@ -277,8 +265,7 @@
             "unidade": "g/dL",
             "referencia": "2,6–3,3",
             "fonte": "kaneko2008",
-            "alterado": "baixo",
-            "a_revisar": true
+            "alterado": "baixo"
           },
           {
             "analito": "Globulinas",
@@ -286,40 +273,35 @@
             "unidade": "g/dL",
             "referencia": "2,7–4,4",
             "fonte": "kaneko2008",
-            "alterado": "alto",
-            "a_revisar": true
+            "alterado": "alto"
           },
           {
             "analito": "ALT",
             "valor": "62",
             "unidade": "U/L",
             "referencia": "21–102",
-            "fonte": "kaneko2008",
-            "a_revisar": true
+            "fonte": "kaneko2008"
           },
           {
             "analito": "Fosfatase alcalina",
             "valor": "98",
             "unidade": "U/L",
             "referencia": "20–156",
-            "fonte": "kaneko2008",
-            "a_revisar": true
+            "fonte": "kaneko2008"
           },
           {
             "analito": "Ureia (BUN)",
             "valor": "22",
             "unidade": "mg/dL",
             "referencia": "10–28",
-            "fonte": "kaneko2008",
-            "a_revisar": true
+            "fonte": "kaneko2008"
           },
           {
             "analito": "Creatinina",
             "valor": "1,1",
             "unidade": "mg/dL",
             "referencia": "0,5–1,5",
-            "fonte": "kaneko2008",
-            "a_revisar": true
+            "fonte": "kaneko2008"
           }
         ],
         "conclusao": "Hiperglobulinemia com hipoalbuminemia discreta. Função hepática e renal sem alterações."
@@ -613,6 +595,8 @@
   ],
   "revisao": {
     "autor": "Claude (rascunho)",
-    "observacoes": "Intervalos de referência marcados 'a revisar' foram citados de memória e precisam ser conferidos na fonte ou trocados pelos do laboratório. Conferir também a classificação da prednisolona (desnecessário x aceitável) e do imidocarb."
+    "revisor": "Prof. Thiago Vargas",
+    "revisado_em": "2026-11-08",
+    "observacoes": "Aprovado pelo professor em 08/11/2026, incluindo intervalos de referência e classificação das condutas."
   }
 }

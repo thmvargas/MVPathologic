@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Inter, Lora } from "next/font/google";
+import { LogIn, LogOut, UserRound } from "lucide-react";
+import { obterSessao } from "@/lib/sessao";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -13,7 +15,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#f5efe6", width: "device-width", initialScale: 1 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const sessao = await obterSessao().catch(() => ({ estado: "anonimo" as const }));
   return (
     <html lang="pt-BR" className={`${inter.variable} ${lora.variable}`}>
       <body className="min-h-dvh">
@@ -25,6 +28,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="font-titulo text-xl font-semibold text-vinho">
               Vet em Sete
             </Link>
+            {sessao.estado === "ok" ? (
+              <nav className="flex items-center gap-1 text-sm">
+                <Link href="/eu" className="inline-flex min-h-11 items-center gap-1.5 px-2 text-vinho">
+                  <UserRound aria-hidden size={18} strokeWidth={1.5} />
+                  <span className="max-w-32 truncate">{sessao.perfil.apelido}</span>
+                </Link>
+                <form action="/sair" method="post">
+                  <button type="submit" aria-label="Sair" className="inline-flex min-h-11 items-center px-2 text-suave">
+                    <LogOut aria-hidden size={18} strokeWidth={1.5} />
+                  </button>
+                </form>
+              </nav>
+            ) : sessao.estado === "anonimo" || sessao.estado === "dominio_recusado" ? (
+              <Link href="/entrar" className="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm text-vinho">
+                <LogIn aria-hidden size={18} strokeWidth={1.5} />
+                Entrar
+              </Link>
+            ) : null}
           </div>
         </header>
         <main id="conteudo" className="mx-auto max-w-2xl px-4 pb-16 pt-4">
@@ -32,7 +53,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <footer className="border-t border-marfim">
           <p className="mx-auto max-w-2xl px-4 py-4 text-xs text-suave">
-            Conteúdo didático para graduação em Medicina Veterinária. Não substitui avaliação clínica.
+            Conteúdo didático para graduação em Medicina Veterinária. Não substitui avaliação clínica.{" "}
+            <Link href="/privacidade" className="underline">Privacidade</Link>
           </p>
         </footer>
       </body>

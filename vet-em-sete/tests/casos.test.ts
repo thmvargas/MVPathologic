@@ -42,8 +42,11 @@ describe.each(arquivos)("caso %s", (arquivo) => {
 describe("validador bloqueia aprovação", () => {
   it("caso com itens 'a revisar' tem pendências e não pode ser aprovado", async () => {
     const { caso } = await import("./apoio");
-    const p = pendenciasDoCaso(caso, mapa);
-    expect(p.some((x) => x.problema.includes("a revisar"))).toBe(true);
+    const copia = structuredClone(caso);
+    copia.exames[0].resultado.tabela![0].a_revisar = true;
+    copia.tratamentos[0].dose = { texto: "x", fonte: "neer2002", a_revisar: true };
+    const p = pendenciasDoCaso(copia, mapa);
+    expect(p.filter((x) => x.problema.includes("a revisar")).length).toBe(2);
   });
   it("valor laboratorial com fonte fora das referências gera pendência", async () => {
     const { caso } = await import("./apoio");

@@ -8,7 +8,15 @@ tratamento e uma explicação didática.
 
 Plano completo, esquema de dados e fórmula de pontuação: [`PLANO.md`](./PLANO.md).
 
-## Situação atual: Etapa 2 (jogo sem login)
+## Situação atual: Etapa 3 (login, cadastro, estatísticas e caso do dia)
+
+- Login sem senha com e-mail institucional (código de 6 dígitos ou link).
+- Cadastro com nome, apelido, semestre, turma e aceite de privacidade.
+- Caso do dia: um por dia, sorteado entre os casos **revisados**, igual para todos.
+- Estatísticas do aluno em "Minhas estatísticas" (`/eu`), com exclusão de dados.
+- O caso de exemplo continua jogável sem login, fora do ranking.
+
+### Etapa 2 (jogo sem login)
 
 - Um caso de exemplo completo (erliquiose monocítica canina, **em rascunho**).
 - Revelação em 7 tentativas, escolha de exames a partir da 5ª, autocompletar,
@@ -56,7 +64,93 @@ edita tudo pelo painel de administração, sem mexer em arquivo.
 4. Em **Environment Variables**, cadastre `SEGREDO_PARTIDA` (gere um novo, não reutilize o do seu computador).
 5. Clique em **Deploy**. A Vercel publica de novo a cada push.
 
-Supabase, login e aprovação de casos entram neste README nas próximas etapas.
+## Configurar o login (uma vez só)
+
+O Vet em Sete usa o mesmo projeto Supabase do PatoVetZee, com tabelas
+próprias (prefixo `ves_`). Nada do PatoVetZee muda.
+
+### 1. Criar as tabelas
+
+Supabase → **SQL Editor** → **New query** → cole o conteúdo de
+[`supabase/ves_001_login_partidas.sql`](./supabase/ves_001_login_partidas.sql) → **Run**.
+Deve aparecer "Success. No rows returned".
+
+### 2. Liberar o endereço do site
+
+Supabase → **Authentication** → **URL Configuration** → em **Redirect URLs**,
+clique em **Add URL** e adicione:
+
+```
+https://vet-em-sete.vercel.app/**
+http://localhost:3000/**
+```
+
+Não mude o "Site URL" (ele é do PatoVetZee).
+
+### 3. Modelo do e-mail de acesso
+
+Supabase → **Authentication** → **Emails** → aba **Magic Link**:
+
+- **Subject:** `Seu código do Vet em Sete`
+- **Body** (apague o que estiver lá e cole):
+
+```html
+<h2>Vet em Sete</h2>
+<p>Seu código de acesso:</p>
+<p style="font-size:28px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
+<p>Ou toque no link: <a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Entrar no Vet em Sete</a></p>
+<p>Se você não pediu este e-mail, ignore.</p>
+```
+
+O PatoVetZee não usa esse modelo (ele entra com senha), então a troca não o afeta.
+
+### 4. Remetente dos e-mails (Gmail)
+
+Sem isso, o Supabase só entrega e-mail para os membros da equipe do projeto,
+e os alunos não recebem o código.
+
+1. Crie uma conta Gmail só para o jogo (ex.: `vetemsete.unifeob@gmail.com`).
+2. Nessa conta, ative a **verificação em duas etapas**
+   (myaccount.google.com → Segurança).
+3. Gere uma **senha de app** em myaccount.google.com/apppasswords
+   (nome: "Supabase"). Copie os 16 caracteres.
+4. Supabase → **Authentication** → **Emails** → **SMTP Settings** →
+   **Enable custom SMTP**:
+   - Sender email: o Gmail criado · Sender name: `Vet em Sete`
+   - Host: `smtp.gmail.com` · Port: `465`
+   - Username: o Gmail criado · Password: a senha de app
+5. Supabase → **Authentication** → **Rate Limits**: suba "emails per hour"
+   para 100.
+
+Peça aos alunos para olhar a caixa de spam no primeiro acesso.
+
+### 5. Chave secreta na Vercel
+
+Supabase → **Project Settings** → **API Keys** → copie a chave
+**service_role** (secreta; nunca cole em chat, e-mail ou código).
+
+Vercel → projeto **vet-em-sete** → **Settings** → **Environment Variables**
+→ **Add**: nome `SUPABASE_SERVICE_ROLE_KEY`, valor = a chave, marque
+**Production** e **Preview**, **Sensitive** ligado → **Save**. Depois,
+em **Deployments**, abra o mais recente → **⋯** → **Redeploy**.
+
+As outras variáveis (URL, chave pública, domínios, professores) já estão
+cadastradas na Vercel.
+
+## Casos e caso do dia
+
+Só casos com `"status": "revisado"` entram no caso do dia. O sorteio é feito
+na primeira visita de cada dia (horário de Brasília) e fica gravado na tabela
+`ves_caso_do_dia`. Para fixar um caso numa data, por enquanto, rode no SQL
+Editor (na Etapa 6 isso vira uma tela):
+
+```sql
+insert into ves_caso_do_dia (data, caso_id, agendado)
+values ('2026-11-20', 'cao-erliquiose-001', true)
+on conflict (data) do update set caso_id = excluded.caso_id, agendado = true;
+```
+
+Com um único caso revisado, ele se repete todo dia até a Etapa 6 trazer o lote inicial.
 
 ## Aviso
 

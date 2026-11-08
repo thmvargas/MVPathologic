@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  Activity, BookOpen, CircleAlert, ClipboardList, Copy, History, Info, ListChecks, MessageSquareText,
+  Activity, BookOpen, ChartColumn, CircleAlert, ClipboardList, Copy, History, Info, ListChecks, MessageSquareText,
   PawPrint, Pill, RotateCcw, Send, SkipForward, Stethoscope, TestTubes,
 } from "lucide-react";
 import type { Acao, PalpiteVisto, Visao } from "@/lib/jogo/motor";
@@ -34,8 +34,13 @@ function salvar(casoId: string, token: string | null) {
   }
 }
 
-export default function Partida({ casoId }: { casoId: string }) {
+export type ModoPartida = { tipo: "exemplo"; casoId: string } | { tipo: "diario" };
+
+export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: string }) {
+  const casoId = modo.tipo === "exemplo" ? modo.casoId : "diario";
   const [token, setToken] = useState<string | null>(null);
+  const [partidaId, setPartidaId] = useState<number | null>(null);
+  const [dataCaso, setDataCaso] = useState<string | null>(null);
   const [visao, setVisao] = useState<Visao | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [ocupado, setOcupado] = useState(false);
@@ -45,22 +50,34 @@ export default function Partida({ casoId }: { casoId: string }) {
   const iniciar = useCallback(
     async (tokenSalvo?: string) => {
       setErro(null);
-      const r = await fetch("/api/partida", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ casoId, token: tokenSalvo }),
-      });
-      const j = await r.json();
+      const r =
+        modo.tipo === "diario"
+          ? await fetch("/api/diario", { method: "POST" })
+          : await fetch("/api/partida", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ casoId, token: tokenSalvo }),
+            });
+      const j = await r.json().catch(() => ({}));
       if (!r.ok) return setErro(j.erro ?? "Não foi possível abrir o caso.");
-      setToken(j.token);
-      setVisao(j.visao);
-      salvar(casoId, j.token);
+      receber(j);
     },
-    [casoId],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [casoId, modo.tipo],
   );
 
+  function receber(j: { token?: string; partidaId?: number; data?: string; visao: Visao }) {
+    setVisao(j.visao);
+    if (j.token) {
+      setToken(j.token);
+      salvar(casoId, j.token);
+    }
+    if (j.partidaId) setPartidaId(j.partidaId);
+    if (j.data) setDataCaso(j.data);
+  }
+
   useEffect(() => {
-    iniciar(lerSalvo(casoId));
+    iniciar(modo.tipo === "exemplo" ? lerSalvo(casoId) : undefined);
     fetch("/api/diagnosticos")
       .then((r) => r.json())
       .then(setDiagnosticos)
@@ -68,23 +85,21 @@ export default function Partida({ casoId }: { casoId: string }) {
   }, [casoId, iniciar]);
 
   async function agir(acao: Acao) {
-    if (!token || ocupado) return;
+    if (ocupado || (modo.tipo === "exemplo" ? !token : !partidaId)) return;
     setOcupado(true);
     setErro(null);
     try {
-      const r = await fetch("/api/partida/acao", {
+      const r = await fetch(modo.tipo === "diario" ? "/api/diario/acao" : "/api/partida/acao", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, acao }),
+        body: JSON.stringify(modo.tipo === "diario" ? { partidaId, acao } : { token, acao }),
       });
-      const j = await r.json();
+      const j = await r.json().catch(() => ({}));
       if (!r.ok) {
         setErro(j.erro ?? "Algo deu errado.");
         return;
       }
-      setToken(j.token);
-      setVisao(j.visao);
-      salvar(casoId, j.token);
+      receber(j);
     } catch {
       setErro("Sem conexão. Tente de novo.");
     } finally {
@@ -117,7 +132,7 @@ export default function Partida({ casoId }: { casoId: string }) {
       {/* Cabeçalho da partida */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm text-suave">
-          {ROTULO_GRUPO[p.grupo_especie]} · caso de exemplo
+          {ROTULO_GRUPO[p.grupo_especie]} · {rotulo}
         </p>
         <Marcador visao={visao} />
       </div>
@@ -274,11 +289,16 @@ export default function Partida({ casoId }: { casoId: string }) {
       {fim && (
         <Final
           visao={visao}
-          onRecomecar={() => {
-            salvar(casoId, null);
-            setVisao(null);
-            iniciar();
-          }}
+          dataCaso={dataCaso ?? dataBR()}
+          onRecomecar={
+            modo.tipo === "exemplo"
+              ? () => {
+                  salvar(casoId, null);
+                  setVisao(null);
+                  iniciar();
+                }
+              : undefined
+          }
         />
       )}
     </div>
@@ -369,13 +389,13 @@ function ResultadoDiagnostico({ visao }: { visao: Visao }) {
   );
 }
 
-function Final({ visao, onRecomecar }: { visao: Visao; onRecomecar: () => void }) {
+function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: string; onRecomecar?: () => void }) {
   const [copiado, setCopiado] = useState(false);
   const pt = visao.pontuacao!;
   const ex = visao.explicacao!;
 
   async function copiar() {
-    const texto = textoCompartilhar(visao, dataBR(), typeof window !== "undefined" ? window.location.origin : undefined);
+    const texto = textoCompartilhar(visao, dataCaso, typeof window !== "undefined" ? window.location.origin : undefined);
     try {
       await navigator.clipboard.writeText(texto);
     } catch {
@@ -423,10 +443,17 @@ function Final({ visao, onRecomecar }: { visao: Visao; onRecomecar: () => void }
             <Copy aria-hidden size={18} strokeWidth={1.5} />
             {copiado ? "Copiado" : "Copiar resultado"}
           </button>
-          <button onClick={onRecomecar} className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho">
-            <RotateCcw aria-hidden size={18} strokeWidth={1.5} />
-            Jogar de novo
-          </button>
+          {onRecomecar ? (
+            <button onClick={onRecomecar} className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho">
+              <RotateCcw aria-hidden size={18} strokeWidth={1.5} />
+              Jogar de novo
+            </button>
+          ) : (
+            <a href="/eu" className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho">
+              <ChartColumn aria-hidden size={18} strokeWidth={1.5} />
+              Minhas estatísticas
+            </a>
+          )}
         </div>
         <p aria-live="polite" className="sr-only">{copiado ? "Resultado copiado" : ""}</p>
       </section>
