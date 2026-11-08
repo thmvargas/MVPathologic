@@ -6,11 +6,12 @@
 |---|---|
 | Código | Subpasta `vet-em-sete/` deste repositório |
 | Professores | Só thiago.vargas@unifeob.pro.br por enquanto; outros por convite (lista editável, Etapa 3) |
-| Domínio dos alunos | "sou.unifeob" — **confirmar o domínio completo** (ex.: `sou.unifeob.edu.br`) |
+| Domínio dos alunos | `sou.unifeob.edu.br` (confirmado); professores em `unifeob.pro.br` |
 | Supabase | Já existem 2 projetos (limite do plano gratuito): **reaproveitar o projeto do PatoVetZee**, com tabelas próprias prefixadas `ves_`. A restrição de domínio fica no servidor do Vet em Sete (o perfil `ves_perfis` só é criado para e-mail permitido), sem gancho global que afetaria o PatoVetZee |
 | E-mail de login | Versão simples: link + código pelo envio de e-mail do Supabase; se o projeto ainda não tiver SMTP próprio, configurar uma conta Gmail dedicada (passo a passo no README da Etapa 3) |
 | Caso do dia | **Um caso por dia, espécie sorteada** (sorteio determinístico entre casos revisados ainda não usados; agendamento manual tem prioridade). Sem tela de escolha de espécie |
 | Semestres | 1º–4º: anatomia, histologia, fisiologia, patologia geral, microbiologia, imunologia, procedimentos clínicos. 5º–6º: clínicas. Casos do 1º–4º semestre enfatizam o raciocínio de ciências básicas; grade detalhada virá depois |
+| Caso de exemplo e visual da Etapa 2 | Aprovados pelo professor |
 | Itens sem resposta (turmas, ranking, lista de diagnósticos, imagens, referências) | Adotadas as recomendações deste plano: turmas em lista fechada, ranking por apelido, lista de diagnósticos semeada a partir do Patológical, imagens previstas no esquema, referências clássicas marcadas "a revisar" |
 
 Documento para aprovação antes de qualquer código. Nada aqui foi implementado
