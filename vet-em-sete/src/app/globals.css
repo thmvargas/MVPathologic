@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/*
+ * Identidade visual Vet em Sete (paleta das aulas).
+ * Sem sombra e sem gradiente: linhas e cartões com contorno de 1px.
+ * Nunca acento sobre acento: sobre fundo colorido, texto em areia.
+ */
+@theme {
+  --color-areia: #f5efe6;
+  --color-grafite: #2b2724;
+  --color-marfim: #d9cdbf;
+  --color-superficie: #ede4d6;
+  --color-suave: #6b625b; /* texto secundário: grafite clareado, contraste AA sobre areia */
+
+  --color-vinho: #6b2130;
+  --color-carmim: #c2185b;
+  --color-ambar: #9c4707;
+  --color-esmeralda: #047857;
+  --color-azul: #1d4ed8;
+  --color-violeta: #6d28d9;
+
+  --color-vinho-claro: #f7dfe3;
+  --color-carmim-claro: #fcdde8;
+  --color-ambar-claro: #fdead0;
+  --color-esmeralda-claro: #d5f2e4;
+  --color-azul-claro: #dee7fe;
+  --color-violeta-claro: #ebe0fd;
+
+  --color-vinho-borda: #e7bcc3;
+  --color-carmim-borda: #f3b8ce;
+  --color-ambar-borda: #f2cf9c;
+  --color-esmeralda-borda: #a7dcc4;
+  --color-azul-borda: #b6c8f8;
+  --color-violeta-borda: #cdb5f6;
+
+  --font-titulo: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --shadow-*: initial;
+}
+
+html {
+  background: var(--color-areia);
+  color: var(--color-grafite);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-areia);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-vinho);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

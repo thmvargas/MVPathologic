@@ -1,0 +1,1053 @@
+[
+  {
+    "id": "erliquiose_monocitica",
+    "nome": "Erliquiose monocítica",
+    "sinonimos": [
+      "erliquiose canina",
+      "doença do carrapato",
+      "Ehrlichia canis",
+      "EMC"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Anaplasmataceae",
+    "agente_genero": "Ehrlichia"
+  },
+  {
+    "id": "anaplasmose_trombocitica",
+    "nome": "Anaplasmose trombocítica canina",
+    "sinonimos": [
+      "Anaplasma platys",
+      "trombocitopenia cíclica infecciosa"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Anaplasmataceae",
+    "agente_genero": "Anaplasma"
+  },
+  {
+    "id": "babesiose_canina",
+    "nome": "Babesiose canina",
+    "sinonimos": [
+      "Babesia vogeli",
+      "Babesia gibsoni",
+      "piroplasmose canina"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Piroplasmida",
+    "agente_genero": "Babesia"
+  },
+  {
+    "id": "hepatozoonose_canina",
+    "nome": "Hepatozoonose canina",
+    "sinonimos": [
+      "Hepatozoon canis"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Adeleorina",
+    "agente_genero": "Hepatozoon"
+  },
+  {
+    "id": "rangeliose",
+    "nome": "Rangeliose",
+    "sinonimos": [
+      "nambiuvú",
+      "febre amarela dos cães",
+      "Rangelia vitalii"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Piroplasmida",
+    "agente_genero": "Rangelia"
+  },
+  {
+    "id": "leishmaniose_visceral_canina",
+    "nome": "Leishmaniose visceral canina",
+    "sinonimos": [
+      "LVC",
+      "calazar canino",
+      "Leishmania infantum"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "multissistemico",
+      "tegumentar",
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Trypanosomatidae",
+    "agente_genero": "Leishmania"
+  },
+  {
+    "id": "micoplasmose_hemotropica_felina",
+    "nome": "Micoplasmose hemotrópica felina",
+    "sinonimos": [
+      "hemoplasmose",
+      "Mycoplasma haemofelis",
+      "anemia infecciosa felina"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Mycoplasmataceae",
+    "agente_genero": "Mycoplasma"
+  },
+  {
+    "id": "trombocitopenia_imunomediada",
+    "nome": "Trombocitopenia imunomediada",
+    "sinonimos": [
+      "PTI",
+      "TIM",
+      "púrpura trombocitopênica imunomediada"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "anemia_hemolitica_imunomediada",
+    "nome": "Anemia hemolítica imunomediada",
+    "sinonimos": [
+      "AHIM",
+      "AHAI"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "linfoma_multicentrico",
+    "nome": "Linfoma multicêntrico",
+    "sinonimos": [
+      "linfossarcoma"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "mieloma_multiplo",
+    "nome": "Mieloma múltiplo",
+    "sinonimos": [
+      "mieloma de plasmócitos"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "musculoesqueletico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "hemangiossarcoma_esplenico",
+    "nome": "Hemangiossarcoma esplênico",
+    "sinonimos": [
+      "HSA"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "cardiovascular"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "intoxicacao_rodenticida_anticoagulante",
+    "nome": "Intoxicação por rodenticida anticoagulante",
+    "sinonimos": [
+      "intoxicação por cumarínicos",
+      "intoxicação por chumbinho anticoagulante",
+      "brodifacoum"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "intoxicacao_carbamato",
+    "nome": "Intoxicação por carbamato ou organofosforado",
+    "sinonimos": [
+      "chumbinho",
+      "aldicarb",
+      "intoxicação anticolinesterásica"
+    ],
+    "especies": [
+      "canina",
+      "felina",
+      "bovina"
+    ],
+    "sistemas": [
+      "nervoso",
+      "multissistemico"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "parvovirose_canina",
+    "nome": "Parvovirose canina",
+    "sinonimos": [
+      "parvo",
+      "CPV-2"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio",
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Parvoviridae",
+    "agente_genero": "Protoparvovirus"
+  },
+  {
+    "id": "cinomose",
+    "nome": "Cinomose",
+    "sinonimos": [
+      "esgana",
+      "CDV"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "multissistemico",
+      "nervoso",
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Paramyxoviridae",
+    "agente_genero": "Morbillivirus"
+  },
+  {
+    "id": "leptospirose_canina",
+    "nome": "Leptospirose canina",
+    "sinonimos": [
+      "leptospirose"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario",
+      "hepatobiliar"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Leptospiraceae",
+    "agente_genero": "Leptospira"
+  },
+  {
+    "id": "hepatite_infecciosa_canina",
+    "nome": "Hepatite infecciosa canina",
+    "sinonimos": [
+      "CAV-1",
+      "adenovirose canina"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Adenoviridae",
+    "agente_genero": "Mastadenovirus"
+  },
+  {
+    "id": "traqueobronquite_infecciosa",
+    "nome": "Traqueobronquite infecciosa canina",
+    "sinonimos": [
+      "tosse dos canis",
+      "complexo respiratório infeccioso canino"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "piometra",
+    "nome": "Piometra",
+    "sinonimos": [
+      "complexo hiperplasia endometrial cística-piometra"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "reprodutor",
+      "urinario"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "demodicose",
+    "nome": "Demodicose",
+    "sinonimos": [
+      "sarna demodécica",
+      "sarna negra"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Demodicidae",
+    "agente_genero": "Demodex"
+  },
+  {
+    "id": "sarna_sarcoptica",
+    "nome": "Escabiose",
+    "sinonimos": [
+      "sarna sarcóptica"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Sarcoptidae",
+    "agente_genero": "Sarcoptes"
+  },
+  {
+    "id": "dermatite_alergica_picada_pulga",
+    "nome": "Dermatite alérgica à picada de pulga",
+    "sinonimos": [
+      "DAPP"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "dermatite_atopica",
+    "nome": "Dermatite atópica canina",
+    "sinonimos": [
+      "atopia"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "doenca_renal_cronica",
+    "nome": "Doença renal crônica",
+    "sinonimos": [
+      "DRC",
+      "insuficiência renal crônica",
+      "IRC"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "hiperadrenocorticismo",
+    "nome": "Hiperadrenocorticismo",
+    "sinonimos": [
+      "síndrome de Cushing",
+      "Cushing"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino",
+      "tegumentar"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hipotireoidismo_canino",
+    "nome": "Hipotireoidismo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino",
+      "tegumentar"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "diabetes_mellitus",
+    "nome": "Diabetes mellitus",
+    "sinonimos": [
+      "DM"
+    ],
+    "especies": [
+      "canina",
+      "felina"
+    ],
+    "sistemas": [
+      "endocrino",
+      "pancreatico"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "mastocitoma",
+    "nome": "Mastocitoma",
+    "sinonimos": [
+      "mastocitoma cutâneo"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "dilatacao_volvulo_gastrico",
+    "nome": "Dilatação-vólvulo gástrico",
+    "sinonimos": [
+      "torção gástrica",
+      "DVG"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "obstrucao_uretral_felina",
+    "nome": "Obstrução uretral felina",
+    "sinonimos": [
+      "DTUIF obstrutiva",
+      "tampão uretral"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "idiopatica"
+  },
+  {
+    "id": "lipidose_hepatica_felina",
+    "nome": "Lipidose hepática felina",
+    "sinonimos": [
+      "fígado gorduroso felino"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "esporotricose",
+    "nome": "Esporotricose",
+    "sinonimos": [
+      "Sporothrix brasiliensis"
+    ],
+    "especies": [
+      "felina",
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Ophiostomataceae",
+    "agente_genero": "Sporothrix"
+  },
+  {
+    "id": "hipertireoidismo_felino",
+    "nome": "Hipertireoidismo felino",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "leucemia_viral_felina",
+    "nome": "Leucemia viral felina",
+    "sinonimos": [
+      "FeLV"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Retroviridae",
+    "agente_genero": "Gammaretrovirus"
+  },
+  {
+    "id": "imunodeficiencia_viral_felina",
+    "nome": "Imunodeficiência viral felina",
+    "sinonimos": [
+      "FIV",
+      "aids felina"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Retroviridae",
+    "agente_genero": "Lentivirus"
+  },
+  {
+    "id": "peritonite_infecciosa_felina",
+    "nome": "Peritonite infecciosa felina",
+    "sinonimos": [
+      "PIF",
+      "FIP"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Coronaviridae",
+    "agente_genero": "Alphacoronavirus"
+  },
+  {
+    "id": "colica_compactacao",
+    "nome": "Compactação de cólon maior",
+    "sinonimos": [
+      "cólica por compactação",
+      "compactação de flexura pélvica"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "garrotilho",
+    "nome": "Garrotilho",
+    "sinonimos": [
+      "adenite equina",
+      "Streptococcus equi"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "respiratorio",
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Streptococcaceae",
+    "agente_genero": "Streptococcus"
+  },
+  {
+    "id": "laminite",
+    "nome": "Laminite",
+    "sinonimos": [
+      "aguamento",
+      "pododermatite asséptica difusa"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "anemia_infecciosa_equina",
+    "nome": "Anemia infecciosa equina",
+    "sinonimos": [
+      "AIE",
+      "febre do pântano"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Retroviridae",
+    "agente_genero": "Lentivirus"
+  },
+  {
+    "id": "piroplasmose_equina",
+    "nome": "Piroplasmose equina",
+    "sinonimos": [
+      "babesiose equina",
+      "Theileria equi",
+      "Babesia caballi"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Piroplasmida",
+    "agente_genero": "Theileria"
+  },
+  {
+    "id": "tetano",
+    "nome": "Tétano",
+    "sinonimos": [
+      "Clostridium tetani"
+    ],
+    "especies": [
+      "equina",
+      "bovina",
+      "ovina",
+      "caprina"
+    ],
+    "sistemas": [
+      "nervoso",
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Clostridiaceae",
+    "agente_genero": "Clostridium"
+  },
+  {
+    "id": "tristeza_parasitaria_bovina",
+    "nome": "Tristeza parasitária bovina",
+    "sinonimos": [
+      "TPB",
+      "babesiose bovina"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Piroplasmida",
+    "agente_genero": "Babesia"
+  },
+  {
+    "id": "anaplasmose_bovina",
+    "nome": "Anaplasmose bovina",
+    "sinonimos": [
+      "Anaplasma marginale"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Anaplasmataceae",
+    "agente_genero": "Anaplasma"
+  },
+  {
+    "id": "hipocalcemia_puerperal",
+    "nome": "Hipocalcemia puerperal",
+    "sinonimos": [
+      "febre do leite",
+      "paresia puerperal"
+    ],
+    "especies": [
+      "bovina",
+      "caprina",
+      "ovina"
+    ],
+    "sistemas": [
+      "endocrino",
+      "musculoesqueletico"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "cetose_bovina",
+    "nome": "Cetose",
+    "sinonimos": [
+      "acetonemia",
+      "toxemia da prenhez"
+    ],
+    "especies": [
+      "bovina",
+      "ovina",
+      "caprina"
+    ],
+    "sistemas": [
+      "endocrino",
+      "hepatobiliar"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "mastite_bovina",
+    "nome": "Mastite",
+    "sinonimos": [
+      "mamite"
+    ],
+    "especies": [
+      "bovina",
+      "ovina",
+      "caprina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "raiva",
+    "nome": "Raiva",
+    "sinonimos": [
+      "hidrofobia"
+    ],
+    "especies": [
+      "bovina",
+      "equina",
+      "canina",
+      "felina",
+      "ovina",
+      "caprina",
+      "suina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Rhabdoviridae",
+    "agente_genero": "Lyssavirus"
+  },
+  {
+    "id": "haemoncose",
+    "nome": "Haemoncose",
+    "sinonimos": [
+      "Haemonchus contortus",
+      "verminose gastrintestinal"
+    ],
+    "especies": [
+      "ovina",
+      "caprina",
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio",
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Trichostrongylidae",
+    "agente_genero": "Haemonchus"
+  },
+  {
+    "id": "timpanismo_espumoso",
+    "nome": "Timpanismo espumoso",
+    "sinonimos": [
+      "meteorismo",
+      "empanzinamento"
+    ],
+    "especies": [
+      "bovina",
+      "ovina",
+      "caprina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "acidose_ruminal",
+    "nome": "Acidose ruminal",
+    "sinonimos": [
+      "acidose lática ruminal"
+    ],
+    "especies": [
+      "bovina",
+      "ovina",
+      "caprina"
+    ],
+    "sistemas": [
+      "digestorio",
+      "multissistemico"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "tuberculose_bovina",
+    "nome": "Tuberculose bovina",
+    "sinonimos": [
+      "Mycobacterium bovis"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "respiratorio",
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Mycobacteriaceae",
+    "agente_genero": "Mycobacterium"
+  },
+  {
+    "id": "brucelose_bovina",
+    "nome": "Brucelose bovina",
+    "sinonimos": [
+      "Brucella abortus"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Brucellaceae",
+    "agente_genero": "Brucella"
+  },
+  {
+    "id": "clostridiose_carbunculo_sintomatico",
+    "nome": "Carbúnculo sintomático",
+    "sinonimos": [
+      "manqueira",
+      "Clostridium chauvoei"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Clostridiaceae",
+    "agente_genero": "Clostridium"
+  },
+  {
+    "id": "circovirose_suina",
+    "nome": "Circovirose suína",
+    "sinonimos": [
+      "PCVD",
+      "PCV2",
+      "síndrome multissistêmica do definhamento"
+    ],
+    "especies": [
+      "suina"
+    ],
+    "sistemas": [
+      "multissistemico",
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Circoviridae",
+    "agente_genero": "Circovirus"
+  },
+  {
+    "id": "erisipela_suina",
+    "nome": "Erisipela suína",
+    "sinonimos": [
+      "mal-rubro"
+    ],
+    "especies": [
+      "suina"
+    ],
+    "sistemas": [
+      "tegumentar",
+      "musculoesqueletico",
+      "cardiovascular"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Erysipelotrichaceae",
+    "agente_genero": "Erysipelothrix"
+  },
+  {
+    "id": "pleuropneumonia_suina",
+    "nome": "Pleuropneumonia suína",
+    "sinonimos": [
+      "Actinobacillus pleuropneumoniae",
+      "APP"
+    ],
+    "especies": [
+      "suina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Pasteurellaceae",
+    "agente_genero": "Actinobacillus"
+  },
+  {
+    "id": "coccidiose_aviaria",
+    "nome": "Coccidiose aviária",
+    "sinonimos": [
+      "eimeriose"
+    ],
+    "especies": [
+      "aves"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Eimeriidae",
+    "agente_genero": "Eimeria"
+  },
+  {
+    "id": "doenca_de_newcastle",
+    "nome": "Doença de Newcastle",
+    "sinonimos": [
+      "DNC"
+    ],
+    "especies": [
+      "aves"
+    ],
+    "sistemas": [
+      "respiratorio",
+      "nervoso",
+      "digestorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Paramyxoviridae",
+    "agente_genero": "Orthoavulavirus"
+  },
+  {
+    "id": "influenza_aviaria",
+    "nome": "Influenza aviária de alta patogenicidade",
+    "sinonimos": [
+      "gripe aviária",
+      "IAAP"
+    ],
+    "especies": [
+      "aves"
+    ],
+    "sistemas": [
+      "multissistemico",
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Orthomyxoviridae",
+    "agente_genero": "Alphainfluenzavirus"
+  },
+  {
+    "id": "bronquite_infecciosa_aviaria",
+    "nome": "Bronquite infecciosa das galinhas",
+    "sinonimos": [
+      "BIG"
+    ],
+    "especies": [
+      "aves"
+    ],
+    "sistemas": [
+      "respiratorio",
+      "urinario",
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Coronaviridae",
+    "agente_genero": "Gammacoronavirus"
+  }
+]
