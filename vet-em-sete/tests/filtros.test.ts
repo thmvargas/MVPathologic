@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { aplicarFiltro, filtrarCasosLivres, sortearTreino } from "@/lib/util/filtros";
 
-const c = (id: string, extra: Partial<{ status: string; grupo_especie: string; semestre: number; sistema: string }> = {}) => ({
+const c = (id: string, extra: Partial<{ status: string; grupo_especie: string; semestre: number; sistema: string; uso: string }> = {}) => ({
   id,
   status: "revisado",
   grupo_especie: "caes",
@@ -10,14 +10,21 @@ const c = (id: string, extra: Partial<{ status: string; grupo_especie: string; s
   ...extra,
 });
 
-describe("casos dos modos livres", () => {
-  const casos = [c("a"), c("b"), c("c"), c("d", { status: "rascunho" }), c("e")];
-  const agenda = [
-    { data: "2026-11-07", caso_id: "a" }, // passado: liberado
-    { data: "2026-11-09", caso_id: "b" }, // hoje: bloqueado
-    { data: "2026-11-20", caso_id: "c" }, // futuro: bloqueado
+describe("casos dos modos livres (opção b)", () => {
+  const casos = [
+    c("a"), // diário, usado no passado
+    c("b"), // diário, é o de hoje
+    c("c", { uso: "treino" }), // treino, mas agendado no futuro por engano
+    c("d", { status: "rascunho", uso: "treino" }),
+    c("e", { uso: "treino" }), // treino: sempre liberado
+    c("f"), // diário ainda não usado: reservado
   ];
-  it("tira rascunhos, o caso de hoje e os agendados para o futuro", () => {
+  const agenda = [
+    { data: "2026-11-07", caso_id: "a" },
+    { data: "2026-11-09", caso_id: "b" },
+    { data: "2026-11-20", caso_id: "c" },
+  ];
+  it("treino sempre; diário só depois de usado; nunca hoje, futuro ou rascunho", () => {
     expect(filtrarCasosLivres(casos, agenda, "2026-11-09").map((x) => x.id)).toEqual(["a", "e"]);
   });
   it("no dia seguinte, o caso de ontem é liberado", () => {

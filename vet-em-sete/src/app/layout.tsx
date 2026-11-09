@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Inter, Lora } from "next/font/google";
-import { LogIn, LogOut, UserRound } from "lucide-react";
+import { LayoutDashboard, LogIn, LogOut, Trophy, UserRound } from "lucide-react";
 import { obterSessao } from "@/lib/sessao";
 import "./globals.css";
 
@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Vet em Sete",
   description: "Jogo diário de raciocínio diagnóstico em medicina veterinária: sete tentativas para chegar ao diagnóstico.",
 };
+
+// Todas as páginas dependem de quem está logado: nada é pré-gerado no build.
+export const dynamic = "force-dynamic";
 
 export const viewport: Viewport = { themeColor: "#f5efe6", width: "device-width", initialScale: 1 };
 
@@ -30,6 +33,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Link>
             {sessao.estado === "ok" ? (
               <nav className="flex items-center gap-1 text-sm">
+                {sessao.perfil.papel === "professor" && (
+                  <Link href="/professor" aria-label="Painel do professor" className="inline-flex min-h-11 min-w-11 items-center justify-center text-vinho">
+                    <LayoutDashboard aria-hidden size={18} strokeWidth={1.5} />
+                  </Link>
+                )}
+                <Link href="/ranking" aria-label="Ranking" className="inline-flex min-h-11 min-w-11 items-center justify-center text-vinho">
+                  <Trophy aria-hidden size={18} strokeWidth={1.5} />
+                </Link>
                 <Link href="/eu" className="inline-flex min-h-11 items-center gap-1.5 px-2 text-vinho">
                   <UserRound aria-hidden size={18} strokeWidth={1.5} />
                   <span className="max-w-32 truncate">{sessao.perfil.apelido}</span>

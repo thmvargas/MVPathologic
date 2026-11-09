@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { obterSessao } from "@/lib/sessao";
 import { dataBR, formatarDataBR } from "@/lib/util/tempo";
-import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, Stethoscope } from "lucide-react";
+import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, LayoutDashboard, Stethoscope, Trophy } from "lucide-react";
 import { buscarCaso, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
 import { ROTULO_GRUPO } from "@/lib/caso/esquema";
 
@@ -61,6 +61,23 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
           <ArrowRight aria-hidden size={18} strokeWidth={1.5} />
         </Link>
       </section>
+
+      {sessao.estado === "ok" && (
+        <nav aria-label="Atalhos" className="grid gap-3 sm:grid-cols-2">
+          <Link href="/ranking" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
+            <Trophy aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+            <span className="flex-1 font-medium">Ranking</span>
+            <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+          </Link>
+          {sessao.perfil.papel === "professor" && (
+            <Link href="/professor" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
+              <LayoutDashboard aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+              <span className="flex-1 font-medium">Painel do professor</span>
+              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+            </Link>
+          )}
+        </nav>
+      )}
 
       <section aria-labelledby="modos" className="space-y-3">
         <h2 id="modos" className="text-lg">Modos de jogo</h2>

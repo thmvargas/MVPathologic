@@ -12,7 +12,8 @@ import type { Caso } from "@/lib/caso/esquema";
  */
 export async function obterCasoDoDia(data: string): Promise<Caso | null> {
   const db = supabaseAdmin();
-  const revisados = listaCasos().filter((c) => c.status === "revisado");
+  // Só casos reservados ao caso do dia entram no sorteio (opção "b").
+  const revisados = listaCasos().filter((c) => c.status === "revisado" && c.uso === "diario");
 
   const { data: linha, error } = await db.from("ves_caso_do_dia").select("caso_id").eq("data", data).maybeSingle();
   if (error) throw new Error(`caso do dia: ${error.message}`);

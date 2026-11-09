@@ -208,6 +208,11 @@ export const CasoSchema = z.object({
   queixa_principal: z.array(z.string()).min(1),
 
   semestre: z.number().int().min(1).max(6),
+  /**
+   * "diario": reservado para o caso do dia; entra no treino só depois de ter
+   * sido usado. "treino": só treino e modo por semestre, nunca caso do dia.
+   */
+  uso: z.enum(["diario", "treino"]).default("diario"),
   sistema: z.enum(SISTEMAS),
   dificuldade: z.number().int().min(1).max(3),
   tags: z.array(z.string()).optional(),
