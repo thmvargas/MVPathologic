@@ -34,10 +34,11 @@ function salvar(casoId: string, token: string | null) {
   }
 }
 
-export type ModoPartida = { tipo: "exemplo"; casoId: string } | { tipo: "diario" };
+export type ModoLivre = "treino" | "semestre" | "arquivo" | "exemplo";
+export type ModoPartida = { tipo: "diario" } | { tipo: "livre"; codigo: string; modo: ModoLivre };
 
 export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: string }) {
-  const casoId = modo.tipo === "exemplo" ? modo.casoId : "diario";
+  const chaveLocal = modo.tipo === "livre" ? `${modo.modo}:${modo.codigo}` : "diario";
   const [token, setToken] = useState<string | null>(null);
   const [partidaId, setPartidaId] = useState<number | null>(null);
   const [dataCaso, setDataCaso] = useState<string | null>(null);
@@ -47,52 +48,58 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
   const [diagnosticos, setDiagnosticos] = useState<ItemBusca[]>([]);
   const [escolhido, setEscolhido] = useState<ItemBusca | null>(null);
 
+  const receber = useCallback(
+    (j: { token?: string; partidaId?: number; data?: string; visao: Visao }) => {
+      setVisao(j.visao);
+      setToken(j.token ?? null);
+      if (j.token) salvar(chaveLocal, j.token);
+      setPartidaId(j.partidaId ?? null);
+      if (j.data) setDataCaso(j.data);
+    },
+    [chaveLocal],
+  );
+
   const iniciar = useCallback(
-    async (tokenSalvo?: string) => {
+    async (novo = false) => {
       setErro(null);
       const r =
         modo.tipo === "diario"
           ? await fetch("/api/diario", { method: "POST" })
-          : await fetch("/api/partida", {
+          : await fetch("/api/jogo", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ casoId, token: tokenSalvo }),
+              body: JSON.stringify({
+                codigo: modo.codigo,
+                modo: modo.modo,
+                token: novo ? undefined : lerSalvo(chaveLocal),
+                novo,
+              }),
             });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) return setErro(j.erro ?? "Não foi possível abrir o caso.");
       receber(j);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [casoId, modo.tipo],
+    [chaveLocal, receber],
   );
 
-  function receber(j: { token?: string; partidaId?: number; data?: string; visao: Visao }) {
-    setVisao(j.visao);
-    if (j.token) {
-      setToken(j.token);
-      salvar(casoId, j.token);
-    }
-    if (j.partidaId) setPartidaId(j.partidaId);
-    if (j.data) setDataCaso(j.data);
-  }
-
   useEffect(() => {
-    iniciar(modo.tipo === "exemplo" ? lerSalvo(casoId) : undefined);
+    iniciar();
     fetch("/api/diagnosticos")
       .then((r) => r.json())
       .then(setDiagnosticos)
       .catch(() => setErro("Não foi possível carregar a lista de diagnósticos."));
-  }, [casoId, iniciar]);
+  }, [iniciar]);
 
   async function agir(acao: Acao) {
-    if (ocupado || (modo.tipo === "exemplo" ? !token : !partidaId)) return;
+    if (ocupado || (!token && !partidaId)) return;
     setOcupado(true);
     setErro(null);
     try {
-      const r = await fetch(modo.tipo === "diario" ? "/api/diario/acao" : "/api/partida/acao", {
+      const r = await fetch("/api/jogo/acao", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(modo.tipo === "diario" ? { partidaId, acao } : { token, acao }),
+        body: JSON.stringify(partidaId ? { partidaId, acao } : { token, acao }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) {
@@ -291,11 +298,11 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
           visao={visao}
           dataCaso={dataCaso ?? dataBR()}
           onRecomecar={
-            modo.tipo === "exemplo"
+            modo.tipo === "livre"
               ? () => {
-                  salvar(casoId, null);
+                  salvar(chaveLocal, null);
                   setVisao(null);
-                  iniciar();
+                  iniciar(true);
                 }
               : undefined
           }

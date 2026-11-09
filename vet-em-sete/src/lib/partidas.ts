@@ -128,3 +128,37 @@ export async function partidasFinalizadas(userId: string): Promise<LinhaEstatist
   if (error) throw new Error(`estatísticas: ${error.message}`);
   return (data ?? []) as LinhaEstatistica[];
 }
+
+/** Partida ainda não terminada deste caso neste modo (para retomar). */
+export async function partidaAberta(userId: string, casoId: string, modo: Modo): Promise<LinhaPartida | null> {
+  const { data, error } = await supabaseAdmin()
+    .from("ves_partidas")
+    .select(CAMPOS)
+    .eq("user_id", userId)
+    .eq("caso_id", casoId)
+    .eq("modo", modo)
+    .eq("finalizada", false)
+    .order("iniciada_em", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error) throw new Error(`partida: ${error.message}`);
+  return data as LinhaPartida | null;
+}
+
+/** Situação do aluno em cada caso já jogado: melhor resultado. */
+export async function situacaoPorCaso(userId: string): Promise<Map<string, "acertou" | "errou" | "em_andamento">> {
+  const { data, error } = await supabaseAdmin()
+    .from("ves_partidas")
+    .select("caso_id,finalizada,acertou")
+    .eq("user_id", userId)
+    .limit(5000);
+  if (error) throw new Error(`situação: ${error.message}`);
+  const m = new Map<string, "acertou" | "errou" | "em_andamento">();
+  for (const p of data ?? []) {
+    const atual = m.get(p.caso_id);
+    const nova = !p.finalizada ? "em_andamento" : p.acertou ? "acertou" : "errou";
+    if (atual === "acertou") continue;
+    if (nova === "acertou" || !atual || (atual === "em_andamento" && nova === "errou")) m.set(p.caso_id, nova);
+  }
+  return m;
+}

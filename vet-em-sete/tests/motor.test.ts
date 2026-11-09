@@ -84,10 +84,12 @@ describe("fim da partida", () => {
 describe("token assinado", () => {
   it("lê o que assinou e recusa adulteração", () => {
     const e = jogar([{ tipo: "pular" }]);
-    const t = assinarEstado(e);
-    expect(lerEstado(t)).toEqual(e);
+    const est = { codigo: "abc123", versao: e.versao, acoes: e.acoes };
+    const t = assinarEstado(est);
+    expect(lerEstado(t)).toEqual(est);
+    expect(Buffer.from(t.split(".")[0], "base64url").toString()).not.toContain("erliquiose");
     const [corpo, sig] = t.split(".");
-    const falso = Buffer.from(JSON.stringify({ ...e, acoes: [] })).toString("base64url");
+    const falso = Buffer.from(JSON.stringify({ ...est, acoes: [] })).toString("base64url");
     expect(lerEstado(`${falso}.${sig}`)).toBeNull();
     expect(lerEstado(`${corpo}.x`)).toBeNull();
     expect(lerEstado("lixo")).toBeNull();

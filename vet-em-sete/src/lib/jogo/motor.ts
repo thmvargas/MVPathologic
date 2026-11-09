@@ -152,7 +152,6 @@ export type ExameVisto = {
 };
 
 export type Visao = {
-  casoId: string;
   fase: Fase;
   tentativa: number;
   maxTentativas: number;
@@ -216,7 +215,6 @@ export function montarVisao(estado: Estado, caso: Caso, diagnosticos: Map<string
     caso.tratamentos.some((t) => t.dose?.a_revisar);
 
   const visao: Visao = {
-    casoId: caso.id,
     fase: r.fase,
     tentativa: r.tentativa,
     maxTentativas: MAX_TENTATIVAS,

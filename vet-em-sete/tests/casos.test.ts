@@ -55,3 +55,13 @@ describe("validador bloqueia aprovação", () => {
     expect(pendenciasDoCaso(copia, mapa).some((x) => x.problema.includes("fonte_inexistente"))).toBe(true);
   });
 });
+
+describe("código neutro do caso", () => {
+  it("não revela o id nem o diagnóstico", async () => {
+    const { hash32 } = await import("@/lib/util/tempo");
+    const { caso } = await import("./apoio");
+    const codigo = hash32(`vet-em-sete:${caso.id}`).toString(36);
+    expect(codigo).toMatch(/^[a-z0-9]{4,7}$/);
+    expect(codigo).not.toContain("erliq");
+  });
+});

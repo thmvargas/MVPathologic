@@ -3,20 +3,20 @@ import { redirect } from "next/navigation";
 import { obterSessao } from "@/lib/sessao";
 import { dataBR, formatarDataBR } from "@/lib/util/tempo";
 import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, Stethoscope } from "lucide-react";
-import { listaCasos } from "@/lib/dados";
+import { buscarCaso, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
 import { ROTULO_GRUPO } from "@/lib/caso/esquema";
 
 const MODOS = [
-  { titulo: "Por semestre", texto: "Casos do 1º ao 6º semestre", icone: GraduationCap },
-  { titulo: "Treino", texto: "Casos aleatórios, fora do ranking", icone: Dumbbell },
-  { titulo: "Casos anteriores", texto: "Arquivo dos casos do dia", icone: Archive },
+  { titulo: "Por semestre", texto: "Casos do 1º ao 6º semestre", icone: GraduationCap, href: "/semestre" },
+  { titulo: "Treino", texto: "Caso aleatório, com filtros", icone: Dumbbell, href: "/treino" },
+  { titulo: "Casos anteriores", texto: "Arquivo dos casos do dia", icone: Archive, href: "/arquivo" },
 ];
 
 export default async function Inicio({ searchParams }: { searchParams: Promise<{ excluido?: string }> }) {
   const { excluido } = await searchParams;
   const sessao = await obterSessao();
   if (sessao.estado === "sem_cadastro") redirect("/cadastro");
-  const exemplo = listaCasos()[0];
+  const exemplo = buscarCaso(ID_CASO_EXEMPLO)!;
   return (
     <div className="space-y-8">
       {excluido && (
@@ -53,7 +53,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
           {ROTULO_GRUPO[exemplo.grupo_especie]} · {exemplo.semestre}º semestre
         </p>
         <Link
-          href={`/jogar/${exemplo.id}`}
+          href={`/jogar/${codigoDoCaso(exemplo)}?modo=exemplo`}
           className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md bg-vinho px-4 py-2 font-medium text-areia hover:opacity-90"
         >
           <Stethoscope aria-hidden size={18} strokeWidth={1.5} />
@@ -65,14 +65,17 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
       <section aria-labelledby="modos" className="space-y-3">
         <h2 id="modos" className="text-lg">Modos de jogo</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
-          {MODOS.map(({ titulo, texto, icone: Icone }) => (
-            <li key={titulo} className="flex items-start gap-3 rounded-lg border border-marfim p-4">
-              <Icone aria-hidden size={22} strokeWidth={1.5} className="mt-0.5 shrink-0 text-vinho" />
-              <div>
-                <p className="font-medium">{titulo}</p>
-                <p className="text-sm text-suave">{texto}</p>
-                <p className="mt-1 text-xs text-suave">Em breve</p>
-              </div>
+          {MODOS.map(({ titulo, texto, icone: Icone, href }) => (
+            <li key={titulo}>
+              <Link href={href} className="flex min-h-16 items-start gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
+                <Icone aria-hidden size={22} strokeWidth={1.5} className="mt-0.5 shrink-0 text-vinho" />
+                <span className="flex-1">
+                  <span className="block font-medium">{titulo}</span>
+                  <span className="block text-sm text-suave">{texto}</span>
+                  <span className="block text-xs text-suave">Fora do ranking</span>
+                </span>
+                <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="mt-1 shrink-0 text-vinho" />
+              </Link>
             </li>
           ))}
         </ul>

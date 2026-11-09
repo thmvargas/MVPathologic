@@ -1,5 +1,8 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import type { Estado } from "./motor";
+import type { Acao } from "./motor";
+
+/** Conteúdo do token: o caso vai pelo código neutro, nunca pelo id (que revela o diagnóstico). */
+export type EstadoToken = { codigo: string; versao: number; acoes: Acao[] };
 
 /**
  * Estado da partida assinado (HMAC-SHA256). Usado enquanto o jogo roda sem
@@ -22,12 +25,12 @@ function assinatura(corpo: string): string {
   return createHmac("sha256", segredo()).update(corpo).digest("base64url");
 }
 
-export function assinarEstado(estado: Estado): string {
+export function assinarEstado(estado: EstadoToken): string {
   const corpo = b64(JSON.stringify(estado));
   return `${corpo}.${assinatura(corpo)}`;
 }
 
-export function lerEstado(token: string): Estado | null {
+export function lerEstado(token: string): EstadoToken | null {
   if (typeof token !== "string" || token.length > 20_000) return null;
   const [corpo, sig] = token.split(".");
   if (!corpo || !sig) return null;
@@ -36,8 +39,8 @@ export function lerEstado(token: string): Estado | null {
   if (esperado.length !== recebido.length || !timingSafeEqual(esperado, recebido)) return null;
   try {
     const e = JSON.parse(Buffer.from(corpo, "base64url").toString("utf8"));
-    if (typeof e?.casoId !== "string" || typeof e?.versao !== "number" || !Array.isArray(e?.acoes)) return null;
-    return e as Estado;
+    if (typeof e?.codigo !== "string" || typeof e?.versao !== "number" || !Array.isArray(e?.acoes)) return null;
+    return { codigo: e.codigo, versao: e.versao, acoes: e.acoes };
   } catch {
     return null;
   }
