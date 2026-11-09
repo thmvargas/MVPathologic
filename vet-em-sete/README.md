@@ -8,21 +8,16 @@ tratamento e uma explicação didática.
 
 Plano completo, esquema de dados e fórmula de pontuação: [`PLANO.md`](./PLANO.md).
 
-## Situação atual: Etapa 3 (login, cadastro, estatísticas e caso do dia)
+## O que já funciona (Etapas 1 a 6)
 
-- Login sem senha com e-mail institucional (código de 6 dígitos ou link).
-- Cadastro com nome, apelido, semestre, turma e aceite de privacidade.
-- Caso do dia: um por dia, sorteado entre os casos **revisados**, igual para todos.
-- Estatísticas do aluno em "Minhas estatísticas" (`/eu`), com exclusão de dados.
-- O caso de exemplo continua jogável sem login, fora do ranking.
-
-### Etapa 2 (jogo sem login)
-
-- Um caso de exemplo completo (erliquiose monocítica canina, **em rascunho**).
-- Revelação em 7 tentativas, escolha de exames a partir da 5ª, autocompletar,
-  feedback de proximidade, tratamento, pontuação item a item, explicação e
-  botão de compartilhar.
-- O gabarito nunca vai para o navegador: o servidor revela uma camada por vez.
+- Partida em 7 tentativas com revelação progressiva, exames, autocompletar,
+  feedback de proximidade, tratamento, pontuação explicada e compartilhar.
+- Login sem senha com e-mail institucional, cadastro e aviso de privacidade.
+- Caso do dia (um por dia, igual para todos), modos por semestre, treino e
+  casos anteriores, com filtro de espécie.
+- Estatísticas do aluno, ranking semanal e mensal, painel do professor com CSV.
+- Painel de administração de casos, diagnósticos, agenda e professores.
+- O gabarito nunca vai para o navegador; a pontuação é calculada no servidor.
 
 ## Rodar no seu computador
 
