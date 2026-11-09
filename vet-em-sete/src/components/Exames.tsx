@@ -49,7 +49,7 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
         {exame.classificacao && <SeloClasse c={exame.classificacao} />}
       </header>
       {resultado.tabela && (
-        <div className="-mx-1 overflow-x-auto">
+        <div className="-mx-1 overflow-x-auto" tabIndex={0} role="region" aria-label={`Tabela: ${exame.nome}`}>
           <table className="w-full min-w-[22rem] border-collapse text-left text-sm">
             <caption className="sr-only">Resultado de {exame.nome}</caption>
             <thead>

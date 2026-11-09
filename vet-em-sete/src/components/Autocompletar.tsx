@@ -32,12 +32,6 @@ export function Autocompletar({
 
   useEffect(() => setAtivo(0), [texto]);
   useEffect(() => onEscolher(escolhido), [escolhido, onEscolher]);
-  useEffect(() => {
-    if (excluir.size) {
-      setTexto("");
-      setEscolhido(null);
-    }
-  }, [excluir]);
 
   function escolher(i: ItemBusca) {
     setEscolhido(i);

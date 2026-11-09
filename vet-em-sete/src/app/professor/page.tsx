@@ -32,7 +32,7 @@ function Secao({ id, titulo, csv, children }: { id: string; titulo: string; csv?
           </a>
         )}
       </div>
-      <div className="-mx-4 overflow-x-auto px-4">{children}</div>
+      <div className="-mx-4 overflow-x-auto px-4" tabIndex={0} role="region" aria-labelledby={id}>{children}</div>
     </section>
   );
 }

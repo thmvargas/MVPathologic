@@ -9,8 +9,15 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const lora = Lora({ subsets: ["latin"], weight: ["600"], variable: "--font-lora", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Vet em Sete",
   description: "Jogo diário de raciocínio diagnóstico em medicina veterinária: sete tentativas para chegar ao diagnóstico.",
+  openGraph: {
+    title: "Vet em Sete",
+    description: "Um caso clínico veterinário por dia. Sete tentativas para o diagnóstico.",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 // Todas as páginas dependem de quem está logado: nada é pré-gerado no build.

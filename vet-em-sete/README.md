@@ -36,9 +36,14 @@ abra `http://IP-DO-COMPUTADOR:3000` no celular.
 ## Testes
 
 ```bash
-npm test          # pontuação, proximidade, motor do jogo, caso do dia, domínio de e-mail, validação dos casos
+npm test                    # pontuação, proximidade, motor, caso do dia, domínio de e-mail, ranking, painel, validação dos casos
 npm run typecheck
+npm run build && npm run e2e   # partida completa no navegador (celular e computador)
 ```
+
+Acessibilidade: as telas principais e todas as fases da partida passam na
+auditoria automática axe (WCAG 2.1 AA), e a partida pode ser jogada só com o
+teclado.
 
 ## Onde ficam os dados (por enquanto)
 

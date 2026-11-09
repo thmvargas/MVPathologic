@@ -136,6 +136,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
 
   return (
     <div className="space-y-4">
+      <h1 className="sr-only">Caso clínico: {rotulo}</h1>
       {/* Cabeçalho da partida */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm text-suave">
@@ -249,7 +250,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
               <p className="text-sm">
                 <span className="font-semibold">Tentativa {t} de {visao.maxTentativas}.</span> Qual é o diagnóstico?
               </p>
-              <Autocompletar itens={diagnosticos} excluir={tentados} onEscolher={setEscolhido} desabilitado={ocupado} />
+              <Autocompletar key={visao.palpites.length} itens={diagnosticos} excluir={tentados} onEscolher={setEscolhido} desabilitado={ocupado} />
               <div className="flex gap-2">
                 <button
                   type="submit"
