@@ -34,7 +34,7 @@ function salvar(casoId: string, token: string | null) {
   }
 }
 
-export type ModoLivre = "treino" | "semestre" | "arquivo" | "exemplo";
+export type ModoLivre = "treino" | "semestre" | "arquivo" | "exemplo" | "previa";
 export type ModoPartida = { tipo: "diario" } | { tipo: "livre"; codigo: string; modo: ModoLivre };
 
 export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: string }) {

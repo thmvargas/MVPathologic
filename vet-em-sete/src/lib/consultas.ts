@@ -1,6 +1,6 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabase/servidor";
-import { listaCasos, mapaDiagnosticos } from "@/lib/dados";
+import { banco } from "@/lib/dados";
 import type { PartidaPainel, PerfilPainel } from "@/lib/painel";
 import type { PartidaRanking } from "@/lib/ranking";
 
@@ -44,10 +44,11 @@ export async function partidasDoPeriodo(de: string, ate: string): Promise<Partid
 }
 
 /** Informação dos casos para o painel (inclui o nome do diagnóstico). */
-export function infoDosCasos() {
-  const dx = mapaDiagnosticos();
+export async function infoDosCasos() {
+  const b = await banco();
+  const dx = b.mapaDiagnosticos;
   return new Map(
-    listaCasos().map((c) => [
+    b.casos.map((c) => [
       c.id,
       {
         id: c.id,

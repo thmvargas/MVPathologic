@@ -22,6 +22,18 @@ export type Sessao =
   | { estado: "sem_cadastro"; id: string; email: string; professor: boolean }
   | { estado: "ok"; perfil: Perfil };
 
+/**
+ * E-mails de professor: os da variável PROFESSOR_EMAILS mais os convidados
+ * pelo painel (tabela ves_professores).
+ */
+export const emailsDeProfessor = cache(async (): Promise<string[]> => {
+  const fixos = config.professores();
+  if (!loginConfigurado()) return fixos;
+  const { data, error } = await supabaseAdmin().from("ves_professores").select("email");
+  if (error) return fixos; // migração 002 ainda não rodada
+  return [...new Set([...fixos, ...(data ?? []).map((x) => x.email.toLowerCase())])];
+});
+
 /** Quem está usando o jogo agora. Cacheado por requisição. */
 export const obterSessao = cache(async (): Promise<Sessao> => {
   if (!loginConfigurado()) return { estado: "sem_login_configurado" };
@@ -32,7 +44,7 @@ export const obterSessao = cache(async (): Promise<Sessao> => {
 
   // O domínio é conferido de novo a cada acesso: uma conta criada direto pela
   // API do Supabase, com e-mail de fora, não passa daqui.
-  const professor = ehProfessor(user.email, config.professores());
+  const professor = ehProfessor(user.email, await emailsDeProfessor());
   if (!professor && !emailPermitido(user.email, config.dominios()))
     return { estado: "dominio_recusado", email: user.email };
 

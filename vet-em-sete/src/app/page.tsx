@@ -2,8 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { obterSessao } from "@/lib/sessao";
 import { dataBR, formatarDataBR } from "@/lib/util/tempo";
-import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, LayoutDashboard, Stethoscope, Trophy } from "lucide-react";
-import { buscarCaso, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
+import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, LayoutDashboard, Settings, Stethoscope, Trophy } from "lucide-react";
+import { banco, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
 import { ROTULO_GRUPO } from "@/lib/caso/esquema";
 
 const MODOS = [
@@ -16,7 +16,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
   const { excluido } = await searchParams;
   const sessao = await obterSessao();
   if (sessao.estado === "sem_cadastro") redirect("/cadastro");
-  const exemplo = buscarCaso(ID_CASO_EXEMPLO)!;
+  const exemplo = (await banco()).buscarCaso(ID_CASO_EXEMPLO);
   return (
     <div className="space-y-8">
       {excluido && (
@@ -46,6 +46,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
         </Link>
       </section>
 
+      {exemplo && (
       <section aria-labelledby="exemplo" className="rounded-lg border border-vinho-borda bg-vinho-claro p-4">
         <p className="text-xs font-medium uppercase tracking-wide text-vinho">Sem login</p>
         <h2 id="exemplo" className="mt-1 text-xl">Caso de exemplo</h2>
@@ -61,6 +62,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
           <ArrowRight aria-hidden size={18} strokeWidth={1.5} />
         </Link>
       </section>
+      )}
 
       {sessao.estado === "ok" && (
         <nav aria-label="Atalhos" className="grid gap-3 sm:grid-cols-2">
@@ -73,6 +75,13 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
             <Link href="/professor" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
               <LayoutDashboard aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
               <span className="flex-1 font-medium">Painel do professor</span>
+              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+            </Link>
+          )}
+          {sessao.perfil.papel === "professor" && (
+            <Link href="/admin/casos" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
+              <Settings aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+              <span className="flex-1 font-medium">Administração de casos</span>
               <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
             </Link>
           )}

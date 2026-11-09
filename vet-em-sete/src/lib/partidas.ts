@@ -1,6 +1,6 @@
 import "server-only";
 import type { Caso } from "@/lib/caso/esquema";
-import { mapaDiagnosticos } from "@/lib/dados";
+import { banco } from "@/lib/dados";
 import { aplicarAcao, montarVisao, resumir, type Acao, type Estado } from "@/lib/jogo/motor";
 import { calcularPontuacao } from "@/lib/jogo/pontuacao";
 import { supabaseAdmin } from "@/lib/supabase/servidor";
@@ -78,7 +78,7 @@ export function estadoDaPartida(p: LinhaPartida): Estado {
  * duas abas mandarem ações ao mesmo tempo, a segunda recebe erro e recarrega.
  */
 export async function jogarNaPartida(p: LinhaPartida, acao: Acao, caso: Caso) {
-  const diagnosticos = mapaDiagnosticos();
+  const diagnosticos = (await banco()).mapaDiagnosticos;
   const novo = aplicarAcao(estadoDaPartida(p), acao, caso, diagnosticos);
   const r = resumir(novo, caso);
   const agora = new Date().toISOString();

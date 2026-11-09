@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { casoPorCodigo, mapaDiagnosticos } from "@/lib/dados";
+import { banco } from "@/lib/dados";
 import { casoPermitido } from "@/lib/catalogo";
 import { estadoInicial, montarVisao } from "@/lib/jogo/motor";
 import { assinarEstado, lerEstado } from "@/lib/jogo/token";
@@ -25,13 +25,14 @@ export async function POST(req: Request) {
   const corpo = Corpo.safeParse(await req.json().catch(() => null));
   if (!corpo.success) return NextResponse.json({ erro: "Requisição inválida." }, { status: 400 });
   const { codigo, modo, token, novo } = corpo.data;
-  const caso = casoPorCodigo(codigo);
+  const b = await banco();
+  const caso = b.casoPorCodigo(codigo);
   if (!caso || !(await casoPermitido(caso, modo)))
     return NextResponse.json({ erro: "Este caso não está disponível neste modo." }, { status: 404 });
 
-  const diagnosticos = mapaDiagnosticos();
+  const diagnosticos = b.mapaDiagnosticos;
   const sessao = await obterSessao();
-  if (sessao.estado === "ok" && modo !== "exemplo") {
+  if (sessao.estado === "ok" && modo !== "exemplo" && modo !== "previa") {
     const uid = sessao.perfil.id;
     const p = (!novo && (await partidaAberta(uid, caso.id, modo))) || (await criarPartida(uid, caso, modo, dataBR()));
     return NextResponse.json({ partidaId: p.id, data: p.data_caso, visao: montarVisao(estadoDaPartida(p), caso, diagnosticos) });

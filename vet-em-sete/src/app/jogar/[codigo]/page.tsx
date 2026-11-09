@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { casoPorCodigo } from "@/lib/dados";
+import { banco } from "@/lib/dados";
 import { casoPermitido, type ModoLivre } from "@/lib/catalogo";
 import { formatarDataBR } from "@/lib/util/tempo";
 import Partida from "@/components/Partida";
@@ -9,6 +9,7 @@ const ROTULO: Record<ModoLivre, string> = {
   treino: "treino, fora do ranking",
   semestre: "modo por semestre, fora do ranking",
   arquivo: "caso anterior, fora do ranking",
+  previa: "pré-visualização do professor",
 };
 
 export default async function Jogar({
@@ -20,8 +21,8 @@ export default async function Jogar({
 }) {
   const { codigo } = await params;
   const sp = await searchParams;
-  const modo: ModoLivre = (["treino", "semestre", "arquivo", "exemplo"] as const).find((m) => m === sp.modo) ?? "exemplo";
-  const caso = casoPorCodigo(codigo);
+  const modo: ModoLivre = (["treino", "semestre", "arquivo", "exemplo", "previa"] as const).find((m) => m === sp.modo) ?? "exemplo";
+  const caso = (await banco()).casoPorCodigo(codigo);
   if (!caso || !(await casoPermitido(caso, modo)))
     return (
       <div className="space-y-3 pt-4">

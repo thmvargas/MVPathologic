@@ -10,5 +10,5 @@ export async function carregarPainel(instituicao: string, f: FiltrosPainel) {
   const turmas = [...new Set([...perfis.values()].filter((p) => p.papel === "aluno").map((p) => p.turma?.trim()).filter(Boolean) as string[])].sort(
     (a, b) => a.localeCompare(b, "pt-BR"),
   );
-  return { perfis, partidas, casos: infoDosCasos(), turmas };
+  return { perfis, partidas, casos: await infoDosCasos(), turmas };
 }

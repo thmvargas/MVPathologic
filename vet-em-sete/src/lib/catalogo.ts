@@ -1,12 +1,13 @@
 import "server-only";
-import { codigoDoCaso, ID_CASO_EXEMPLO, listaCasos } from "@/lib/dados";
+import { banco, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
 import { loginConfigurado } from "@/lib/config";
 import { supabaseAdmin } from "@/lib/supabase/servidor";
 import { dataBR } from "@/lib/util/tempo";
+import { obterSessao } from "@/lib/sessao";
 import type { Caso, GrupoEspecie } from "@/lib/caso/esquema";
 import { filtrarCasosLivres } from "@/lib/util/filtros";
 
-export type ModoLivre = "treino" | "semestre" | "arquivo" | "exemplo";
+export type ModoLivre = "treino" | "semestre" | "arquivo" | "exemplo" | "previa";
 
 /** O que pode aparecer numa lista: nada que revele o diagnóstico ou o sistema. */
 export type CartaoCaso = {
@@ -44,12 +45,12 @@ async function agenda(): Promise<Agenda> {
  * hoje e os já agendados para datas futuras (para não estragar a surpresa).
  */
 export async function casosLivres(hoje = dataBR()): Promise<Caso[]> {
-  return filtrarCasosLivres(listaCasos(), await agenda(), hoje);
+  return filtrarCasosLivres((await banco()).casos, await agenda(), hoje);
 }
 
 /** Casos do dia já passados, do mais recente para o mais antigo. */
 export async function casosDoArquivo(hoje = dataBR()): Promise<{ caso: Caso; data: string }[]> {
-  const casos = new Map(listaCasos().map((c) => [c.id, c]));
+  const casos = new Map((await banco()).casos.map((c) => [c.id, c]));
   return (await agenda())
     .filter((a) => a.data < hoje && casos.get(a.caso_id)?.status === "revisado")
     .map((a) => ({ caso: casos.get(a.caso_id)!, data: a.data }));
@@ -57,6 +58,11 @@ export async function casosDoArquivo(hoje = dataBR()): Promise<{ caso: Caso; dat
 
 /** O caso pode ser jogado neste modo hoje? */
 export async function casoPermitido(caso: Caso, modo: ModoLivre): Promise<boolean> {
+  if (modo === "previa") {
+    // Pré-visualização do painel: qualquer caso, só para professor.
+    const s = await obterSessao();
+    return s.estado === "ok" && s.perfil.papel === "professor";
+  }
   if (modo === "exemplo") return caso.id === ID_CASO_EXEMPLO;
   if (modo === "arquivo") return (await casosDoArquivo()).some((x) => x.caso.id === caso.id);
   return (await casosLivres()).some((c) => c.id === caso.id);

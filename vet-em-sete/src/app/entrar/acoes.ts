@@ -3,6 +3,7 @@
 import { config, loginConfigurado } from "@/lib/config";
 import { emailPermitido, ehProfessor } from "@/lib/util/dominio";
 import { supabaseSessao } from "@/lib/supabase/servidor";
+import { emailsDeProfessor } from "@/lib/sessao";
 
 export type Resultado = { ok: true } | { ok: false; erro: string };
 
@@ -18,7 +19,7 @@ export async function enviarCodigo(emailBruto: string): Promise<Resultado> {
   if (!loginConfigurado()) return { ok: false, erro: "O login ainda não foi configurado neste servidor." };
   const email = emailBruto.trim().toLowerCase();
   const permitidos = config.dominios();
-  if (!ehProfessor(email, config.professores()) && !emailPermitido(email, permitidos))
+  if (!ehProfessor(email, await emailsDeProfessor()) && !emailPermitido(email, permitidos))
     return {
       ok: false,
       erro: `Use seu e-mail institucional (${permitidos.map((d) => "@" + d).join(" ou ")}).`,

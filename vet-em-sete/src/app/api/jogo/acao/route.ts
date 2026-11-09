@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { buscarCaso, casoPorCodigo, mapaDiagnosticos } from "@/lib/dados";
+import { banco, casoNaVersao } from "@/lib/dados";
 import { aplicarAcao, ErroDeJogo, montarVisao } from "@/lib/jogo/motor";
 import { assinarEstado, lerEstado } from "@/lib/jogo/token";
 import { AcaoSchema } from "@/lib/jogo/api";
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       const sessao = await obterSessao();
       if (sessao.estado !== "ok") return NextResponse.json({ erro: "Sua sessão expirou. Entre de novo." }, { status: 401 });
       const partida = await buscarPartida(corpo.data.partidaId, sessao.perfil.id);
-      const caso = partida && buscarCaso(partida.caso_id);
+      const caso = partida && (await casoNaVersao(partida.caso_id, partida.caso_versao));
       if (!partida || !caso) return NextResponse.json({ erro: "Partida não encontrada." }, { status: 404 });
       const r = await jogarNaPartida(partida, acao, caso);
       if (r.conflito) return NextResponse.json({ erro: "A partida mudou em outra aba. Recarregue a página." }, { status: 409 });
@@ -31,9 +31,10 @@ export async function POST(req: Request) {
     }
 
     const salvo = lerEstado(corpo.data.token);
-    const caso = salvo && casoPorCodigo(salvo.codigo);
+    const b = await banco();
+    const caso = salvo && b.casoPorCodigo(salvo.codigo);
     if (!salvo || !caso) return NextResponse.json({ erro: "Partida inválida. Recomece o caso." }, { status: 400 });
-    const diagnosticos = mapaDiagnosticos();
+    const diagnosticos = b.mapaDiagnosticos;
     const novo = aplicarAcao({ casoId: caso.id, versao: salvo.versao, acoes: salvo.acoes }, acao, caso, diagnosticos);
     return NextResponse.json({
       token: assinarEstado({ codigo: salvo.codigo, versao: novo.versao, acoes: novo.acoes }),
