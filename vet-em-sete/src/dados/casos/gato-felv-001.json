@@ -1,0 +1,332 @@
+{
+  "id": "gato-felv-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "3 anos",
+  "sexo": "macho castrado",
+  "peso": "3,8 kg",
+  "queixa_principal": [
+    "Fraco e sem apetite",
+    "Gengivas brancas"
+  ],
+  "semestre": 4,
+  "uso": "treino",
+  "sistema": "hematopoietico_linfatico",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Adotado adulto de um abrigo com muitos gatos"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com outros dois gatos; sai à rua"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Só antirrábica"
+      ]
+    },
+    {
+      "titulo": "Testes",
+      "itens": [
+        "Nunca testado para retrovírus"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Apatia e perda de peso há 3 semanas",
+        "Gengivite e mau hálito há meses"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Dois episódios de infecção respiratória no último ano"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,5",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Muito pálidas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "220",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Cavidade oral",
+        "itens": [
+          "Gengivoestomatite"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Generalizadamente aumentados"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Esplenomegalia leve"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "teste",
+      "tipo": "sorologia",
+      "nome": "Teste rápido de antígeno de FeLV (p27) e anticorpos de FIV",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Antígeno p27 de FeLV: reagente",
+          "Anticorpos anti-FIV: não reagente"
+        ],
+        "conclusao": "FeLV positivo."
+      },
+      "comentario_didatico": "O antígeno p27 positivo indica infecção pelo FeLV; um resultado positivo isolado em gato saudável deve ser confirmado."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para provírus de FeLV",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "DNA proviral detectado com carga alta"
+        ],
+        "conclusao": "Infecção progressiva."
+      },
+      "comentario_didatico": "Confirma a infecção e diferencia infecção progressiva de regressiva quando interpretada com o antígeno."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "11",
+            "unidade": "%",
+            "referencia": "30–45",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Reticulócitos agregados",
+            "valor": "8",
+            "unidade": "×10³/µL",
+            "referencia": "< 60 em anemia: arregenerativa",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Neutrófilos",
+            "valor": "1,9",
+            "unidade": "×10³/µL",
+            "referencia": "2,5–12,5",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Anemia arregenerativa grave e neutropenia."
+      },
+      "comentario_didatico": "Anemia arregenerativa é a alteração mais comum causada pelo FeLV, por lesão da medula óssea."
+    },
+    {
+      "id": "mielograma",
+      "tipo": "citologia",
+      "nome": "Citologia de medula óssea",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hipoplasia da linhagem eritroide"
+        ],
+        "conclusao": "Hipoplasia eritroide."
+      },
+      "comentario_didatico": "Confirma a hipoplasia eritroide, mas exige anestesia num paciente grave."
+    },
+    {
+      "id": "pcr_myco",
+      "tipo": "pcr",
+      "nome": "PCR para micoplasmas hemotrópicos",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Coinfecção é possível e trataria parte da anemia; aqui negativa."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica a anemia."
+    }
+  ],
+  "diagnostico_id": "leucemia_viral_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "imunodeficiencia_viral_felina",
+      "como_descartar": "Também causa gengivite e infecções recorrentes, mas a anemia grave é menos comum; anticorpos para FIV positivos."
+    },
+    {
+      "diagnostico_id": "micoplasmose_hemotropica_felina",
+      "como_descartar": "Anemia regenerativa hemolítica; PCR para micoplasmas positiva."
+    },
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Pode ser consequência do FeLV; massa ou população linfoide anormal na citologia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "transfusao",
+      "texto": "Transfusão de sangue após tipagem sanguínea",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Hematócrito de 11% com sinais clínicos exige transfusão; gatos têm anticorpos naturais contra o tipo sanguíneo diferente."
+    },
+    {
+      "id": "suporte",
+      "texto": "Tratar infecções secundárias e dar suporte nutricional",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "A imunossupressão favorece infecções."
+    },
+    {
+      "id": "separar",
+      "texto": "Separar dos outros gatos e testar os contactantes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O FeLV é transmitido por saliva, contato próximo e compartilhamento de comedouros."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar contra FeLV os contactantes negativos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Protege os gatos que ainda não se infectaram."
+    },
+    {
+      "id": "dentro",
+      "texto": "Manter o gato dentro de casa",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita transmitir para gatos da vizinhança e reduz exposição a outras infecções."
+    },
+    {
+      "id": "vacinar_doente",
+      "texto": "Vacinar o gato doente contra FeLV",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "A vacina não trata a infecção já estabelecida."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide em dose imunossupressora sem diagnóstico de causa imunomediada",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Piora a imunossupressão de um gato já imunocomprometido."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato jovem vindo de abrigo, sem vacina para FeLV e com acesso à rua, com gengivite crônica, infecções recorrentes, anemia arregenerativa grave e neutropenia; antígeno de FeLV e PCR positivos: infecção progressiva pelo vírus da leucemia felina.",
+    "fisiopatologia": [
+      "O FeLV é um retrovírus (Gammaretrovirus) que insere seu DNA (provírus) no genoma das células do hospedeiro.",
+      "A transmissão é principalmente pela saliva, em contato próximo e prolongado.",
+      "Na infecção progressiva, o vírus replica na medula óssea: anemia arregenerativa, neutropenia e imunossupressão.",
+      "A inserção do provírus perto de oncogenes favorece linfoma e leucemia."
+    ],
+    "pistas": [
+      {
+        "achado": "Gato de abrigo, sem vacina, que sai à rua",
+        "por_que_importa": "Exposição ao vírus."
+      },
+      {
+        "achado": "Gengivite e infecções recorrentes",
+        "por_que_importa": "Imunossupressão."
+      },
+      {
+        "achado": "Anemia arregenerativa grave",
+        "por_que_importa": "Lesão da medula óssea."
+      },
+      {
+        "achado": "Antígeno p27 positivo",
+        "por_que_importa": "Infecção pelo FeLV."
+      }
+    ],
+    "comentario_exames": "Teste de antígeno e PCR definem a infecção; o hemograma mostra a gravidade.",
+    "comentario_tratamento": "Suporte, transfusão quando necessária, controle de infecções secundárias e medidas para proteger os outros gatos."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir intervalos felinos de hemograma."
+  }
+}

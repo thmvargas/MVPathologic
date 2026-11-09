@@ -1,0 +1,345 @@
+{
+  "id": "gato-hipertireoidismo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Siamês",
+  "idade": "14 anos",
+  "sexo": "fêmea castrada",
+  "peso": "3,2 kg",
+  "queixa_principal": [
+    "Emagrecendo",
+    "Come muito"
+  ],
+  "semestre": 6,
+  "uso": "treino",
+  "sistema": "endocrino",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração úmida e seca"
+      ]
+    },
+    {
+      "titulo": "Peso",
+      "itens": [
+        "Pesava 4,5 kg há 1 ano"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Emagrecimento progressivo há 6 meses apesar de comer mais",
+        "Mais agitada, mia à noite",
+        "Vômitos esporádicos"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Bebe e urina mais"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "260",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,0",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Pressão arterial sistólica (Doppler)",
+        "valor": "180",
+        "unidade": "mmHg",
+        "referencia": "< 140",
+        "fonte": "carney2016",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "2/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pescoço",
+        "itens": [
+          "Nódulo palpável no lado esquerdo da traqueia (tireoide aumentada)"
+        ]
+      },
+      {
+        "titulo": "Cardiovascular",
+        "itens": [
+          "Sopro sistólico grau II/VI e ritmo de galope"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Desgrenhada, sem cuidado"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "T4 total",
+            "valor": "9,8",
+            "unidade": "µg/dL",
+            "referencia": "0,8–4,0",
+            "fonte": "carney2016",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "T4 total muito aumentado."
+      },
+      "comentario_didatico": "T4 total alto em gato idoso com sinais compatíveis confirma o diagnóstico."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica e urinálise",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "ALT",
+            "valor": "190",
+            "unidade": "U/L",
+            "referencia": "6–83",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "1,2",
+            "unidade": "mg/dL",
+            "referencia": "0,8–1,8",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "descricao": [
+          "Densidade urinária 1,030"
+        ],
+        "conclusao": "Aumento de enzimas hepáticas; função renal aparentemente normal."
+      },
+      "comentario_didatico": "Avalia o rim: o hipertireoidismo aumenta a filtração e pode mascarar doença renal crônica."
+    },
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hipertrofia concêntrica leve do ventrículo esquerdo"
+        ],
+        "conclusao": "Cardiomiopatia tireotóxica leve."
+      },
+      "comentario_didatico": "Mostra hipertrofia ventricular secundária, útil no manejo, mas não diagnostica."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hematócrito no limite superior"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Eritrocitose leve pode ocorrer; inespecífico."
+    },
+    {
+      "id": "rx_abdome",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não contribui."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica o quadro."
+    }
+  ],
+  "diagnostico_id": "hipertireoidismo_felino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "diabetes_mellitus",
+      "como_descartar": "Emagrecimento com polifagia, mas com hiperglicemia persistente e glicosúria."
+    },
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Emagrecimento em gato idoso; massas ou espessamento intestinal na imagem, T4 normal."
+    },
+    {
+      "diagnostico_id": "doenca_renal_cronica",
+      "como_descartar": "Emagrecimento e poliúria com azotemia e apetite reduzido."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "metimazol",
+      "texto": "Metimazol por via oral com ajuste de dose e acompanhamento",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Inibe a síntese de hormônios tireoidianos.",
+      "dose": {
+        "texto": "1,25–2,5 mg/gato VO a cada 12 h, ajustada",
+        "fonte": "carney2016",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "rim",
+      "texto": "Reavaliar a função renal 2 a 4 semanas após controlar o T4",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Com a queda da filtração, uma doença renal escondida pode aparecer."
+    },
+    {
+      "id": "iodo",
+      "texto": "Iodo radioativo (onde houver)",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Tratamento definitivo de escolha, mas pouco disponível no Brasil."
+    },
+    {
+      "id": "betabloq",
+      "texto": "Betabloqueador enquanto o T4 não normaliza",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Controla taquicardia e hipertensão."
+    },
+    {
+      "id": "dieta_iodo",
+      "texto": "Dieta restrita em iodo como única fonte de alimento",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Opção quando o gato não aceita medicação; exige exclusividade."
+    },
+    {
+      "id": "levotiroxina",
+      "texto": "Levotiroxina",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta ainda mais os hormônios tireoidianos."
+    },
+    {
+      "id": "tireoidectomia_ja",
+      "texto": "Tireoidectomia imediata, sem estabilizar",
+      "tipo": "cirurgia",
+      "classificacao": "contraindicado",
+      "justificativa": "Anestesia com taquicardia e hipertensão não controladas é de alto risco."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gata idosa com emagrecimento e polifagia, hiperatividade, taquicardia, hipertensão e nódulo tireoidiano palpável; T4 total muito alto: hipertireoidismo felino.",
+    "fisiopatologia": [
+      "Na maioria dos gatos, a causa é hiperplasia adenomatosa ou adenoma funcional da tireoide.",
+      "O excesso de T4 e T3 aumenta o metabolismo basal: emagrecimento com polifagia.",
+      "Aumenta a sensibilidade do coração às catecolaminas: taquicardia, hipertrofia e hipertensão.",
+      "Eleva a filtração glomerular, o que pode esconder doença renal crônica."
+    ],
+    "pistas": [
+      {
+        "achado": "Gata idosa emagrecendo e comendo muito",
+        "por_que_importa": "Metabolismo acelerado."
+      },
+      {
+        "achado": "Taquicardia e hipertensão",
+        "por_que_importa": "Efeito cardiovascular dos hormônios."
+      },
+      {
+        "achado": "Nódulo cervical palpável",
+        "por_que_importa": "Tireoide aumentada."
+      },
+      {
+        "achado": "T4 total alto",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "T4 total confirma na maioria dos casos; bioquímica, urinálise e pressão avaliam rim e complicações.",
+    "comentario_tratamento": "Metimazol com acompanhamento do T4 e da função renal; tratar a hipertensão."
+  },
+  "referencias": [
+    {
+      "id": "carney2016",
+      "citacao": "CARNEY, H. C. et al. 2016 AAFP Guidelines for the Management of Feline Hyperthyroidism. Journal of Feline Medicine and Surgery, v. 18, n. 5, p. 400-416, 2016."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

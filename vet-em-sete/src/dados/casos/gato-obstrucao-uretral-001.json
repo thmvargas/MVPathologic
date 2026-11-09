@@ -1,0 +1,357 @@
+{
+  "id": "gato-obstrucao-uretral-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "4 anos",
+  "sexo": "macho castrado",
+  "peso": "6,2 kg",
+  "queixa_principal": [
+    "Vai à caixa de areia várias vezes e não sai xixi",
+    "Chora ao tentar urinar"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "urinario",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento, sem acesso à rua"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Só ração seca"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Uma caixa de areia; mudança de casa há 2 semanas"
+      ]
+    },
+    {
+      "titulo": "Atividade",
+      "itens": [
+        "Sedentário, sobrepeso"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Ontem: ia à caixa muitas vezes, saíam gotas com sangue",
+        "Hoje: nenhuma urina desde a manhã, vomitou duas vezes"
+      ]
+    },
+    {
+      "titulo": "Comportamento",
+      "itens": [
+        "Lambe a região genital"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,1",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "130",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 7%",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Bexiga muito distendida, firme e dolorosa, que não esvazia com compressão suave"
+        ]
+      },
+      {
+        "titulo": "Pênis",
+        "itens": [
+          "Extremidade arroxeada; material arenoso na ponta"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Apático, vocaliza à palpação"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica e eletrólitos",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Potássio",
+            "valor": "8,1",
+            "unidade": "mEq/L",
+            "referencia": "4,0–4,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Ureia",
+            "valor": "190",
+            "unidade": "mg/dL",
+            "referencia": "42–64",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "6,4",
+            "unidade": "mg/dL",
+            "referencia": "0,8–1,8",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Hipercalemia grave e azotemia pós-renal."
+      },
+      "comentario_didatico": "Sem urina, o potássio não é excretado e se acumula; hipercalemia causa bradicardia e pode parar o coração. A azotemia é pós-renal."
+    },
+    {
+      "id": "ecg",
+      "tipo": "outro",
+      "nome": "Eletrocardiograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Bradicardia",
+          "Ondas T apiculadas",
+          "Ondas P achatadas"
+        ],
+        "conclusao": "Alterações compatíveis com hipercalemia."
+      },
+      "comentario_didatico": "Mostra os efeitos do potássio alto no coração e indica urgência."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise (após desobstrução)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hematúria",
+          "Cristais de estruvita abundantes"
+        ],
+        "conclusao": "Hematúria e cristalúria de estruvita."
+      },
+      "comentario_didatico": "Cristais e sangue são comuns, mas aparecem também em gatos sem obstrução."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal incluindo toda a uretra",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Bexiga distendida",
+          "Sem cálculos radiopacos"
+        ],
+        "conclusao": "Sem urólitos visíveis."
+      },
+      "comentario_didatico": "Procura cálculos radiopacos na bexiga e na uretra."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Urocultura",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem crescimento"
+        ],
+        "conclusao": "Negativa."
+      },
+      "comentario_didatico": "Infecção é rara em gatos jovens obstruídos na primeira apresentação."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem relação com o quadro."
+    }
+  ],
+  "diagnostico_id": "obstrucao_uretral_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cistite_idiopatica_felina",
+      "como_descartar": "Mesmos sinais de micção, mas a bexiga está pequena e o gato consegue urinar."
+    },
+    {
+      "diagnostico_id": "urolitiase_vesical",
+      "como_descartar": "Cálculos visíveis na imagem; pode ou não obstruir."
+    },
+    {
+      "diagnostico_id": "lesao_renal_aguda",
+      "como_descartar": "Azotemia sem bexiga distendida."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "estabilizar",
+      "texto": "Estabilizar primeiro: fluido intravenoso e tratar a hipercalemia (ex.: gluconato de cálcio, insulina com glicose)",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "O potássio alto é a ameaça imediata à vida."
+    },
+    {
+      "id": "desobstruir",
+      "texto": "Desobstruir sob sedação com sonda uretral e lavagem retrógrada",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Restabelece o fluxo de urina."
+    },
+    {
+      "id": "sonda",
+      "texto": "Manter sonda e acompanhar a diurese pós-obstrutiva",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Após desobstruir, o gato urina muito e pode perder líquido e potássio."
+    },
+    {
+      "id": "analgesia",
+      "texto": "Analgesia com opioide e relaxante uretral",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Dor e espasmo da uretra favorecem nova obstrução."
+    },
+    {
+      "id": "agua",
+      "texto": "Mudar para dieta úmida e aumentar consumo de água; mais caixas de areia e menos estresse",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Urina mais diluída e manejo ambiental reduzem recidivas."
+    },
+    {
+      "id": "cistocentese",
+      "texto": "Cistocentese descompressiva antes da sonda, se a desobstrução demorar",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Alivia a pressão, mas tem risco de lesão vesical."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal antes de normalizar a função renal",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Pode agravar a lesão renal num paciente azotêmico e desidratado."
+    },
+    {
+      "id": "casa",
+      "texto": "Mandar para casa com analgésico e reavaliar amanhã",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Obstrução com hipercalemia é emergência fatal em horas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato macho castrado, sedentário, com dieta seca e estresse recente, apresenta esforço urinário sem urina, bexiga grande e dolorosa, bradicardia e hipotermia; hipercalemia grave e azotemia: obstrução uretral felina por tampão de matriz e cristais.",
+    "fisiopatologia": [
+      "Anatomia: a uretra do gato macho é longa e se estreita muito na porção peniana; é aí que tampões e cálculos param.",
+      "A causa mais comum é o tampão uretral (matriz proteica com cristais), ligado à cistite idiopática e ao estresse.",
+      "Fisiologia: com a urina retida, potássio, ureia e creatinina não são excretados (azotemia pós-renal).",
+      "O potássio alto reduz o potencial de repouso das células cardíacas e retarda a condução: bradicardia, ondas T apiculadas e risco de parada.",
+      "Pouca água, obesidade, sedentarismo e estresse são fatores de risco."
+    ],
+    "pistas": [
+      {
+        "achado": "Macho castrado, obeso, dieta seca",
+        "por_que_importa": "Perfil de risco."
+      },
+      {
+        "achado": "Esforço para urinar sem urina",
+        "por_que_importa": "Obstrução, não só inflamação."
+      },
+      {
+        "achado": "Bexiga grande, firme e que não esvazia",
+        "por_que_importa": "Diferencia de cistite sem obstrução."
+      },
+      {
+        "achado": "Bradicardia num gato doente",
+        "por_que_importa": "Sinal de alerta para hipercalemia."
+      }
+    ],
+    "comentario_exames": "Eletrólitos e ECG vêm antes de tudo, porque definem o risco de vida. Urinálise e radiografia ajudam a entender a causa.",
+    "comentario_tratamento": "Estabilizar a hipercalemia, desobstruir, controlar a diurese e prevenir recidivas com água e manejo ambiental."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir intervalos felinos de frequência cardíaca e potássio."
+  }
+}

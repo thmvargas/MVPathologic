@@ -137,20 +137,42 @@ em **Deployments**, abra o mais recente → **⋯** → **Redeploy**.
 As outras variáveis (URL, chave pública, domínios, professores) já estão
 cadastradas na Vercel.
 
+## Painel de administração (Etapa 6)
+
+### Configuração única
+
+1. Supabase → SQL Editor → rode [`supabase/ves_002_casos_admin.sql`](./supabase/ves_002_casos_admin.sql).
+2. No jogo, entre como professor → **Administração de casos** → **Importar do repositório**.
+   Isso copia para o banco os casos e diagnósticos que estão em `src/dados`. Pode
+   clicar de novo sem problema: o que já está no banco não é alterado.
+
+### Revisar e aprovar um caso
+
+1. **Administração → Casos**, filtro **Rascunho**.
+2. Abra o caso. O quadro no topo lista as **pendências** (campos "a revisar",
+   fontes faltando, exames ou condutas insuficientes).
+3. Corrija o que precisar. Para conferir um valor, troque pelo da fonte ou do
+   seu laboratório e desmarque **A revisar**.
+4. **Jogar como aluno** abre o caso como o aluno vê (usa a última versão salva).
+5. **Salvar** guarda sem aprovar. **Aprovar** só fica ativo sem pendências.
+6. Caso aprovado e alterado depois volta a rascunho (precisa de nova aprovação).
+   Partidas em andamento continuam na versão em que começaram.
+
+**Uso do caso**: "caso do dia" (reservado; entra no treino depois de usado) ou
+"só treino" (nunca vira caso do dia).
+
+### Outras telas
+
+- **Diagnósticos**: lista controlada (nome, siglas, sistemas, categoria,
+  agente). Não dá para excluir diagnóstico usado em algum caso.
+- **Agenda**: fixar o caso de uma data; dias sem agendamento recebem sorteio.
+- **Professores**: convidar colegas pelo e-mail (entram como professor).
+
 ## Casos e caso do dia
 
 Só casos com `"status": "revisado"` entram no caso do dia. O sorteio é feito
 na primeira visita de cada dia (horário de Brasília) e fica gravado na tabela
-`ves_caso_do_dia`. Para fixar um caso numa data, por enquanto, rode no SQL
-Editor (na Etapa 6 isso vira uma tela):
-
-```sql
-insert into ves_caso_do_dia (data, caso_id, agendado)
-values ('2026-11-20', 'cao-erliquiose-001', true)
-on conflict (data) do update set caso_id = excluded.caso_id, agendado = true;
-```
-
-Com um único caso revisado, ele se repete todo dia até a Etapa 6 trazer o lote inicial.
+`ves_caso_do_dia`. Para fixar um caso numa data, use **Administração → Agenda**.
 
 ## Aviso
 

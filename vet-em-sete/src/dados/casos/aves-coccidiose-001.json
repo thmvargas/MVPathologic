@@ -1,0 +1,278 @@
+{
+  "id": "aves-coccidiose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "aves",
+  "grupo_especie": "aves",
+  "raca": "Frango de corte",
+  "idade": "24 dias",
+  "sexo": "lote misto",
+  "peso": "900 g (média)",
+  "queixa_principal": [
+    "Fezes com sangue",
+    "Aves encolhidas e mortalidade"
+  ],
+  "semestre": 3,
+  "uso": "treino",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Granja",
+      "itens": [
+        "Galpão de 20 mil aves"
+      ]
+    },
+    {
+      "titulo": "Cama",
+      "itens": [
+        "Reutilizada pelo terceiro lote, úmida perto dos bebedouros"
+      ]
+    },
+    {
+      "titulo": "Programa",
+      "itens": [
+        "Anticoccidiano na ração retirado no início do lote por falta no estoque"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Período chuvoso"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 3 dias: aves encolhidas, penas arrepiadas, comendo menos",
+        "Fezes com sangue e mortalidade subindo"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Mortalidade diária",
+        "valor": "0,8%",
+        "referencia": "< 0,1% nesta idade",
+        "fonte": "swayne",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Consumo de ração",
+        "valor": "Queda de 15%",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Lote",
+        "itens": [
+          "Aves apáticas, asas caídas, penas arrepiadas"
+        ]
+      },
+      {
+        "titulo": "Fezes",
+        "itens": [
+          "Sanguinolentas na cama"
+        ]
+      },
+      {
+        "titulo": "Cama",
+        "itens": [
+          "Úmida e compactada"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de aves doentes",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cecos aumentados, com sangue e coágulos",
+          "Parede cecal espessa"
+        ],
+        "conclusao": "Tiflite hemorrágica compatível com Eimeria tenella."
+      },
+      "comentario_didatico": "A localização e o aspecto das lesões no intestino indicam a espécie de Eimeria: E. tenella causa hemorragia nos cecos."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado da mucosa cecal ao microscópio",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Muitos esquizontes e oocistos"
+        ],
+        "conclusao": "Coccidiose."
+      },
+      "comentario_didatico": "Mostra esquizontes, gametas e oocistos e confirma a coccidiose."
+    },
+    {
+      "id": "oocistos_cama",
+      "tipo": "coproparasitologico",
+      "nome": "Contagem de oocistos na cama",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Contagem alta"
+        ],
+        "conclusao": "Contaminação alta."
+      },
+      "comentario_didatico": "Ajuda no monitoramento, mas oocistos estão sempre presentes em algum grau."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura para Clostridium perfringens",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem crescimento significativo"
+        ],
+        "conclusao": "Negativa."
+      },
+      "comentario_didatico": "Avalia enterite necrótica associada, comum após coccidiose; aqui negativa."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Sorologia para Newcastle",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Títulos compatíveis com vacinação"
+        ],
+        "conclusao": "Vacinal."
+      },
+      "comentario_didatico": "Não explica tiflite hemorrágica."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma individual",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizado"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem utilidade em diagnóstico de lote."
+    }
+  ],
+  "diagnostico_id": "coccidiose_aviaria",
+  "diferenciais": [
+    {
+      "diagnostico_id": "enterite_necrotica",
+      "como_descartar": "Necrose da mucosa do intestino delgado com membrana diftérica; Clostridium perfringens."
+    },
+    {
+      "diagnostico_id": "doenca_de_newcastle",
+      "como_descartar": "Sinais respiratórios e neurológicos, hemorragias no proventrículo; notificação obrigatória."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "anticoccidiano",
+      "texto": "Anticoccidiano na água (ex.: toltrazuril ou amprólio)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Trata o surto em andamento.",
+      "dose": {
+        "texto": "Conforme bula do produto registrado",
+        "fonte": "swayne",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "cama",
+      "texto": "Corrigir a umidade da cama e a regulagem dos bebedouros",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A umidade favorece a esporulação dos oocistos."
+    },
+    {
+      "id": "programa",
+      "texto": "Restabelecer o programa preventivo (anticoccidiano na ração ou vacina)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A retirada do programa explica o surto."
+    },
+    {
+      "id": "carencia",
+      "texto": "Respeitar o período de carência antes do abate",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Evita resíduos na carne."
+    },
+    {
+      "id": "vitaminas",
+      "texto": "Vitaminas A e K na água como suporte",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Ajudam na recuperação da mucosa e na coagulação."
+    },
+    {
+      "id": "antibiotico_so",
+      "texto": "Só antibiótico na água",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não age sobre o protozoário."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Lote de frangos de 24 dias, com cama reutilizada e úmida e sem o anticoccidiano na ração, apresentando apatia, fezes com sangue e mortalidade crescente; necropsia com tiflite hemorrágica e raspado com estágios de Eimeria: coccidiose cecal por Eimeria tenella.",
+    "fisiopatologia": [
+      "Eimeria são protozoários (Apicomplexa) com ciclo direto: a ave ingere oocistos esporulados da cama.",
+      "Os esporozoítos invadem as células do epitélio intestinal e se multiplicam (esquizogonia), destruindo a mucosa.",
+      "Cada espécie tem um local preferido: E. tenella nos cecos, com hemorragia intensa.",
+      "Os oocistos eliminados precisam de umidade e calor para esporular na cama.",
+      "A lesão intestinal favorece a enterite necrótica por Clostridium perfringens."
+    ],
+    "pistas": [
+      {
+        "achado": "Anticoccidiano retirado",
+        "por_que_importa": "Falha na prevenção."
+      },
+      {
+        "achado": "Cama úmida e reutilizada",
+        "por_que_importa": "Muitos oocistos esporulados."
+      },
+      {
+        "achado": "Fezes com sangue",
+        "por_que_importa": "Lesão hemorrágica."
+      },
+      {
+        "achado": "Cecos com sangue na necropsia",
+        "por_que_importa": "Local típico de E. tenella."
+      }
+    ],
+    "comentario_exames": "Necropsia com raspado da mucosa resolve; a localização das lesões indica a espécie.",
+    "comentario_tratamento": "Anticoccidiano, correção da cama e retorno do programa preventivo."
+  },
+  "referencias": [
+    {
+      "id": "swayne",
+      "citacao": "SWAYNE, D. E. (Ed.). Diseases of Poultry. 14. ed. Hoboken: Wiley-Blackwell, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

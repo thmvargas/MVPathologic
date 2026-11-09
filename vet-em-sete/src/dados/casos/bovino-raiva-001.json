@@ -1,0 +1,307 @@
+{
+  "id": "bovino-raiva-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Nelore",
+  "idade": "3 anos",
+  "sexo": "fêmea",
+  "peso": "400 kg",
+  "queixa_principal": [
+    "Babando",
+    "Patas de trás fracas"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "nervoso",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Fazenda com grutas e morcegos próximos"
+      ]
+    },
+    {
+      "titulo": "Achados no rebanho",
+      "itens": [
+        "Feridas sangrando no pescoço de vários bovinos pela manhã"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Rebanho não vacinado contra raiva"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Duas vacas morreram com sinais parecidos no último mês"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 3 dias: isolada do lote e sem comer",
+        "Ontem: fraqueza das patas traseiras",
+        "Hoje: salivação e dificuldade para engolir"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,0",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "Diminuídos",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Paresia de membros pélvicos que progride",
+          "Cauda flácida",
+          "Mugidos roucos"
+        ]
+      },
+      {
+        "titulo": "Cabeça",
+        "itens": [
+          "Salivação, dificuldade de deglutição"
+        ]
+      },
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Marca de mordedura de morcego no pescoço"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "if",
+      "tipo": "outro",
+      "nome": "Imunofluorescência direta e prova biológica em tecido nervoso (após a morte)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Imunofluorescência direta: positiva",
+          "Prova biológica: positiva"
+        ],
+        "conclusao": "Raiva confirmada."
+      },
+      "comentario_didatico": "Exames oficiais para raiva, feitos em fragmentos de encéfalo e medula enviados refrigerados ao laboratório credenciado."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia de encéfalo, tronco e medula",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Manguitos perivasculares mononucleares",
+          "Corpúsculos de inclusão eosinofílicos intracitoplasmáticos (Negri) em neurônios de Purkinje"
+        ],
+        "conclusao": "Encefalomielite compatível com raiva."
+      },
+      "comentario_didatico": "Mostra encefalomielite não supurativa e corpúsculos de Negri, sobretudo em neurônios de Purkinje do cerebelo."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Líquido cerebrospinal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Pleocitose mononuclear discreta"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Alterações inespecíficas; não confirma raiva."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações relevantes"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "esfregaco",
+      "tipo": "citologia",
+      "nome": "Esfregaço sanguíneo",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem hemoparasitos"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não ajuda no diagnóstico neurológico desse quadro."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem indicação."
+    }
+  ],
+  "diagnostico_id": "raiva",
+  "diferenciais": [
+    {
+      "diagnostico_id": "botulismo",
+      "como_descartar": "Paralisia flácida progressiva e simétrica, com consciência preservada, ligada a carcaças ou cama de frango; sem lesão inflamatória no encéfalo."
+    },
+    {
+      "diagnostico_id": "polioencefalomalacia",
+      "como_descartar": "Cegueira, pressão da cabeça contra objetos e opistótono; resposta à tiamina."
+    },
+    {
+      "diagnostico_id": "tristeza_parasitaria_bovina",
+      "como_descartar": "A babesiose cerebral causa sinais neurológicos com febre alta e anemia; parasitos no esfregaço do cérebro."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "notificar",
+      "texto": "Notificar imediatamente o serviço veterinário oficial",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Raiva é de notificação obrigatória."
+    },
+    {
+      "id": "epi",
+      "texto": "Manejar com luvas e evitar contato com saliva; avaliar profilaxia humana para quem teve contato",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Zoonose fatal."
+    },
+    {
+      "id": "amostra",
+      "texto": "Coletar e enviar encéfalo após a morte, refrigerado, ao laboratório oficial",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Confirma o diagnóstico e orienta as ações na região."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar todo o rebanho e os animais das propriedades vizinhas",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Medida de controle de foco."
+    },
+    {
+      "id": "morcegos",
+      "texto": "Comunicar o serviço oficial para controle das colônias de morcegos hematófagos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O controle de Desmodus rotundus é feito por equipes treinadas."
+    },
+    {
+      "id": "eutanasia",
+      "texto": "Eutanásia em fase terminal, sem danificar o encéfalo",
+      "tipo": "eutanasia",
+      "classificacao": "aceitavel",
+      "justificativa": "Evita sofrimento e preserva o material para diagnóstico."
+    },
+    {
+      "id": "mao_boca",
+      "texto": "Examinar a boca com a mão sem luva para procurar \"osso entalado\"",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Expõe a pessoa à saliva com vírus."
+    },
+    {
+      "id": "tratar",
+      "texto": "Tratar com antibiótico e anti-inflamatório esperando a melhora",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não há tratamento; atrasa as medidas e expõe pessoas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca de rebanho não vacinado, em fazenda com morcegos hematófagos e mordeduras recentes, com paralisia progressiva dos membros pélvicos, salivação, disfagia e mortes anteriores no rebanho; imunofluorescência positiva e corpúsculos de Negri: raiva dos herbívoros, de forma paralítica.",
+    "fisiopatologia": [
+      "O vírus da raiva (Lyssavirus, família Rhabdoviridae) entra pela mordedura do morcego hematófago Desmodus rotundus.",
+      "Replica no músculo e sobe pelos nervos periféricos até a medula e o encéfalo (transporte axonal retrógrado).",
+      "Nos herbívoros predomina a forma paralítica, com paresia ascendente.",
+      "A encefalomielite não supurativa e os corpúsculos de Negri são as lesões típicas.",
+      "Do sistema nervoso, o vírus vai às glândulas salivares e é eliminado na saliva."
+    ],
+    "pistas": [
+      {
+        "achado": "Morcegos e mordeduras no rebanho",
+        "por_que_importa": "Fonte de infecção."
+      },
+      {
+        "achado": "Rebanho não vacinado",
+        "por_que_importa": "Sem proteção."
+      },
+      {
+        "achado": "Paralisia dos membros pélvicos que avança",
+        "por_que_importa": "Forma paralítica."
+      },
+      {
+        "achado": "Salivação e disfagia",
+        "por_que_importa": "Paralisia faríngea, não \"osso entalado\"."
+      }
+    ],
+    "comentario_exames": "O diagnóstico é feito após a morte, em tecido nervoso, por imunofluorescência e prova biológica; a histopatologia mostra os corpúsculos de Negri.",
+    "comentario_tratamento": "Não há tratamento. O foco é notificar, proteger as pessoas, vacinar e controlar os morcegos com o serviço oficial."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "mapa_raiva",
+      "citacao": "BRASIL. Ministério da Agricultura, Pecuária e Abastecimento. Controle da raiva dos herbívoros: manual técnico. Brasília: MAPA, 2009."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

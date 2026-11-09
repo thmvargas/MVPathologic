@@ -1,0 +1,303 @@
+{
+  "id": "bovino-mastite-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Girolando",
+  "idade": "5 anos",
+  "sexo": "fêmea",
+  "peso": "480 kg",
+  "queixa_principal": [
+    "Leite com grumos",
+    "Um quarto do úbere inchado"
+  ],
+  "semestre": 3,
+  "uso": "treino",
+  "sistema": "reprodutor",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Ordenha mecânica, duas vezes ao dia"
+      ]
+    },
+    {
+      "titulo": "Higiene",
+      "itens": [
+        "Não faz pré-dipping nem pós-dipping; usa um pano para secar todos os tetos"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Vacas deitam em área com barro e esterco"
+      ]
+    },
+    {
+      "titulo": "Rebanho",
+      "itens": [
+        "Contagem de células somáticas do tanque alta nos últimos meses"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Desde ontem: leite com grumos no quarto posterior direito",
+        "Quarto quente e inchado"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Come normal"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,4",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "78",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "Normais"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Úbere",
+        "itens": [
+          "Quarto posterior direito aumentado, quente, firme e dolorido"
+        ]
+      },
+      {
+        "titulo": "Leite",
+        "itens": [
+          "Grumos e leite aquoso no quarto afetado"
+        ]
+      },
+      {
+        "titulo": "Outros quartos",
+        "itens": [
+          "Sem alterações visíveis"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "caneca",
+      "tipo": "outro",
+      "nome": "Teste da caneca de fundo escuro",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Grumos no quarto posterior direito"
+        ],
+        "conclusao": "Mastite clínica."
+      },
+      "comentario_didatico": "Teste simples, feito antes de cada ordenha, que mostra grumos e alterações do leite."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura do leite com antibiograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Crescimento de Escherichia coli",
+          "Sensível a ceftiofur e gentamicina"
+        ],
+        "conclusao": "Mastite ambiental por E. coli."
+      },
+      "comentario_didatico": "Identifica o agente e orienta o tratamento e o controle no rebanho (contagioso x ambiental)."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "California Mastitis Test (CMT) nos quatro quartos",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Quarto posterior direito: +++",
+          "Demais: negativo ou traços"
+        ],
+        "conclusao": "Inflamação no quarto afetado."
+      },
+      "comentario_didatico": "Útil para mastite subclínica nos outros quartos; o quarto doente já é evidente."
+    },
+    {
+      "id": "ccs",
+      "tipo": "outro",
+      "nome": "Contagem de células somáticas individual",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Muito alta no quarto afetado"
+        ],
+        "conclusao": "Alta."
+      },
+      "comentario_didatico": "Útil para acompanhar o rebanho, não para o caso agudo."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações relevantes"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Inespecífico em mastite clínica leve."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia do útero",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "mastite_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "edema_ubere",
+      "como_descartar": "Edema simétrico, frio, sem dor, sem alteração do leite, em vacas recém-paridas."
+    },
+    {
+      "diagnostico_id": "hipocalcemia_puerperal",
+      "como_descartar": "Mastite tóxica pode causar decúbito; aqui a vaca está em pé e com cálcio normal."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "ordenha_freq",
+      "texto": "Esgotar o quarto afetado várias vezes ao dia",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Remove bactérias e toxinas."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controla dor, inflamação e febre."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano guiado pela cultura (intramamário e, se necessário, sistêmico)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Escolha baseada no agente e no antibiograma."
+    },
+    {
+      "id": "descarte",
+      "texto": "Descartar o leite durante o tratamento e respeitar a carência",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Evita resíduo de antimicrobiano no leite."
+    },
+    {
+      "id": "higiene",
+      "texto": "Pré-dipping, papel toalha individual, pós-dipping e cama seca",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Reduz mastites ambientais e contagiosas."
+    },
+    {
+      "id": "linha",
+      "texto": "Ordenhar as vacas com mastite por último",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Evita transmitir agentes contagiosos pela ordenhadeira."
+    },
+    {
+      "id": "misturar_leite",
+      "texto": "Misturar o leite do quarto doente no tanque",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Contamina o tanque e pode deixar resíduo de antibiótico."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca em ordenha mecânica sem higiene de tetos, em área com barro e esterco, com quarto quente, firme e doloroso, leite com grumos e febre leve; cultura com E. coli: mastite clínica ambiental.",
+    "fisiopatologia": [
+      "A mastite é a inflamação da glândula mamária, quase sempre por bactérias que entram pelo canal do teto.",
+      "Agentes contagiosos (ex.: Staphylococcus aureus, Streptococcus agalactiae) passam de vaca para vaca na ordenha.",
+      "Agentes ambientais (ex.: E. coli, Streptococcus uberis) vêm da cama e do barro.",
+      "E. coli libera endotoxina (lipopolissacarídeo): inflamação intensa, febre e, nos casos graves, choque.",
+      "A chegada de neutrófilos eleva a contagem de células somáticas."
+    ],
+    "pistas": [
+      {
+        "achado": "Sem higiene de tetos e cama suja",
+        "por_que_importa": "Exposição a agentes ambientais."
+      },
+      {
+        "achado": "Quarto quente e doloroso com grumos",
+        "por_que_importa": "Mastite clínica."
+      },
+      {
+        "achado": "CCS alta no tanque",
+        "por_que_importa": "Problema de rebanho."
+      },
+      {
+        "achado": "E. coli na cultura",
+        "por_que_importa": "Agente ambiental."
+      }
+    ],
+    "comentario_exames": "Caneca de fundo escuro e cultura com antibiograma são o essencial; o CMT avalia os outros quartos.",
+    "comentario_tratamento": "Tratar o quarto com base na cultura e corrigir a higiene da ordenha e da cama."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

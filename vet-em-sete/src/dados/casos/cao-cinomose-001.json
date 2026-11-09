@@ -1,0 +1,333 @@
+{
+  "id": "cao-cinomose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Sem raça definida",
+  "idade": "7 meses",
+  "sexo": "fêmea",
+  "peso": "9 kg",
+  "queixa_principal": [
+    "Tremores na cabeça",
+    "Secreção nos olhos"
+  ],
+  "semestre": 4,
+  "uso": "treino",
+  "sistema": "nervoso",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Resgatada da rua há 2 meses"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Não vacinada"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Outro cão resgatado da mesma ninhada morreu com convulsões"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 3 semanas: tosse e secreção nasal e ocular purulenta",
+        "Há 1 semana: diarreia que melhorou sozinha",
+        "Há 3 dias: contrações rítmicas dos músculos da cabeça"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Apetite reduzido"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Xarope para tosse caseiro"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,4",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "34",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Normocoradas"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Secreção mucopurulenta bilateral",
+          "Ceratoconjuntivite seca leve"
+        ]
+      },
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Hiperqueratose dos coxins",
+          "Pústulas abdominais"
+        ]
+      },
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Mioclonia rítmica dos músculos mastigatórios, persistente durante o sono",
+          "Leve ataxia dos membros pélvicos"
+        ]
+      },
+      {
+        "titulo": "Respiratório",
+        "itens": [
+          "Crepitação discreta à ausculta"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "RT-PCR para vírus da cinomose (sangue, urina e swab conjuntival)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "RNA do vírus da cinomose: detectado na urina e no swab conjuntival"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Detecta RNA viral e confirma a infecção; amostras de vários locais aumentam a sensibilidade. Vacinação recente com vírus vivo pode dar positivo."
+    },
+    {
+      "id": "citologia_conj",
+      "tipo": "citologia",
+      "nome": "Citologia de raspado conjuntival",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Corpúsculos de inclusão eosinofílicos intracitoplasmáticos em células epiteliais"
+        ],
+        "conclusao": "Compatível com cinomose."
+      },
+      "comentario_didatico": "Corpúsculos de inclusão confirmam a infecção quando presentes, mas a ausência não exclui (baixa sensibilidade)."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Linfócitos",
+            "valor": "0,6",
+            "unidade": "×10³/µL",
+            "referencia": "1,0–4,8",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Linfopenia."
+      },
+      "comentario_didatico": "Linfopenia é comum na fase aguda, mas inespecífica."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Padrão intersticial-alveolar discreto em lobos craniais"
+        ],
+        "conclusao": "Broncopneumonia."
+      },
+      "comentario_didatico": "Mostra a broncopneumonia secundária, mas não identifica a causa."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Análise do líquido cerebrospinal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Pleocitose mononuclear discreta",
+          "Proteína levemente aumentada"
+        ],
+        "conclusao": "Encefalite não supurativa."
+      },
+      "comentario_didatico": "Pode mostrar pleocitose linfocítica e proteína alta, inespecíficas; exige anestesia."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica sinais neurológicos."
+    }
+  ],
+  "diagnostico_id": "cinomose",
+  "diferenciais": [
+    {
+      "diagnostico_id": "raiva",
+      "como_descartar": "Evolução rápida, alteração de comportamento e morte em poucos dias; mioclonia não é típica."
+    },
+    {
+      "diagnostico_id": "toxoplasmose",
+      "como_descartar": "Pode causar sinais neurológicos e respiratórios, mas sem hiperqueratose de coxins; sorologia pareada para diferenciar."
+    },
+    {
+      "diagnostico_id": "traqueobronquite_infecciosa",
+      "como_descartar": "Tosse sem sinais sistêmicos, cutâneos ou neurológicos."
+    },
+    {
+      "diagnostico_id": "intoxicacao_carbamato",
+      "como_descartar": "Tremores agudos com salivação, miose e diarreia, sem história respiratória prévia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "suporte",
+      "texto": "Suporte: hidratação, nutrição e limpeza das secreções",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Não há antiviral específico; o suporte mantém o paciente."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano para a broncopneumonia bacteriana secundária",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "A imunossupressão viral favorece infecções bacterianas secundárias."
+    },
+    {
+      "id": "anticonvulsivante",
+      "texto": "Anticonvulsivante se houver convulsões",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "A mioclonia em geral não responde, mas convulsões precisam de controle."
+    },
+    {
+      "id": "isolamento",
+      "texto": "Isolar de outros cães e vacinar os contactantes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O vírus é transmitido por aerossol e secreções."
+    },
+    {
+      "id": "prognostico",
+      "texto": "Conversar com o tutor sobre prognóstico reservado e possível sequela neurológica",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A mioclonia costuma ser permanente; a forma neurológica pode progredir."
+    },
+    {
+      "id": "vacina_doente",
+      "texto": "Vacinar o animal doente para tratar a infecção",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "A vacina previne, não trata; a vacina viva num animal doente e imunossuprimido não ajuda."
+    },
+    {
+      "id": "corticoide_alto",
+      "texto": "Corticoide em dose imunossupressora prolongada",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Piora a imunossupressão e a infecção secundária."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela jovem não vacinada, com sinais respiratórios e oculares seguidos de diarreia, hiperqueratose de coxins e, semanas depois, mioclonia: cinomose na forma multissistêmica com envolvimento neurológico, confirmada por RT-PCR.",
+    "fisiopatologia": [
+      "O vírus da cinomose (Morbillivirus, família Paramyxoviridae) é transmitido por aerossol e replica primeiro no tecido linfoide do trato respiratório.",
+      "A viremia leva o vírus aos epitélios (respiratório, digestório, urinário, pele) e ao sistema nervoso central.",
+      "A linfopenia e a destruição de linfócitos causam imunossupressão e infecções bacterianas secundárias.",
+      "No sistema nervoso, causa desmielinização e encefalite não supurativa; a mioclonia resulta de lesão em neurônios motores.",
+      "Corpúsculos de inclusão eosinofílicos são o achado histológico característico."
+    ],
+    "pistas": [
+      {
+        "achado": "Cão jovem não vacinado, resgatado",
+        "por_que_importa": "Grupo de maior risco."
+      },
+      {
+        "achado": "Sinais respiratórios e oculares que precederam os neurológicos",
+        "por_que_importa": "Sequência típica da forma multissistêmica."
+      },
+      {
+        "achado": "Hiperqueratose de coxins",
+        "por_que_importa": "Achado sugestivo de cinomose (\"doença do coxim duro\")."
+      },
+      {
+        "achado": "Mioclonia que persiste no sono",
+        "por_que_importa": "Sinal neurológico muito associado à cinomose."
+      }
+    ],
+    "comentario_exames": "RT-PCR em várias amostras confirma; a citologia conjuntival ajuda quando mostra inclusões. Exames gerais apoiam, mas não confirmam.",
+    "comentario_tratamento": "Tratamento de suporte e das infecções secundárias. A prevenção (vacinação) é o ponto central para a turma."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "id": "cao-hiperadrenocorticismo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Dachshund",
+  "idade": "10 anos",
+  "sexo": "fêmea castrada",
+  "peso": "9,5 kg",
+  "queixa_principal": [
+    "Barriga inchada",
+    "Perda de pelo"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "endocrino",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa, vive dentro de casa"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca; come com muita avidez, rouba comida"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Medicações",
+      "itens": [
+        "Nunca recebeu corticoide"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há cerca de 8 meses: bebe muita água e urina muito",
+        "Abdome cada vez maior",
+        "Pelo ralo nos flancos, sem coceira"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Cansa fácil nos passeios",
+        "Respira ofegante mesmo em repouso"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,6",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "48",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Pressão arterial sistólica (Doppler)",
+        "valor": "165",
+        "unidade": "mmHg",
+        "referencia": "< 140",
+        "fonte": "nelson",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "6/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Abaulado e pendular",
+          "Hepatomegalia à palpação"
+        ]
+      },
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Alopecia simétrica bilateral nos flancos, não pruriginosa",
+          "Pele fina, vasos visíveis",
+          "Comedões na região ventral"
+        ]
+      },
+      {
+        "titulo": "Músculos",
+        "itens": [
+          "Atrofia de musculatura temporal e dos membros"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Fosfatase alcalina",
+            "valor": "1.240",
+            "unidade": "U/L",
+            "referencia": "20–156",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "ALT",
+            "valor": "145",
+            "unidade": "U/L",
+            "referencia": "21–102",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Colesterol",
+            "valor": "380",
+            "unidade": "mg/dL",
+            "referencia": "135–270",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Glicose",
+            "valor": "128",
+            "unidade": "mg/dL",
+            "referencia": "76–119",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "0,6",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Fosfatase alcalina muito aumentada, hipercolesterolemia e hiperglicemia leve."
+      },
+      "comentario_didatico": "Fosfatase alcalina muito alta (isoenzima induzida por corticoide no cão), com colesterol e glicose altos, apoia fortemente a suspeita."
+    },
+    {
+      "id": "supressao",
+      "tipo": "outro",
+      "nome": "Teste de supressão com dexametasona em dose baixa",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cortisol basal: 5,8 µg/dL",
+          "4 h: 1,6 µg/dL",
+          "8 h: 3,9 µg/dL (acima do limite de supressão)"
+        ],
+        "conclusao": "Sem supressão em 8 h, com supressão parcial em 4 h: compatível com hiperadrenocorticismo hipófise-dependente."
+      },
+      "comentario_didatico": "Teste de triagem com alta sensibilidade. A falta de supressão em 8 horas confirma hiperadrenocorticismo quando os sinais clínicos são compatíveis."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal com avaliação de adrenais",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Adrenais aumentadas bilateralmente e simétricas",
+          "Hepatomegalia hiperecogênica"
+        ],
+        "conclusao": "Adrenomegalia bilateral."
+      },
+      "comentario_didatico": "Adrenais aumentadas dos dois lados apontam para origem hipofisária; uma adrenal grande e a outra atrofiada sugere tumor adrenal."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise com cultura",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,008",
+          "Cultura: Escherichia coli"
+        ],
+        "conclusao": "Hipostenúria e infecção urinária."
+      },
+      "comentario_didatico": "Urina diluída e infecção urinária silenciosa são frequentes, mas inespecíficas."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "T4 total",
+            "valor": "0,9",
+            "unidade": "µg/dL",
+            "referencia": "1,0–4,0",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "T4 levemente baixo."
+      },
+      "comentario_didatico": "O T4 cai em doenças não tireoidianas (síndrome do eutireoidiano doente) e pode confundir."
+    },
+    {
+      "id": "rx_coluna",
+      "tipo": "radiografia",
+      "nome": "Radiografia de coluna",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem sinal neurológico."
+    }
+  ],
+  "diagnostico_id": "hiperadrenocorticismo",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hipotireoidismo_canino",
+      "como_descartar": "Também causa alopecia e hipercolesterolemia, mas com letargia, ganho de peso, sem poliúria e com T4 livre e TSH alterados."
+    },
+    {
+      "diagnostico_id": "diabetes_mellitus",
+      "como_descartar": "Poliúria e polifagia com glicose muito alta e glicosúria."
+    },
+    {
+      "diagnostico_id": "doenca_renal_cronica",
+      "como_descartar": "Poliúria com azotemia, sem fosfatase alcalina alta e sem abdome pendular."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "trilostano",
+      "texto": "Trilostano com reavaliação clínica e laboratorial periódica",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Inibe a síntese de cortisol; é o tratamento mais usado para a forma hipófise-dependente.",
+      "dose": {
+        "texto": "Dose inicial baixa, ajustada pela resposta (ex.: 1–2 mg/kg VO a cada 12–24 h)",
+        "fonte": "behrend2013",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "monitor",
+      "texto": "Monitorar com sinais clínicos e cortisol pré-trilostano ou estimulação com ACTH",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Evita superdosagem e hipoadrenocorticismo iatrogênico."
+    },
+    {
+      "id": "itu",
+      "texto": "Tratar a infecção urinária com antimicrobiano guiado pela cultura",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "O excesso de cortisol favorece infecções silenciosas."
+    },
+    {
+      "id": "pressao",
+      "texto": "Acompanhar e tratar a hipertensão",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "A hipertensão costuma melhorar com o controle do cortisol, mas pode precisar de tratamento."
+    },
+    {
+      "id": "levotiroxina",
+      "texto": "Levotiroxina pelo T4 baixo",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "O T4 baixo é efeito do cortisol, não hipotireoidismo."
+    },
+    {
+      "id": "prednisona",
+      "texto": "Prednisona para a alopecia",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Acrescenta glicocorticoide a um paciente com excesso de cortisol."
+    },
+    {
+      "id": "adrenalectomia",
+      "texto": "Adrenalectomia bilateral",
+      "tipo": "cirurgia",
+      "classificacao": "contraindicado",
+      "justificativa": "A origem é hipofisária; retirar as duas adrenais exigiria reposição hormonal por toda a vida, com alto risco."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela idosa com poliúria, polidipsia, polifagia, abdome pendular, alopecia simétrica não pruriginosa, ofegância e atrofia muscular; fosfatase alcalina muito alta, sem supressão com dexametasona e adrenomegalia bilateral: hiperadrenocorticismo hipófise-dependente.",
+    "fisiopatologia": [
+      "Na maioria dos cães, um adenoma da hipófise produz ACTH em excesso e as duas adrenais se hipertrofiam.",
+      "O cortisol em excesso causa catabolismo proteico (atrofia muscular, pele fina), redistribuição de gordura e hepatomegalia por acúmulo de glicogênio.",
+      "O cortisol inibe a ação do ADH nos rins, causando poliúria com polidipsia compensatória.",
+      "No cão, o cortisol induz uma isoenzima própria da fosfatase alcalina, por isso ela sobe tanto.",
+      "A fraqueza da musculatura abdominal e a hepatomegalia produzem o abdome pendular."
+    ],
+    "pistas": [
+      {
+        "achado": "Poliúria, polidipsia e polifagia",
+        "por_que_importa": "Tríade clássica do excesso de cortisol."
+      },
+      {
+        "achado": "Abdome pendular e atrofia muscular",
+        "por_que_importa": "Catabolismo proteico."
+      },
+      {
+        "achado": "Alopecia simétrica sem prurido",
+        "por_que_importa": "Dermatopatia endócrina."
+      },
+      {
+        "achado": "Fosfatase alcalina muito alta",
+        "por_que_importa": "Isoenzima induzida por corticoide no cão."
+      },
+      {
+        "achado": "Adrenais aumentadas dos dois lados",
+        "por_que_importa": "Indica origem hipofisária."
+      }
+    ],
+    "comentario_exames": "Bioquímica levanta a suspeita, o teste de supressão com dexametasona confirma e a ultrassonografia ajuda a diferenciar origem hipofisária de adrenal. O T4 baixo é armadilha comum.",
+    "comentario_tratamento": "Trilostano com monitoramento cuidadoso é o tratamento clínico de escolha; tratar as complicações e não usar glicocorticoides."
+  },
+  "referencias": [
+    {
+      "id": "behrend2013",
+      "citacao": "BEHREND, E. N. et al. Diagnosis of spontaneous canine hyperadrenocorticism: 2012 ACVIM consensus statement (small animal). Journal of Veterinary Internal Medicine, v. 27, n. 6, p. 1292-1304, 2013."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

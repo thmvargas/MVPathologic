@@ -1,0 +1,293 @@
+{
+  "id": "bovino-timpanismo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Holandesa",
+  "idade": "4 anos",
+  "sexo": "fêmea",
+  "peso": "550 kg",
+  "queixa_principal": [
+    "Barriga muito inchada do lado esquerdo",
+    "Respirando com dificuldade"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote passou hoje cedo para um piquete de alfafa em brotação"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Estavam em pasto de gramínea seca até ontem; fome antes da troca"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Mais duas vacas do lote com o flanco aumentado"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Começou cerca de 1 hora depois de entrar no piquete",
+        "Inquieta, escoiceando a barriga"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência respiratória",
+        "valor": "60",
+        "unidade": "mpm",
+        "referencia": "20–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "110",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,9",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Distensão acentuada da fossa paralombar esquerda, tensa e timpânica"
+        ]
+      },
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Respira de boca aberta, língua para fora"
+        ]
+      },
+      {
+        "titulo": "Rúmen",
+        "itens": [
+          "Contrações fortes no início, depois diminuídas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "sonda",
+      "tipo": "outro",
+      "nome": "Sondagem orogástrica",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Pouco gás sai pela sonda",
+          "Espuma estável sai pela sonda"
+        ],
+        "conclusao": "Timpanismo espumoso."
+      },
+      "comentario_didatico": "Diferencia o timpanismo espumoso do gasoso: no espumoso, pouco gás sai pela sonda e aparece espuma; no gasoso, o gás sai com facilidade."
+    },
+    {
+      "id": "historico_lote",
+      "tipo": "outro",
+      "nome": "Avaliação do lote e da pastagem",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Alfafa jovem, muito folhosa",
+          "Mais animais com flanco esquerdo aumentado"
+        ],
+        "conclusao": "Causa alimentar no lote."
+      },
+      "comentario_didatico": "Vários animais afetados após entrar em leguminosa em brotação indicam causa alimentar."
+    },
+    {
+      "id": "liquido_ruminal",
+      "tipo": "outro",
+      "nome": "Exame do líquido ruminal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Conteúdo espumoso, pH 6,2"
+        ],
+        "conclusao": "Espuma estável."
+      },
+      "comentario_didatico": "Confirma a espuma, mas a sonda já mostrou."
+    },
+    {
+      "id": "palpacao_retal",
+      "tipo": "outro",
+      "nome": "Palpação retal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Rúmen distendido empurrando para a pelve"
+        ],
+        "conclusao": "Rúmen distendido."
+      },
+      "comentario_didatico": "Confirma o rúmen distendido; não diferencia o tipo de timpanismo."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizado"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Atrasaria uma emergência."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inviável e sem utilidade em bovino adulto nessa situação."
+    }
+  ],
+  "diagnostico_id": "timpanismo_espumoso",
+  "diferenciais": [
+    {
+      "diagnostico_id": "timpanismo_gasoso",
+      "como_descartar": "Gás livre que sai com facilidade pela sonda; costuma haver obstrução do esôfago ou do cárdia."
+    },
+    {
+      "diagnostico_id": "acidose_ruminal",
+      "como_descartar": "Após excesso de grãos; diarreia, desidratação, pH ruminal baixo; distensão menos intensa."
+    },
+    {
+      "diagnostico_id": "reticulopericardite_traumatica",
+      "como_descartar": "Timpanismo leve e recorrente com dor na região do retículo e febre; animal individual."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "antiespumante",
+      "texto": "Antiespumante pela sonda (ex.: poloxaleno, óleo vegetal ou dimeticona)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Quebra a espuma estável e permite que o gás saia pela eructação."
+    },
+    {
+      "id": "retirar",
+      "texto": "Tirar o lote da alfafa imediatamente",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita novos casos."
+    },
+    {
+      "id": "rumenotomia",
+      "texto": "Rumenotomia de emergência se a vaca estiver asfixiando",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Em casos extremos, abrir o rúmen salva a vida."
+    },
+    {
+      "id": "prevenir",
+      "texto": "No futuro: soltar na leguminosa só depois de alimentar com feno, por pouco tempo, ou usar antiespumante preventivo",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a ingestão rápida de leguminosa jovem."
+    },
+    {
+      "id": "trocater",
+      "texto": "Só trocarte no flanco",
+      "tipo": "suporte",
+      "classificacao": "desnecessario",
+      "justificativa": "No timpanismo espumoso, a espuma entope o trocarte e pouco gás sai."
+    },
+    {
+      "id": "correr",
+      "texto": "Fazer a vaca correr para \"soltar o gás\"",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta o esforço respiratório e o risco de morte."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca de um lote que entrou com fome em piquete de alfafa jovem, com distensão acentuada do flanco esquerdo uma hora depois, dispneia e espuma estável na sondagem: timpanismo espumoso.",
+    "fisiopatologia": [
+      "Fisiologia: a fermentação no rúmen produz grandes volumes de gás (CO₂ e metano), eliminados pela eructação.",
+      "Leguminosas jovens têm muita proteína solúvel e saponinas, que formam espuma estável no conteúdo ruminal.",
+      "O gás fica preso em pequenas bolhas e não chega ao cárdia; a eructação não acontece.",
+      "O rúmen distendido comprime o diafragma e os grandes vasos: dispneia e queda do retorno venoso.",
+      "Animais com fome, entrando de repente na leguminosa, comem muito em pouco tempo."
+    ],
+    "pistas": [
+      {
+        "achado": "Mudança brusca para alfafa jovem",
+        "por_que_importa": "Causa alimentar."
+      },
+      {
+        "achado": "Vários animais do lote afetados",
+        "por_que_importa": "Problema de manejo, não individual."
+      },
+      {
+        "achado": "Distensão do flanco esquerdo",
+        "por_que_importa": "Rúmen distendido."
+      },
+      {
+        "achado": "Espuma estável na sonda",
+        "por_que_importa": "Diferencia do timpanismo gasoso."
+      }
+    ],
+    "comentario_exames": "A sondagem diferencia espumoso de gasoso e já é tratamento. Exames de laboratório atrasariam a emergência.",
+    "comentario_tratamento": "Antiespumante, tirar o lote da leguminosa e cirurgia se houver asfixia. Prevenção pelo manejo da pastagem."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

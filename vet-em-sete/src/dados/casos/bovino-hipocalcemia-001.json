@@ -1,0 +1,342 @@
+{
+  "id": "bovino-hipocalcemia-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Jersey",
+  "idade": "6 anos",
+  "sexo": "fêmea",
+  "peso": "420 kg",
+  "queixa_principal": [
+    "Caída, não levanta",
+    "Pariu ontem"
+  ],
+  "semestre": 1,
+  "uso": "diario",
+  "sistema": "endocrino",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Quarta cria, parto normal há 18 horas"
+      ]
+    },
+    {
+      "titulo": "Produção",
+      "itens": [
+        "Alta produtora na lactação anterior"
+      ]
+    },
+    {
+      "titulo": "Alimentação no pré-parto",
+      "itens": [
+        "Pasto de leguminosa e sal mineral comum, rico em cálcio"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Tremores e andar cambaleante depois do parto",
+        "Deitou e não levantou mais"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Não come; sem fezes desde cedo"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,2",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "92",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "Ausentes",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Decúbito esternal com a cabeça voltada para o flanco (\"posição de auto-auscultação\")"
+        ]
+      },
+      {
+        "titulo": "Extremidades",
+        "itens": [
+          "Orelhas e patas frias"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Pupilas dilatadas, reflexo pupilar lento"
+        ]
+      },
+      {
+        "titulo": "Cardiovascular",
+        "itens": [
+          "Bulhas abafadas, pulso fraco"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "calcio",
+      "tipo": "bioquimica",
+      "nome": "Cálcio sérico",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Cálcio total",
+            "valor": "4,8",
+            "unidade": "mg/dL",
+            "referencia": "9,7–12,4",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Fósforo",
+            "valor": "2,9",
+            "unidade": "mg/dL",
+            "referencia": "5,6–6,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Magnésio",
+            "valor": "2,4",
+            "unidade": "mg/dL",
+            "referencia": "1,8–2,3",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Hipocalcemia grave e hipofosfatemia."
+      },
+      "comentario_didatico": "Confirma a hipocalcemia; na prática, a resposta rápida ao cálcio intravenoso também confirma."
+    },
+    {
+      "id": "resposta",
+      "tipo": "outro",
+      "nome": "Resposta ao cálcio intravenoso lento",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Tremores musculares e eructação durante a infusão",
+          "Defecou e levantou em 30 minutos"
+        ],
+        "conclusao": "Resposta típica."
+      },
+      "comentario_didatico": "Tremores, eructação, defecação e melhora do pulso durante a infusão confirmam o diagnóstico."
+    },
+    {
+      "id": "bhb",
+      "tipo": "bioquimica",
+      "nome": "Beta-hidroxibutirato no sangue",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Dentro do esperado"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Avalia cetose associada, comum no pós-parto; aqui normal."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "Teste de mastite (CMT)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativo nos quatro tetos"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Mastite tóxica também deixa a vaca caída; aqui negativa."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações relevantes"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não contribui."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de membros",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inviável na rotina e sem indicação."
+    }
+  ],
+  "diagnostico_id": "hipocalcemia_puerperal",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hipomagnesemia",
+      "como_descartar": "Hiperexcitabilidade, tetania e convulsões, em vez de flacidez; magnésio baixo."
+    },
+    {
+      "diagnostico_id": "cetose_bovina",
+      "como_descartar": "Perda de apetite e queda de produção semanas após o parto; cetonas altas; a vaca fica em pé."
+    },
+    {
+      "diagnostico_id": "mastite_bovina",
+      "como_descartar": "Mastite tóxica: febre ou choque com úbere alterado e leite anormal."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "calcio_iv",
+      "texto": "Borogluconato de cálcio por via intravenosa lenta, com ausculta cardíaca",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Corrige o cálcio rapidamente; infusão rápida pode causar arritmia.",
+      "dose": {
+        "texto": "Cerca de 1 g de cálcio para cada 45 kg, IV lenta",
+        "fonte": "constable",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "calcio_oral",
+      "texto": "Cálcio por via oral ou subcutânea depois da IV",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Ajuda a evitar recaída nas horas seguintes."
+    },
+    {
+      "id": "decubito",
+      "texto": "Manter em decúbito esternal, virar de lado a cada poucas horas, cama macia",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita timpanismo, aspiração e lesão muscular por compressão."
+    },
+    {
+      "id": "dieta_anionica",
+      "texto": "No próximo pré-parto: dieta aniônica e evitar excesso de cálcio e potássio",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Prepara o organismo para mobilizar cálcio no parto."
+    },
+    {
+      "id": "ordenha",
+      "texto": "Não esgotar totalmente o úbere nas primeiras ordenhas",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Reduz a saída de cálcio no colostro."
+    },
+    {
+      "id": "calcio_rapido",
+      "texto": "Cálcio intravenoso em bolus rápido",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Risco de parada cardíaca."
+    },
+    {
+      "id": "levantar_trator",
+      "texto": "Levantar a vaca com cordas presas aos chifres ou trator",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Causa lesões graves e sofrimento."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca Jersey de alta produção, no primeiro dia após o quarto parto, com dieta pré-parto rica em cálcio, caída em decúbito esternal com a cabeça no flanco, hipotermia, extremidades frias e rúmen parado; cálcio muito baixo e resposta rápida ao cálcio intravenoso: hipocalcemia puerperal.",
+    "fisiopatologia": [
+      "No início da lactação, a saída de cálcio no colostro é muito maior que a reserva circulante.",
+      "Fisiologia: a queda do cálcio deveria estimular o PTH, que aumenta a reabsorção óssea, a absorção intestinal e ativa a vitamina D no rim.",
+      "Uma dieta rica em cálcio no pré-parto deixa esse mecanismo \"adormecido\"; a alcalose por dieta rica em potássio reduz a resposta ao PTH.",
+      "O cálcio é necessário para a liberação de acetilcolina e para a contração muscular: a falta causa paresia flácida, rúmen parado e queda do débito cardíaco.",
+      "Vacas mais velhas, de alta produção e raça Jersey têm maior risco."
+    ],
+    "pistas": [
+      {
+        "achado": "Primeiras 24 horas após o parto",
+        "por_que_importa": "Pico de saída de cálcio."
+      },
+      {
+        "achado": "Vaca velha, Jersey, alta produtora",
+        "por_que_importa": "Fatores de risco."
+      },
+      {
+        "achado": "Dieta pré-parto rica em cálcio",
+        "por_que_importa": "Mecanismo do PTH pouco ativado."
+      },
+      {
+        "achado": "Decúbito com cabeça no flanco, extremidades frias",
+        "por_que_importa": "Paresia flácida e baixa perfusão."
+      }
+    ],
+    "comentario_exames": "Cálcio sérico e a resposta ao tratamento confirmam. Na fazenda, o tratamento costuma vir antes do resultado.",
+    "comentario_tratamento": "Cálcio intravenoso lento, cuidados com o decúbito e prevenção com dieta aniônica no pré-parto."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir a dose de cálcio indicada."
+  }
+}

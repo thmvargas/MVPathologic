@@ -1,0 +1,302 @@
+{
+  "id": "cao-mastocitoma-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Boxer",
+  "idade": "8 anos",
+  "sexo": "macho",
+  "peso": "31 kg",
+  "queixa_principal": [
+    "Caroço na coxa",
+    "Às vezes incha e fica vermelho"
+  ],
+  "semestre": 6,
+  "uso": "treino",
+  "sistema": "tegumentar",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Histórico",
+      "itens": [
+        "Nunca teve tumor"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Nódulo percebido há 2 meses",
+        "Muda de tamanho: em alguns dias fica maior e avermelhado, depois diminui"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Vomitou duas vezes na última semana"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,5",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "96",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Nódulo de 2,5 cm na face lateral da coxa esquerda, alopécico, eritematoso, macio",
+          "Após manipular o nódulo, edema e vermelhidão ao redor"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Poplíteo esquerdo levemente aumentado"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Sem alterações"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "paaf",
+      "tipo": "citologia",
+      "nome": "Citologia aspirativa por agulha fina do nódulo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Celularidade alta",
+          "População de células redondas com grânulos citoplasmáticos púrpura (metacromáticos)",
+          "Eosinófilos em meio às células"
+        ],
+        "conclusao": "Mastocitoma."
+      },
+      "comentario_didatico": "Mastócitos com grânulos metacromáticos fecham o diagnóstico de mastocitoma na própria consulta. Alguns corantes rápidos não coram bem os grânulos."
+    },
+    {
+      "id": "paaf_lfn",
+      "tipo": "citologia",
+      "nome": "Citologia aspirativa do linfonodo poplíteo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Agregados de mastócitos em meio a linfócitos"
+        ],
+        "conclusao": "Suspeito de metástase linfonodal."
+      },
+      "comentario_didatico": "Avalia metástase regional, que muda o prognóstico e o planejamento cirúrgico."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia após exérese com margens",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Neoplasia de mastócitos na derme e subcutâneo",
+          "Figuras de mitose: 9 em 10 campos de grande aumento",
+          "Margens livres"
+        ],
+        "conclusao": "Mastocitoma cutâneo de alto grau (Kiupel)."
+      },
+      "comentario_didatico": "A graduação histológica (sistema de Kiupel em 2 graus e o de Patnaik) e as margens definem prognóstico e necessidade de tratamento adicional."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Baço e fígado sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Usada no estadiamento de baço e fígado; aqui sem alterações."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Raramente mostra mastócitos circulantes; pouco acrescenta."
+    },
+    {
+      "id": "rx_coluna",
+      "tipo": "radiografia",
+      "nome": "Radiografia de coluna",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem indicação."
+    }
+  ],
+  "diagnostico_id": "mastocitoma",
+  "diferenciais": [
+    {
+      "diagnostico_id": "histiocitoma_cutaneo",
+      "como_descartar": "Cães jovens; células redondas sem grânulos; costuma regredir sozinho."
+    },
+    {
+      "diagnostico_id": "lipoma",
+      "como_descartar": "Nódulo macio, sem variação de tamanho; citologia com adipócitos."
+    },
+    {
+      "diagnostico_id": "carcinoma_espinocelular",
+      "como_descartar": "Lesão ulcerada em pele clara exposta ao sol; células epiteliais na citologia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "exerese",
+      "texto": "Exérese cirúrgica com margens amplas e avaliação de margens",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento principal do mastocitoma cutâneo."
+    },
+    {
+      "id": "linfonodo",
+      "texto": "Retirada do linfonodo regional",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Com metástase linfonodal, a remoção melhora o controle."
+    },
+    {
+      "id": "anti_h",
+      "texto": "Anti-histamínico H1 e H2 (ex.: difenidramina e famotidina) antes e depois da cirurgia",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Bloqueiam os efeitos da histamina liberada pela manipulação do tumor, incluindo lesão gástrica."
+    },
+    {
+      "id": "quimio",
+      "texto": "Encaminhar para quimioterapia adjuvante (ex.: vimblastina e prednisolona) ou inibidor de tirosina-quinase",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Indicada em alto grau e com metástase."
+    },
+    {
+      "id": "prednisolona_so",
+      "texto": "Prednisolona isolada como tratamento definitivo",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Reduz o tumor temporariamente, mas não substitui cirurgia e quimioterapia."
+    },
+    {
+      "id": "manipular",
+      "texto": "Espremer ou manipular o nódulo para ver se \"sai pus\"",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Provoca degranulação dos mastócitos (sinal de Darier), com edema, sangramento e reação sistêmica."
+    },
+    {
+      "id": "acompanhar",
+      "texto": "Só acompanhar o tamanho por 6 meses",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Atrasar o tratamento de um tumor de alto grau com metástase piora o prognóstico."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão boxer idoso com nódulo cutâneo que muda de tamanho e fica eritematoso ao ser manipulado (sinal de Darier), vômitos e linfonodo regional aumentado; citologia com mastócitos e histopatologia de alto grau: mastocitoma cutâneo com metástase linfonodal.",
+    "fisiopatologia": [
+      "O mastocitoma é a neoplasia cutânea maligna mais comum no cão; boxers e outras raças braquicefálicas têm predisposição.",
+      "Mutações no gene c-KIT estão envolvidas em parte dos tumores e são alvo de inibidores de tirosina-quinase.",
+      "Os mastócitos tumorais liberam histamina e heparina: edema local, sangramento e úlceras gástricas por excesso de ácido.",
+      "O comportamento varia muito; a graduação histológica, o índice mitótico e o estadiamento definem o prognóstico."
+    ],
+    "pistas": [
+      {
+        "achado": "Boxer idoso",
+        "por_que_importa": "Raça predisposta."
+      },
+      {
+        "achado": "Nódulo que muda de tamanho e fica vermelho ao ser tocado",
+        "por_que_importa": "Degranulação de mastócitos (sinal de Darier)."
+      },
+      {
+        "achado": "Vômitos",
+        "por_que_importa": "Excesso de histamina estimulando secreção ácida gástrica."
+      },
+      {
+        "achado": "Linfonodo regional aumentado",
+        "por_que_importa": "Possível metástase."
+      }
+    ],
+    "comentario_exames": "A citologia diagnostica; a histopatologia gradua e avalia margens; citologia do linfonodo e ultrassonografia completam o estadiamento.",
+    "comentario_tratamento": "Cirurgia com margens amplas, proteção com anti-histamínicos e tratamento adjuvante nos casos de alto grau. Nunca manipular o tumor sem necessidade."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kiupel2011",
+      "citacao": "KIUPEL, M. et al. Proposal of a 2-tier histologic grading system for canine cutaneous mast cell tumors to more accurately predict biological behavior. Veterinary Pathology, v. 48, n. 1, p. 147-155, 2011."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

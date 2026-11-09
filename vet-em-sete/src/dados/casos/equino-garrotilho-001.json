@@ -1,0 +1,328 @@
+{
+  "id": "equino-garrotilho-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Quarto de Milha",
+  "idade": "2 anos",
+  "sexo": "fêmea",
+  "peso": "380 kg",
+  "queixa_principal": [
+    "Febre",
+    "Caroço no pescoço que estourou"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "respiratorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Haras com 40 animais"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Dois potros novos chegaram de um leilão há 2 semanas, sem quarentena"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Influenza e tétano; não vacinada para adenite"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Outros três animais com secreção nasal"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Febre há 5 dias",
+        "Secreção nasal que ficou espessa e amarelada",
+        "Dificuldade para engolir",
+        "Inchaço abaixo da mandíbula que hoje drenou pus"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,2",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "52",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "20",
+        "unidade": "mpm",
+        "referencia": "8–16",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Cabeça e pescoço",
+        "itens": [
+          "Linfonodos submandibulares muito aumentados, um deles fistulado drenando pus espesso",
+          "Linfonodos retrofaríngeos aumentados"
+        ]
+      },
+      {
+        "titulo": "Respiratório",
+        "itens": [
+          "Secreção nasal mucopurulenta bilateral",
+          "Estridor leve"
+        ]
+      },
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Pescoço estendido; dor ao engolir"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR e cultura do pus do linfonodo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cultura: Streptococcus equi subsp. equi",
+          "PCR: positivo"
+        ],
+        "conclusao": "S. equi equi."
+      },
+      "comentario_didatico": "Identifica Streptococcus equi subsp. equi e confirma o diagnóstico."
+    },
+    {
+      "id": "endoscopia",
+      "tipo": "outro",
+      "nome": "Endoscopia das bolsas guturais",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Linfonodos retrofaríngeos abaulando o assoalho da bolsa gutural",
+          "Pus na bolsa gutural direita"
+        ],
+        "conclusao": "Empiema de bolsa gutural."
+      },
+      "comentario_didatico": "Detecta empiema e condroides nas bolsas guturais, que mantêm animais como portadores sem sinais clínicos."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Leucócitos totais",
+            "valor": "18,4",
+            "unidade": "×10³/µL",
+            "referencia": "5,4–14,3",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Fibrinogênio",
+            "valor": "700",
+            "unidade": "mg/dL",
+            "referencia": "100–400",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Leucocitose neutrofílica."
+      },
+      "comentario_didatico": "Leucocitose neutrofílica e fibrinogênio alto indicam inflamação bacteriana, mas inespecíficos."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia da faringe",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Aumento de tecidos moles retrofaríngeos"
+        ],
+        "conclusao": "Linfadenomegalia retrofaríngea."
+      },
+      "comentario_didatico": "Mostra o aumento retrofaríngeo, que a endoscopia avalia melhor."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Ovos de estrongilídeos: poucos"
+        ],
+        "conclusao": "Carga baixa."
+      },
+      "comentario_didatico": "Sem relação."
+    },
+    {
+      "id": "aie",
+      "tipo": "sorologia",
+      "nome": "Teste de AIE (IDGA)",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não reagente"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Obrigatório para trânsito, mas não explica o quadro."
+    }
+  ],
+  "diagnostico_id": "garrotilho",
+  "diferenciais": [
+    {
+      "diagnostico_id": "influenza_equina",
+      "como_descartar": "Febre alta e tosse seca em vários animais ao mesmo tempo, sem abscesso de linfonodo."
+    },
+    {
+      "diagnostico_id": "rinopneumonite_equina",
+      "como_descartar": "Febre e secreção nasal serosa; pode causar aborto e sinais neurológicos; sem abscessos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "isolar",
+      "texto": "Isolar os doentes e separar os animais em grupos por risco",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Contenção de surto: S. equi é muito contagioso."
+    },
+    {
+      "id": "higiene",
+      "texto": "Higiene dos baldes, cochos e equipamentos; quem trata os doentes não deve circular entre grupos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A bactéria sobrevive em superfícies e água."
+    },
+    {
+      "id": "drenar",
+      "texto": "Compressas quentes e drenagem do abscesso maduro",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Favorece a resolução do linfonodo infectado."
+    },
+    {
+      "id": "antiinflam",
+      "texto": "Anti-inflamatório para febre e dor, facilitando a alimentação",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Ajuda o animal a comer e beber."
+    },
+    {
+      "id": "bolsa",
+      "texto": "Lavagem da bolsa gutural e testar os recuperados antes de liberar",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Elimina portadores, que mantêm o agente no rebanho."
+    },
+    {
+      "id": "penicilina_abscesso",
+      "texto": "Penicilina com abscesso já formado e drenando",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Pode atrasar a maturação e a drenagem; antibiótico é reservado a casos com complicações ou à fase muito inicial."
+    },
+    {
+      "id": "liberar",
+      "texto": "Liberar o haras para eventos e transporte normalmente",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Espalha o surto para outras propriedades."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Égua jovem num haras que recebeu potros sem quarentena, com febre, secreção nasal mucopurulenta, disfagia e abscesso de linfonodo submandibular drenando, além de outros animais doentes: garrotilho (adenite equina) por Streptococcus equi subsp. equi.",
+    "fisiopatologia": [
+      "Streptococcus equi subsp. equi é cocos gram-positivo que forma cadeias, com cápsula de ácido hialurônico e proteína M antifagocitária.",
+      "Entra pela boca e pelo nariz, coloniza a faringe e chega aos linfonodos regionais em poucas horas.",
+      "Nos linfonodos, a resposta neutrofílica forma abscessos que rompem e drenam.",
+      "Alguns animais ficam portadores com pus ou condroides nas bolsas guturais e eliminam a bactéria por meses.",
+      "Complicações: garrotilho bastardo (abscessos em outros órgãos) e púrpura hemorrágica."
+    ],
+    "pistas": [
+      {
+        "achado": "Animais novos sem quarentena",
+        "por_que_importa": "Introdução do agente."
+      },
+      {
+        "achado": "Outros animais com secreção",
+        "por_que_importa": "Surto."
+      },
+      {
+        "achado": "Abscesso de linfonodo submandibular",
+        "por_que_importa": "Lesão característica."
+      },
+      {
+        "achado": "S. equi equi na cultura",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Cultura ou PCR confirmam; a endoscopia das bolsas guturais identifica portadores.",
+    "comentario_tratamento": "O foco é controlar o surto: isolamento, higiene, manejo do abscesso e eliminação dos portadores."
+  },
+  "referencias": [
+    {
+      "id": "boyle2018",
+      "citacao": "BOYLE, A. G. et al. Streptococcus equi infections in horses: guidelines for treatment, control, and prevention of strangles - revised consensus statement. Journal of Veterinary Internal Medicine, v. 32, n. 2, p. 633-647, 2018."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

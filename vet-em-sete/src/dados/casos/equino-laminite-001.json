@@ -1,0 +1,323 @@
+{
+  "id": "equino-laminite-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Pônei",
+  "idade": "12 anos",
+  "sexo": "fêmea",
+  "peso": "260 kg",
+  "queixa_principal": [
+    "Não quer andar",
+    "Fica com as patas da frente esticadas"
+  ],
+  "semestre": 2,
+  "uso": "treino",
+  "sistema": "musculoesqueletico",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Solta em pasto de braquiária que brotou após as chuvas"
+      ]
+    },
+    {
+      "titulo": "Condição",
+      "itens": [
+        "Obesa, com gordura no pescoço (crista) há anos"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Pasto à vontade e milho como petisco"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Começou há 2 dias a andar \"pisando em ovos\"",
+        "Hoje deita muito e não quer levantar"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "60",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,2",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "8/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Membros torácicos projetados para a frente, peso jogado nos posteriores"
+        ]
+      },
+      {
+        "titulo": "Cascos",
+        "itens": [
+          "Cascos dos membros torácicos quentes",
+          "Pulso digital forte (\"batendo\") nas artérias digitais"
+        ]
+      },
+      {
+        "titulo": "Pinça de casco",
+        "itens": [
+          "Dor na região da pinça (frente da sola) dos dois anteriores"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia lateral dos cascos anteriores",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Rotação da falange distal de 6° em relação à muralha",
+          "Aumento da distância entre a muralha e a falange distal"
+        ],
+        "conclusao": "Laminite com rotação de falange distal."
+      },
+      "comentario_didatico": "Mede a rotação e o afundamento da terceira falange em relação à muralha do casco, que definem o prognóstico."
+    },
+    {
+      "id": "insulina",
+      "tipo": "bioquimica",
+      "nome": "Insulina basal e glicose",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Insulina",
+            "valor": "85",
+            "unidade": "µUI/mL",
+            "referencia": "< 20",
+            "fonte": "reed",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Glicose",
+            "valor": "105",
+            "unidade": "mg/dL",
+            "referencia": "75–115",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Hiperinsulinemia."
+      },
+      "comentario_didatico": "Hiperinsulinemia indica desregulação da insulina (síndrome metabólica equina), principal causa endócrina de laminite."
+    },
+    {
+      "id": "acth",
+      "tipo": "bioquimica",
+      "nome": "ACTH basal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Dentro do esperado para a estação"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Avalia PPID (\"Cushing equino\"), outra causa endócrina; aqui normal."
+    },
+    {
+      "id": "bloqueio",
+      "tipo": "outro",
+      "nome": "Bloqueio anestésico perineural",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Melhora após bloqueio digital palmar"
+        ],
+        "conclusao": "Dor no casco."
+      },
+      "comentario_didatico": "Confirma a origem da dor no casco, mas o quadro já é evidente."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia de tendões",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não explica a postura."
+    }
+  ],
+  "diagnostico_id": "laminite",
+  "diferenciais": [
+    {
+      "diagnostico_id": "abscesso_casco",
+      "como_descartar": "Claudicação súbita e intensa em um único membro, dor localizada e drenagem ao abrir a sola."
+    },
+    {
+      "diagnostico_id": "rabdomiolise_esforco",
+      "como_descartar": "Rigidez muscular após exercício, músculos firmes e enzimas musculares muito altas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "suporte_sola",
+      "texto": "Apoio de sola e ranilha (palmilhas, areia macia) e repouso em baia com cama macia",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a tração do tendão flexor e a carga sobre as lâminas lesadas."
+    },
+    {
+      "id": "crioterapia",
+      "texto": "Crioterapia contínua dos cascos na fase aguda",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Mais eficaz nas fases iniciais; pode reduzir a lesão laminar."
+    },
+    {
+      "id": "aine",
+      "texto": "Analgesia com anti-inflamatório não esteroidal",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controla a dor e a inflamação."
+    },
+    {
+      "id": "dieta",
+      "texto": "Tirar do pasto e dar feno com pouco carboidrato não estrutural; suspender o milho",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a insulina, causa da laminite nesse caso."
+    },
+    {
+      "id": "emagrecer",
+      "texto": "Plano de emagrecimento depois da fase aguda",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Melhora a sensibilidade à insulina e previne recidiva."
+    },
+    {
+      "id": "ferrageamento",
+      "texto": "Casqueamento e ferrageamento corretivo guiados pela radiografia",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Realinha a falange e protege o casco."
+    },
+    {
+      "id": "caminhar",
+      "texto": "Obrigar a caminhar para \"esquentar\"",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta o dano às lâminas e a rotação da falange."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide para a inflamação",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Glicocorticoides pioram a resistência à insulina e são fator de risco para laminite."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Pônei obesa com depósito de gordura no pescoço, em pasto brotando, com postura de \"cavalete\", cascos quentes, pulso digital forte, dor na pinça, rotação da falange distal e hiperinsulinemia: laminite endocrinopática.",
+    "fisiopatologia": [
+      "Anatomia: a falange distal fica presa à muralha do casco por lâminas dérmicas e epidérmicas interdigitadas.",
+      "Na laminite, essas lâminas inflamam e se separam; o tendão flexor digital profundo puxa a falange, que gira e pode afundar.",
+      "Fisiologia: a maior parte das laminites está ligada à hiperinsulinemia (síndrome metabólica equina e PPID).",
+      "Pasto que brota após chuva tem muito carboidrato não estrutural, que eleva a insulina.",
+      "A dor maior na pinça explica a postura com os anteriores à frente."
+    ],
+    "pistas": [
+      {
+        "achado": "Pônei obesa com crista no pescoço",
+        "por_que_importa": "Fenótipo da síndrome metabólica equina."
+      },
+      {
+        "achado": "Pasto brotando e milho",
+        "por_que_importa": "Carboidrato que eleva a insulina."
+      },
+      {
+        "achado": "Postura de cavalete",
+        "por_que_importa": "Alivia a pinça dos anteriores."
+      },
+      {
+        "achado": "Cascos quentes e pulso digital forte",
+        "por_que_importa": "Inflamação laminar."
+      },
+      {
+        "achado": "Rotação da falange distal",
+        "por_que_importa": "Gravidade e prognóstico."
+      }
+    ],
+    "comentario_exames": "A radiografia mede a rotação; a insulina identifica a causa endócrina.",
+    "comentario_tratamento": "Aliviar a carga e a dor, corrigir a dieta e o peso, e casquear com base na radiografia."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

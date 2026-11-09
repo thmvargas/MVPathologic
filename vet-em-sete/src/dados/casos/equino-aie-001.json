@@ -1,0 +1,328 @@
+{
+  "id": "equino-aie-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Sem raça definida",
+  "idade": "11 anos",
+  "sexo": "macho castrado",
+  "peso": "360 kg",
+  "queixa_principal": [
+    "Emagrecendo",
+    "Febre que vai e volta"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "hematopoietico_linfatico",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Animal de lida em fazenda próxima a área alagada no Pantanal"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Muitas mutucas e moscas na época das chuvas"
+      ]
+    },
+    {
+      "titulo": "Testes",
+      "itens": [
+        "Nunca testado para AIE"
+      ]
+    },
+    {
+      "titulo": "Manejo sanitário",
+      "itens": [
+        "Agulhas reutilizadas entre animais na vacinação"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Episódios de febre e fraqueza há 2 meses, com melhora entre eles",
+        "Emagrecimento progressivo"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Inchaço na barriga e nas pernas"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Anti-inflamatório nos dias de febre"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,6",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "56",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas com petéquias",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Edema",
+        "itens": [
+          "Edema ventral e nos membros"
+        ]
+      },
+      {
+        "titulo": "Mucosas",
+        "itens": [
+          "Petéquias na mucosa sublingual"
+        ]
+      },
+      {
+        "titulo": "Condição",
+        "itens": [
+          "Emagrecido, fraco"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "idga",
+      "tipo": "sorologia",
+      "nome": "Imunodifusão em gel de ágar (IDGA, teste de Coggins)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Reagente"
+        ],
+        "conclusao": "Positivo para AIE."
+      },
+      "comentario_didatico": "Teste oficial no Brasil para AIE; detecta anticorpos contra a proteína p26 do vírus. Positivo indica infecção persistente."
+    },
+    {
+      "id": "elisa",
+      "tipo": "sorologia",
+      "nome": "ELISA para AIE",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Reagente"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Triagem mais sensível; resultado positivo precisa de confirmação pela IDGA."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "22",
+            "unidade": "%",
+            "referencia": "32–48",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Plaquetas",
+            "valor": "60",
+            "unidade": "×10³/µL",
+            "referencia": "100–350",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Anemia e trombocitopenia."
+      },
+      "comentario_didatico": "Anemia e trombocitopenia durante os episódios febris, inespecíficas."
+    },
+    {
+      "id": "esfregaco",
+      "tipo": "citologia",
+      "nome": "Esfregaço sanguíneo para hemoparasitos",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hemoparasitos não visualizados"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Afasta piroplasmose e tripanossomose quando negativo, mas tem baixa sensibilidade."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Ovos de estrongilídeos: moderado"
+        ],
+        "conclusao": "Carga moderada."
+      },
+      "comentario_didatico": "Não explica febre recorrente com trombocitopenia."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de membros",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações ósseas"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "O edema não é ortopédico."
+    }
+  ],
+  "diagnostico_id": "anemia_infecciosa_equina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "piroplasmose_equina",
+      "como_descartar": "Febre e anemia hemolítica com icterícia; parasitos no esfregaço ou PCR e sorologia específicas."
+    },
+    {
+      "diagnostico_id": "tripanossomose_equina",
+      "como_descartar": "Febre, emagrecimento e fraqueza de membros pélvicos; tripomastigotas no sangue."
+    },
+    {
+      "diagnostico_id": "garrotilho",
+      "como_descartar": "Febre com abscessos de linfonodos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "notificar",
+      "texto": "Notificar o serviço veterinário oficial",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A AIE é doença de notificação obrigatória no Brasil."
+    },
+    {
+      "id": "isolar",
+      "texto": "Isolar o animal positivo, seguindo a legislação (sacrifício ou isolamento permanente conforme a região e a norma vigente)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Não há tratamento nem vacina; o positivo é portador por toda a vida."
+    },
+    {
+      "id": "testar",
+      "texto": "Testar todos os equídeos da propriedade e repetir os testes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Identifica outros portadores."
+    },
+    {
+      "id": "agulhas",
+      "texto": "Uma agulha por animal e controle de insetos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O vírus é transmitido por sangue: insetos hematófagos e agulhas compartilhadas."
+    },
+    {
+      "id": "suporte",
+      "texto": "Tratamento de suporte enquanto se aguardam as medidas oficiais",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Bem-estar do animal."
+    },
+    {
+      "id": "antiviral",
+      "texto": "Tratar com antiviral e liberar depois de melhorar",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não há tratamento que elimine o vírus; o animal continua transmitindo."
+    },
+    {
+      "id": "vender",
+      "texto": "Vender o animal para outra propriedade",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Espalha a doença e descumpre a legislação."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Equino de lida em região alagada com muitas mutucas e uso de agulhas compartilhadas, com febre recorrente, emagrecimento, edema ventral, anemia e trombocitopenia; IDGA reagente: anemia infecciosa equina.",
+    "fisiopatologia": [
+      "O vírus da AIE é um retrovírus (Lentivirus) que infecta macrófagos por toda a vida do animal.",
+      "É transmitido mecanicamente por sangue: mutucas, moscas-dos-estábulos, agulhas e instrumentos.",
+      "Os episódios febris coincidem com ondas de replicação viral por variação antigênica.",
+      "Anemia por hemólise imunomediada e menor produção; trombocitopenia imunomediada.",
+      "Muitos portadores não têm sinais e mantêm o vírus no rebanho."
+    ],
+    "pistas": [
+      {
+        "achado": "Região alagada com muitas mutucas",
+        "por_que_importa": "Vetores mecânicos abundantes."
+      },
+      {
+        "achado": "Agulhas reutilizadas",
+        "por_que_importa": "Transmissão iatrogênica."
+      },
+      {
+        "achado": "Febre recorrente com emagrecimento e edema",
+        "por_que_importa": "Forma crônica típica."
+      },
+      {
+        "achado": "IDGA reagente",
+        "por_que_importa": "Teste oficial positivo."
+      }
+    ],
+    "comentario_exames": "IDGA (ou ELISA confirmado por IDGA) é o diagnóstico oficial. O restante apoia ou descarta diferenciais.",
+    "comentario_tratamento": "Não há tratamento: notificar, aplicar as medidas legais e prevenir novas infecções."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir as medidas da legislação vigente (MAPA) para equinos positivos."
+  }
+}

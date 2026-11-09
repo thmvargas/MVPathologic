@@ -1,0 +1,287 @@
+{
+  "id": "suino-erisipela-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "suina",
+  "grupo_especie": "suinos",
+  "raca": "Linhagem comercial",
+  "idade": "5 meses",
+  "sexo": "lote de terminação",
+  "peso": "85 kg (média)",
+  "queixa_principal": [
+    "Porcos com manchas na pele",
+    "Febre e não querem levantar"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Granja",
+      "itens": [
+        "Terminação com 400 animais"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Lote sem vacina contra erisipela"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Semana muito quente"
+      ]
+    },
+    {
+      "titulo": "Higiene",
+      "itens": [
+        "Limpeza irregular das baias"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias: vários animais com febre e apetite reduzido",
+        "Hoje: manchas na pele e um animal morto de repente"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "41,5",
+        "unidade": "°C",
+        "referencia": "38,7–39,8",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "Aumentada",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Lesões avermelhadas, elevadas, em forma de losango ou quadrado, no dorso e nos flancos"
+        ]
+      },
+      {
+        "titulo": "Locomoção",
+        "itens": [
+          "Relutam em levantar; andam com rigidez"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Apatia"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "lesao",
+      "tipo": "outro",
+      "nome": "Exame das lesões de pele",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Placas eritematosas, elevadas e firmes em forma de losango"
+        ],
+        "conclusao": "Lesões típicas de erisipela."
+      },
+      "comentario_didatico": "As lesões em losango (\"diamante\") são muito características da erisipela."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura bacteriana de órgãos (necropsia do animal morto)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Bacilos gram-positivos finos isolados de baço e fígado"
+        ],
+        "conclusao": "Erysipelothrix rhusiopathiae."
+      },
+      "comentario_didatico": "Isola Erysipelothrix rhusiopathiae e confirma o diagnóstico."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia do animal morto",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Esplenomegalia",
+          "Petéquias em rins e coração",
+          "Congestão generalizada"
+        ],
+        "conclusao": "Septicemia."
+      },
+      "comentario_didatico": "Na forma aguda as lesões são de septicemia, inespecíficas; serve para colher material."
+    },
+    {
+      "id": "pcr_psc",
+      "tipo": "pcr",
+      "nome": "PCR para peste suína clássica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "A PSC é diferencial importante (doença de notificação); deve ser descartada em mortes com lesões hemorrágicas."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não contribui."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem indicação na rotina de granja."
+    }
+  ],
+  "diagnostico_id": "erisipela_suina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "peste_suina_classica",
+      "como_descartar": "Febre, hemorragias e mortes em várias idades, sem lesões em losango; é de notificação obrigatória."
+    },
+    {
+      "diagnostico_id": "salmonelose_suina",
+      "como_descartar": "Septicemia com pele arroxeada nas extremidades; isolamento de Salmonella."
+    },
+    {
+      "diagnostico_id": "pleuropneumonia_suina",
+      "como_descartar": "Sinais respiratórios graves com pleuropneumonia fibrinosa na necropsia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "penicilina",
+      "texto": "Penicilina para os doentes e para o lote",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Erysipelothrix é muito sensível à penicilina."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar o plantel contra erisipela",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção eficaz."
+    },
+    {
+      "id": "higiene",
+      "texto": "Melhorar higiene das baias e retirar carcaças rapidamente",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A bactéria sobrevive no ambiente e em fezes."
+    },
+    {
+      "id": "epi",
+      "texto": "Usar luvas ao manipular carcaças",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Erisipeloide é zoonose ocupacional (lesão de pele nas mãos)."
+    },
+    {
+      "id": "febre",
+      "texto": "Antitérmico e acesso fácil à água",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Conforto e hidratação."
+    },
+    {
+      "id": "nada",
+      "texto": "Esperar a melhora sem tratar",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "A forma aguda mata; a crônica causa artrite e endocardite com perdas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Lote de terminação não vacinado, em semana quente, com febre alta, apatia, rigidez, morte súbita e lesões de pele em forma de losango; Erysipelothrix rhusiopathiae isolado: erisipela suína aguda.",
+    "fisiopatologia": [
+      "Erysipelothrix rhusiopathiae é bacilo gram-positivo que sobrevive bem no ambiente; suínos portadores eliminam a bactéria nas fezes.",
+      "Na forma aguda, causa septicemia com lesão do endotélio e trombose de pequenos vasos.",
+      "Os infartos cutâneos formam as lesões em losango.",
+      "Na forma crônica, causa artrite e endocardite valvular vegetativa.",
+      "Estresse e calor favorecem os surtos."
+    ],
+    "pistas": [
+      {
+        "achado": "Lote não vacinado",
+        "por_que_importa": "Sem proteção."
+      },
+      {
+        "achado": "Calor e higiene ruim",
+        "por_que_importa": "Fatores que favorecem o surto."
+      },
+      {
+        "achado": "Lesões em losango",
+        "por_que_importa": "Sinal característico."
+      },
+      {
+        "achado": "Febre alta e morte súbita",
+        "por_que_importa": "Forma septicêmica."
+      }
+    ],
+    "comentario_exames": "As lesões de pele sugerem fortemente; a cultura confirma. Descartar peste suína clássica é obrigatório em mortes com hemorragias.",
+    "comentario_tratamento": "Penicilina responde bem; vacinação e higiene previnem. Cuidado com a zoonose."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "zimmerman",
+      "citacao": "ZIMMERMAN, J. J. et al. Diseases of Swine. 11. ed. Hoboken: Wiley-Blackwell, 2019."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

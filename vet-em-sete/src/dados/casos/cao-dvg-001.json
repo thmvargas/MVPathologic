@@ -1,0 +1,320 @@
+{
+  "id": "cao-dvg-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Pastor-alemão",
+  "idade": "6 anos",
+  "sexo": "macho",
+  "peso": "38 kg",
+  "queixa_principal": [
+    "Barriga inchando rápido",
+    "Tenta vomitar e não sai nada"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Uma refeição grande por dia, à noite, comendo muito rápido"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Brincou e correu logo depois de comer"
+      ]
+    },
+    {
+      "titulo": "Família",
+      "itens": [
+        "O pai teve \"torção de estômago\""
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Começou há cerca de 2 horas",
+        "Salivação abundante",
+        "Inquieto, deita e levanta"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "190",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "52",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "TPC",
+        "valor": "3",
+        "unidade": "s",
+        "referencia": "≤ 2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Pulso femoral",
+        "valor": "Fraco",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Distensão acentuada no abdome cranial, mais à esquerda",
+          "Som timpânico à percussão"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Ânsia de vômito improdutiva"
+        ]
+      },
+      {
+        "titulo": "Cardiovascular",
+        "itens": [
+          "Arritmia à ausculta"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal em decúbito lateral direito",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Estômago muito distendido por gás",
+          "Piloro deslocado dorsalmente e para a esquerda, com uma faixa de tecido mole separando os compartimentos"
+        ],
+        "conclusao": "Dilatação-vólvulo gástrico."
+      },
+      "comentario_didatico": "O piloro deslocado dorsal e à esquerda, separado do corpo do estômago por uma faixa de tecido, forma a imagem de \"duplo bolha\" ou \"braço dobrado\": confirma o vólvulo."
+    },
+    {
+      "id": "ecg",
+      "tipo": "outro",
+      "nome": "Eletrocardiograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Complexos ventriculares prematuros frequentes"
+        ],
+        "conclusao": "Arritmia ventricular."
+      },
+      "comentario_didatico": "Arritmias ventriculares são frequentes nas primeiras 36 horas por isquemia miocárdica e mediadores inflamatórios."
+    },
+    {
+      "id": "lactato",
+      "tipo": "bioquimica",
+      "nome": "Lactato sanguíneo",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Lactato",
+            "valor": "5,8",
+            "unidade": "mmol/L",
+            "referencia": "< 2,5",
+            "fonte": "ettinger",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Hiperlactatemia."
+      },
+      "comentario_didatico": "Ajuda a estimar hipoperfusão e risco de necrose gástrica, mas não define o diagnóstico."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hematócrito no limite superior"
+        ],
+        "conclusao": "Hemoconcentração leve."
+      },
+      "comentario_didatico": "Hemoconcentração inespecífica."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Imagem prejudicada por gás"
+        ],
+        "conclusao": "Inconclusivo."
+      },
+      "comentario_didatico": "O gás atrapalha a imagem e atrasa a conduta; a radiografia é o exame indicado."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Sem relação com o quadro."
+    }
+  ],
+  "diagnostico_id": "dilatacao_volvulo_gastrico",
+  "diferenciais": [
+    {
+      "diagnostico_id": "corpo_estranho_gastrintestinal",
+      "como_descartar": "Vômito produtivo e sem distensão gasosa tão rápida."
+    },
+    {
+      "diagnostico_id": "pancreatite_aguda",
+      "como_descartar": "Dor abdominal e vômito, sem distensão timpânica nem imagem de vólvulo."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "estabilizar",
+      "texto": "Fluidoterapia intravenosa rápida pelos membros torácicos",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Combate o choque; a veia cava caudal está comprimida, por isso usar acessos dos membros torácicos."
+    },
+    {
+      "id": "descompressao",
+      "texto": "Descompressão gástrica (trocarte percutâneo ou sonda orogástrica)",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a pressão sobre a veia cava e o diafragma enquanto se prepara a cirurgia."
+    },
+    {
+      "id": "cirurgia",
+      "texto": "Cirurgia de emergência: reposicionar o estômago e fazer gastropexia",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Corrige o vólvulo e a gastropexia evita a recidiva."
+    },
+    {
+      "id": "ecg",
+      "texto": "Monitorar o ritmo cardíaco por 48 horas",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "As arritmias podem surgir até dois dias depois."
+    },
+    {
+      "id": "refeicoes",
+      "texto": "Depois: dividir a comida em várias refeições e evitar exercício logo após comer",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Reduz fatores de risco, embora a gastropexia seja a principal prevenção."
+    },
+    {
+      "id": "esperar",
+      "texto": "Observar em casa até o dia seguinte",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "É emergência: necrose gástrica, choque e morte em poucas horas."
+    },
+    {
+      "id": "procinético",
+      "texto": "Só procinético e simeticona",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não desfaz a torção."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão de raça grande e tórax profundo, que comeu muito e correu em seguida, apresenta em poucas horas distensão abdominal timpânica, ânsia improdutiva, salivação, taquicardia, choque e arritmia; a radiografia mostra o piloro deslocado: dilatação-vólvulo gástrico.",
+    "fisiopatologia": [
+      "Anatomia: em cães de tórax profundo, o ligamento hepatogástrico frouxo permite que o estômago dilatado gire em torno do eixo do esôfago.",
+      "No vólvulo típico, o piloro se move de ventral e à direita para dorsal e à esquerda (giro horário visto de trás).",
+      "O baço, preso ao estômago pelo ligamento gastroesplênico, acompanha o giro e pode torcer ou sofrer infarto.",
+      "Fisiologia: o estômago distendido comprime a veia cava caudal e a veia porta; o retorno venoso cai e o paciente entra em choque obstrutivo.",
+      "A isquemia da parede gástrica e do miocárdio leva a necrose e arritmias ventriculares."
+    ],
+    "pistas": [
+      {
+        "achado": "Raça grande de tórax profundo",
+        "por_que_importa": "Conformação anatômica que favorece a torção."
+      },
+      {
+        "achado": "Refeição grande seguida de exercício",
+        "por_que_importa": "Fatores de risco clássicos."
+      },
+      {
+        "achado": "Ânsia de vômito sem conteúdo",
+        "por_que_importa": "O esôfago fica ocluído pela torção."
+      },
+      {
+        "achado": "Choque com distensão timpânica",
+        "por_que_importa": "Compressão da veia cava caudal."
+      },
+      {
+        "achado": "Piloro dorsal e à esquerda",
+        "por_que_importa": "Imagem radiográfica do vólvulo."
+      }
+    ],
+    "comentario_exames": "Radiografia lateral direita confirma; ECG e lactato orientam a estabilização e o prognóstico. Não atrasar a cirurgia por exames.",
+    "comentario_tratamento": "Estabilizar, descomprimir e operar com gastropexia. A sequência anatômica explica cada passo."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,423 @@
+{
+  "id": "cao-parvovirose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Sem raça definida",
+  "idade": "3 meses",
+  "sexo": "macho",
+  "peso": "4,2 kg",
+  "queixa_principal": [
+    "Vômitos desde ontem",
+    "Diarreia com sangue"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Adotado em feira de adoção há 10 dias"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Recebeu uma única dose de vacina polivalente aos 45 dias"
+      ]
+    },
+    {
+      "titulo": "Vermifugação",
+      "itens": [
+        "Uma dose há 1 mês"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento; passeios na praça do bairro desde a semana passada"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca para filhotes"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Apatia e recusa alimentar há 2 dias",
+        "Vômitos repetidos desde ontem",
+        "Diarreia líquida, fétida, com sangue hoje"
+      ]
+    },
+    {
+      "titulo": "Outros sistemas",
+      "itens": [
+        "Sem tosse ou secreção nasal"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,1",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "180",
+        "unidade": "bpm",
+        "referencia": "70–180 (filhotes até 220)",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas e secas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "TPC",
+        "valor": "3",
+        "unidade": "s",
+        "referencia": "≤ 2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 8%",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Dor leve à palpação",
+          "Alças intestinais com conteúdo líquido"
+        ]
+      },
+      {
+        "titulo": "Períneo",
+        "itens": [
+          "Sujo de fezes sanguinolentas"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Sem alterações"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma completo",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "41",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "weiss",
+            "a_revisar": true
+          },
+          {
+            "analito": "Leucócitos totais",
+            "valor": "1,8",
+            "unidade": "×10³/µL",
+            "referencia": "6,0–17,0",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Neutrófilos segmentados",
+            "valor": "0,7",
+            "unidade": "×10³/µL",
+            "referencia": "3,0–11,5",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Linfócitos",
+            "valor": "0,8",
+            "unidade": "×10³/µL",
+            "referencia": "1,0–4,8",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Plaquetas",
+            "valor": "210",
+            "unidade": "×10³/µL",
+            "referencia": "200–500",
+            "fonte": "weiss",
+            "a_revisar": true
+          }
+        ],
+        "descricao": [
+          "Leucopenia acentuada por neutropenia e linfopenia",
+          "Hematócrito no limite inferior, possivelmente mascarado pela desidratação"
+        ],
+        "conclusao": "Leucopenia acentuada."
+      },
+      "comentario_didatico": "A leucopenia por neutropenia e linfopenia reflete a destruição de precursores na medula e no tecido linfoide pelo parvovírus, que infecta células em divisão rápida."
+    },
+    {
+      "id": "teste_rapido",
+      "tipo": "sorologia",
+      "nome": "Teste rápido de antígeno de parvovírus nas fezes",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Antígeno de parvovírus canino: reagente"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "O teste imunocromatográfico detecta antígeno viral nas fezes. Pode dar falso-negativo no início ou falso-positivo nos dias seguintes à vacina com vírus vivo."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico (flutuação)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Ovos de Toxocara: raros"
+        ],
+        "conclusao": "Toxocaríase discreta."
+      },
+      "comentario_didatico": "Útil para descartar coinfecção parasitária, comum em filhotes, mas não explica a leucopenia."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica (proteínas, glicose, rim)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Albumina",
+            "valor": "2,1",
+            "unidade": "g/dL",
+            "referencia": "2,6–3,3",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Glicose",
+            "valor": "68",
+            "unidade": "mg/dL",
+            "referencia": "76–119",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "0,6",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Hipoalbuminemia e hipoglicemia leves."
+      },
+      "comentario_didatico": "Hipoalbuminemia e hipoglicemia são frequentes e orientam o suporte, mas não fecham o diagnóstico."
+    },
+    {
+      "id": "rx_abdome",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Alças de intestino delgado com gás e líquido, sem sinal de obstrução mecânica"
+        ],
+        "conclusao": "Íleo funcional."
+      },
+      "comentario_didatico": "Útil se houver suspeita de corpo estranho ou intussuscepção (complicação possível), mas aqui só mostra íleo inespecífico."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem sinais respiratórios; não muda a conduta."
+    }
+  ],
+  "diagnostico_id": "parvovirose_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "coronavirose_canina",
+      "como_descartar": "Costuma ser mais branda e não causa leucopenia acentuada; teste de antígeno para parvovírus negativo."
+    },
+    {
+      "diagnostico_id": "giardiase",
+      "como_descartar": "Diarreia geralmente sem sangue e sem febre ou leucopenia; diagnóstico por pesquisa de cistos ou antígeno."
+    },
+    {
+      "diagnostico_id": "corpo_estranho_gastrintestinal",
+      "como_descartar": "Vômito persistente com sinais de obstrução na imagem; não explica a leucopenia."
+    },
+    {
+      "diagnostico_id": "cinomose",
+      "como_descartar": "Sinais respiratórios, oculares e neurológicos associados; o teste de parvovírus seria negativo."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa com cristaloide e reposição de potássio conforme exames",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Corrige desidratação, perdas digestivas e distúrbios eletrolíticos: é a base do tratamento."
+    },
+    {
+      "id": "antiemetico",
+      "texto": "Antiemético (ex.: maropitant)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controla o vômito e permite voltar a alimentar.",
+      "dose": {
+        "texto": "1 mg/kg SC ou IV a cada 24 h",
+        "fonte": "sykes",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano de amplo espectro por via intravenosa",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Com neutropenia e lesão da barreira intestinal há risco de translocação bacteriana e sepse."
+    },
+    {
+      "id": "alimentacao",
+      "texto": "Alimentação enteral precoce em pequenas quantidades assim que o vômito ceder",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "A nutrição precoce favorece a recuperação do epitélio intestinal."
+    },
+    {
+      "id": "isolamento",
+      "texto": "Isolamento e desinfecção do ambiente com hipoclorito de sódio",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O parvovírus é muito resistente no ambiente; desinfetantes comuns não o inativam."
+    },
+    {
+      "id": "vermifugo",
+      "texto": "Vermífugo após estabilização",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Trata a toxocaríase encontrada, sem urgência."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide em dose imunossupressora",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Agrava a imunossupressão de um paciente já neutropênico."
+    },
+    {
+      "id": "jejum",
+      "texto": "Jejum prolongado até a diarreia parar",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Atrasa a regeneração dos enterócitos; a alimentação precoce é preferível."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de 3 meses, com vacinação incompleta e exposição recente a áreas públicas, apresenta febre, vômitos, diarreia hemorrágica, desidratação e leucopenia acentuada. O teste de antígeno fecal confirma parvovirose canina.",
+    "fisiopatologia": [
+      "O parvovírus canino tipo 2 é um vírus de DNA sem envelope, muito resistente no ambiente, transmitido pela via fecal-oral.",
+      "Replica só em células em divisão: tecido linfoide, medula óssea e criptas intestinais.",
+      "A necrose das criptas causa achatamento das vilosidades, má absorção, perda de proteína e sangue, e diarreia hemorrágica.",
+      "A destruição de precursores na medula e no tecido linfoide causa neutropenia e linfopenia, abrindo caminho para sepse por bactérias intestinais.",
+      "Anticorpos maternos interferem na vacina; por isso o filhote precisa de várias doses até cerca de 16 semanas."
+    ],
+    "pistas": [
+      {
+        "achado": "Filhote com vacinação incompleta",
+        "por_que_importa": "Faixa etária e situação vacinal de maior risco."
+      },
+      {
+        "achado": "Passeios recentes em área pública",
+        "por_que_importa": "Exposição a fezes contaminadas."
+      },
+      {
+        "achado": "Diarreia hemorrágica com vômito e febre",
+        "por_que_importa": "Lesão grave da mucosa intestinal."
+      },
+      {
+        "achado": "Leucopenia acentuada",
+        "por_que_importa": "Marca da destruição de células em divisão na medula e no tecido linfoide."
+      }
+    ],
+    "comentario_exames": "Hemograma e teste de antígeno fecal bastam para o diagnóstico. Bioquímica orienta o suporte; imagem só se houver suspeita de complicação.",
+    "comentario_tratamento": "O tratamento é de suporte intensivo: fluidos, controle do vômito, antimicrobiano pela neutropenia e nutrição precoce. Isolamento e desinfecção evitam novos casos."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir faixa de frequência cardíaca para filhotes."
+  }
+}

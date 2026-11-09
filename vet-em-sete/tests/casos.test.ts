@@ -65,3 +65,10 @@ describe("código neutro do caso", () => {
     expect(codigo).not.toContain("erliq");
   });
 });
+
+describe("índice de casos do repositório", () => {
+  it("lista todos os arquivos .json da pasta", () => {
+    const indice = fs.readFileSync(path.join(dir, "index.ts"), "utf8");
+    for (const a of arquivos) expect(indice, `${a} não está em src/dados/casos/index.ts`).toContain(`"./${a}"`);
+  });
+});
