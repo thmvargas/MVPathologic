@@ -1,0 +1,335 @@
+{
+  "id": "gato-pif-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "British Shorthair",
+  "idade": "10 meses",
+  "sexo": "macho inteiro",
+  "peso": "3,0 kg",
+  "queixa_principal": [
+    "Barriga crescendo",
+    "Febre que não passa"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "multissistemico",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprado de um gatil com muitos gatos"
+      ]
+    },
+    {
+      "titulo": "Mudanças",
+      "itens": [
+        "Mudou de casa e foi castrado no mesmo mês"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento com outro gato jovem"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Febre que vai e volta há 3 semanas, sem resposta a antibiótico",
+        "Apetite reduzido e perda de peso",
+        "Abdome aumentando de volume"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Amoxicilina por 7 dias, sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,0",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Levemente ictéricas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "3/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Distendido, com ondulação de líquido à palpação"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Precipitados ceráticos e uveíte anterior no olho direito"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Mesentéricos aumentados à palpação"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "liquido",
+      "tipo": "citologia",
+      "nome": "Análise do líquido abdominal",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Amarelo-palha, viscoso, forma espuma ao agitar",
+          "Proteína total 6,2 g/dL",
+          "Celularidade baixa: macrófagos e neutrófilos não degenerados",
+          "Sem bactérias"
+        ],
+        "conclusao": "Exsudato asséptico rico em proteína."
+      },
+      "comentario_didatico": "Líquido amarelo, viscoso, com proteína alta e poucas células é típico da forma efusiva; a relação albumina:globulina baixa reforça."
+    },
+    {
+      "id": "rt_pcr_liquido",
+      "tipo": "pcr",
+      "nome": "RT-PCR para coronavírus felino no líquido abdominal",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "RNA de coronavírus felino: detectado"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Coronavírus detectado na efusão, num quadro compatível, apoia muito o diagnóstico."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Proteínas séricas",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Proteína total",
+            "valor": "9,1",
+            "unidade": "g/dL",
+            "referencia": "5,4–7,8",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Albumina",
+            "valor": "2,1",
+            "unidade": "g/dL",
+            "referencia": "2,1–3,3",
+            "fonte": "kaneko",
+            "a_revisar": true
+          },
+          {
+            "analito": "Relação albumina:globulina",
+            "valor": "0,3",
+            "unidade": "",
+            "referencia": "> 0,8 torna PIF improvável",
+            "fonte": "tasker2023",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Hiperglobulinemia com relação A:G baixa."
+      },
+      "comentario_didatico": "Hiperglobulinemia com relação albumina:globulina baixa é comum na PIF."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Sorologia para coronavírus felino no sangue",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Título de anticorpos alto"
+        ],
+        "conclusao": "Exposição ao coronavírus."
+      },
+      "comentario_didatico": "Muitos gatos saudáveis têm anticorpos; o resultado isolado não diagnostica PIF."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Linfopenia",
+          "Anemia leve arregenerativa"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Linfopenia e anemia leve apoiam, mas são inespecíficas."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Bilirrubinúria leve"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Não contribui."
+    }
+  ],
+  "diagnostico_id": "peritonite_infecciosa_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Efusão com células linfoides atípicas; RT-PCR para coronavírus negativa."
+    },
+    {
+      "diagnostico_id": "peritonite_septica",
+      "como_descartar": "Efusão com neutrófilos degenerados e bactérias."
+    },
+    {
+      "diagnostico_id": "colangite_felina",
+      "como_descartar": "Icterícia com alterações biliares, sem efusão rica em proteína."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "antiviral",
+      "texto": "Antiviral análogo de nucleosídeo (ex.: GS-441524 ou remdesivir), conforme disponibilidade legal",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Mudou o prognóstico da PIF, antes quase sempre fatal; informar o tutor sobre disponibilidade e legalidade no país."
+    },
+    {
+      "id": "suporte",
+      "texto": "Suporte: hidratação, nutrição e controle da febre",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Mantém o paciente durante o tratamento."
+    },
+    {
+      "id": "uveite",
+      "texto": "Colírio anti-inflamatório para a uveíte",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controla a inflamação ocular."
+    },
+    {
+      "id": "drenar",
+      "texto": "Drenar a efusão só se houver desconforto respiratório",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Retirar líquido rico em proteína repetidamente piora a hipoproteinemia."
+    },
+    {
+      "id": "eutanasia",
+      "texto": "Eutanásia quando não houver acesso ao antiviral e o sofrimento for grande",
+      "tipo": "eutanasia",
+      "classificacao": "aceitavel",
+      "justificativa": "Decisão compartilhada com o tutor; sem antiviral, o prognóstico é muito ruim."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Trocar o antibiótico por outro de espectro maior",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não é doença bacteriana."
+    },
+    {
+      "id": "isolar_para_sempre",
+      "texto": "Sacrificar ou isolar todos os gatos da casa",
+      "tipo": "sanitaria",
+      "classificacao": "contraindicado",
+      "justificativa": "O coronavírus felino é comum; a PIF surge de mutação dentro do próprio gato, não se transmite como PIF."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato jovem de gatil, com estresse recente (mudança e castração), febre que não responde a antibiótico, ascite, uveíte e hiperglobulinemia; efusão amarela, viscosa, rica em proteína, com coronavírus detectado: peritonite infecciosa felina, forma efusiva.",
+    "fisiopatologia": [
+      "O coronavírus entérico felino é comum e geralmente causa pouca doença.",
+      "Em alguns gatos, mutações permitem que o vírus infecte e se multiplique em macrófagos.",
+      "Os macrófagos infectados disseminam o vírus e causam vasculite piogranulomatosa mediada pelo sistema imune.",
+      "A lesão vascular deixa extravasar líquido rico em proteína (forma efusiva) ou forma granulomas em órgãos (forma não efusiva).",
+      "Gatos jovens, de gatis e sob estresse têm maior risco."
+    ],
+    "pistas": [
+      {
+        "achado": "Gato jovem de gatil",
+        "por_que_importa": "Exposição ao coronavírus."
+      },
+      {
+        "achado": "Estresse recente",
+        "por_que_importa": "Fator associado ao desenvolvimento da doença."
+      },
+      {
+        "achado": "Febre que não responde a antibiótico",
+        "por_que_importa": "Não é infecção bacteriana."
+      },
+      {
+        "achado": "Efusão amarela, viscosa e rica em proteína",
+        "por_que_importa": "Exsudato típico da PIF efusiva."
+      },
+      {
+        "achado": "Uveíte",
+        "por_que_importa": "Vasculite atingindo o olho."
+      }
+    ],
+    "comentario_exames": "A análise da efusão com RT-PCR é o exame mais útil. A sorologia sozinha não diagnostica.",
+    "comentario_tratamento": "Antivirais mudaram o prognóstico. Sem eles, o cuidado é de suporte e paliativo."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "tasker2023",
+      "citacao": "TASKER, S. et al. 2022 AAFP/EveryCat Feline Infectious Peritonitis Diagnosis Guidelines. Journal of Feline Medicine and Surgery, v. 25, n. 2, 2023."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir a situação legal dos antivirais para PIF no Brasil na data de publicação."
+  }
+}

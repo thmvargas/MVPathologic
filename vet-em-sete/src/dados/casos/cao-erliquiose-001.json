@@ -1,0 +1,603 @@
+{
+  "id": "cao-erliquiose-001",
+  "status": "revisado",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Sem raça definida",
+  "idade": "4 anos",
+  "sexo": "macho",
+  "peso": "18 kg",
+  "queixa_principal": [
+    "Apatia",
+    "Come pouco há 5 dias"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "hematopoietico_linfatico",
+  "dificuldade": 1,
+  "tags": [
+    "hemoparasitose",
+    "carrapato",
+    "trombocitopenia"
+  ],
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal de terra e grama, interior paulista",
+        "Acesso livre à rua"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Outro cão adulto na casa, sem sinais clínicos"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração comercial seca"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Polivalente e antirrábica anuais, em dia"
+      ]
+    },
+    {
+      "titulo": "Vermifugação",
+      "itens": [
+        "Há 3 meses"
+      ]
+    },
+    {
+      "titulo": "Ectoparasitas",
+      "itens": [
+        "Tutor vê carrapatos com frequência",
+        "Último antiparasitário externo há cerca de 6 meses"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Apatia e hiporexia há 5 dias, piora progressiva"
+      ]
+    },
+    {
+      "titulo": "Sangramentos",
+      "itens": [
+        "Ontem: gotas de sangue na narina esquerda",
+        "Hoje: manchas avermelhadas na barriga"
+      ]
+    },
+    {
+      "titulo": "Outros sistemas",
+      "itens": [
+        "Sem vômito ou diarreia",
+        "Urina de cor normal",
+        "Sem tosse"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,9",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa2020",
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "128",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa2020"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "32",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa2020",
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Hipocoradas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "TPC",
+        "valor": "2",
+        "unidade": "s"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 5%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "4/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele e mucosas",
+        "itens": [
+          "Petéquias em mucosa oral e abdome ventral",
+          "Carrapatos em orelhas e espaços interdigitais"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Poplíteos e pré-escapulares aumentados, indolores"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Baço palpável e aumentado",
+          "Sem dor à palpação"
+        ]
+      },
+      {
+        "titulo": "Cardiorrespiratório",
+        "itens": [
+          "Ausculta sem alterações"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma completo",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hemácias",
+            "valor": "3,80",
+            "unidade": "×10⁶/µL",
+            "referencia": "5,5–8,5",
+            "fonte": "jain1993",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Hemoglobina",
+            "valor": "8,4",
+            "unidade": "g/dL",
+            "referencia": "12–18",
+            "fonte": "jain1993",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Hematócrito",
+            "valor": "25",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "jain1993",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "VCM",
+            "valor": "65,8",
+            "unidade": "fL",
+            "referencia": "60–77",
+            "fonte": "jain1993"
+          },
+          {
+            "analito": "CHCM",
+            "valor": "33,6",
+            "unidade": "g/dL",
+            "referencia": "32–36",
+            "fonte": "jain1993"
+          },
+          {
+            "analito": "Leucócitos totais",
+            "valor": "5,1",
+            "unidade": "×10³/µL",
+            "referencia": "6,0–17,0",
+            "fonte": "jain1993",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Plaquetas",
+            "valor": "28",
+            "unidade": "×10³/µL",
+            "referencia": "200–500",
+            "fonte": "jain1993",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Proteína plasmática total",
+            "valor": "8,2",
+            "unidade": "g/dL",
+            "referencia": "6,0–8,0",
+            "fonte": "jain1993",
+            "alterado": "alto"
+          }
+        ],
+        "descricao": [
+          "Anemia normocítica normocrômica, sem sinais de regeneração no esfregaço",
+          "Leucopenia discreta",
+          "Trombocitopenia acentuada, confirmada no esfregaço (sem agregados)",
+          "Mórulas não visualizadas"
+        ],
+        "conclusao": "Bicitopenia com trombocitopenia acentuada e hiperproteinemia."
+      },
+      "comentario_didatico": "Exame-chave. Trombocitopenia acentuada em cão com carrapatos é o achado laboratorial mais frequente da erliquiose monocítica. A ausência de mórulas não exclui a doença: elas são vistas em poucos casos."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica (proteínas, fígado e rim)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Proteína total",
+            "valor": "8,0",
+            "unidade": "g/dL",
+            "referencia": "5,4–7,1",
+            "fonte": "kaneko2008",
+            "alterado": "alto"
+          },
+          {
+            "analito": "Albumina",
+            "valor": "2,4",
+            "unidade": "g/dL",
+            "referencia": "2,6–3,3",
+            "fonte": "kaneko2008",
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Globulinas",
+            "valor": "5,6",
+            "unidade": "g/dL",
+            "referencia": "2,7–4,4",
+            "fonte": "kaneko2008",
+            "alterado": "alto"
+          },
+          {
+            "analito": "ALT",
+            "valor": "62",
+            "unidade": "U/L",
+            "referencia": "21–102",
+            "fonte": "kaneko2008"
+          },
+          {
+            "analito": "Fosfatase alcalina",
+            "valor": "98",
+            "unidade": "U/L",
+            "referencia": "20–156",
+            "fonte": "kaneko2008"
+          },
+          {
+            "analito": "Ureia (BUN)",
+            "valor": "22",
+            "unidade": "mg/dL",
+            "referencia": "10–28",
+            "fonte": "kaneko2008"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "1,1",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko2008"
+          }
+        ],
+        "conclusao": "Hiperglobulinemia com hipoalbuminemia discreta. Função hepática e renal sem alterações."
+      },
+      "comentario_didatico": "A hiperglobulinemia reforça a suspeita de doença infecciosa ou inflamatória crônica, mas é inespecífica: também aparece na leishmaniose e no mieloma. Útil para estadiar o paciente, não para fechar o diagnóstico."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Teste rápido imunocromatográfico (Ehrlichia, Anaplasma, Dirofilaria)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Anticorpos anti-Ehrlichia canis: reagente",
+          "Anticorpos anti-Anaplasma spp.: não reagente",
+          "Antígeno de Dirofilaria immitis: não reagente"
+        ],
+        "conclusao": "Exposição a E. canis."
+      },
+      "comentario_didatico": "Sorologia positiva indica exposição. Em área endêmica, um cão pode ser soropositivo sem doença ativa; o resultado precisa ser interpretado junto com sinais clínicos e hemograma. Nos primeiros dias da infecção pode ainda ser negativa."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR em sangue total para hemoparasitos",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Ehrlichia canis: detectado",
+          "Anaplasma platys: não detectado",
+          "Babesia spp.: não detectado",
+          "Hepatozoon canis: não detectado"
+        ],
+        "conclusao": "Infecção ativa por E. canis."
+      },
+      "comentario_didatico": "A PCR detecta o DNA do agente e confirma infecção ativa, inclusive na fase aguda, antes da soroconversão. Também descarta coinfecções transmitidas pelo mesmo carrapato."
+    },
+    {
+      "id": "citologia_linfonodo",
+      "tipo": "citologia",
+      "nome": "Citologia aspirativa de linfonodo poplíteo",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Celularidade alta, população linfoide heterogênea",
+          "Predomínio de linfócitos pequenos, com aumento de plasmócitos",
+          "Sem população monomórfica de linfócitos grandes",
+          "Formas amastigotas não visualizadas"
+        ],
+        "conclusao": "Hiperplasia linfoide reativa com plasmocitose."
+      },
+      "comentario_didatico": "Ajuda a afastar linfoma e torna a leishmaniose menos provável, mas a hiperplasia reativa é inespecífica e não confirma o diagnóstico."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,030",
+          "Proteína: traços",
+          "Sedimento sem alterações significativas"
+        ],
+        "conclusao": "Sem alterações significativas."
+      },
+      "comentario_didatico": "Útil para acompanhar proteinúria em casos crônicos, mas não contribui para o diagnóstico neste momento."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Esplenomegalia discreta, parênquima homogêneo",
+          "Linfonodos abdominais sem alterações",
+          "Sem líquido livre"
+        ],
+        "conclusao": "Esplenomegalia homogênea inespecífica."
+      },
+      "comentario_didatico": "Confirma a esplenomegalia percebida na palpação e afasta massa esplênica, mas esplenomegalia homogênea tem muitas causas."
+    },
+    {
+      "id": "radiografia_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Campos pulmonares e silhueta cardíaca sem alterações"
+        ],
+        "conclusao": "Sem alterações."
+      },
+      "comentario_didatico": "Não havia sinal respiratório ou cardíaco que justificasse o exame neste momento."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo para ovos e oocistos"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Sem sinais digestórios e com vermifugação recente; não ajuda a explicar sangramento e citopenias."
+    }
+  ],
+  "diagnostico_id": "erliquiose_monocitica",
+  "diferenciais": [
+    {
+      "diagnostico_id": "anaplasmose_trombocitica",
+      "como_descartar": "Também causa trombocitopenia e é transmitida pelo mesmo carrapato; PCR negativa para A. platys."
+    },
+    {
+      "diagnostico_id": "babesiose_canina",
+      "como_descartar": "Anemia costuma ser hemolítica e regenerativa; PCR negativa para Babesia spp."
+    },
+    {
+      "diagnostico_id": "leishmaniose_visceral_canina",
+      "como_descartar": "Também cursa com hiperglobulinemia e linfadenomegalia; ausência de amastigotas na citologia e teste específico negativo."
+    },
+    {
+      "diagnostico_id": "trombocitopenia_imunomediada",
+      "como_descartar": "Diagnóstico de exclusão; aqui há agente infeccioso confirmado que explica a trombocitopenia."
+    },
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Citologia de linfonodo com população heterogênea reativa, sem predomínio de linfócitos grandes."
+    },
+    {
+      "diagnostico_id": "intoxicacao_rodenticida_anticoagulante",
+      "como_descartar": "Causa sangramento com plaquetas normais ou pouco reduzidas e tempos de coagulação prolongados; não explica febre nem linfadenomegalia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "doxiciclina",
+      "texto": "Doxiciclina 10 mg/kg VO a cada 24 h por 28 dias",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Fármaco de escolha para erliquiose monocítica canina.",
+      "dose": {
+        "texto": "10 mg/kg VO a cada 24 h por 28 dias",
+        "fonte": "neer2002"
+      }
+    },
+    {
+      "id": "carrapaticida",
+      "texto": "Ectoparasiticida no paciente e controle de carrapatos no ambiente",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Rhipicephalus sanguineus completa o ciclo dentro de casa; sem controle há reinfecção."
+    },
+    {
+      "id": "hemograma_controle",
+      "texto": "Hemograma de controle em 1 a 2 semanas",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "A contagem de plaquetas costuma subir nos primeiros dias de tratamento e é o melhor marcador de resposta."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia com cristaloide para corrigir desidratação",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Desidratação leve; pode ser corrigida por via oral se o animal voltar a beber, mas a fluidoterapia é razoável."
+    },
+    {
+      "id": "contactante",
+      "texto": "Avaliar o outro cão da casa (exame clínico, hemograma e controle de carrapatos)",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "O contactante tem a mesma exposição ao vetor."
+    },
+    {
+      "id": "imidocarb",
+      "texto": "Dipropionato de imidocarb",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Indicado para babesiose; não há evidência de que elimine E. canis."
+    },
+    {
+      "id": "enrofloxacino",
+      "texto": "Enrofloxacino",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Fluoroquinolonas não são eficazes contra E. canis; atrasa o tratamento correto."
+    },
+    {
+      "id": "prednisolona",
+      "texto": "Prednisolona em dose imunossupressora",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Reservada a casos com sangramento grave e suspeita de componente imunomediado; aqui a resposta à doxiciclina costuma ser rápida."
+    },
+    {
+      "id": "transfusao",
+      "texto": "Transfusão de sangue total",
+      "tipo": "suporte",
+      "classificacao": "desnecessario",
+      "justificativa": "Hematócrito de 25% em paciente estável, sem sangramento ativo importante, não indica transfusão."
+    },
+    {
+      "id": "aas",
+      "texto": "Ácido acetilsalicílico para controlar a febre",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Inibe de forma irreversível a função plaquetária em paciente com trombocitopenia grave e sangramento: aumenta o risco de hemorragia."
+    },
+    {
+      "id": "esplenectomia",
+      "texto": "Esplenectomia",
+      "tipo": "cirurgia",
+      "classificacao": "contraindicado",
+      "justificativa": "Esplenomegalia é reativa; cirurgia em paciente trombocitopênico é risco sem benefício."
+    },
+    {
+      "id": "eutanasia",
+      "texto": "Eutanásia",
+      "tipo": "eutanasia",
+      "classificacao": "contraindicado",
+      "justificativa": "Na fase aguda o prognóstico com tratamento é favorável."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão de 4 anos, com carrapatos e sem controle recente, apresenta febre, apatia, petéquias, epistaxe, linfadenomegalia e esplenomegalia. O hemograma mostra trombocitopenia acentuada, anemia arregenerativa e leucopenia; a PCR confirma Ehrlichia canis. Quadro de erliquiose monocítica canina na fase aguda.",
+    "fisiopatologia": [
+      "E. canis é uma bactéria intracelular obrigatória (ordem Rickettsiales) transmitida pelo carrapato Rhipicephalus sanguineus.",
+      "Infecta monócitos e macrófagos, onde forma mórulas, e se espalha por baço, fígado e linfonodos, causando hiperplasia linforreticular.",
+      "A trombocitopenia tem vários mecanismos: consumo por vasculite, destruição imunomediada, sequestro esplênico e, na fase crônica, menor produção na medula.",
+      "A estimulação antigênica crônica eleva as globulinas (hiperglobulinemia policlonal).",
+      "A doença tem fases aguda, subclínica e crônica; a forma crônica grave cursa com hipoplasia medular e pancitopenia, com prognóstico reservado."
+    ],
+    "pistas": [
+      {
+        "achado": "Carrapatos e controle irregular",
+        "por_que_importa": "Exposição ao vetor."
+      },
+      {
+        "achado": "Petéquias e epistaxe",
+        "por_que_importa": "Sangramento de padrão plaquetário (pele e mucosas)."
+      },
+      {
+        "achado": "Febre, linfadenomegalia e esplenomegalia",
+        "por_que_importa": "Doença sistêmica com resposta linforreticular, típica da fase aguda."
+      },
+      {
+        "achado": "Trombocitopenia acentuada",
+        "por_que_importa": "Achado laboratorial mais constante da erliquiose."
+      },
+      {
+        "achado": "Hiperglobulinemia",
+        "por_que_importa": "Estímulo antigênico crônico; apoia, mas não é específica."
+      },
+      {
+        "achado": "PCR positiva para E. canis",
+        "por_que_importa": "Confirma infecção ativa e afasta coinfecções."
+      }
+    ],
+    "comentario_exames": "O caminho mais eficiente é hemograma, seguido de teste para hemoparasitos (sorologia ou PCR). Imagem e coproparasitológico não acrescentam nesta apresentação.",
+    "comentario_tratamento": "Doxiciclina por 28 dias é a base. O controle do carrapato evita reinfecção, e o hemograma seriado mostra a resposta. Evitar fármacos que pioram a função plaquetária."
+  },
+  "referencias": [
+    {
+      "id": "neer2002",
+      "citacao": "NEER, T. M. et al. Consensus statement on ehrlichial disease of small animals from the infectious disease study group of the ACVIM. Journal of Veterinary Internal Medicine, v. 16, n. 3, p. 309-315, 2002."
+    },
+    {
+      "id": "harrus2011",
+      "citacao": "HARRUS, S.; WANER, T. Diagnosis of canine monocytotropic ehrlichiosis (Ehrlichia canis): an overview. The Veterinary Journal, v. 187, n. 3, p. 292-296, 2011."
+    },
+    {
+      "id": "sykes2014",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "jain1993",
+      "citacao": "JAIN, N. C. Essentials of Veterinary Hematology. Philadelphia: Lea & Febiger, 1993."
+    },
+    {
+      "id": "kaneko2008",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "feitosa2020",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "revisor": "Prof. Thiago Vargas",
+    "revisado_em": "2026-11-08",
+    "observacoes": "Aprovado pelo professor em 08/11/2026, incluindo intervalos de referência e classificação das condutas."
+  }
+}

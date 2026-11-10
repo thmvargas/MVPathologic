@@ -1,0 +1,313 @@
+{
+  "id": "gato-esporotricose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "2 anos",
+  "sexo": "macho inteiro",
+  "peso": "4,3 kg",
+  "queixa_principal": [
+    "Feridas no focinho que não cicatrizam",
+    "Espirra muito"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa em área urbana; sai à rua livremente"
+      ]
+    },
+    {
+      "titulo": "Comportamento",
+      "itens": [
+        "Briga com outros gatos"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Tutora com uma lesão que não cicatriza no braço, onde o gato arranhou"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Não vacinado"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 mês: ferida no focinho que aumentou",
+        "Depois: feridas nas patas",
+        "Espirros e respiração ruidosa"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Pomada de antibiótico sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,0",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "32",
+        "unidade": "mpm",
+        "referencia": "20–40",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "4/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Úlceras com crostas e secreção no plano nasal e na ponte do focinho",
+          "Nódulos ulcerados nos membros torácicos"
+        ]
+      },
+      {
+        "titulo": "Respiratório",
+        "itens": [
+          "Espirros, secreção nasal serossanguinolenta"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Submandibulares aumentados"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia de impressão da lesão",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Inflamação piogranulomatosa",
+          "Numerosas estruturas leveduriformes ovais e em forma de charuto, dentro e fora de macrófagos"
+        ],
+        "conclusao": "Compatível com esporotricose."
+      },
+      "comentario_didatico": "Em gatos, as lesões têm muitas leveduras, e a citologia corada costuma confirmar a suspeita na própria consulta."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura fúngica",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Crescimento de fungo filamentoso a 25 °C, convertendo-se em levedura a 37 °C"
+        ],
+        "conclusao": "Sporothrix spp."
+      },
+      "comentario_didatico": "Padrão-ouro: isola Sporothrix e permite identificar a espécie (no Brasil, principalmente S. brasiliensis)."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Biópsia de pele",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Dermatite piogranulomatosa com leveduras"
+        ],
+        "conclusao": "Compatível."
+      },
+      "comentario_didatico": "Útil quando a citologia é negativa; aqui não acrescenta."
+    },
+    {
+      "id": "felv_fiv",
+      "tipo": "sorologia",
+      "nome": "Teste de FeLV e FIV",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "FeLV: não reagente",
+          "FIV: não reagente"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não diagnostica a lesão, mas coinfecções pioram o prognóstico."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Leucocitose leve"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não muda a conduta."
+    }
+  ],
+  "diagnostico_id": "esporotricose",
+  "diferenciais": [
+    {
+      "diagnostico_id": "criptococose",
+      "como_descartar": "Lesões nasais e aumento de volume do focinho; leveduras grandes com cápsula na citologia."
+    },
+    {
+      "diagnostico_id": "carcinoma_espinocelular",
+      "como_descartar": "Lesão ulcerada no plano nasal de gato idoso de pelagem clara; células epiteliais atípicas."
+    },
+    {
+      "diagnostico_id": "abscesso_subcutaneo",
+      "como_descartar": "Lesão única que drena pus e responde a antibiótico."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "itraconazol",
+      "texto": "Itraconazol por via oral, mantido até 1 mês após a cura clínica",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Antifúngico de escolha.",
+      "dose": {
+        "texto": "100 mg/gato VO a cada 24 h",
+        "fonte": "gremiao2021",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "iodeto",
+      "texto": "Associar iodeto de potássio nos casos refratários ou graves",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Associação recomendada em lesões extensas ou nasais."
+    },
+    {
+      "id": "medico",
+      "texto": "Orientar a tutora a procurar atendimento médico",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A esporotricose é zoonose; a lesão no braço é suspeita."
+    },
+    {
+      "id": "protecao",
+      "texto": "Manejar o gato com luvas e manter dentro de casa durante o tratamento",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Evita transmissão a pessoas e a outros gatos."
+    },
+    {
+      "id": "castrar",
+      "texto": "Castração depois da cura",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz brigas e saídas, principais formas de transmissão."
+    },
+    {
+      "id": "corpo",
+      "texto": "Em caso de morte, cremar o corpo em vez de enterrar",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Evita contaminar o solo."
+    },
+    {
+      "id": "so_antibiotico",
+      "texto": "Manter só a pomada de antibiótico",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "É infecção fúngica; atrasa o tratamento e mantém o risco de transmissão."
+    },
+    {
+      "id": "abandonar",
+      "texto": "Soltar o gato na rua",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Espalha a doença para outros animais e pessoas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato macho inteiro de vida livre, com úlceras no focinho e nos membros, sinais respiratórios e tutora com lesão após arranhadura; citologia com muitas leveduras e cultura de Sporothrix: esporotricose, zoonose importante no Brasil.",
+    "fisiopatologia": [
+      "Sporothrix é fungo dimórfico: filamentoso no ambiente (25 °C) e levedura no tecido (37 °C).",
+      "No Brasil, S. brasiliensis é transmitido sobretudo de gato para gato e de gato para pessoa, por arranhadura e mordedura.",
+      "No gato, a quantidade de leveduras nas lesões é muito grande, o que explica a alta transmissibilidade.",
+      "A inflamação é piogranulomatosa; o comprometimento da mucosa nasal piora o prognóstico."
+    ],
+    "pistas": [
+      {
+        "achado": "Gato macho inteiro que sai e briga",
+        "por_que_importa": "Forma de transmissão entre gatos."
+      },
+      {
+        "achado": "Úlceras no focinho e nas patas",
+        "por_que_importa": "Locais de arranhaduras e mordidas."
+      },
+      {
+        "achado": "Tutora com lesão após arranhadura",
+        "por_que_importa": "Zoonose."
+      },
+      {
+        "achado": "Leveduras em forma de charuto",
+        "por_que_importa": "Achado citológico típico."
+      }
+    ],
+    "comentario_exames": "Citologia na consulta e cultura para confirmar. Testes de FeLV e FIV ajudam no prognóstico.",
+    "comentario_tratamento": "Itraconazol por tempo prolongado, proteção das pessoas e encaminhamento médico da tutora."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "gremiao2021",
+      "citacao": "GREMIÃO, I. D. F. et al. Guideline for the management of feline sporotrichosis caused by Sporothrix brasiliensis and literature revision. Brazilian Journal of Microbiology, v. 52, n. 1, p. 107-124, 2021."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

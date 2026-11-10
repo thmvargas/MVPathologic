@@ -1,0 +1,385 @@
+{
+  "id": "cao-rodenticida-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Labrador",
+  "idade": "2 anos",
+  "sexo": "macho",
+  "peso": "30 kg",
+  "queixa_principal": [
+    "Cansaço",
+    "Manchas roxas na barriga"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "hematopoietico_linfatico",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Sítio; ratos no galpão de ração"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Vizinho colocou iscas no galpão há cerca de 10 dias"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Ectoparasitas",
+      "itens": [
+        "Controle mensal em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Ontem: cansado, recusou o passeio",
+        "Hoje: manchas roxas na barriga e tosse com sangue"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Mancando da pata traseira direita (joelho inchado)"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,4",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "150",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "44",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "TPC",
+        "valor": "3",
+        "unidade": "s",
+        "referencia": "≤ 2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Equimoses extensas no abdome ventral e face medial das coxas"
+        ]
+      },
+      {
+        "titulo": "Articulações",
+        "itens": [
+          "Joelho direito aumentado e com flutuação (hemartrose)"
+        ]
+      },
+      {
+        "titulo": "Respiratório",
+        "itens": [
+          "Crepitação difusa e abafamento ventral à ausculta"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Sem alterações"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "coagulacao",
+      "tipo": "outro",
+      "nome": "Tempos de coagulação (TP e TTPa)",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Tempo de protrombina (TP)",
+            "valor": "> 60",
+            "unidade": "s",
+            "referencia": "6–9",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "TTPa",
+            "valor": "48",
+            "unidade": "s",
+            "referencia": "10–16",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "TP e TTPa muito prolongados."
+      },
+      "comentario_didatico": "O TP prolonga primeiro porque o fator VII tem a meia-vida mais curta; depois os dois prolongam. Típico da falta de fatores dependentes de vitamina K."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma com contagem de plaquetas",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "24",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Plaquetas",
+            "valor": "160",
+            "unidade": "×10³/µL",
+            "referencia": "200–500",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Proteína plasmática",
+            "valor": "4,8",
+            "unidade": "g/dL",
+            "referencia": "6,0–8,0",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Anemia com hipoproteinemia (perda de sangue) e trombocitopenia leve por consumo."
+      },
+      "comentario_didatico": "Plaquetas normais ou só levemente baixas por consumo afastam as causas plaquetárias de sangramento."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Padrão alveolar irregular",
+          "Efusão pleural discreta"
+        ],
+        "conclusao": "Hemorragia pulmonar e hemotórax discreto."
+      },
+      "comentario_didatico": "Mostra hemorragia pulmonar e efusão pleural, ajuda no prognóstico, mas não define a causa."
+    },
+    {
+      "id": "pcr_ehrlichia",
+      "tipo": "pcr",
+      "nome": "PCR para Ehrlichia canis",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Ajuda a afastar erliquiose em área endêmica, mas não explica os tempos de coagulação tão prolongados."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não contribui."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica sangramento em múltiplos locais."
+    }
+  ],
+  "diagnostico_id": "intoxicacao_rodenticida_anticoagulante",
+  "diferenciais": [
+    {
+      "diagnostico_id": "erliquiose_monocitica",
+      "como_descartar": "Sangramento por trombocitopenia acentuada, com tempos de coagulação normais ou pouco alterados."
+    },
+    {
+      "diagnostico_id": "trombocitopenia_imunomediada",
+      "como_descartar": "Petéquias e sangramento de mucosas com plaquetas muito baixas e coagulação normal."
+    },
+    {
+      "diagnostico_id": "hemangiossarcoma_esplenico",
+      "como_descartar": "Hemorragia cavitária em cão idoso, com massa esplênica na imagem."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "vitk",
+      "texto": "Vitamina K1 (fitomenadiona) por via oral por 4 semanas, com refeição gordurosa",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Antídoto: permite ao fígado voltar a produzir os fatores II, VII, IX e X. Rodenticidas de segunda geração exigem tratamento longo.",
+      "dose": {
+        "texto": "2,5–5 mg/kg/dia VO, dividida, por 3–4 semanas",
+        "fonte": "ettinger",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "plasma",
+      "texto": "Plasma fresco congelado (ou sangue total) para repor fatores",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "A vitamina K leva de 6 a 12 horas para agir; o plasma repõe fatores de imediato no paciente sangrando."
+    },
+    {
+      "id": "oxigenio",
+      "texto": "Oxigenoterapia e repouso absoluto",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Hemorragia pulmonar compromete a oxigenação."
+    },
+    {
+      "id": "tp_controle",
+      "texto": "Repetir o TP 48 a 72 horas após terminar a vitamina K",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Confirma se o tóxico já foi eliminado ou se o tratamento precisa ser estendido."
+    },
+    {
+      "id": "vitk3",
+      "texto": "Vitamina K3 (menadiona)",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não é eficaz nesse caso e pode causar anemia hemolítica por corpúsculos de Heinz."
+    },
+    {
+      "id": "toracocentese",
+      "texto": "Toracocentese para retirar toda a efusão",
+      "tipo": "cirurgia",
+      "classificacao": "desnecessario",
+      "justificativa": "Efusão discreta; o risco de sangramento pela punção supera o benefício."
+    },
+    {
+      "id": "im",
+      "texto": "Medicações por via intramuscular",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Injeções intramusculares causam hematomas em paciente com coagulopatia."
+    },
+    {
+      "id": "emese",
+      "texto": "Induzir vômito agora",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "A ingestão foi há dias; a indução só ajuda nas primeiras horas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão jovem com acesso a iscas para ratos há cerca de 10 dias, com sangramento em cavidades e tecidos (equimoses, hemartrose, hemorragia pulmonar), TP e TTPa muito prolongados e plaquetas quase normais: intoxicação por rodenticida anticoagulante.",
+    "fisiopatologia": [
+      "Os rodenticidas cumarínicos e indandiônicos inibem a enzima vitamina K epóxido redutase.",
+      "Sem vitamina K ativa, o fígado produz fatores II, VII, IX e X que não funcionam.",
+      "Os sinais aparecem 3 a 5 dias após a ingestão, quando os fatores já circulantes se esgotam; o fator VII acaba primeiro.",
+      "O sangramento é de grandes vasos e cavidades (hematomas, hemartroses, hemotórax), diferente do padrão de petéquias das alterações de plaquetas.",
+      "Produtos de segunda geração (ex.: brodifacoum) duram semanas no organismo."
+    ],
+    "pistas": [
+      {
+        "achado": "Iscas para ratos no galpão",
+        "por_que_importa": "Fonte de exposição."
+      },
+      {
+        "achado": "Intervalo de dias entre exposição e sinais",
+        "por_que_importa": "Tempo para esgotar os fatores circulantes."
+      },
+      {
+        "achado": "Equimoses e hemartrose",
+        "por_que_importa": "Sangramento de padrão de coagulação, não plaquetário."
+      },
+      {
+        "achado": "TP e TTPa muito prolongados com plaquetas quase normais",
+        "por_que_importa": "Falta de fatores de coagulação."
+      }
+    ],
+    "comentario_exames": "Os tempos de coagulação e as plaquetas diferenciam o tipo de sangramento. A radiografia avalia a gravidade.",
+    "comentario_tratamento": "Vitamina K1 por semanas e reposição imediata de fatores com plasma no paciente que sangra. Nunca vitamina K3."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

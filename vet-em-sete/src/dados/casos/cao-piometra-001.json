@@ -1,0 +1,384 @@
+{
+  "id": "cao-piometra-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Rottweiler",
+  "idade": "8 anos",
+  "sexo": "fêmea inteira",
+  "peso": "38 kg",
+  "queixa_principal": [
+    "Prostrada",
+    "Secreção vaginal com mau cheiro"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "reprodutor",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Nunca castrada; teve uma ninhada aos 3 anos",
+        "Último cio há cerca de 6 semanas"
+      ]
+    },
+    {
+      "titulo": "Medicações",
+      "itens": [
+        "Recebeu \"injeção para não dar cio\" em anos anteriores"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 5 dias: apatia e apetite reduzido",
+        "Há 2 dias: secreção vaginal marrom-avermelhada e fétida",
+        "Bebe muita água"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Vomitou duas vezes ontem"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,8",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "140",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Congestas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "TPC",
+        "valor": "2",
+        "unidade": "s"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 7%",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Vulva",
+        "itens": [
+          "Secreção mucopurulenta sanguinolenta, odor fétido"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Distendido, com estrutura tubular firme palpável no abdome caudal",
+          "Desconforto à palpação"
+        ]
+      },
+      {
+        "titulo": "Mamas",
+        "itens": [
+          "Sem nódulos"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Útero com cornos distendidos (até 4 cm), parede espessa e irregular, conteúdo anecoico com pontos ecogênicos",
+          "Sem líquido livre"
+        ],
+        "conclusao": "Útero distendido por conteúdo: compatível com piometra."
+      },
+      "comentario_didatico": "Mostra o útero aumentado com conteúdo, confirma o diagnóstico e avalia ruptura e peritonite."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Leucócitos totais",
+            "valor": "38,5",
+            "unidade": "×10³/µL",
+            "referencia": "6,0–17,0",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Bastonetes",
+            "valor": "3,1",
+            "unidade": "×10³/µL",
+            "referencia": "0–0,3",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Hematócrito",
+            "valor": "33",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Leucocitose neutrofílica com desvio à esquerda e anemia leve."
+      },
+      "comentario_didatico": "Leucocitose por neutrofilia com desvio à esquerda indica infecção bacteriana e inflamação sistêmica."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ureia",
+            "valor": "72",
+            "unidade": "mg/dL",
+            "referencia": "21–60",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "1,6",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Proteína total",
+            "valor": "8,6",
+            "unidade": "g/dL",
+            "referencia": "5,4–7,1",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Azotemia leve e hiperproteinemia."
+      },
+      "comentario_didatico": "Avalia complicações (azotemia, alteração hepática) e o risco anestésico, mas não diagnostica."
+    },
+    {
+      "id": "citologia_vag",
+      "tipo": "citologia",
+      "nome": "Citologia vaginal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Muitos neutrófilos degenerados e bactérias"
+        ],
+        "conclusao": "Inflamação séptica."
+      },
+      "comentario_didatico": "Mostra inflamação séptica, que também ocorre em vaginite."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise por cistocentese",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,012"
+        ],
+        "conclusao": "Urina diluída."
+      },
+      "comentario_didatico": "Cistocentese é desaconselhada com útero distendido (risco de puncionar o útero); a urina diluída é esperada."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem nódulos mamários nem sinais respiratórios."
+    }
+  ],
+  "diagnostico_id": "piometra",
+  "diferenciais": [
+    {
+      "diagnostico_id": "lesao_renal_aguda",
+      "como_descartar": "Poliúria e azotemia, mas sem útero distendido nem secreção vaginal."
+    },
+    {
+      "diagnostico_id": "diabetes_mellitus",
+      "como_descartar": "Poliúria e polidipsia com hiperglicemia e glicosúria."
+    },
+    {
+      "diagnostico_id": "leptospirose_canina",
+      "como_descartar": "Febre e azotemia, porém sem alteração uterina; icterícia frequente."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "ovh",
+      "texto": "Ovário-histerectomia após estabilização",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento definitivo e mais seguro: remove a fonte de infecção."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa antes e durante a cirurgia",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Corrige desidratação e protege os rins da azotemia pré-renal e da toxemia."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano de amplo espectro por via intravenosa",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "A infecção é bacteriana (geralmente E. coli) e há risco de sepse."
+    },
+    {
+      "id": "analgesia",
+      "texto": "Analgesia com opioide",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controle da dor perioperatória."
+    },
+    {
+      "id": "clinico",
+      "texto": "Tratamento clínico com prostaglandina F2α",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Opção só em fêmea jovem, de valor reprodutivo, estável e com cérvix aberta; não é o caso desta paciente idosa e prostrada."
+    },
+    {
+      "id": "progestageno",
+      "texto": "Progestágeno para \"segurar o cio\"",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "A progesterona é a base da doença: estimula o endométrio e reduz a defesa uterina."
+    },
+    {
+      "id": "so_antibiotico",
+      "texto": "Apenas antimicrobiano por via oral em casa, sem cirurgia",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "O útero cheio de pus não esvazia com antibiótico; risco de ruptura e sepse."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela idosa não castrada, com uso prévio de anticoncepcional, apresenta 6 semanas após o cio febre, apatia, poliúria, secreção vaginal fétida e útero distendido no ultrassom, com leucocitose e desvio à esquerda: piometra de cérvix aberta.",
+    "fisiopatologia": [
+      "Na fase lútea, a progesterona estimula o endométrio e as glândulas, reduz a contratilidade uterina e a resposta imune local.",
+      "Ciclos repetidos levam à hiperplasia endometrial cística, ambiente ideal para bactérias ascendentes da vagina, sobretudo Escherichia coli.",
+      "A endotoxina bacteriana reduz a resposta do rim ao ADH, causando poliúria e polidipsia.",
+      "Progestágenos usados como anticoncepcionais aumentam muito o risco.",
+      "Com a cérvix fechada não há secreção e o risco de ruptura e sepse é maior."
+    ],
+    "pistas": [
+      {
+        "achado": "Fêmea idosa não castrada, 6 semanas após o cio",
+        "por_que_importa": "Fase lútea, período típico da piometra."
+      },
+      {
+        "achado": "Uso de \"injeção para o cio\"",
+        "por_que_importa": "Progestágeno é fator de risco importante."
+      },
+      {
+        "achado": "Secreção vaginal fétida",
+        "por_que_importa": "Cérvix aberta drenando pus."
+      },
+      {
+        "achado": "Poliúria e polidipsia",
+        "por_que_importa": "Efeito da endotoxina no rim."
+      },
+      {
+        "achado": "Útero distendido com conteúdo",
+        "por_que_importa": "Confirma o diagnóstico."
+      }
+    ],
+    "comentario_exames": "Ultrassonografia e hemograma são o essencial. Bioquímica avalia o risco cirúrgico. Evitar cistocentese.",
+    "comentario_tratamento": "Estabilizar e operar (ovário-histerectomia) com antimicrobiano. O tratamento clínico fica para casos muito selecionados."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "id": "ovino-haemoncose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "ovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Santa Inês",
+  "idade": "8 meses",
+  "sexo": "lote de cordeiros",
+  "peso": "22 kg (média)",
+  "queixa_principal": [
+    "Cordeiros fracos e pálidos",
+    "Papada inchada",
+    "Três mortes no mês"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote de 60 cordeiros em piquete pequeno, pastejo contínuo"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Período quente e chuvoso"
+      ]
+    },
+    {
+      "titulo": "Vermifugação",
+      "itens": [
+        "Mesmo vermífugo de 30 em 30 dias para todo o lote, há 2 anos"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Só pasto"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Animais ficando para trás no lote e emagrecendo",
+        "Inchaço embaixo da mandíbula"
+      ]
+    },
+    {
+      "titulo": "Fezes",
+      "itens": [
+        "Normais, sem diarreia"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Vermífugo há 25 dias"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal (média)",
+        "valor": "39,2",
+        "unidade": "°C",
+        "referencia": "38,5–40,0",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Grau FAMACHA",
+        "valor": "4–5 na maioria",
+        "referencia": "1–2 = sem anemia",
+        "fonte": "constable",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "1,5–2 de 5",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Mucosas",
+        "itens": [
+          "Conjuntivas muito pálidas"
+        ]
+      },
+      {
+        "titulo": "Cabeça",
+        "itens": [
+          "Edema submandibular (\"papeira\")"
+        ]
+      },
+      {
+        "titulo": "Lote",
+        "itens": [
+          "Animais fracos que deitam com facilidade"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG (ovos por grama de fezes) com coprocultura",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "OPG médio: 6.500",
+          "Coprocultura: 85% Haemonchus"
+        ],
+        "conclusao": "Haemoncose."
+      },
+      "comentario_didatico": "OPG alto com larvas de Haemonchus na coprocultura confirma a causa. Em vermes hematófagos, a anemia pode aparecer mesmo com OPG moderado."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de cordeiro morto",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Carcaça pálida, edema subcutâneo",
+          "Abomaso com centenas de vermes avermelhados de 2–3 cm (\"poste de barbearia\")"
+        ],
+        "conclusao": "Haemoncose grave."
+      },
+      "comentario_didatico": "Mostra muitos vermes no abomaso e carcaça anêmica: confirma o diagnóstico no lote."
+    },
+    {
+      "id": "hematocrito",
+      "tipo": "hemograma",
+      "nome": "Hematócrito",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "12",
+            "unidade": "%",
+            "referencia": "27–45",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Anemia grave."
+      },
+      "comentario_didatico": "Confirma a anemia que o FAMACHA já estima."
+    },
+    {
+      "id": "reducao",
+      "tipo": "outro",
+      "nome": "Teste de redução na contagem de ovos (após vermifugação)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Redução de apenas 40% com o vermífugo usado"
+        ],
+        "conclusao": "Resistência ao princípio ativo."
+      },
+      "comentario_didatico": "Útil depois, para medir a resistência aos vermífugos; não é diagnóstico agudo."
+    },
+    {
+      "id": "cobre",
+      "tipo": "bioquimica",
+      "nome": "Cobre hepático",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não explica anemia com edema e vermes."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem indicação."
+    }
+  ],
+  "diagnostico_id": "haemoncose",
+  "diferenciais": [
+    {
+      "diagnostico_id": "fasciolose",
+      "como_descartar": "Anemia e edema com lesão hepática; ovos operculados na sedimentação; depende de áreas alagadas com caramujos."
+    },
+    {
+      "diagnostico_id": "paratuberculose",
+      "como_descartar": "Emagrecimento crônico em adultos, com ou sem diarreia; não causa anemia aguda grave no lote de cordeiros."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "vermifugo_eficaz",
+      "texto": "Vermifugar com princípio ativo eficaz (escolhido pelo teste de redução de OPG)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "O vermífugo atual não funciona mais (resistência)."
+    },
+    {
+      "id": "famacha",
+      "texto": "Vermifugação seletiva pelo FAMACHA (só os anêmicos)",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Mantém vermes não expostos ao vermífugo (refugia) e retarda a resistência."
+    },
+    {
+      "id": "pasto",
+      "texto": "Rodízio de piquetes e redução da lotação",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Diminui as larvas no pasto."
+    },
+    {
+      "id": "suplemento",
+      "texto": "Suplementação proteica e ferro para os anêmicos",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Ajuda a recuperar a anemia e a hipoproteinemia."
+    },
+    {
+      "id": "separar",
+      "texto": "Separar e tratar os mais graves em local com feno",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Animais com FAMACHA 5 podem morrer ao serem movimentados."
+    },
+    {
+      "id": "todo_mes",
+      "texto": "Continuar vermifugando todos os animais a cada 30 dias com o mesmo produto",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "É o que selecionou a resistência."
+    },
+    {
+      "id": "dobrar_dose",
+      "texto": "Dobrar a dose do vermífugo atual",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não resolve a resistência e aumenta o risco de intoxicação."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Lote de cordeiros em pastejo contínuo, em época quente e chuvosa, com vermifugação mensal com o mesmo produto, apresentando anemia grave (FAMACHA 4–5), edema submandibular, emagrecimento sem diarreia e mortes; OPG alto, coprocultura e necropsia com Haemonchus: haemoncose com resistência anti-helmíntica.",
+    "fisiopatologia": [
+      "Haemonchus contortus vive no abomaso e é hematófago: cada verme suga sangue.",
+      "Grandes cargas causam anemia e perda de proteína (hipoproteinemia), que se manifesta como edema submandibular.",
+      "Não costuma causar diarreia, diferente de outros vermes gastrintestinais.",
+      "Calor e umidade favorecem as larvas no pasto; o ciclo é curto e as fêmeas põem muitos ovos.",
+      "O uso frequente do mesmo vermífugo em todo o lote seleciona vermes resistentes."
+    ],
+    "pistas": [
+      {
+        "achado": "Pastejo contínuo, lotação alta, época chuvosa",
+        "por_que_importa": "Muitas larvas no pasto."
+      },
+      {
+        "achado": "Anemia sem diarreia",
+        "por_que_importa": "Verme hematófago do abomaso."
+      },
+      {
+        "achado": "Edema submandibular",
+        "por_que_importa": "Perda de proteína."
+      },
+      {
+        "achado": "Vermifugação mensal com o mesmo produto",
+        "por_que_importa": "Resistência."
+      }
+    ],
+    "comentario_exames": "OPG com coprocultura e necropsia confirmam; o teste de redução de OPG orienta a escolha do vermífugo.",
+    "comentario_tratamento": "Vermífugo eficaz, vermifugação seletiva pelo FAMACHA e manejo de pastagem para retardar a resistência."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

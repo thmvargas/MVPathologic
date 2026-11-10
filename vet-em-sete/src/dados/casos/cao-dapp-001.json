@@ -1,0 +1,302 @@
+{
+  "id": "cao-dapp-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Shih-tzu",
+  "idade": "5 anos",
+  "sexo": "macho castrado",
+  "peso": "7 kg",
+  "queixa_principal": [
+    "Coceira intensa",
+    "Feridas perto do rabo"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal e um gato que sai à rua"
+      ]
+    },
+    {
+      "titulo": "Ectoparasitas",
+      "itens": [
+        "Antipulgas \"de vez em quando\", último há 3 meses; o gato nunca recebeu"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca há 3 anos, sem mudança"
+      ]
+    },
+    {
+      "titulo": "Sazonalidade",
+      "itens": [
+        "Piora no verão"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Coceira há 4 semanas, morde a região lombar e a base da cauda",
+        "Feridas e perda de pelo na mesma região"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Sem lesões nas patas, orelhas ou face"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,7",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "5/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Alopecia, eritema, crostas e pápulas na região lombossacra, base da cauda e face caudal das coxas",
+          "Escoriações por mordedura"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Pontos pretos que ficam avermelhados no papel úmido (fezes de pulga)"
+        ]
+      },
+      {
+        "titulo": "Outras regiões",
+        "itens": [
+          "Patas, orelhas e face sem lesões"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pente",
+      "tipo": "outro",
+      "nome": "Pente fino e teste do papel úmido",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Fezes de pulga abundantes",
+          "Duas pulgas adultas"
+        ],
+        "conclusao": "Infestação por pulgas."
+      },
+      "comentario_didatico": "Barato e rápido: a presença de pulgas ou de suas fezes confirma a infestação. Em alérgicos, poucas pulgas bastam e às vezes nenhuma é achada."
+    },
+    {
+      "id": "tricograma",
+      "tipo": "citologia",
+      "nome": "Tricograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Pontas dos pelos fraturadas"
+        ],
+        "conclusao": "Alopecia autoinduzida."
+      },
+      "comentario_didatico": "Pontas de pelo quebradas confirmam que a alopecia é causada pelo ato de lamber e morder (autotraumática)."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado cutâneo profundo",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Ácaros não encontrados"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Necessário para afastar demodicose e escabiose, mas negativo aqui."
+    },
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia de pele (fita adesiva)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Neutrófilos e cocos intra e extracelulares"
+        ],
+        "conclusao": "Piodermite superficial secundária."
+      },
+      "comentario_didatico": "Mostra infecção bacteriana secundária, que precisa ser tratada, mas não é a causa."
+    },
+    {
+      "id": "alergia_sangue",
+      "tipo": "sorologia",
+      "nome": "Teste sorológico de alergia (IgE para alérgenos ambientais)",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "IgE para ácaros de poeira e pulga: positivas"
+        ],
+        "conclusao": "Reações múltiplas."
+      },
+      "comentario_didatico": "Não diagnostica alergia: só ajuda a escolher alérgenos para imunoterapia em cães já diagnosticados com dermatite atópica."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Eosinofilia discreta"
+        ],
+        "conclusao": "Eosinofilia discreta."
+      },
+      "comentario_didatico": "Eosinofilia pode ocorrer, mas não muda a conduta."
+    }
+  ],
+  "diagnostico_id": "dermatite_alergica_picada_pulga",
+  "diferenciais": [
+    {
+      "diagnostico_id": "dermatite_atopica",
+      "como_descartar": "Prurido em face, patas, orelhas e axilas; diagnóstico de exclusão depois de controlar pulgas e alimento."
+    },
+    {
+      "diagnostico_id": "hipersensibilidade_alimentar",
+      "como_descartar": "Prurido não sazonal, em face, orelhas e patas; diagnóstico por dieta de eliminação."
+    },
+    {
+      "diagnostico_id": "sarna_sarcoptica",
+      "como_descartar": "Prurido intenso nas bordas das orelhas e cotovelos; contagiosa; raspado ou teste terapêutico."
+    },
+    {
+      "diagnostico_id": "demodicose",
+      "como_descartar": "Raspado com ácaros Demodex; prurido variável."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "ectoparasiticida",
+      "texto": "Ectoparasiticida de ação rápida e contínua (ex.: isoxazolina) no cão",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Mata a pulga antes de ela se alimentar o bastante para desencadear a reação."
+    },
+    {
+      "id": "gato",
+      "texto": "Tratar também o gato e todos os animais da casa",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O gato é fonte de reinfestação."
+    },
+    {
+      "id": "ambiente",
+      "texto": "Controle ambiental: aspirar e usar inseticida com regulador de crescimento",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A maior parte da população de pulgas (ovos, larvas, pupas) está no ambiente."
+    },
+    {
+      "id": "antipruriginoso",
+      "texto": "Antipruriginoso por curto período (ex.: oclacitinib ou corticoide em dose anti-inflamatória)",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Alivia o prurido enquanto o controle de pulgas faz efeito."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Tratar a piodermite secundária (tópico ou sistêmico)",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "A infecção secundária mantém o prurido."
+    },
+    {
+      "id": "dieta",
+      "texto": "Dieta de eliminação de 8 semanas como primeira medida",
+      "tipo": "manejo",
+      "classificacao": "desnecessario",
+      "justificativa": "Distribuição e sazonalidade apontam para pulgas; controlar pulgas primeiro."
+    },
+    {
+      "id": "so_banho",
+      "texto": "Só banhos semanais com xampu antipulgas",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Efeito curto e insuficiente; o animal alérgico continua sendo picado."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão com prurido intenso concentrado na região lombossacra e base da cauda, piora no verão, controle irregular de pulgas e um gato não tratado em casa; fezes de pulga no pente fino: dermatite alérgica à picada de pulga.",
+    "fisiopatologia": [
+      "A saliva da pulga contém proteínas que agem como alérgenos.",
+      "Em animais sensibilizados, ocorre hipersensibilidade tipo I (imediata, mediada por IgE e mastócitos) e também tipo IV (tardia).",
+      "A degranulação de mastócitos libera histamina e outros mediadores, causando prurido e inflamação.",
+      "Uma única picada pode desencadear prurido por dias em animal alérgico.",
+      "O trauma da coceira abre caminho para piodermite secundária."
+    ],
+    "pistas": [
+      {
+        "achado": "Lesões na região lombossacra e base da cauda",
+        "por_que_importa": "Distribuição típica da DAPP."
+      },
+      {
+        "achado": "Piora no verão",
+        "por_que_importa": "Maior população de pulgas."
+      },
+      {
+        "achado": "Gato não tratado que sai de casa",
+        "por_que_importa": "Fonte de reinfestação."
+      },
+      {
+        "achado": "Fezes de pulga no pente fino",
+        "por_que_importa": "Confirma a exposição."
+      }
+    ],
+    "comentario_exames": "Pente fino, tricograma e raspado resolvem. Teste sorológico de alergia não diagnostica alergia.",
+    "comentario_tratamento": "O tratamento é o controle rigoroso de pulgas em todos os animais e no ambiente; antipruriginoso só como ponte."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

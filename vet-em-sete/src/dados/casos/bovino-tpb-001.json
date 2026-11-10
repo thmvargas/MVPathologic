@@ -1,0 +1,339 @@
+{
+  "id": "bovino-tpb-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Holandesa",
+  "idade": "14 meses",
+  "sexo": "fêmea",
+  "peso": "290 kg",
+  "queixa_principal": [
+    "Febre alta",
+    "Urina escura"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "hematopoietico_linfatico",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprada há 40 dias de uma região sem carrapatos, no Sul"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Solta em pasto com muito carrapato (Rhipicephalus microplus)"
+      ]
+    },
+    {
+      "titulo": "Controle de carrapatos",
+      "itens": [
+        "Banho carrapaticida irregular"
+      ]
+    },
+    {
+      "titulo": "Rebanho",
+      "itens": [
+        "Animais nascidos na fazenda não adoecem"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias: isolada do lote, sem comer",
+        "Hoje: urina cor de café, respiração rápida"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "41,2",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "112",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "48",
+        "unidade": "mpm",
+        "referencia": "20–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas, levemente ictéricas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "1 em 5 minutos",
+        "referencia": "2–3 em 2 minutos",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Muitos carrapatos de várias idades"
+        ]
+      },
+      {
+        "titulo": "Urina",
+        "itens": [
+          "Vermelho-escura (hemoglobinúria)"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Apática, cambaleia ao ser tocada"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "esfregaco",
+      "tipo": "citologia",
+      "nome": "Esfregaço de sangue de ponta de orelha (capilar)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Hemácias com corpúsculos piriformes pareados, pequenos (Babesia bovis)",
+          "Raras inclusões marginais (Anaplasma marginale)"
+        ],
+        "conclusao": "Babesiose com coinfecção discreta por Anaplasma."
+      },
+      "comentario_didatico": "Babesia bovis concentra-se nos capilares, por isso a ponta da orelha é a melhor amostra. Mostra o agente e permite tratar no mesmo dia."
+    },
+    {
+      "id": "hematocrito",
+      "tipo": "hemograma",
+      "nome": "Hematócrito",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "14",
+            "unidade": "%",
+            "referencia": "24–46",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Anemia grave."
+      },
+      "comentario_didatico": "Mostra a gravidade da anemia e orienta a decisão de transfusão."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hemoglobinúria",
+          "Sem hemácias no sedimento"
+        ],
+        "conclusao": "Hemoglobinúria."
+      },
+      "comentario_didatico": "Hemoglobinúria confirma hemólise intravascular, mas não identifica o agente."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para Babesia e Anaplasma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Babesia bovis: detectado",
+          "Anaplasma marginale: detectado"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Mais sensível, porém demora dias; o esfregaço já resolve no animal doente."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de animal do lote que morreu",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Esplenomegalia",
+          "Bexiga com urina escura",
+          "Córtex cerebral róseo-cereja"
+        ],
+        "conclusao": "Compatível com babesiose."
+      },
+      "comentario_didatico": "Na babesiose cerebral, o córtex fica róseo-cereja e o esfregaço de cérebro mostra muitos parasitos; útil para o rebanho."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "OPG (ovos por grama de fezes)",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "OPG baixo"
+        ],
+        "conclusao": "Carga baixa."
+      },
+      "comentario_didatico": "Não explica febre com hemólise."
+    }
+  ],
+  "diagnostico_id": "tristeza_parasitaria_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "anaplasmose_bovina",
+      "como_descartar": "Anemia sem hemoglobinúria (hemólise extravascular), com icterícia mais marcada; inclusões marginais predominam."
+    },
+    {
+      "diagnostico_id": "tripanossomose_bovina",
+      "como_descartar": "Anemia, febre e emagrecimento, perda de produção e aborto; tripomastigotas no sangue."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "babesicida",
+      "texto": "Diaceturato de diminazeno ou dipropionato de imidocarb",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Babesicidas eliminam o parasito; o imidocarb também age contra Anaplasma.",
+      "dose": {
+        "texto": "Conforme bula e literatura (diminazeno 3,5 mg/kg IM; imidocarb 1,2–3 mg/kg SC)",
+        "fonte": "riet",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "tetraciclina",
+      "texto": "Oxitetraciclina para a anaplasmose associada",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "A coinfecção é comum na tristeza parasitária."
+    },
+    {
+      "id": "transfusao",
+      "texto": "Transfusão de sangue de doador da fazenda",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Hematócrito de 14% com sinais de hipóxia."
+    },
+    {
+      "id": "manejo_estresse",
+      "texto": "Manejar com calma, sem correr com o animal",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Animal com anemia grave pode morrer ao ser forçado."
+    },
+    {
+      "id": "controle_estrategico",
+      "texto": "Controle estratégico de carrapatos e premunição de animais introduzidos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Animais de áreas livres não têm imunidade; premunição ou vacina reduzem perdas."
+    },
+    {
+      "id": "eliminar_carrapato",
+      "texto": "Eliminar totalmente os carrapatos da fazenda para sempre",
+      "tipo": "sanitaria",
+      "classificacao": "desnecessario",
+      "justificativa": "Inviável e leva à perda da imunidade do rebanho (instabilidade enzoótica)."
+    },
+    {
+      "id": "antiinflam_so",
+      "texto": "Só anti-inflamatório e vitamina",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não trata o agente; a novilha morre."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Novilha comprada de área livre de carrapatos, solta em pasto infestado, com febre alta, anemia grave, icterícia leve e hemoglobinúria; esfregaço de ponta de orelha com Babesia bovis: tristeza parasitária bovina.",
+    "fisiopatologia": [
+      "A tristeza parasitária é o complexo babesiose (Babesia bovis e B. bigemina) e anaplasmose (Anaplasma marginale).",
+      "Babesia é transmitida pelo carrapato Rhipicephalus microplus e multiplica-se dentro das hemácias, rompendo-as: hemólise intravascular e hemoglobinúria.",
+      "B. bovis provoca acúmulo de hemácias infectadas nos capilares cerebrais (babesiose cerebral).",
+      "Bezerros expostos cedo desenvolvem imunidade (estabilidade enzoótica); animais introduzidos de áreas sem carrapatos são muito suscetíveis."
+    ],
+    "pistas": [
+      {
+        "achado": "Animal vindo de área sem carrapatos",
+        "por_que_importa": "Sem imunidade prévia."
+      },
+      {
+        "achado": "Pasto com muitos carrapatos",
+        "por_que_importa": "Exposição ao vetor."
+      },
+      {
+        "achado": "Febre alta com urina escura",
+        "por_que_importa": "Hemólise intravascular."
+      },
+      {
+        "achado": "Animais nascidos na fazenda não adoecem",
+        "por_que_importa": "Estabilidade enzoótica."
+      },
+      {
+        "achado": "Babesia no esfregaço",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Esfregaço de sangue capilar e hematócrito resolvem no campo. PCR e necropsia ajudam no rebanho.",
+    "comentario_tratamento": "Babesicida, tratar a anaplasmose associada, transfundir se necessário e planejar o controle de carrapatos e a introdução de animais."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

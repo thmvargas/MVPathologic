@@ -1,0 +1,356 @@
+{
+  "id": "gato-lipidose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Persa",
+  "idade": "7 anos",
+  "sexo": "fêmea castrada",
+  "peso": "5,1 kg",
+  "queixa_principal": [
+    "Não come há 10 dias",
+    "Pele amarelada"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "hepatobiliar",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento"
+      ]
+    },
+    {
+      "titulo": "Mudanças",
+      "itens": [
+        "Chegou um cachorro novo na casa há 3 semanas"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca à vontade; pesava 7 kg há 2 meses"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Parou de comer depois da chegada do cachorro",
+        "Emagreceu rápido",
+        "Vômitos ocasionais"
+      ]
+    },
+    {
+      "titulo": "Comportamento",
+      "itens": [
+        "Escondida, quase não se move"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,2",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Ictéricas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 6%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "6/9 com perda muscular evidente"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele e mucosas",
+        "itens": [
+          "Icterícia em mucosa oral, esclera e pavilhão auricular"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Hepatomegalia lisa, indolor"
+        ]
+      },
+      {
+        "titulo": "Músculos",
+        "itens": [
+          "Perda de massa muscular apesar da gordura ainda presente"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Bilirrubina total",
+            "valor": "6,8",
+            "unidade": "mg/dL",
+            "referencia": "0,15–0,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Fosfatase alcalina",
+            "valor": "520",
+            "unidade": "U/L",
+            "referencia": "10–80",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "GGT",
+            "valor": "4",
+            "unidade": "U/L",
+            "referencia": "1,3–5,1",
+            "fonte": "kaneko",
+            "a_revisar": true
+          },
+          {
+            "analito": "ALT",
+            "valor": "260",
+            "unidade": "U/L",
+            "referencia": "6–83",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Potássio",
+            "valor": "3,0",
+            "unidade": "mEq/L",
+            "referencia": "4,0–4,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Hiperbilirrubinemia, fosfatase alcalina muito alta com GGT normal, hipocalemia."
+      },
+      "comentario_didatico": "Na lipidose a fosfatase alcalina sobe muito mais que a GGT, padrão que ajuda a diferenciar de doença biliar inflamatória."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Fígado aumentado, difusamente hiperecogênico",
+          "Vias biliares e pâncreas sem alterações"
+        ],
+        "conclusao": "Hepatomegalia hiperecogênica difusa."
+      },
+      "comentario_didatico": "Fígado aumentado e hiperecogênico é sugestivo, e o exame guia a citologia."
+    },
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia hepática por aspiração guiada",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Mais de 80% dos hepatócitos com vacúolos citoplasmáticos claros, bem delimitados"
+        ],
+        "conclusao": "Lipidose hepática acentuada."
+      },
+      "comentario_didatico": "Hepatócitos com vacúolos de lipídio em mais de 80% confirmam a lipidose."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Anemia leve",
+          "Poiquilocitose"
+        ],
+        "conclusao": "Anemia leve."
+      },
+      "comentario_didatico": "Pode mostrar poiquilócitos e anemia leve; inespecífico."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Útil em gatos idosos com emagrecimento, mas aqui normal."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem sinal respiratório."
+    }
+  ],
+  "diagnostico_id": "lipidose_hepatica_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "colangite_felina",
+      "como_descartar": "GGT aumentada junto com a fosfatase alcalina e alterações de vias biliares; citologia com inflamação."
+    },
+    {
+      "diagnostico_id": "pancreatite_aguda",
+      "como_descartar": "Pode coexistir; dor e alteração pancreática na ultrassonografia."
+    },
+    {
+      "diagnostico_id": "hipertireoidismo_felino",
+      "como_descartar": "Emagrecimento com apetite aumentado e T4 alto."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "sonda",
+      "texto": "Sonda esofágica e alimentação enteral calórica e proteica",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "É o tratamento: fornecer calorias e proteína reverte o quadro em semanas."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia com reposição de potássio",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Hipocalemia piora a anorexia e a fraqueza."
+    },
+    {
+      "id": "antiemetico",
+      "texto": "Antiemético",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Permite a alimentação."
+    },
+    {
+      "id": "vitk",
+      "texto": "Vitamina K1 antes de procedimentos invasivos",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Gatos com lipidose podem ter alteração de coagulação."
+    },
+    {
+      "id": "estimulante",
+      "texto": "Só estimulante de apetite, sem sonda",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Raramente garante a ingestão necessária num gato ictérico."
+    },
+    {
+      "id": "dieta_restrita",
+      "texto": "Dieta com restrição de proteína",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "A lipidose precisa de proteína para mobilizar a gordura do fígado."
+    },
+    {
+      "id": "jejum",
+      "texto": "Jejum até a icterícia melhorar",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "O jejum é a causa da doença."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gata obesa que parou de comer após estresse (cachorro novo na casa), com emagrecimento rápido, icterícia, hepatomegalia, fosfatase alcalina muito alta com GGT normal e vacúolos de lipídio na citologia: lipidose hepática felina.",
+    "fisiopatologia": [
+      "No jejum, a gordura do tecido adiposo é mobilizada e levada ao fígado.",
+      "O gato tem necessidade alta de proteína e pouca capacidade de exportar triglicerídeos do fígado (precisa de apolipoproteínas e de carnitina).",
+      "Os triglicerídeos se acumulam nos hepatócitos, que incham e comprimem os canalículos biliares: colestase e icterícia.",
+      "Gatos obesos e estressados que param de comer são o grupo de maior risco.",
+      "A recuperação depende de fornecer calorias e proteína."
+    ],
+    "pistas": [
+      {
+        "achado": "Gata obesa",
+        "por_que_importa": "Mais gordura a mobilizar."
+      },
+      {
+        "achado": "Anorexia após estresse",
+        "por_que_importa": "Gatilho típico."
+      },
+      {
+        "achado": "Icterícia com hepatomegalia",
+        "por_que_importa": "Hepatócitos inchados por gordura."
+      },
+      {
+        "achado": "Fosfatase alcalina alta com GGT normal",
+        "por_que_importa": "Padrão mais típico de lipidose que de doença biliar."
+      }
+    ],
+    "comentario_exames": "Bioquímica, ultrassom e citologia hepática formam o caminho diagnóstico. Procurar sempre a causa da anorexia.",
+    "comentario_tratamento": "Alimentação enteral por sonda é o tratamento central, com correção de eletrólitos e controle do vômito."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir intervalos felinos de bioquímica."
+  }
+}

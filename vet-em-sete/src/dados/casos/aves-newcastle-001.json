@@ -1,0 +1,295 @@
+{
+  "id": "aves-newcastle-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "aves",
+  "grupo_especie": "aves",
+  "raca": "Galinhas caipiras",
+  "idade": "Adultas e frangos",
+  "sexo": "lote misto",
+  "peso": "—",
+  "queixa_principal": [
+    "Galinhas morrendo muito rápido",
+    "Torcicolo e tremores"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "respiratorio",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Criação",
+      "itens": [
+        "Quintal com 80 aves de várias idades, criadas soltas"
+      ]
+    },
+    {
+      "titulo": "Introdução",
+      "itens": [
+        "Comprou 10 aves em feira há 10 dias"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Nenhuma"
+      ]
+    },
+    {
+      "titulo": "Contato",
+      "itens": [
+        "Aves silvestres e de vizinhos circulam no quintal"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 dias: aves espirrando e com dificuldade para respirar",
+        "Diarreia esverdeada",
+        "Pararam de botar",
+        "Hoje: torcicolo e paralisia; 30 mortes"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Antibiótico de casa de ração na água"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Mortalidade acumulada",
+        "valor": "37% em 4 dias",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Postura",
+        "valor": "Parou",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Respiratório",
+        "itens": [
+          "Respiração de bico aberto, estertores"
+        ]
+      },
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Torcicolo, andar em círculos, paralisia de asas e pernas"
+        ]
+      },
+      {
+        "titulo": "Cabeça",
+        "itens": [
+          "Edema de cabeça e barbelas em algumas aves"
+        ]
+      },
+      {
+        "titulo": "Fezes",
+        "itens": [
+          "Esverdeadas e aquosas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rt_pcr",
+      "tipo": "pcr",
+      "nome": "RT-PCR para vírus da doença de Newcastle (swab traqueal e cloacal), feito pelo serviço oficial",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Vírus da doença de Newcastle: detectado",
+          "Sítio de clivagem da proteína F compatível com cepa velogênica"
+        ],
+        "conclusao": "Doença de Newcastle por vírus velogênico."
+      },
+      "comentario_didatico": "Confirma o vírus; o laboratório oficial também define a patogenicidade (índice de patogenicidade intracerebral ou sequenciamento do sítio de clivagem da proteína F)."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de aves mortas (com biossegurança)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Hemorragias nas pontas das glândulas do proventrículo",
+          "Úlceras necro-hemorrágicas em placas de Peyer e tonsilas cecais",
+          "Traqueíte hemorrágica"
+        ],
+        "conclusao": "Lesões compatíveis com doença de Newcastle velogênica."
+      },
+      "comentario_didatico": "Hemorragias na mucosa do proventrículo e lesões necro-hemorrágicas no intestino sugerem forma velogênica viscerotrópica."
+    },
+    {
+      "id": "rt_pcr_ia",
+      "tipo": "pcr",
+      "nome": "RT-PCR para influenza aviária",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Influenza A: não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "A influenza aviária de alta patogenicidade tem quadro parecido; o serviço oficial testa as duas ao mesmo tempo."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Sorologia (inibição da hemaglutinação)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Títulos altos"
+        ],
+        "conclusao": "Exposição ao vírus."
+      },
+      "comentario_didatico": "Em aves não vacinadas indica exposição, mas não diferencia cepas e demora."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura bacteriana",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Flora inespecífica"
+        ],
+        "conclusao": "Sem agente bacteriano primário."
+      },
+      "comentario_didatico": "O quadro é viral."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Poucos oocistos"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Não explica a mortalidade explosiva."
+    }
+  ],
+  "diagnostico_id": "doenca_de_newcastle",
+  "diferenciais": [
+    {
+      "diagnostico_id": "influenza_aviaria",
+      "como_descartar": "Quadro muito parecido; RT-PCR para influenza A diferencia. Também de notificação obrigatória."
+    },
+    {
+      "diagnostico_id": "laringotraqueite_infecciosa",
+      "como_descartar": "Sinais respiratórios graves com expectoração de sangue, sem sinais neurológicos nem lesões intestinais."
+    },
+    {
+      "diagnostico_id": "bronquite_infecciosa_aviaria",
+      "como_descartar": "Sinais respiratórios e queda de postura com ovos deformados, mortalidade baixa em adultos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "notificar",
+      "texto": "Notificar imediatamente o serviço veterinário oficial",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A doença de Newcastle é de notificação obrigatória e tem impacto no comércio internacional."
+    },
+    {
+      "id": "interdicao",
+      "texto": "Interditar o local: nenhuma ave, ovo, cama ou equipamento sai",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Evita espalhar o vírus."
+    },
+    {
+      "id": "biosseguranca",
+      "texto": "Biossegurança das pessoas: roupa e calçados próprios, desinfecção",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Pessoas e objetos transportam o vírus."
+    },
+    {
+      "id": "oficial",
+      "texto": "Seguir as medidas do serviço oficial (sacrifício sanitário, destino das carcaças, vigilância da região)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Controle de foco é feito pelo serviço oficial."
+    },
+    {
+      "id": "conjuntivite",
+      "texto": "Usar proteção ocular e luvas ao manipular as aves",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "Em pessoas, o vírus pode causar conjuntivite."
+    },
+    {
+      "id": "vender",
+      "texto": "Vender ou consumir as aves que ainda estão bem",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Espalha o vírus e descumpre a legislação."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Continuar o antibiótico na água",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não age sobre vírus e atrasa as medidas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Criação de quintal sem vacinação, com introdução recente de aves de feira, apresentando sinais respiratórios, diarreia esverdeada, queda de postura, torcicolo, paralisia e mortalidade explosiva; hemorragias no proventrículo e RT-PCR com cepa velogênica: doença de Newcastle.",
+    "fisiopatologia": [
+      "O vírus da doença de Newcastle (Orthoavulavirus, família Paramyxoviridae) tem cepas de baixa a alta patogenicidade.",
+      "A patogenicidade depende do sítio de clivagem da proteína F: em cepas velogênicas, proteases presentes em muitos tecidos ativam o vírus e ele se espalha pelo corpo.",
+      "As formas velogênicas causam lesões hemorrágicas no trato digestório, sinais respiratórios e neurológicos.",
+      "A transmissão é por contato com secreções, fezes e objetos contaminados; aves de feira e silvestres introduzem o vírus.",
+      "O Brasil mantém vigilância permanente; focos têm impacto grave nas exportações."
+    ],
+    "pistas": [
+      {
+        "achado": "Aves de feira introduzidas sem quarentena",
+        "por_que_importa": "Entrada do vírus."
+      },
+      {
+        "achado": "Sem vacinação",
+        "por_que_importa": "Lote suscetível."
+      },
+      {
+        "achado": "Mortalidade explosiva com sinais respiratórios, digestivos e neurológicos",
+        "por_que_importa": "Forma velogênica."
+      },
+      {
+        "achado": "Hemorragias no proventrículo",
+        "por_que_importa": "Lesão sugestiva."
+      }
+    ],
+    "comentario_exames": "O diagnóstico é feito pelo serviço oficial (RT-PCR e caracterização da cepa), sempre junto com o teste para influenza aviária.",
+    "comentario_tratamento": "Não se trata: notifica-se e seguem-se as medidas oficiais de controle de foco."
+  },
+  "referencias": [
+    {
+      "id": "swayne",
+      "citacao": "SWAYNE, D. E. (Ed.). Diseases of Poultry. 14. ed. Hoboken: Wiley-Blackwell, 2020."
+    },
+    {
+      "id": "woah",
+      "citacao": "WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). Manual of Diagnostic Tests and Vaccines for Terrestrial Animals. Paris: WOAH, 2023."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "id": "equino-compactacao-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Mangalarga Marchador",
+  "idade": "9 anos",
+  "sexo": "macho castrado",
+  "peso": "430 kg",
+  "queixa_principal": [
+    "Cólica leve",
+    "Não defeca desde ontem"
+  ],
+  "semestre": 1,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Passou a ficar em baia há 1 semana, por lesão de casco"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Feno de capim seco, grosso, e ração concentrada"
+      ]
+    },
+    {
+      "titulo": "Água",
+      "itens": [
+        "Bebedouro tipo balde, nem sempre reabastecido"
+      ]
+    },
+    {
+      "titulo": "Dentes",
+      "itens": [
+        "Sem avaliação há 3 anos"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Desde ontem: come pouco, olha para o flanco, deita e levanta",
+        "Fezes secas e em pouca quantidade antes de parar"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Anti-inflamatório para o casco nos últimos dias"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "48",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "16",
+        "unidade": "mpm",
+        "referencia": "8–16",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,8",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Róseas"
+      },
+      {
+        "nome": "TPC",
+        "valor": "2",
+        "unidade": "s"
+      },
+      {
+        "nome": "Motilidade intestinal",
+        "valor": "Diminuída nos quadrantes ventrais",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Dor leve e intermitente, alivia sem medicação"
+        ]
+      },
+      {
+        "titulo": "Palpação retal",
+        "itens": [
+          "Massa firme e pastosa na flexura pélvica, que \"guarda\" a impressão do dedo"
+        ]
+      },
+      {
+        "titulo": "Sondagem nasogástrica",
+        "itens": [
+          "Sem refluxo gástrico"
+        ]
+      },
+      {
+        "titulo": "Dentes",
+        "itens": [
+          "Pontas de esmalte afiadas nos pré-molares"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "palpacao",
+      "tipo": "outro",
+      "nome": "Palpação retal detalhada",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Flexura pélvica distendida por conteúdo firme e pastoso",
+          "Sem bandas tensas ou alças de delgado distendidas"
+        ],
+        "conclusao": "Compactação de flexura pélvica."
+      },
+      "comentario_didatico": "Exame-chave na cólica: localiza a compactação na flexura pélvica, ponto em que o cólon maior se estreita e muda de direção."
+    },
+    {
+      "id": "sonda",
+      "tipo": "outro",
+      "nome": "Sondagem nasogástrica",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Sem refluxo"
+        ],
+        "conclusao": "Sem refluxo gástrico."
+      },
+      "comentario_didatico": "A ausência de refluxo afasta obstrução de intestino delgado e permite dar fluido por via oral."
+    },
+    {
+      "id": "hematocrito",
+      "tipo": "hemograma",
+      "nome": "Hematócrito e proteína total",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "40",
+            "unidade": "%",
+            "referencia": "32–48",
+            "fonte": "weiss",
+            "a_revisar": true
+          },
+          {
+            "analito": "Proteína total",
+            "valor": "7,4",
+            "unidade": "g/dL",
+            "referencia": "5,8–8,7",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Desidratação leve."
+      },
+      "comentario_didatico": "Avalia desidratação; inespecífico."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal transcutânea",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Delgado com motilidade presente, sem distensão"
+        ],
+        "conclusao": "Sem alterações de delgado."
+      },
+      "comentario_didatico": "Útil para afastar deslocamentos e lesões de delgado; aqui sem achados."
+    },
+    {
+      "id": "abdominocentese",
+      "tipo": "outro",
+      "nome": "Abdominocentese",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Líquido claro, proteína baixa"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Líquido normal indica que não há comprometimento vascular grave."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Imagem de baixa qualidade diagnóstica"
+        ],
+        "conclusao": "Inconclusivo."
+      },
+      "comentario_didatico": "Pouco útil em adulto pelo tamanho do abdome, exceto para enterólitos."
+    }
+  ],
+  "diagnostico_id": "colica_compactacao",
+  "diferenciais": [
+    {
+      "diagnostico_id": "colica_espasmodica",
+      "como_descartar": "Dor intermitente com motilidade aumentada e fezes moles; sem massa na palpação."
+    },
+    {
+      "diagnostico_id": "deslocamento_colon_maior",
+      "como_descartar": "Bandas do cólon tensas e em posição anormal na palpação retal; pode exigir cirurgia."
+    },
+    {
+      "diagnostico_id": "enterolitiase_equina",
+      "como_descartar": "Cólica recorrente; enterólito visível na radiografia, mais comum em algumas regiões e dietas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido_enteral",
+      "texto": "Fluido enteral por sonda nasogástrica (água com eletrólitos), repetido",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Hidrata o conteúdo do cólon e é o tratamento mais eficaz nas compactações."
+    },
+    {
+      "id": "analgesia",
+      "texto": "Analgesia (ex.: flunixina meglumina) e reavaliação frequente",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controla a dor; dor que não cede é sinal de alerta para cirurgia."
+    },
+    {
+      "id": "jejum",
+      "texto": "Suspender alimento sólido até as fezes voltarem",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita aumentar a massa compactada."
+    },
+    {
+      "id": "agua",
+      "texto": "Garantir água limpa e à vontade; corrigir o manejo da baia e da dieta",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Pouca água e mudança para baia com feno grosso são as causas mais comuns."
+    },
+    {
+      "id": "dentista",
+      "texto": "Tratamento odontológico depois da recuperação",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Mastigação ruim aumenta o tamanho das fibras que chegam ao cólon."
+    },
+    {
+      "id": "oleo",
+      "texto": "Óleo mineral pela sonda",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Lubrifica, mas hidrata menos o conteúdo que o fluido enteral."
+    },
+    {
+      "id": "laparotomia",
+      "texto": "Laparotomia exploratória imediata",
+      "tipo": "cirurgia",
+      "classificacao": "desnecessario",
+      "justificativa": "Compactação simples com dor controlada costuma responder ao tratamento clínico."
+    },
+    {
+      "id": "acepromazina",
+      "texto": "Acepromazina para acalmar",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Causa hipotensão em paciente com desidratação."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cavalo recém-confinado em baia, com feno seco e grosso, água irregular e dentes com pontas, apresenta cólica leve, parada de fezes e massa firme na flexura pélvica à palpação retal, sem refluxo: compactação de cólon maior.",
+    "fisiopatologia": [
+      "Anatomia: o cólon maior do equino forma uma dupla alça em U (cólon ventral direito e esquerdo, flexura pélvica, cólon dorsal esquerdo e direito).",
+      "Na flexura pélvica, o diâmetro do intestino diminui bruscamente e o trajeto muda de direção: é o local mais comum de compactação.",
+      "Fisiologia: o conteúdo é retido no cólon para fermentação, e a água é absorvida; pouca água e fibra grossa deixam o conteúdo seco.",
+      "Menos movimento (baia) e anti-inflamatórios reduzem a motilidade.",
+      "A flexura pélvica fica ao alcance da palpação retal, o que permite o diagnóstico."
+    ],
+    "pistas": [
+      {
+        "achado": "Mudança recente para baia",
+        "por_que_importa": "Menos movimento e motilidade."
+      },
+      {
+        "achado": "Feno seco, pouca água e dentes com pontas",
+        "por_que_importa": "Conteúdo seco e mal mastigado."
+      },
+      {
+        "achado": "Dor leve e intermitente",
+        "por_que_importa": "Compactação simples, sem isquemia."
+      },
+      {
+        "achado": "Massa firme na flexura pélvica",
+        "por_que_importa": "Local anatômico típico."
+      }
+    ],
+    "comentario_exames": "Palpação retal e sondagem são os exames-chave na cólica equina. Os demais avaliam gravidade.",
+    "comentario_tratamento": "Fluido enteral, analgesia e reavaliação. Corrigir manejo de água, dieta e dentes para prevenir."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir intervalos equinos de frequência cardíaca e respiratória."
+  }
+}

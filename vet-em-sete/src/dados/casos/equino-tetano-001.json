@@ -1,0 +1,338 @@
+{
+  "id": "equino-tetano-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Crioulo",
+  "idade": "5 anos",
+  "sexo": "macho",
+  "peso": "420 kg",
+  "queixa_principal": [
+    "Corpo duro",
+    "Não consegue comer"
+  ],
+  "semestre": 1,
+  "uso": "treino",
+  "sistema": "nervoso",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Fez ferimento profundo no casco com um prego há 12 dias"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Nunca vacinado"
+      ]
+    },
+    {
+      "titulo": "Tratamento do ferimento",
+      "itens": [
+        "Só lavado com água"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias: andar rígido",
+        "Hoje: dificuldade para abrir a boca e engolir"
+      ]
+    },
+    {
+      "titulo": "Comportamento",
+      "itens": [
+        "Assusta-se com qualquer barulho"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,9",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "64",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "24",
+        "unidade": "mpm",
+        "referencia": "8–16",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Postura de \"cavalete\", cauda elevada, orelhas eretas, narinas dilatadas"
+        ]
+      },
+      {
+        "titulo": "Cabeça",
+        "itens": [
+          "Trismo (boca travada)",
+          "Prolapso da terceira pálpebra ao levantar o focinho"
+        ]
+      },
+      {
+        "titulo": "Reações",
+        "itens": [
+          "Espasmos musculares intensos ao bater palmas"
+        ]
+      },
+      {
+        "titulo": "Casco",
+        "itens": [
+          "Ferida cicatrizada na sola do anterior esquerdo"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "clinico",
+      "tipo": "outro",
+      "nome": "Exame neurológico com teste de estímulo sonoro",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Espasmos generalizados ao estímulo sonoro",
+          "Prolapso da terceira pálpebra"
+        ],
+        "conclusao": "Quadro clínico típico de tétano."
+      },
+      "comentario_didatico": "O diagnóstico é clínico: rigidez, trismo, prolapso de terceira pálpebra e hiper-reação a estímulos, com ferida recente."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura anaeróbia do ferimento",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem crescimento de anaeróbios"
+        ],
+        "conclusao": "Negativa."
+      },
+      "comentario_didatico": "Clostridium tetani raramente é isolado; resultado negativo não descarta."
+    },
+    {
+      "id": "ck",
+      "tipo": "bioquimica",
+      "nome": "Creatinoquinase (CK)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "CK",
+            "valor": "1.850",
+            "unidade": "U/L",
+            "referencia": "60–330",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Aumento moderado."
+      },
+      "comentario_didatico": "Sobe pela contração muscular contínua; inespecífica."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Leucocitose leve"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "raiva",
+      "tipo": "outro",
+      "nome": "Pesquisa de raiva",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizado em vida"
+        ],
+        "conclusao": "Não aplicável."
+      },
+      "comentario_didatico": "Só possível após a morte; o quadro de rigidez espástica com consciência preservada é típico de tétano."
+    },
+    {
+      "id": "foco",
+      "tipo": "outro",
+      "nome": "Exploração e desbridamento do ferimento do casco",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Trajeto na sola com tecido necrótico e odor fétido sob a cicatriz superficial"
+        ],
+        "conclusao": "Foco anaeróbio no casco."
+      },
+      "comentario_didatico": "Encontrar e limpar o foco é parte do diagnóstico e do tratamento: tecido necrótico sem oxigênio mantém a bactéria produzindo toxina."
+    },
+    {
+      "id": "glicose",
+      "tipo": "bioquimica",
+      "nome": "Glicemia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Dentro da normalidade"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não contribui para o diagnóstico."
+    }
+  ],
+  "diagnostico_id": "tetano",
+  "diferenciais": [
+    {
+      "diagnostico_id": "raiva",
+      "como_descartar": "Alteração de comportamento, paralisia ascendente e morte rápida; não há rigidez espástica com hiper-reação."
+    },
+    {
+      "diagnostico_id": "rabdomiolise_esforco",
+      "como_descartar": "Rigidez após exercício, com CK muito alta e urina escura; sem trismo nem prolapso de terceira pálpebra."
+    },
+    {
+      "diagnostico_id": "leucoencefalomalacia_equina",
+      "como_descartar": "Sinais de cérebro (cegueira, andar em círculo) após consumo de milho mofado."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "antitoxina",
+      "texto": "Antitoxina tetânica (soro antitetânico)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Neutraliza a toxina que ainda está circulando; não reverte a que já entrou nos neurônios."
+    },
+    {
+      "id": "penicilina",
+      "texto": "Penicilina e limpeza do foco",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Elimina as bactérias que continuam produzindo toxina."
+    },
+    {
+      "id": "ambiente",
+      "texto": "Baia escura e silenciosa, com algodão nos ouvidos",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz estímulos que disparam espasmos."
+    },
+    {
+      "id": "relaxante",
+      "texto": "Sedativos e relaxantes musculares",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controlam espasmos e a dor."
+    },
+    {
+      "id": "hidratacao",
+      "texto": "Hidratação e nutrição (sonda, se necessário)",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "O animal não consegue comer nem beber."
+    },
+    {
+      "id": "vacina",
+      "texto": "Vacinar o animal (toxoide) e todo o plantel",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A doença não deixa imunidade; a vacina previne."
+    },
+    {
+      "id": "forcar",
+      "texto": "Exercitar o animal para \"soltar\" os músculos",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Estímulos pioram os espasmos e o risco de queda e fratura."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Equino não vacinado com ferimento perfurante no casco há 12 dias, apresentando rigidez generalizada, trismo, cauda elevada, prolapso de terceira pálpebra e espasmos ao som: tétano.",
+    "fisiopatologia": [
+      "Clostridium tetani é bacilo gram-positivo, anaeróbio e formador de esporos, presente no solo; ferimentos profundos criam o ambiente sem oxigênio.",
+      "No foco, a bactéria produz a tetanospasmina, que sobe pelos axônios dos neurônios motores até a medula.",
+      "Fisiologia: a toxina impede a liberação de glicina e GABA pelos interneurônios inibitórios.",
+      "Sem inibição, os neurônios motores disparam sem controle: contração contínua e espasmos a qualquer estímulo.",
+      "O prolapso da terceira pálpebra ocorre pela retração do globo ocular causada pelos músculos retratores contraídos."
+    ],
+    "pistas": [
+      {
+        "achado": "Ferimento perfurante recente",
+        "por_que_importa": "Porta de entrada anaeróbia."
+      },
+      {
+        "achado": "Sem vacinação",
+        "por_que_importa": "Sem proteção."
+      },
+      {
+        "achado": "Rigidez, trismo e cauda elevada",
+        "por_que_importa": "Contração contínua."
+      },
+      {
+        "achado": "Espasmos ao som",
+        "por_que_importa": "Falta de inibição dos reflexos."
+      }
+    ],
+    "comentario_exames": "O diagnóstico é clínico; exames ajudam pouco. A cultura costuma ser negativa.",
+    "comentario_tratamento": "Antitoxina, antimicrobiano, controle de estímulos e espasmos, suporte e vacinação do plantel."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

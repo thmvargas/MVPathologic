@@ -1,0 +1,285 @@
+{
+  "id": "suino-circovirose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "suina",
+  "grupo_especie": "suinos",
+  "raca": "Linhagem comercial",
+  "idade": "9 semanas",
+  "sexo": "lote de leitões na creche/recria",
+  "peso": "18 kg (média)",
+  "queixa_principal": [
+    "Leitões emagrecendo",
+    "Mortalidade aumentando na recria"
+  ],
+  "semestre": 6,
+  "uso": "treino",
+  "sistema": "multissistemico",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Granja",
+      "itens": [
+        "Ciclo completo, 600 matrizes"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Mistura de leitões de várias origens na creche; lotação alta"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Vacina contra circovírus suspensa há 6 meses para reduzir custos"
+      ]
+    },
+    {
+      "titulo": "Indicadores",
+      "itens": [
+        "Mortalidade na recria subiu de 2% para 9%"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Leitões que saem bem da creche e emagrecem 2 a 3 semanas depois",
+        "Alguns com tosse e diarreia"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Antibiótico na ração, sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal (doentes)",
+        "valor": "40,1",
+        "unidade": "°C",
+        "referencia": "38,7–39,8",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Escore corporal",
+        "valor": "Refugos com coluna e costelas visíveis",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Lote",
+        "itens": [
+          "Leitões de tamanhos muito diferentes; refugos com pelos arrepiados"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Inguinais superficiais muito aumentados"
+        ]
+      },
+      {
+        "titulo": "Outros",
+        "itens": [
+          "Palidez ou icterícia leve em alguns",
+          "Dispneia em parte dos animais"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de leitões doentes (não tratados)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Linfonodos muito aumentados e pálidos",
+          "Pulmões não colabados, com aspecto de borracha",
+          "Rins com pontos brancos"
+        ],
+        "conclusao": "Compatível com circovirose (PCVD)."
+      },
+      "comentario_didatico": "Animais doentes e não tratados mostram as lesões típicas e permitem colher material para histopatologia."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia de linfonodos com imuno-histoquímica para PCV2",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Depleção linfoide e inflamação granulomatosa",
+          "Corpúsculos de inclusão em macrófagos",
+          "Imuno-histoquímica: muito antígeno de PCV2"
+        ],
+        "conclusao": "Doença associada ao circovírus suíno tipo 2."
+      },
+      "comentario_didatico": "O diagnóstico de circovirose exige lesão típica (depleção linfoide com inflamação granulomatosa) junto com o antígeno de PCV2 nas lesões."
+    },
+    {
+      "id": "qpcr",
+      "tipo": "pcr",
+      "nome": "PCR quantitativa para PCV2 no soro",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Carga viral alta"
+        ],
+        "conclusao": "Viremia alta."
+      },
+      "comentario_didatico": "O vírus está em quase todas as granjas; só cargas muito altas sugerem doença, e a histopatologia é que confirma."
+    },
+    {
+      "id": "prrs",
+      "tipo": "pcr",
+      "nome": "PCR para PRRSV",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Avalia coinfecção que piora a circovirose; negativa nesta granja."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica o quadro sistêmico."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma individual",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Inespecífico"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Pouco útil em diagnóstico de lote."
+    }
+  ],
+  "diagnostico_id": "circovirose_suina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "prrs",
+      "como_descartar": "Problemas reprodutivos nas matrizes e pneumonia intersticial; PCR para PRRSV positiva."
+    },
+    {
+      "diagnostico_id": "salmonelose_suina",
+      "como_descartar": "Septicemia com pele arroxeada ou diarreia; isolamento de Salmonella."
+    },
+    {
+      "diagnostico_id": "doenca_de_glasser",
+      "como_descartar": "Poliserosite fibrinosa e artrite em leitões; isolamento de Glaesserella parasuis."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "vacinar",
+      "texto": "Retomar a vacinação dos leitões contra PCV2",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A vacina é muito eficaz para reduzir a doença clínica."
+    },
+    {
+      "id": "manejo",
+      "texto": "Reduzir lotação, evitar misturar origens e usar o sistema todos dentro, todos fora",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz estresse e transmissão."
+    },
+    {
+      "id": "refugos",
+      "texto": "Retirar e eutanasiar refugos sem chance de recuperação",
+      "tipo": "eutanasia",
+      "classificacao": "aceitavel",
+      "justificativa": "Bem-estar e redução da carga viral na sala."
+    },
+    {
+      "id": "secundarias",
+      "texto": "Tratar infecções bacterianas secundárias com base em diagnóstico",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Os vírus abrem caminho para bactérias."
+    },
+    {
+      "id": "antiviral",
+      "texto": "Medicamento antiviral na ração",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não há antiviral para PCV2 em suínos."
+    },
+    {
+      "id": "so_antibiotico",
+      "texto": "Manter só antibiótico na ração",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não trata a causa viral e favorece resistência antimicrobiana."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Granja que suspendeu a vacina de circovírus, com mistura de origens e lotação alta, apresentando emagrecimento progressivo de leitões na recria, linfonodos aumentados, dispneia e mortalidade alta; lesões típicas com antígeno de PCV2 na imuno-histoquímica: doença associada ao circovírus suíno tipo 2.",
+    "fisiopatologia": [
+      "O circovírus suíno tipo 2 é um vírus de DNA muito pequeno e resistente, presente em quase todas as granjas.",
+      "Infecta e destrói tecido linfoide: depleção linfoide e imunossupressão.",
+      "A doença clínica depende de cofatores: coinfecções (ex.: PRRSV), estresse, mistura de lotes e queda da imunidade materna.",
+      "A síndrome multissistêmica do definhamento aparece na recria, quando os anticorpos maternos acabam."
+    ],
+    "pistas": [
+      {
+        "achado": "Vacina suspensa",
+        "por_que_importa": "Perda de proteção."
+      },
+      {
+        "achado": "Emagrecimento na recria",
+        "por_que_importa": "Fase em que a imunidade materna acabou."
+      },
+      {
+        "achado": "Linfonodos muito aumentados",
+        "por_que_importa": "Tecido linfoide é o alvo."
+      },
+      {
+        "achado": "Antígeno de PCV2 nas lesões",
+        "por_que_importa": "Critério diagnóstico."
+      }
+    ],
+    "comentario_exames": "Necropsia com histopatologia e imuno-histoquímica é o padrão. PCR sozinha não basta, porque o vírus é ubíquo.",
+    "comentario_tratamento": "Vacinação e manejo resolvem; antibiótico só para infecções secundárias diagnosticadas."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "zimmerman",
+      "citacao": "ZIMMERMAN, J. J. et al. Diseases of Swine. 11. ed. Hoboken: Wiley-Blackwell, 2019."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

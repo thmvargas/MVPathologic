@@ -1,0 +1,421 @@
+{
+  "id": "cao-drc-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Poodle",
+  "idade": "12 anos",
+  "sexo": "fêmea castrada",
+  "peso": "5,8 kg",
+  "queixa_principal": [
+    "Bebe muita água",
+    "Emagrecimento"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "urinario",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento, sem acesso à rua"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca comum e petiscos industrializados"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Vermifugação",
+      "itens": [
+        "Anual"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Bebe e urina mais há cerca de 6 meses",
+        "Perdeu cerca de 1 kg em 4 meses",
+        "Vômitos esporádicos nas últimas semanas"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Apetite seletivo",
+        "Mau hálito"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,3",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "110",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Hipocoradas",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 5%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "3/9",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Pressão arterial sistólica (Doppler)",
+        "valor": "175",
+        "unidade": "mmHg",
+        "referencia": "< 140 (sem risco)",
+        "fonte": "iris",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Cavidade oral",
+        "itens": [
+          "Tártaro moderado",
+          "Hálito urêmico",
+          "Úlcera pequena na mucosa jugal"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Rins pequenos e irregulares à palpação"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Opaca"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica (rim, fósforo, proteínas)",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ureia",
+            "valor": "168",
+            "unidade": "mg/dL",
+            "referencia": "21–60",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "4,1",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Fósforo",
+            "valor": "8,2",
+            "unidade": "mg/dL",
+            "referencia": "2,6–6,2",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Potássio",
+            "valor": "3,8",
+            "unidade": "mEq/L",
+            "referencia": "4,37–5,35",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Albumina",
+            "valor": "2,7",
+            "unidade": "g/dL",
+            "referencia": "2,6–3,3",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Azotemia acentuada com hiperfosfatemia e hipocalemia discreta."
+      },
+      "comentario_didatico": "Azotemia com densidade urinária baixa indica origem renal. O fósforo alto reflete queda da filtração."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,011",
+          "Proteína: 1+",
+          "Sedimento inativo"
+        ],
+        "conclusao": "Isostenúria."
+      },
+      "comentario_didatico": "Urina isostenúrica num animal desidratado e azotêmico mostra que o rim perdeu a capacidade de concentrar."
+    },
+    {
+      "id": "upc",
+      "tipo": "outro",
+      "nome": "Relação proteína:creatinina urinária",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "RPC urinária",
+            "valor": "0,8",
+            "unidade": "",
+            "referencia": "< 0,2 (não proteinúrico)",
+            "fonte": "iris",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Proteinúria."
+      },
+      "comentario_didatico": "Proteinúria renal piora o prognóstico e entra no estadiamento IRIS."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "29",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "descricao": [
+          "Anemia normocítica normocrômica arregenerativa"
+        ],
+        "conclusao": "Anemia arregenerativa leve."
+      },
+      "comentario_didatico": "A anemia arregenerativa é comum na DRC (menos eritropoetina e uremia), mas é inespecífica."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Rins reduzidos, contorno irregular, perda da definição corticomedular",
+          "Sem dilatação de pelve"
+        ],
+        "conclusao": "Nefropatia crônica bilateral."
+      },
+      "comentario_didatico": "Confirma rins pequenos com perda da definição corticomedular e ajuda a afastar obstrução, mas não mede a função."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Sem alterações relevantes"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Sem sinal respiratório ou cardíaco."
+    }
+  ],
+  "diagnostico_id": "doenca_renal_cronica",
+  "diferenciais": [
+    {
+      "diagnostico_id": "lesao_renal_aguda",
+      "como_descartar": "Evolução de dias, rins de tamanho normal ou aumentados e sem anemia crônica."
+    },
+    {
+      "diagnostico_id": "hiperadrenocorticismo",
+      "como_descartar": "Também causa poliúria e polidipsia, mas com fosfatase alcalina alta, abdome abaulado e sem azotemia."
+    },
+    {
+      "diagnostico_id": "diabetes_mellitus",
+      "como_descartar": "Poliúria com hiperglicemia e glicosúria, que não aparecem aqui."
+    },
+    {
+      "diagnostico_id": "leptospirose_canina",
+      "como_descartar": "Quadro agudo, com febre e frequentemente icterícia; sorologia ou PCR para diferenciar."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "dieta_renal",
+      "texto": "Dieta renal terapêutica (restrição de fósforo e proteína de alta qualidade)",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A medida com maior impacto comprovado na sobrevida de cães com DRC."
+    },
+    {
+      "id": "quelante",
+      "texto": "Quelante de fósforo junto às refeições",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Usado se o fósforo continuar alto apesar da dieta."
+    },
+    {
+      "id": "ieca",
+      "texto": "Inibidor da ECA ou bloqueador de receptor de angiotensina após hidratação",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a proteinúria; iniciar só com o paciente hidratado e monitorar creatinina e potássio."
+    },
+    {
+      "id": "anti_hipertensivo",
+      "texto": "Anlodipino para controle da pressão arterial",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Pressão de 175 mmHg traz risco para rim, olhos, coração e cérebro.",
+      "dose": {
+        "texto": "0,1–0,25 mg/kg VO a cada 24 h",
+        "fonte": "iris",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "fluido_sc",
+      "texto": "Fluidoterapia subcutânea periódica em casa",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Útil em animais que se desidratam com frequência."
+    },
+    {
+      "id": "potassio",
+      "texto": "Suplementação oral de potássio",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Corrige a hipocalemia leve, que causa fraqueza e piora a função renal."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal para a gengivite",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Reduz a perfusão renal mediada por prostaglandinas e pode descompensar a DRC."
+    },
+    {
+      "id": "aminoglicosideo",
+      "texto": "Gentamicina para o tártaro",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Aminoglicosídeos são nefrotóxicos."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela idosa com poliúria e polidipsia de evolução longa, emagrecimento, hálito urêmico, rins pequenos e irregulares, azotemia com isostenúria, hiperfosfatemia, proteinúria e hipertensão: doença renal crônica, estágio IRIS 3.",
+    "fisiopatologia": [
+      "A DRC é a perda progressiva e irreversível de néfrons, de várias causas, com substituição por fibrose.",
+      "Os néfrons restantes passam a filtrar mais (hiperfiltração), o que acelera a lesão.",
+      "A perda da capacidade de concentrar a urina causa poliúria com polidipsia compensatória.",
+      "A queda da filtração acumula ureia, creatinina e fósforo; o fósforo estimula o PTH (hiperparatireoidismo secundário renal).",
+      "Menos eritropoetina e a uremia causam anemia arregenerativa; a ativação do sistema renina-angiotensina contribui para a hipertensão."
+    ],
+    "pistas": [
+      {
+        "achado": "Poliúria e polidipsia há meses",
+        "por_que_importa": "Perda gradual da capacidade de concentrar a urina."
+      },
+      {
+        "achado": "Rins pequenos e irregulares",
+        "por_que_importa": "Lesão crônica com fibrose."
+      },
+      {
+        "achado": "Azotemia com densidade urinária 1,011",
+        "por_que_importa": "Azotemia de origem renal."
+      },
+      {
+        "achado": "Anemia arregenerativa",
+        "por_que_importa": "Típica da doença crônica."
+      },
+      {
+        "achado": "Pressão de 175 mmHg e proteinúria",
+        "por_que_importa": "Fatores que pioram o prognóstico e entram no estadiamento IRIS."
+      }
+    ],
+    "comentario_exames": "Bioquímica e urinálise feitas juntas fecham o diagnóstico; a relação proteína:creatinina e a pressão completam o estadiamento IRIS.",
+    "comentario_tratamento": "Dieta renal, controle do fósforo, da proteinúria e da pressão arterial retardam a progressão. Evitar fármacos nefrotóxicos."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "iris",
+      "citacao": "INTERNATIONAL RENAL INTEREST SOCIETY (IRIS). IRIS staging of CKD. Disponível em: http://www.iris-kidney.com. Acesso em: nov. 2026."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}
