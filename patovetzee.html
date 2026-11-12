@@ -93,6 +93,13 @@ body{
   border-color: var(--cor-acento);
 }
 .card-patological h2{ color: var(--cor-acento); }
+.card-vetemsete{
+  text-align:center;
+  background:#ffffff;
+  border:2px solid #0018ff;
+}
+.card-vetemsete h2{ color:#0018ff; }
+.btn.vetemsete{ background:#0018ff; color:#fff; }
 
 /* --------- Botões --------- */
 .btn{
@@ -8916,6 +8923,13 @@ function renderIntro() {
     el("h2", { text: "🔎 Conhece o Patological?" }),
     el("p", { text: "Jogo irmão do PatoVetZee: adivinhe a doença veterinária do dia, estilo Wordle/Spotle. Mesma conta, desafio diferente." }),
     el("button", { class: "btn acento", text: "Jogar Patological", onclick: () => { location.href = "patological.html"; } }),
+  ]));
+
+  // Jogo irmão em site próprio (Next.js na Vercel, login com e-mail institucional).
+  partes.push(el("section", { class: "card card-vetemsete" }, [
+    el("h2", { text: "🩺 Já conhece o Vet em Sete?" }),
+    el("p", { text: "Raciocínio clínico: um caso veterinário por dia e sete tentativas para chegar ao diagnóstico. Peça exames, escolha o tratamento e aprenda com a explicação. Entre com o e-mail institucional." }),
+    el("button", { class: "btn vetemsete", text: "Jogar Vet em Sete", onclick: () => { location.href = "https://vet-em-sete.vercel.app"; } }),
   ]));
 
   const botoesExtras = [];
