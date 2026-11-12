@@ -52,7 +52,7 @@ export function Autocompletar({
       <label id={idRotulo} htmlFor={`${idLista}-campo`} className="sr-only">
         Diagnóstico
       </label>
-      <div className="flex items-center gap-2 rounded-md border border-grafite/40 bg-areia px-3 focus-within:border-vinho">
+      <div className="flex items-center gap-2 rounded-md border border-texto/40 bg-fundo px-3 focus-within:border-marca">
         <Search aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-suave" />
         <input
           ref={ref}
@@ -98,7 +98,7 @@ export function Autocompletar({
           id={idLista}
           role="listbox"
           aria-labelledby={idRotulo}
-          className="absolute bottom-full z-10 mb-1 max-h-72 w-full overflow-auto rounded-md border border-marfim bg-areia py-1 sm:bottom-auto sm:top-full sm:mb-0 sm:mt-1"
+          className="absolute bottom-full z-10 mb-1 max-h-72 w-full overflow-auto rounded-md border border-linha bg-fundo py-1 sm:bottom-auto sm:top-full sm:mb-0 sm:mt-1"
         >
           {resultados.map((r, i) => {
             const sin = sinonimoQueCasou(r);
@@ -113,7 +113,7 @@ export function Autocompletar({
                   escolher(r);
                 }}
                 onMouseEnter={() => setAtivo(i)}
-                className={`cursor-pointer px-3 py-2.5 ${i === ativo ? "bg-vinho-claro" : ""}`}
+                className={`cursor-pointer px-3 py-2.5 ${i === ativo ? "bg-marca-claro" : ""}`}
               >
                 <span>{r.nome}</span>
                 {sin && <span className="ml-2 text-xs text-suave">({sin})</span>}

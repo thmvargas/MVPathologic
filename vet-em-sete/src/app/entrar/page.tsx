@@ -17,18 +17,18 @@ export default async function Entrar({ searchParams }: { searchParams: Promise<{
 
   return (
     <div className="mx-auto max-w-sm space-y-5 pt-4">
-      <h1 className="text-2xl text-vinho">Entrar</h1>
+      <h1 className="text-2xl text-marca">Entrar</h1>
       {sessao.estado === "sem_login_configurado" ? (
         <p className="text-suave">O login ainda não foi configurado neste servidor.</p>
       ) : (
         <>
           {sessao.estado === "dominio_recusado" && (
-            <p role="alert" className="rounded-md border border-carmim-borda bg-carmim-claro p-3 text-sm">
+            <p role="alert" className="rounded-md border border-destaque-borda bg-destaque-claro p-3 text-sm">
               A conta {sessao.email} não é de um domínio institucional aceito. Entre com o e-mail da instituição.
             </p>
           )}
           {erro && (
-            <p role="alert" className="rounded-md border border-carmim-borda bg-carmim-claro p-3 text-sm">
+            <p role="alert" className="rounded-md border border-destaque-borda bg-destaque-claro p-3 text-sm">
               O link de acesso venceu ou já foi usado. Peça um novo código abaixo.
             </p>
           )}

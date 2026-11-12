@@ -37,8 +37,8 @@ export async function POST(req: Request) {
     const diagnosticos = b.mapaDiagnosticos;
     const novo = aplicarAcao({ casoId: caso.id, versao: salvo.versao, acoes: salvo.acoes }, acao, caso, diagnosticos);
     return NextResponse.json({
-      token: assinarEstado({ codigo: salvo.codigo, versao: novo.versao, acoes: novo.acoes }),
-      visao: montarVisao(novo, caso, diagnosticos),
+      token: assinarEstado({ codigo: salvo.codigo, versao: novo.versao, acoes: novo.acoes, semente: salvo.semente }),
+      visao: montarVisao(novo, caso, diagnosticos, salvo.semente ? `token:${salvo.semente}` : undefined),
     });
   } catch (e) {
     if (e instanceof ErroDeJogo) return NextResponse.json({ erro: e.message }, { status: 409 });

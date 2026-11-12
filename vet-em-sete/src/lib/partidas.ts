@@ -104,7 +104,7 @@ export async function jogarNaPartida(p: LinhaPartida, acao: Acao, caso: Caso) {
     .select("id");
   if (error) throw new Error(`salvar partida: ${error.message}`);
   if (!data?.length) return { conflito: true as const };
-  return { conflito: false as const, visao: montarVisao(novo, caso, diagnosticos) };
+  return { conflito: false as const, visao: montarVisao(novo, caso, diagnosticos, `partida:${p.id}`) };
 }
 
 export type LinhaEstatistica = {

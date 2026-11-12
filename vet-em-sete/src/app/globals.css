@@ -1,64 +1,73 @@
 @import "tailwindcss";
 
 /*
- * Identidade visual Vet em Sete (paleta das aulas).
- * Sem sombra e sem gradiente: linhas e cartões com contorno de 1px.
- * Nunca acento sobre acento: sobre fundo colorido, texto em areia.
+ * Identidade visual UNIFEOB (Brandbook, dez. 2023), adaptada para a web.
+ *
+ * Paleta institucional: Azul Unifeob #0018ff, Rosa Destaque #ff1863,
+ * Preto Unifeob #212121, Branco Unifeob #f2f3f4, Cinza 01 #cccccc,
+ * Cinza 02 #8c8c8c. Divisão 60 | 30 | 10: branco e cinzas, azul, rosa.
+ * Cor da escola: Medicina Veterinária pertence à Escola Agro (#96d30f).
+ *
+ * Adaptações de acessibilidade (o manual pede "respeitar os níveis de
+ * contraste"): textos pequenos usam versões escuras dos tons claros
+ * (*-escuro) e o cinza de apoio é mais escuro que o Cinza 02.
+ * Sem gradientes, sem sombras.
  */
 @theme {
-  --color-areia: #f5efe6;
-  --color-grafite: #2b2724;
-  --color-marfim: #d9cdbf;
-  --color-superficie: #ede4d6;
-  --color-suave: #6b625b; /* texto secundário: grafite clareado, contraste AA sobre areia */
+  --color-fundo: #ffffff;
+  --color-superficie: #f2f3f4; /* Branco Unifeob */
+  --color-texto: #212121; /* Preto Unifeob */
+  --color-linha: #cccccc; /* Cinza 01 */
+  --color-cinza: #8c8c8c; /* Cinza 02: só elementos grandes ou decorativos */
+  --color-suave: #595959; /* texto secundário (contraste AA) */
 
-  --color-vinho: #6b2130;
-  --color-carmim: #c2185b;
-  --color-ambar: #9c4707;
-  --color-esmeralda: #047857;
-  --color-azul: #1d4ed8;
-  --color-violeta: #6d28d9;
+  --color-marca: #0018ff; /* Azul Unifeob */
+  --color-marca-claro: #e6e8ff;
+  --color-marca-borda: #99a3ff;
 
-  --color-vinho-claro: #f7dfe3;
-  --color-carmim-claro: #fcdde8;
-  --color-ambar-claro: #fdead0;
-  --color-esmeralda-claro: #d5f2e4;
-  --color-azul-claro: #dee7fe;
-  --color-violeta-claro: #ebe0fd;
+  --color-destaque: #ff1863; /* Rosa Destaque */
+  --color-destaque-claro: #ffe5ee;
+  --color-destaque-borda: #ff8fb1;
+  --color-destaque-escuro: #c2003f;
 
-  --color-vinho-borda: #e7bcc3;
-  --color-carmim-borda: #f3b8ce;
-  --color-ambar-borda: #f2cf9c;
-  --color-esmeralda-borda: #a7dcc4;
-  --color-azul-borda: #b6c8f8;
-  --color-violeta-borda: #cdb5f6;
+  --color-sucesso: #96d30f; /* Escola Agro (Medicina Veterinária) */
+  --color-sucesso-claro: #eef8d9;
+  --color-sucesso-borda: #c3e66f;
+  --color-sucesso-escuro: #3f6300;
 
-  --font-titulo: var(--font-lora), Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-alerta: #e6be00;
+  --color-alerta-claro: #fcf3cc;
+  --color-alerta-borda: #f0d766;
+  --color-alerta-escuro: #6b5800;
+
+  /* Arson Pro é a fonte da marca; Montserrat é a alternativa livre mais próxima. */
+  --font-titulo: "Arson Pro", var(--font-montserrat), system-ui, sans-serif;
+  --font-sans: "Arson Pro", var(--font-montserrat), system-ui, sans-serif;
 
   --shadow-*: initial;
 }
 
 html {
-  background: var(--color-areia);
-  color: var(--color-grafite);
+  background: var(--color-fundo);
+  color: var(--color-texto);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--color-areia);
+  background: var(--color-fundo);
   font-family: var(--font-sans);
   line-height: 1.5;
 }
 
 h1, h2, h3 {
   font-family: var(--font-titulo);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-vinho);
+  outline: 2px solid var(--color-marca);
   outline-offset: 2px;
 }
 

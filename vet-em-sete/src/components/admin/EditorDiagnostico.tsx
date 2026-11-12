@@ -7,7 +7,7 @@ import {
 } from "@/lib/caso/esquema";
 import { excluirDiagnostico, salvarDiagnostico, type Resposta } from "@/app/admin/acoes";
 
-const cls = "min-h-11 w-full rounded-md border border-grafite/40 bg-areia px-2 text-sm";
+const cls = "min-h-11 w-full rounded-md border border-texto/40 bg-fundo px-2 text-sm";
 
 function slug(s: string) {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
@@ -102,9 +102,9 @@ export default function EditorDiagnostico({ inicial, novo }: { inicial?: Diagnos
           ))}
         </div>
       </fieldset>
-      {r && <p role={r.ok ? "status" : "alert"} className={`text-sm ${r.ok ? "text-esmeralda" : "text-carmim"}`}>{r.mensagem}</p>}
+      {r && <p role={r.ok ? "status" : "alert"} className={`text-sm ${r.ok ? "text-sucesso-escuro" : "text-destaque-escuro"}`}>{r.mensagem}</p>}
       <div className="flex gap-2">
-        <button disabled={pendente} className="min-h-11 rounded-md bg-vinho px-4 text-sm font-medium text-areia disabled:opacity-40">
+        <button disabled={pendente} className="min-h-11 rounded-md bg-marca px-4 text-sm font-medium text-fundo disabled:opacity-40">
           {novo ? "Cadastrar" : "Salvar"}
         </button>
         {!novo && (
@@ -119,7 +119,7 @@ export default function EditorDiagnostico({ inicial, novo }: { inicial?: Diagnos
                 if (res.ok) router.refresh();
               })
             }
-            className="min-h-11 rounded-md border border-carmim px-4 text-sm text-carmim"
+            className="min-h-11 rounded-md border border-destaque px-4 text-sm text-destaque-escuro"
           >
             Excluir
           </button>

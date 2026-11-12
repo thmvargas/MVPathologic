@@ -26,9 +26,9 @@ export default async function Jogar({
   if (!caso || !(await casoPermitido(caso, modo)))
     return (
       <div className="space-y-3 pt-4">
-        <h1 className="text-2xl text-vinho">Caso indisponível</h1>
+        <h1 className="text-2xl text-marca">Caso indisponível</h1>
         <p>Este caso não está disponível neste modo agora.</p>
-        <Link href="/" className="text-vinho underline">Voltar ao início</Link>
+        <Link href="/" className="text-marca underline">Voltar ao início</Link>
       </div>
     );
   const rotulo =

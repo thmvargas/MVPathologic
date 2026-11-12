@@ -29,11 +29,11 @@ export default async function Agenda() {
 
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl text-vinho">Agenda do caso do dia</h1>
+      <h1 className="text-2xl text-marca">Agenda do caso do dia</h1>
       <p className="text-sm text-suave">
         Dias sem agendamento recebem um caso sorteado entre os aprovados ainda não usados. Restam {ainda} caso(s) inéditos para sorteio.
       </p>
-      <section className="space-y-2 rounded-lg border border-marfim bg-superficie p-3">
+      <section className="space-y-2 rounded-lg border border-linha bg-superficie p-3">
         <h2 className="text-lg">Agendar</h2>
         <FormAgenda opcoes={opcoes} minimo={hoje} />
       </section>
@@ -42,7 +42,7 @@ export default async function Agenda() {
         {futuros.length === 0 ? <p className="text-sm text-suave">Nada agendado.</p> : (
           <ul className="space-y-2">
             {futuros.map((l) => (
-              <li key={l.data} className="flex flex-wrap items-center gap-2 rounded-md border border-marfim p-3 text-sm">
+              <li key={l.data} className="flex flex-wrap items-center gap-2 rounded-md border border-linha p-3 text-sm">
                 <span className="w-32 font-medium">{dia(l.data)}</span>
                 <span className="flex-1">{nome(l.caso_id)}{l.data === hoje ? " · hoje" : ""}{!l.agendado ? " · sorteado" : ""}</span>
                 {l.data > hoje && <BotaoAcao acao={desagendar.bind(null, l.data)} rotulo="Liberar" variante="perigo" />}
@@ -55,7 +55,7 @@ export default async function Agenda() {
         <h2 className="text-lg">Dias anteriores</h2>
         <ul className="space-y-1 text-sm">
           {passados.map((l) => (
-            <li key={l.data} className="flex gap-2 border-b border-marfim/60 py-1.5">
+            <li key={l.data} className="flex gap-2 border-b border-linha/60 py-1.5">
               <span className="w-32 text-suave">{dia(l.data)}</span>
               <span>{nome(l.caso_id)}</span>
             </li>

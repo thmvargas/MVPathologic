@@ -22,9 +22,9 @@ export function BotaoAcao({
   const [pendente, iniciar] = useTransition();
   const router = useRouter();
   const estilo = {
-    cheio: "bg-vinho text-areia",
-    contorno: "border border-vinho text-vinho",
-    perigo: "border border-carmim text-carmim",
+    cheio: "bg-marca text-fundo",
+    contorno: "border border-marca text-marca",
+    perigo: "border border-destaque text-destaque-escuro",
   }[variante];
   return (
     <span className="inline-flex flex-col gap-1">
@@ -47,7 +47,7 @@ export function BotaoAcao({
         {pendente ? "Aguarde..." : rotulo}
       </button>
       {msg && (
-        <span role={msg.ok ? "status" : "alert"} className={`text-xs ${msg.ok ? "text-esmeralda" : "text-carmim"}`}>
+        <span role={msg.ok ? "status" : "alert"} className={`text-xs ${msg.ok ? "text-sucesso-escuro" : "text-destaque-escuro"}`}>
           {msg.mensagem}
         </span>
       )}

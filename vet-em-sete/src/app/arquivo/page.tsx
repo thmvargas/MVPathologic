@@ -12,7 +12,7 @@ export default async function Arquivo({ searchParams }: { searchParams: Promise<
   const sit = await situacaoDoAluno();
   return (
     <div className="space-y-4 pt-2">
-      <h1 className="text-2xl text-vinho">Casos anteriores</h1>
+      <h1 className="text-2xl text-marca">Casos anteriores</h1>
       <AvisoForaDoRanking />
       <FiltroEspecie grupos={gruposPresentes(todos.map((x) => x.caso))} atual={especie} base="/arquivo" />
       <ListaCasos modo="arquivo" situacao cartoes={lista.map((x) => ({ ...cartao(x.caso, x.data), situacao: sit.get(x.caso.id) }))} />

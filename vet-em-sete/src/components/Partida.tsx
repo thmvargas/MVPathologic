@@ -146,8 +146,8 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       </div>
 
       {visao.status !== "revisado" && (
-        <p className="flex gap-2 rounded-md border border-ambar-borda bg-ambar-claro p-3 text-sm text-grafite">
-          <CircleAlert aria-hidden size={18} strokeWidth={1.5} className="mt-0.5 shrink-0 text-ambar" />
+        <p className="flex gap-2 rounded-md border border-alerta-borda bg-alerta-claro p-3 text-sm text-texto">
+          <CircleAlert aria-hidden size={18} strokeWidth={1.5} className="mt-0.5 shrink-0 text-alerta-escuro" />
           <span>
             Caso em rascunho, ainda não revisado pelo professor.
             {visao.temItensARevisar && " Valores marcados como \"a revisar\" aguardam conferência."}
@@ -156,14 +156,14 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       )}
 
       {/* Camadas do caso */}
-      <Bloco key={k} inicialAberto={!fim} titulo="Paciente e queixa principal" acento="vinho" icone={PawPrint}>
+      <Bloco key={`${k}-paciente`} inicialAberto={!fim} titulo="Paciente e queixa principal" icone={PawPrint}>
         <p className="mb-2">
           <span className="font-medium">{p.raca}</span> · {p.idade} · {p.sexo}
           {p.peso ? ` · ${p.peso}` : ""}
         </p>
         <ul className="flex flex-wrap gap-1.5">
           {p.queixa_principal.map((q) => (
-            <li key={q} className="rounded-full border border-vinho-borda bg-areia px-2.5 py-1 text-sm">
+            <li key={q} className="rounded-full border border-marca-borda bg-fundo px-2.5 py-1 text-sm">
               {q}
             </li>
           ))}
@@ -171,7 +171,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       </Bloco>
 
       {visao.historico ? (
-        <Bloco key={k} inicialAberto={!fim} titulo="Histórico" acento="azul" icone={History} novo={emJogo && t === 2}>
+        <Bloco key={`${k}-historico`} inicialAberto={!fim} titulo="Histórico" icone={History} novo={emJogo && t === 2}>
           <ListaBlocos blocos={visao.historico} />
         </Bloco>
       ) : (
@@ -179,7 +179,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       )}
 
       {visao.anamnese ? (
-        <Bloco key={k} inicialAberto={!fim} titulo="Anamnese" acento="violeta" icone={MessageSquareText} novo={emJogo && t === 3}>
+        <Bloco key={`${k}-anamnese`} inicialAberto={!fim} titulo="Anamnese" icone={MessageSquareText} novo={emJogo && t === 3}>
           <ListaBlocos blocos={visao.anamnese} />
         </Bloco>
       ) : (
@@ -187,7 +187,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       )}
 
       {visao.exame_fisico ? (
-        <Bloco key={k} inicialAberto={!fim} titulo="Exame físico" acento="ambar" icone={Stethoscope} novo={emJogo && t === 4}>
+        <Bloco key={`${k}-exame-fisico`} inicialAberto={!fim} titulo="Exame físico" icone={Stethoscope} novo={emJogo && t === 4}>
           <ExameFisico ef={visao.exame_fisico} mostrarRevisar={visao.status !== "revisado"} />
         </Bloco>
       ) : (
@@ -195,7 +195,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       )}
 
       {nivel >= 5 && visao.fase !== "fim" ? (
-        <Bloco titulo="Exames complementares" acento="esmeralda" icone={TestTubes} novo={visao.precisaEscolherExame}>
+        <Bloco titulo="Exames complementares" icone={TestTubes} novo={visao.precisaEscolherExame}>
           {visao.examesFeitos.length === 0 ? (
             <p className="text-suave">Nenhum exame pedido ainda.</p>
           ) : (
@@ -223,14 +223,14 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       )}
 
       {erro && (
-        <p role="alert" className="rounded-md border border-carmim-borda bg-carmim-claro p-3 text-sm text-carmim">
+        <p role="alert" className="rounded-md border border-destaque-borda bg-destaque-claro p-3 text-sm text-destaque-escuro">
           {erro}
         </p>
       )}
 
       {/* Área de ação */}
       {emJogo && (
-        <section aria-label="Sua jogada" className="space-y-3 rounded-lg border border-marfim bg-superficie p-4">
+        <section aria-label="Sua jogada" className="space-y-3 rounded-lg border border-linha bg-superficie p-4">
           {visao.precisaEscolherExame && visao.examesDisponiveis ? (
             <EscolhaExame
               key={t}
@@ -255,7 +255,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
                 <button
                   type="submit"
                   disabled={!escolhido || ocupado}
-                  className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-vinho px-4 font-medium text-areia disabled:opacity-40"
+                  className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-marca px-4 font-medium text-fundo disabled:opacity-40"
                 >
                   <Send aria-hidden size={18} strokeWidth={1.5} />
                   Enviar palpite
@@ -264,7 +264,7 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
                   type="button"
                   onClick={() => agir({ tipo: "pular" })}
                   disabled={ocupado}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho disabled:opacity-40"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-md border border-marca px-4 font-medium text-marca disabled:opacity-40"
                 >
                   <SkipForward aria-hidden size={18} strokeWidth={1.5} />
                   Pular
@@ -279,9 +279,9 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
       {visao.fase === "tratamento" && visao.tratamentosOpcoes && (
         <>
           <ResultadoDiagnostico visao={visao} />
-          <section aria-labelledby="trat" className="space-y-3 rounded-lg border border-marfim bg-superficie p-4">
+          <section aria-labelledby="trat" className="space-y-3 rounded-lg border border-linha bg-superficie p-4">
             <h2 id="trat" className="flex items-center gap-2 text-lg">
-              <Pill aria-hidden size={20} strokeWidth={1.5} className="text-vinho" />
+              <Pill aria-hidden size={20} strokeWidth={1.5} className="text-marca" />
               Tratamento
             </h2>
             <EscolhaTratamento
@@ -318,10 +318,10 @@ export default function Partida({ modo, rotulo }: { modo: ModoPartida; rotulo: s
 function Marcador({ visao }: { visao: Visao }) {
   const cor = (i: number) => {
     const p = visao.palpites[i];
-    if (!p) return i + 1 === visao.tentativa && visao.fase === "diagnostico" ? "border-vinho bg-areia" : "border-marfim bg-areia";
-    if (p.tipo === "acerto") return "border-esmeralda bg-esmeralda";
-    if (p.tipo === "pulou") return "border-marfim bg-superficie";
-    return p.proximidade.muitoPerto ? "border-ambar bg-ambar" : "border-grafite/60 bg-grafite/60";
+    if (!p) return i + 1 === visao.tentativa && visao.fase === "diagnostico" ? "border-marca bg-fundo" : "border-linha bg-fundo";
+    if (p.tipo === "acerto") return "border-sucesso bg-sucesso";
+    if (p.tipo === "pulou") return "border-linha bg-superficie";
+    return p.proximidade.muitoPerto ? "border-alerta bg-alerta" : "border-texto/60 bg-texto/60";
   };
   return (
     <div className="flex items-center gap-2">
@@ -340,18 +340,18 @@ function Marcador({ visao }: { visao: Visao }) {
 function LinhaPalpite({ p }: { p: PalpiteVisto }) {
   if (p.tipo === "pulou")
     return (
-      <li className="flex items-center gap-2 rounded-md border border-marfim px-3 py-2 text-sm text-suave">
+      <li className="flex items-center gap-2 rounded-md border border-linha px-3 py-2 text-sm text-suave">
         <span className="w-6 font-medium">{p.tentativa}.</span> Pulou
       </li>
     );
   if (p.tipo === "acerto")
     return (
-      <li className="flex items-center gap-2 rounded-md border border-esmeralda bg-esmeralda px-3 py-2 text-sm font-medium text-areia">
+      <li className="flex items-center gap-2 rounded-md border border-sucesso bg-sucesso px-3 py-2 text-sm font-medium text-texto">
         <span className="w-6">{p.tentativa}.</span> {p.nome}
       </li>
     );
   return (
-    <li className="space-y-2 rounded-md border border-marfim bg-areia px-3 py-2 text-sm">
+    <li className="space-y-2 rounded-md border border-linha bg-fundo px-3 py-2 text-sm">
       <p>
         <span className="inline-block w-6 font-medium">{p.tentativa}.</span>
         {p.nome}
@@ -366,7 +366,7 @@ function ExameFisico({ ef, mostrarRevisar }: { ef: NonNullable<Visao["exame_fisi
     <div className="space-y-3">
       <dl className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
         {ef.parametros.map((x) => (
-          <div key={x.nome} className="flex justify-between gap-2 border-b border-ambar-borda py-1">
+          <div key={x.nome} className="flex justify-between gap-2 border-b border-linha py-1">
             <dt className="text-suave">{x.nome}</dt>
             <dd className={`text-right ${x.alterado ? "font-semibold" : ""}`}>
               {x.valor}
@@ -385,12 +385,12 @@ function ExameFisico({ ef, mostrarRevisar }: { ef: NonNullable<Visao["exame_fisi
 
 function ResultadoDiagnostico({ visao }: { visao: Visao }) {
   return visao.acertou ? (
-    <div className="rounded-lg border border-esmeralda bg-esmeralda p-4 text-areia" role="status">
+    <div className="rounded-lg border border-sucesso bg-sucesso p-4 text-texto" role="status">
       <p className="text-sm">Acertou na {visao.palpites.length}ª tentativa</p>
       <p className="font-titulo text-2xl font-semibold">{visao.diagnostico?.nome}</p>
     </div>
   ) : (
-    <div className="rounded-lg border border-vinho bg-vinho p-4 text-areia" role="status">
+    <div className="rounded-lg border border-marca bg-marca p-4 text-fundo" role="status">
       <p className="text-sm">Não foi desta vez. O diagnóstico era</p>
       <p className="font-titulo text-2xl font-semibold">{visao.diagnostico?.nome}</p>
     </div>
@@ -425,12 +425,12 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
     <div ref={ref} className="scroll-mt-4 space-y-4">
       <ResultadoDiagnostico visao={visao} />
 
-      <section aria-labelledby="pontos" className="rounded-lg border border-marfim p-4">
+      <section aria-labelledby="pontos" className="rounded-lg border border-linha p-4">
         <h2 id="pontos" className="text-lg">Pontuação</h2>
         <table className="mt-2 w-full text-sm">
           <tbody>
             {pt.linhas.map((l, i) => (
-              <tr key={i} className="border-b border-marfim/60 align-top">
+              <tr key={i} className="border-b border-linha/60 align-top">
                 <th scope="row" className="py-1.5 pr-2 text-left font-normal">
                   {l.rotulo}
                   {l.detalhe && <span className="block text-xs text-suave">{l.detalhe}</span>}
@@ -442,22 +442,22 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
           <tfoot>
             <tr>
               <th scope="row" className="pt-2 text-left font-titulo text-base">Total</th>
-              <td className="pt-2 text-right font-titulo text-xl font-semibold text-vinho tabular-nums">{pt.total}</td>
+              <td className="pt-2 text-right font-titulo text-xl font-semibold text-marca tabular-nums">{pt.total}</td>
             </tr>
           </tfoot>
         </table>
         <div className="mt-4 flex flex-wrap gap-2">
-          <button onClick={copiar} className="inline-flex min-h-12 items-center gap-2 rounded-md bg-vinho px-4 font-medium text-areia">
+          <button onClick={copiar} className="inline-flex min-h-12 items-center gap-2 rounded-md bg-marca px-4 font-medium text-fundo">
             <Copy aria-hidden size={18} strokeWidth={1.5} />
             {copiado ? "Copiado" : "Copiar resultado"}
           </button>
           {onRecomecar ? (
-            <button onClick={onRecomecar} className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho">
+            <button onClick={onRecomecar} className="inline-flex min-h-12 items-center gap-2 rounded-md border border-marca px-4 font-medium text-marca">
               <RotateCcw aria-hidden size={18} strokeWidth={1.5} />
               Jogar de novo
             </button>
           ) : (
-            <a href="/eu" className="inline-flex min-h-12 items-center gap-2 rounded-md border border-vinho px-4 font-medium text-vinho">
+            <a href="/eu" className="inline-flex min-h-12 items-center gap-2 rounded-md border border-marca px-4 font-medium text-marca">
               <ChartColumn aria-hidden size={18} strokeWidth={1.5} />
               Minhas estatísticas
             </a>
@@ -466,11 +466,11 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
         <p aria-live="polite" className="sr-only">{copiado ? "Resultado copiado" : ""}</p>
       </section>
 
-      <Bloco titulo="Resumo do caso" acento="vinho" icone={BookOpen}>
+      <Bloco titulo="Resumo do caso" icone={BookOpen}>
         <p>{ex.resumo}</p>
       </Bloco>
 
-      <Bloco titulo="Fisiopatologia" acento="violeta" icone={Activity}>
+      <Bloco titulo="Fisiopatologia" icone={Activity}>
         <ul className="list-disc space-y-1 pl-5">
           {ex.fisiopatologia.map((f) => (
             <li key={f}>{f}</li>
@@ -478,7 +478,7 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
         </ul>
       </Bloco>
 
-      <Bloco titulo="Por que cada pista importava" acento="azul" icone={ListChecks}>
+      <Bloco titulo="Por que cada pista importava" icone={ListChecks}>
         <dl className="space-y-2">
           {ex.pistas.map((x) => (
             <div key={x.achado}>
@@ -489,7 +489,7 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
         </dl>
       </Bloco>
 
-      <Bloco titulo="Diagnósticos diferenciais" acento="ambar" icone={ClipboardList}>
+      <Bloco titulo="Diagnósticos diferenciais" icone={ClipboardList}>
         <dl className="space-y-2">
           {visao.diferenciais!.map((d) => (
             <div key={d.nome}>
@@ -500,7 +500,7 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
         </dl>
       </Bloco>
 
-      <Bloco titulo="Exames complementares" acento="esmeralda" icone={TestTubes}>
+      <Bloco titulo="Exames complementares" icone={TestTubes}>
         <p className="mb-3">{ex.comentario_exames}</p>
         <div className="space-y-3">
           {visao.examesTodos!.map((e) => (
@@ -512,12 +512,12 @@ function Final({ visao, dataCaso, onRecomecar }: { visao: Visao; dataCaso: strin
         </div>
       </Bloco>
 
-      <Bloco titulo="Tratamento" acento="carmim" icone={Pill}>
+      <Bloco titulo="Tratamento" icone={Pill}>
         <p className="mb-3">{ex.comentario_tratamento}</p>
         <TratamentoCorrigido itens={visao.tratamentoCorrigido!} />
       </Bloco>
 
-      <Bloco titulo="Referências" acento="vinho" icone={Info} inicialAberto={false}>
+      <Bloco titulo="Referências" icone={Info} inicialAberto={false}>
         <ul className="space-y-2">
           {visao.referencias!.map((r) => (
             <li key={r.id}>{r.citacao}</li>

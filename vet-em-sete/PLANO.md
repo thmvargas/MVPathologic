@@ -12,6 +12,7 @@
 | Caso do dia | **Um caso por dia, espécie sorteada** (sorteio determinístico entre casos revisados ainda não usados; agendamento manual tem prioridade). Sem tela de escolha de espécie |
 | Semestres | 1º–4º: anatomia, histologia, fisiologia, patologia geral, microbiologia, imunologia, procedimentos clínicos. 5º–6º: clínicas. Casos do 1º–4º semestre enfatizam o raciocínio de ciências básicas; grade detalhada virá depois |
 | Caso de exemplo e visual da Etapa 2 | Aprovados pelo professor |
+| Identidade visual (12/11) | Trocada pela marca UNIFEOB (Brandbook dez. 2023 e modelo "Lugar de gente"): paleta institucional 60/30/10 (branco e cinzas, Azul #0018ff, Rosa #ff1863), Montserrat no lugar da Arson Pro (fonte comercial), logotipo oficial + assinatura "Vet em Sete" com o ponto verde da Escola Agro (#96d30f). Ajustes de contraste para acessibilidade AA documentados em src/app/globals.css |
 | Treino x caso do dia (09/11) | Opção (b): cada caso tem `uso` = "diario" (reservado ao caso do dia; entra no treino só depois de usado) ou "treino" (nunca é caso do dia) |
 | Itens sem resposta (turmas, ranking, lista de diagnósticos, imagens, referências) | Adotadas as recomendações deste plano: turmas em lista fechada, ranking por apelido, lista de diagnósticos semeada a partir do Patológical, imagens previstas no esquema, referências clássicas marcadas "a revisar" |
 

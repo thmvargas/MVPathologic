@@ -13,8 +13,8 @@ export default function FormEntrar({ dominios, volta }: { dominios: string[]; vo
   const [pendente, iniciar] = useTransition();
   const router = useRouter();
 
-  const botao = "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-vinho px-4 font-medium text-areia disabled:opacity-40";
-  const campo = "min-h-12 w-full rounded-md border border-grafite/40 bg-areia px-3 text-base focus:border-vinho focus:outline-none";
+  const botao = "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-marca px-4 font-medium text-fundo disabled:opacity-40";
+  const campo = "min-h-12 w-full rounded-md border border-texto/40 bg-fundo px-3 text-base focus:border-marca focus:outline-none";
 
   if (etapa === "email")
     return (
@@ -43,7 +43,7 @@ export default function FormEntrar({ dominios, volta }: { dominios: string[]; vo
             className={campo}
           />
         </label>
-        {erro && <p role="alert" className="text-sm text-carmim">{erro}</p>}
+        {erro && <p role="alert" className="text-sm text-destaque-escuro">{erro}</p>}
         <button type="submit" disabled={pendente} className={botao}>
           <Mail aria-hidden size={18} strokeWidth={1.5} />
           {pendente ? "Enviando..." : "Receber código por e-mail"}
@@ -84,7 +84,7 @@ export default function FormEntrar({ dominios, volta }: { dominios: string[]; vo
           className={`${campo} text-center text-2xl tracking-[0.4em]`}
         />
       </label>
-      {erro && <p role="alert" className="text-sm text-carmim">{erro}</p>}
+      {erro && <p role="alert" className="text-sm text-destaque-escuro">{erro}</p>}
       <button type="submit" disabled={pendente} className={botao}>
         <KeyRound aria-hidden size={18} strokeWidth={1.5} />
         {pendente ? "Conferindo..." : "Entrar"}
@@ -96,7 +96,7 @@ export default function FormEntrar({ dominios, volta }: { dominios: string[]; vo
           setCodigo("");
           setErro(null);
         }}
-        className="min-h-11 w-full text-sm text-vinho underline"
+        className="min-h-11 w-full text-sm text-marca underline"
       >
         Usar outro e-mail ou pedir novo código
       </button>

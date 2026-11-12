@@ -50,12 +50,12 @@ export default async function Ranking({
   const q = (extra: Record<string, string>) =>
     `/ranking?${new URLSearchParams({ periodo, escopo, ref, ...(sp.semestre ? { semestre: sp.semestre } : {}), ...(sp.turma ? { turma: sp.turma } : {}), ...extra })}`;
   const aba = (ativo: boolean) =>
-    `inline-flex min-h-11 items-center rounded-full border px-3 text-sm ${ativo ? "border-vinho bg-vinho text-areia" : "border-marfim text-grafite"}`;
+    `inline-flex min-h-11 items-center rounded-full border px-3 text-sm ${ativo ? "border-marca bg-marca text-fundo" : "border-linha text-texto"}`;
   const turmas = [...new Set([...perfis.values()].map((x) => x.turma?.trim()).filter(Boolean) as string[])].sort();
 
   return (
     <div className="space-y-4 pt-2">
-      <h1 className="text-2xl text-vinho">Ranking</h1>
+      <h1 className="text-2xl text-marca">Ranking</h1>
       <p className="text-sm text-suave">Soma dos pontos no caso do dia. Desempate: mais acertos, depois menos tentativas.</p>
 
       <nav aria-label="Período" className="flex flex-wrap gap-2">
@@ -67,15 +67,15 @@ export default async function Ranking({
         <form className="flex flex-wrap gap-2" action="/ranking">
           <input type="hidden" name="periodo" value={periodo} />
           <input type="hidden" name="ref" value={ref} />
-          <select name="semestre" defaultValue={sp.semestre ?? ""} className="min-h-11 rounded-md border border-grafite/40 bg-areia px-2 text-sm">
+          <select name="semestre" defaultValue={sp.semestre ?? ""} className="min-h-11 rounded-md border border-texto/40 bg-fundo px-2 text-sm">
             <option value="">Todos os semestres</option>
             {[1, 2, 3, 4, 5, 6].map((s) => <option key={s} value={s}>{s}º semestre</option>)}
           </select>
-          <select name="turma" defaultValue={sp.turma ?? ""} className="min-h-11 rounded-md border border-grafite/40 bg-areia px-2 text-sm">
+          <select name="turma" defaultValue={sp.turma ?? ""} className="min-h-11 rounded-md border border-texto/40 bg-fundo px-2 text-sm">
             <option value="">Todas as turmas</option>
             {turmas.map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
-          <button className="min-h-11 rounded-md border border-vinho px-3 text-sm text-vinho">Filtrar</button>
+          <button className="min-h-11 rounded-md border border-marca px-3 text-sm text-marca">Filtrar</button>
         </form>
       ) : (
         <nav aria-label="Quem aparece" className="flex flex-wrap gap-2">
@@ -85,13 +85,13 @@ export default async function Ranking({
         </nav>
       )}
 
-      <div className="flex items-center justify-between rounded-md border border-marfim px-2">
-        <Link href={q({ ref: deslocar(ref, periodo, -1) })} aria-label="Período anterior" className="inline-flex min-h-11 min-w-11 items-center justify-center text-vinho">
+      <div className="flex items-center justify-between rounded-md border border-linha px-2">
+        <Link href={q({ ref: deslocar(ref, periodo, -1) })} aria-label="Período anterior" className="inline-flex min-h-11 min-w-11 items-center justify-center text-marca">
           <ChevronLeft aria-hidden size={20} strokeWidth={1.5} />
         </Link>
         <p className="text-sm font-medium">{p.rotulo}</p>
         {p.fim < hoje ? (
-          <Link href={q({ ref: deslocar(ref, periodo, 1) })} aria-label="Próximo período" className="inline-flex min-h-11 min-w-11 items-center justify-center text-vinho">
+          <Link href={q({ ref: deslocar(ref, periodo, 1) })} aria-label="Próximo período" className="inline-flex min-h-11 min-w-11 items-center justify-center text-marca">
             <ChevronRight aria-hidden size={20} strokeWidth={1.5} />
           </Link>
         ) : (
@@ -105,7 +105,7 @@ export default async function Ranking({
         <table className="w-full text-sm">
           <caption className="sr-only">Ranking {p.rotulo}</caption>
           <thead>
-            <tr className="border-b border-marfim text-left text-xs text-suave">
+            <tr className="border-b border-linha text-left text-xs text-suave">
               <th scope="col" className="py-2 pr-2 font-medium">#</th>
               <th scope="col" className="py-2 pr-2 font-medium">Apelido</th>
               <th scope="col" className="py-2 pr-2 text-right font-medium">Acertos</th>
@@ -114,7 +114,7 @@ export default async function Ranking({
           </thead>
           <tbody>
             {top.map((l) => (
-              <tr key={l.user_id} className={`border-b border-marfim/60 ${l.user_id === perfil.id ? "bg-vinho-claro font-medium" : ""}`}>
+              <tr key={l.user_id} className={`border-b border-linha/60 ${l.user_id === perfil.id ? "bg-marca-claro font-medium" : ""}`}>
                 <td className="py-2 pr-2 tabular-nums">{l.posicao}</td>
                 <td className="py-2 pr-2">
                   {l.apelido}
@@ -130,7 +130,7 @@ export default async function Ranking({
         </table>
       )}
       {minha && minha.posicao > 50 && (
-        <p className="rounded-md border border-vinho-borda bg-vinho-claro p-3 text-sm">
+        <p className="rounded-md border border-marca-borda bg-marca-claro p-3 text-sm">
           Sua posição: <strong>{minha.posicao}º</strong> com {minha.pontos.toLocaleString("pt-BR")} pontos.
         </p>
       )}

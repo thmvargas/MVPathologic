@@ -23,7 +23,7 @@ export function FiltroEspecie({
   };
   const chip = (ativo: boolean) =>
     `inline-flex min-h-11 items-center rounded-full border px-3 text-sm ${
-      ativo ? "border-vinho bg-vinho text-areia" : "border-marfim bg-areia text-grafite"
+      ativo ? "border-marca bg-marca text-fundo" : "border-linha bg-fundo text-texto"
     }`;
   return (
     <nav aria-label="Filtrar por espécie" className="flex flex-wrap gap-2">
@@ -44,9 +44,9 @@ export type Situacao = "acertou" | "errou" | "em_andamento" | undefined;
 function Selo({ s }: { s: Situacao }) {
   if (!s) return null;
   const cfg = {
-    acertou: { t: "Acertou", c: "bg-esmeralda text-areia", I: Check },
-    errou: { t: "Não acertou", c: "bg-superficie text-grafite border border-marfim", I: X },
-    em_andamento: { t: "Em andamento", c: "bg-ambar-claro text-ambar border border-ambar-borda", I: CircleDashed },
+    acertou: { t: "Acertou", c: "bg-sucesso text-texto", I: Check },
+    errou: { t: "Não acertou", c: "bg-superficie text-texto border border-linha", I: X },
+    em_andamento: { t: "Em andamento", c: "bg-alerta-claro text-alerta-escuro border border-alerta-borda", I: CircleDashed },
   }[s];
   return (
     <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${cfg.c}`}>
@@ -75,7 +75,7 @@ export function ListaCasos({
         const titulo = c.data ? `Caso do dia ${formatarDataBR(c.data)}` : `Caso ${i + 1}`;
         return (
           <li key={c.codigo + (c.data ?? "")}>
-            <Link href={href} className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim bg-areia px-4 py-3 hover:border-vinho">
+            <Link href={href} className="flex min-h-14 items-center gap-3 rounded-lg border border-linha bg-fundo px-4 py-3 hover:border-marca">
               <div className="flex-1">
                 <p className="font-medium">{titulo}</p>
                 <p className="text-sm text-suave">
@@ -83,7 +83,7 @@ export function ListaCasos({
                 </p>
               </div>
               {situacao && <Selo s={c.situacao} />}
-              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-vinho" />
+              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-marca" />
             </Link>
           </li>
         );

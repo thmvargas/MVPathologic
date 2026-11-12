@@ -3,7 +3,7 @@ export const metadata = { title: "Privacidade · Vet em Sete" };
 export default function Privacidade() {
   return (
     <article className="space-y-4 pt-2 text-sm leading-relaxed [&_h2]:mt-6 [&_h2]:text-lg [&_ul]:list-disc [&_ul]:pl-5">
-      <h1 className="text-2xl text-vinho">Aviso de privacidade</h1>
+      <h1 className="text-2xl text-marca">Aviso de privacidade</h1>
       <p>
         O Vet em Sete é um jogo didático usado nas disciplinas do curso de Medicina Veterinária. Este aviso explica,
         conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), quais dados coletamos e por quê.

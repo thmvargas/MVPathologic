@@ -14,8 +14,8 @@ const pct = (x: number) => `${Math.round(x * 100)}%`;
 
 function Numero({ rotulo, valor }: { rotulo: string; valor: string | number }) {
   return (
-    <div className="rounded-lg border border-marfim p-3">
-      <p className="font-titulo text-2xl font-semibold text-vinho">{valor}</p>
+    <div className="rounded-lg border border-linha p-3">
+      <p className="font-titulo text-2xl font-semibold text-marca">{valor}</p>
       <p className="text-xs text-suave">{rotulo}</p>
     </div>
   );
@@ -36,7 +36,7 @@ function Barras({ titulo, itens, rotulo }: { titulo: string; itens: Agrupado[]; 
               </span>
             </div>
             <div className="mt-1 h-2 rounded-full bg-superficie" aria-hidden>
-              <div className="h-2 rounded-full bg-esmeralda" style={{ width: pct(g.acertos / g.jogadas) }} />
+              <div className="h-2 rounded-full bg-sucesso" style={{ width: pct(g.acertos / g.jogadas) }} />
             </div>
           </li>
         ))}
@@ -59,7 +59,7 @@ export default async function Eu({ searchParams }: { searchParams: Promise<{ err
     <div className="space-y-6 pt-2">
       <header className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          <h1 className="text-2xl text-vinho">{perfil.apelido}</h1>
+          <h1 className="text-2xl text-marca">{perfil.apelido}</h1>
           <p className="text-sm text-suave">
             {perfil.nome}
             {perfil.semestre ? ` · ${perfil.semestre}º semestre` : ""}
@@ -67,7 +67,7 @@ export default async function Eu({ searchParams }: { searchParams: Promise<{ err
             {perfil.papel === "professor" ? " · professor" : ""}
           </p>
         </div>
-        <Link href="/cadastro?editar=1" className="inline-flex min-h-11 items-center gap-1 text-sm text-vinho underline">
+        <Link href="/cadastro?editar=1" className="inline-flex min-h-11 items-center gap-1 text-sm text-marca underline">
           <Pencil aria-hidden size={16} strokeWidth={1.5} />
           Editar cadastro
         </Link>
@@ -81,19 +81,19 @@ export default async function Eu({ searchParams }: { searchParams: Promise<{ err
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <p className="flex items-center gap-2 rounded-lg border border-ambar-borda bg-ambar-claro px-3 py-2 text-sm">
-          <Flame aria-hidden size={18} strokeWidth={1.5} className="text-ambar" />
+        <p className="flex items-center gap-2 rounded-lg border border-alerta-borda bg-alerta-claro px-3 py-2 text-sm">
+          <Flame aria-hidden size={18} strokeWidth={1.5} className="text-alerta-escuro" />
           Sequência atual: <strong>{e.streakAtual} {e.streakAtual === 1 ? "dia" : "dias"}</strong>
         </p>
-        <p className="flex items-center gap-2 rounded-lg border border-marfim px-3 py-2 text-sm">
-          <Trophy aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+        <p className="flex items-center gap-2 rounded-lg border border-linha px-3 py-2 text-sm">
+          <Trophy aria-hidden size={18} strokeWidth={1.5} className="text-marca" />
           Recorde: <strong>{e.streakRecorde}</strong>
         </p>
       </div>
 
       {e.jogadas === 0 ? (
         <p className="text-suave">
-          Você ainda não terminou nenhuma partida. <Link href="/hoje" className="text-vinho underline">Jogue o caso do dia</Link>.
+          Você ainda não terminou nenhuma partida. <Link href="/hoje" className="text-marca underline">Jogue o caso do dia</Link>.
         </p>
       ) : (
         <>
@@ -104,7 +104,7 @@ export default async function Eu({ searchParams }: { searchParams: Promise<{ err
                 <li key={i} className="flex items-center gap-2 text-sm">
                   <span className="w-24 shrink-0 text-suave">{rotulosDist[i]}</span>
                   <span
-                    className={`flex h-6 min-w-6 items-center justify-end rounded px-1.5 text-xs font-medium text-areia ${i === 7 ? "bg-grafite/60" : "bg-vinho"}`}
+                    className={`flex h-6 min-w-6 items-center justify-end rounded px-1.5 text-xs font-medium text-fundo ${i === 7 ? "bg-texto/60" : "bg-marca"}`}
                     style={{ width: `${Math.max(6, (n / maior) * 100)}%` }}
                   >
                     {n}
@@ -118,17 +118,17 @@ export default async function Eu({ searchParams }: { searchParams: Promise<{ err
         </>
       )}
 
-      <details className="rounded-lg border border-marfim p-4 text-sm">
+      <details className="rounded-lg border border-linha p-4 text-sm">
         <summary className="cursor-pointer font-medium">Excluir meus dados do Vet em Sete</summary>
         <form action={excluirMeusDados} className="mt-3 space-y-2">
           <p>
             Apaga seu cadastro e todas as suas partidas deste jogo. Não dá para desfazer. Para confirmar, digite{" "}
             <strong>EXCLUIR</strong>.
           </p>
-          {erro === "confirmacao" && <p role="alert" className="text-carmim">Digite EXCLUIR para confirmar.</p>}
-          {erro === "falha" && <p role="alert" className="text-carmim">Não foi possível excluir agora. Tente de novo.</p>}
-          <input name="confirmacao" autoComplete="off" className="min-h-11 w-full rounded-md border border-grafite/40 bg-areia px-3" />
-          <button type="submit" className="min-h-11 rounded-md bg-carmim px-4 font-medium text-areia">Excluir</button>
+          {erro === "confirmacao" && <p role="alert" className="text-destaque-escuro">Digite EXCLUIR para confirmar.</p>}
+          {erro === "falha" && <p role="alert" className="text-destaque-escuro">Não foi possível excluir agora. Tente de novo.</p>}
+          <input name="confirmacao" autoComplete="off" className="min-h-11 w-full rounded-md border border-texto/40 bg-fundo px-3" />
+          <button type="submit" className="min-h-11 rounded-md border border-destaque bg-destaque-claro px-4 font-semibold text-destaque-escuro">Excluir</button>
         </form>
       </details>
     </div>

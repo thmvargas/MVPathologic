@@ -22,6 +22,6 @@ export async function POST() {
   return NextResponse.json({
     partidaId: partida.id,
     data: partida.data_caso,
-    visao: montarVisao(estadoDaPartida(partida), caso, (await banco()).mapaDiagnosticos),
+    visao: montarVisao(estadoDaPartida(partida), caso, (await banco()).mapaDiagnosticos, `partida:${partida.id}`),
   });
 }

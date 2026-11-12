@@ -25,6 +25,10 @@ test("partida completa do caso de exemplo", async ({ page }) => {
   await palpite("drc", /Doença renal crônica/);
   await palpite("cinom", /Cinomose/);
 
+  // Cada camada do caso aparece uma única vez (sem duplicar a cada tentativa)
+  for (const nome of ["Paciente e queixa principal", "Histórico", "Anamnese", "Exame físico"])
+    await expect(page.getByRole("button", { name: new RegExp(`^${nome}`) })).toHaveCount(1);
+
   // 5ª tentativa: exame antes do palpite
   await page.getByLabel(/Hemograma completo/).check();
   await page.getByRole("button", { name: "Pedir exame" }).click();

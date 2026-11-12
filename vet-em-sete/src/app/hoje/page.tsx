@@ -15,13 +15,13 @@ export default async function Hoje() {
   if (sessao.estado !== "ok")
     return (
       <div className="space-y-4 pt-4">
-        <h1 className="text-2xl text-vinho">Caso do dia</h1>
+        <h1 className="text-2xl text-marca">Caso do dia</h1>
         {sessao.estado === "sem_login_configurado" ? (
           <p className="text-suave">O login ainda não foi configurado neste servidor.</p>
         ) : (
           <>
             <p>Entre com seu e-mail institucional para jogar o caso do dia e entrar no ranking.</p>
-            <Link href="/entrar?volta=/hoje" className="inline-flex min-h-12 items-center gap-2 rounded-md bg-vinho px-4 font-medium text-areia">
+            <Link href="/entrar?volta=/hoje" className="inline-flex min-h-12 items-center gap-2 rounded-md bg-marca px-4 font-medium text-fundo">
               <LogIn aria-hidden size={18} strokeWidth={1.5} />
               Entrar
             </Link>
