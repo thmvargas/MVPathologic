@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { obterSessao } from "@/lib/sessao";
+import { Faixas } from "@/components/Faixas";
 import { dataBR, formatarDataBR } from "@/lib/util/tempo";
 import { Archive, ArrowRight, CalendarDays, Dumbbell, GraduationCap, LayoutDashboard, Settings, Stethoscope, Trophy } from "lucide-react";
 import { banco, codigoDoCaso, ID_CASO_EXEMPLO } from "@/lib/dados";
@@ -20,25 +21,26 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
   return (
     <div className="space-y-8">
       {excluido && (
-        <p role="status" className="rounded-md border border-esmeralda-borda bg-esmeralda-claro p-3 text-sm">
+        <p role="status" className="rounded-md border border-sucesso-borda bg-sucesso-claro p-3 text-sm">
           Seus dados do Vet em Sete foram excluídos.
         </p>
       )}
+      <Faixas />
       <section className="space-y-2 pt-2">
-        <h1 className="text-3xl text-vinho">Sete tentativas para o diagnóstico</h1>
+        <h1 className="text-3xl text-marca">Sete tentativas para o diagnóstico</h1>
         <p className="text-suave">
           A cada palpite errado, uma nova parte do caso aparece: histórico, anamnese, exame físico e exames
           complementares. Depois, escolha o tratamento.
         </p>
       </section>
 
-      <section aria-labelledby="hoje" className="rounded-lg border border-vinho bg-vinho p-4 text-areia">
+      <section aria-labelledby="hoje" className="rounded-lg border border-marca bg-marca p-4 text-fundo">
         <p className="text-xs font-medium uppercase tracking-wide">{formatarDataBR(dataBR())}</p>
         <h2 id="hoje" className="mt-1 text-xl">Caso do dia</h2>
         <p className="mt-1 text-sm">Um caso por dia, igual para todos. Vale para o ranking.</p>
         <Link
           href="/hoje"
-          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-areia px-4 py-2 font-medium text-areia"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-fundo px-4 py-2 font-medium text-fundo"
         >
           <CalendarDays aria-hidden size={18} strokeWidth={1.5} />
           {sessao.estado === "ok" ? "Jogar o caso do dia" : "Entrar para jogar"}
@@ -47,15 +49,15 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
       </section>
 
       {exemplo && (
-      <section aria-labelledby="exemplo" className="rounded-lg border border-vinho-borda bg-vinho-claro p-4">
-        <p className="text-xs font-medium uppercase tracking-wide text-vinho">Sem login</p>
+      <section aria-labelledby="exemplo" className="rounded-lg border border-marca-borda bg-marca-claro p-4">
+        <p className="text-xs font-medium uppercase tracking-wide text-marca">Sem login</p>
         <h2 id="exemplo" className="mt-1 text-xl">Caso de exemplo</h2>
         <p className="mt-1 text-sm">
           {ROTULO_GRUPO[exemplo.grupo_especie]} · {exemplo.semestre}º semestre
         </p>
         <Link
           href={`/jogar/${codigoDoCaso(exemplo)}?modo=exemplo`}
-          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md bg-vinho px-4 py-2 font-medium text-areia hover:opacity-90"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md bg-marca px-4 py-2 font-medium text-fundo hover:opacity-90"
         >
           <Stethoscope aria-hidden size={18} strokeWidth={1.5} />
           Jogar
@@ -66,23 +68,23 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
 
       {sessao.estado === "ok" && (
         <nav aria-label="Atalhos" className="grid gap-3 sm:grid-cols-2">
-          <Link href="/ranking" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
-            <Trophy aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+          <Link href="/ranking" className="flex min-h-14 items-center gap-3 rounded-lg border border-linha p-4 hover:border-marca">
+            <Trophy aria-hidden size={22} strokeWidth={1.5} className="text-marca" />
             <span className="flex-1 font-medium">Ranking</span>
-            <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+            <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-marca" />
           </Link>
           {sessao.perfil.papel === "professor" && (
-            <Link href="/professor" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
-              <LayoutDashboard aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+            <Link href="/professor" className="flex min-h-14 items-center gap-3 rounded-lg border border-linha p-4 hover:border-marca">
+              <LayoutDashboard aria-hidden size={22} strokeWidth={1.5} className="text-marca" />
               <span className="flex-1 font-medium">Painel do professor</span>
-              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-marca" />
             </Link>
           )}
           {sessao.perfil.papel === "professor" && (
-            <Link href="/admin/casos" className="flex min-h-14 items-center gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
-              <Settings aria-hidden size={22} strokeWidth={1.5} className="text-vinho" />
+            <Link href="/admin/casos" className="flex min-h-14 items-center gap-3 rounded-lg border border-linha p-4 hover:border-marca">
+              <Settings aria-hidden size={22} strokeWidth={1.5} className="text-marca" />
               <span className="flex-1 font-medium">Administração de casos</span>
-              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-vinho" />
+              <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="text-marca" />
             </Link>
           )}
         </nav>
@@ -93,14 +95,14 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
         <ul className="grid gap-3 sm:grid-cols-2">
           {MODOS.map(({ titulo, texto, icone: Icone, href }) => (
             <li key={titulo}>
-              <Link href={href} className="flex min-h-16 items-start gap-3 rounded-lg border border-marfim p-4 hover:border-vinho">
-                <Icone aria-hidden size={22} strokeWidth={1.5} className="mt-0.5 shrink-0 text-vinho" />
+              <Link href={href} className="flex min-h-16 items-start gap-3 rounded-lg border border-linha p-4 hover:border-marca">
+                <Icone aria-hidden size={22} strokeWidth={1.5} className="mt-0.5 shrink-0 text-marca" />
                 <span className="flex-1">
                   <span className="block font-medium">{titulo}</span>
                   <span className="block text-sm text-suave">{texto}</span>
                   <span className="block text-xs text-suave">Fora do ranking</span>
                 </span>
-                <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="mt-1 shrink-0 text-vinho" />
+                <ArrowRight aria-hidden size={18} strokeWidth={1.5} className="mt-1 shrink-0 text-marca" />
               </Link>
             </li>
           ))}

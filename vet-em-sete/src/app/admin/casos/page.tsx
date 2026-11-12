@@ -7,10 +7,10 @@ import { BotaoAcao } from "@/components/admin/BotaoAcao";
 import { importarRepositorio } from "../acoes";
 
 const STATUS: Record<string, [string, string]> = {
-  rascunho: ["Rascunho", "bg-ambar-claro text-ambar border border-ambar-borda"],
-  em_revisao: ["Em revisão", "bg-azul-claro text-azul border border-azul-borda"],
-  revisado: ["Aprovado", "bg-esmeralda text-areia"],
-  arquivado: ["Arquivado", "bg-superficie text-suave border border-marfim"],
+  rascunho: ["Rascunho", "bg-alerta-claro text-alerta-escuro border border-alerta-borda"],
+  em_revisao: ["Em revisão", "bg-marca-claro text-marca border border-marca-borda"],
+  revisado: ["Aprovado", "bg-sucesso text-texto"],
+  arquivado: ["Arquivado", "bg-superficie text-suave border border-linha"],
 };
 
 export default async function AdminCasos({ searchParams }: { searchParams: Promise<{ status?: string; especie?: string }> }) {
@@ -22,7 +22,7 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
     (l) => (!sp.status || l.status === sp.status) && (!sp.especie || l.conteudo.grupo_especie === sp.especie),
   );
   const contagem = (s: string) => linhas.filter((l) => l.status === s).length;
-  const chip = (ativo: boolean) => `inline-flex min-h-10 items-center rounded-full border px-3 text-xs ${ativo ? "border-vinho bg-vinho text-areia" : "border-marfim"}`;
+  const chip = (ativo: boolean) => `inline-flex min-h-10 items-center rounded-full border px-3 text-xs ${ativo ? "border-marca bg-marca text-fundo" : "border-linha"}`;
   const q = (o: Record<string, string | undefined>) => {
     const p = new URLSearchParams(Object.entries({ ...sp, ...o }).filter(([, v]) => v) as [string, string][]);
     return `/admin/casos${p.size ? `?${p}` : ""}`;
@@ -30,7 +30,7 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
 
   if (!tabelas)
     return (
-      <div className="space-y-3 rounded-lg border border-ambar-borda bg-ambar-claro p-4 text-sm">
+      <div className="space-y-3 rounded-lg border border-alerta-borda bg-alerta-claro p-4 text-sm">
         <h1 className="text-xl">Falta um passo no Supabase</h1>
         <p>
           Rode o arquivo <code>supabase/ves_002_casos_admin.sql</code> no SQL Editor do Supabase. Depois volte aqui e
@@ -42,10 +42,10 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h1 className="text-2xl text-vinho">Casos</h1>
+        <h1 className="text-2xl text-marca">Casos</h1>
         <div className="flex flex-wrap gap-2">
           <BotaoAcao acao={importarRepositorio} rotulo="Importar do repositório" />
-          <Link href="/admin/casos/novo" className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-vinho px-3 text-sm font-medium text-areia">
+          <Link href="/admin/casos/novo" className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-marca px-3 text-sm font-medium text-fundo">
             <Plus aria-hidden size={16} strokeWidth={1.5} />
             Novo caso
           </Link>
@@ -53,7 +53,7 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
       </div>
 
       {linhas.length === 0 && (
-        <p className="rounded-md border border-ambar-borda bg-ambar-claro p-3 text-sm">
+        <p className="rounded-md border border-alerta-borda bg-alerta-claro p-3 text-sm">
           O banco ainda está vazio: o jogo está usando os casos do repositório. Clique em &quot;Importar do
           repositório&quot; para trazê-los para cá e poder editar.
         </p>
@@ -78,7 +78,7 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
           const c = l.conteudo;
           return (
             <li key={l.id}>
-              <Link href={`/admin/casos/${l.id}`} className="block rounded-lg border border-marfim p-3 hover:border-vinho">
+              <Link href={`/admin/casos/${l.id}`} className="block rounded-lg border border-linha p-3 hover:border-marca">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="flex-1 font-medium">{nomeDx(c.diagnostico_id)}</span>
                   <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${cor}`}>{rot}</span>
@@ -88,7 +88,7 @@ export default async function AdminCasos({ searchParams }: { searchParams: Promi
                   {l.uso === "treino" ? "só treino" : "caso do dia"} · v{l.versao} · <code className="text-xs">{l.id}</code>
                 </p>
                 {l.problemas.length > 0 && (
-                  <p className="mt-1 text-xs text-ambar">
+                  <p className="mt-1 text-xs text-alerta-escuro">
                     {l.problemas.length} pendência{l.problemas.length > 1 ? "s" : ""}
                     {!l.valido && " · incompleto (fora do jogo)"}
                   </p>

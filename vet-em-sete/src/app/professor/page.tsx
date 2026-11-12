@@ -26,7 +26,7 @@ function Secao({ id, titulo, csv, children }: { id: string; titulo: string; csv?
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 id={id} className="text-lg">{titulo}</h2>
         {csv && (
-          <a href={csv} className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-vinho px-3 text-sm text-vinho">
+          <a href={csv} className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-marca px-3 text-sm text-marca">
             <Download aria-hidden size={16} strokeWidth={1.5} />
             CSV
           </a>
@@ -42,7 +42,7 @@ function Tabela({ cab, linhas, destaque }: { cab: string[]; linhas: (string | nu
   return (
     <table className="w-full min-w-[32rem] text-sm">
       <thead>
-        <tr className="border-b border-marfim text-left text-xs text-suave">
+        <tr className="border-b border-linha text-left text-xs text-suave">
           {cab.map((c, i) => (
             <th key={c} scope="col" className={`py-2 pr-3 font-medium ${i > 0 ? "text-right" : ""}`}>{c}</th>
           ))}
@@ -50,7 +50,7 @@ function Tabela({ cab, linhas, destaque }: { cab: string[]; linhas: (string | nu
       </thead>
       <tbody>
         {linhas.map((l, i) => (
-          <tr key={i} className={`border-b border-marfim/60 align-top ${destaque?.(i) ? "bg-carmim-claro" : ""}`}>
+          <tr key={i} className={`border-b border-linha/60 align-top ${destaque?.(i) ? "bg-destaque-claro" : ""}`}>
             {l.map((v, j) => (
               <td key={j} className={`py-2 pr-3 ${j > 0 ? "text-right tabular-nums" : ""}`}>{v}</td>
             ))}
@@ -72,20 +72,20 @@ export default async function Professor({ searchParams }: { searchParams: Promis
   const q = filtrosParaQuery(f);
   const csv = (tipo: string) => `/professor/csv?tipo=${tipo}&${q}`;
   const r = resumoGeral(partidas);
-  const campo = "min-h-11 w-full rounded-md border border-grafite/40 bg-areia px-2 text-sm";
+  const campo = "min-h-11 w-full rounded-md border border-texto/40 bg-fundo px-2 text-sm";
   const exames = examesPedidos(partidas, casos);
   const condutas = condutasMarcadas(partidas, casos);
 
   return (
     <div className="space-y-8 pt-2">
       <div>
-        <h1 className="text-2xl text-vinho">Painel do professor</h1>
+        <h1 className="text-2xl text-marca">Painel do professor</h1>
         <p className="text-sm text-suave">
           {formatarDataBR(f.de)} a {formatarDataBR(f.ate)} · só alunos e partidas concluídas
         </p>
       </div>
 
-      <form action="/professor" className="grid grid-cols-2 gap-2 rounded-lg border border-marfim bg-superficie p-3 sm:grid-cols-6">
+      <form action="/professor" className="grid grid-cols-2 gap-2 rounded-lg border border-linha bg-superficie p-3 sm:grid-cols-6">
         <label className="col-span-1 space-y-1 text-xs sm:col-span-1">
           <span>De</span>
           <input type="date" name="de" defaultValue={f.de} className={campo} />
@@ -117,7 +117,7 @@ export default async function Professor({ searchParams }: { searchParams: Promis
           </select>
         </label>
         <div className="col-span-2 flex items-end sm:col-span-1">
-          <button className="min-h-11 w-full rounded-md bg-vinho px-3 text-sm font-medium text-areia">Aplicar</button>
+          <button className="min-h-11 w-full rounded-md bg-marca px-3 text-sm font-medium text-fundo">Aplicar</button>
         </div>
       </form>
 
@@ -128,14 +128,14 @@ export default async function Professor({ searchParams }: { searchParams: Promis
           ["taxa de acerto", pct(r.taxaAcerto)],
           ["média de tentativas", num(r.mediaTentativas)],
         ].map(([rot, v]) => (
-          <div key={rot} className="rounded-lg border border-marfim p-3">
-            <p className="font-titulo text-2xl font-semibold text-vinho">{v}</p>
+          <div key={rot} className="rounded-lg border border-linha p-3">
+            <p className="font-titulo text-2xl font-semibold text-marca">{v}</p>
             <p className="text-xs text-suave">{rot}</p>
           </div>
         ))}
       </div>
 
-      <a href={csv("partidas")} className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-vinho px-4 text-sm font-medium text-areia">
+      <a href={csv("partidas")} className="inline-flex min-h-11 items-center gap-1.5 rounded-md bg-marca px-4 text-sm font-medium text-fundo">
         <Download aria-hidden size={16} strokeWidth={1.5} />
         Exportar todas as partidas (CSV)
       </a>

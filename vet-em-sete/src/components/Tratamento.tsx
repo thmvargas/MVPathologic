@@ -12,10 +12,10 @@ const ROTULO = {
 } as const;
 
 const ESTILO = {
-  adequado: "bg-esmeralda text-areia",
-  aceitavel: "bg-esmeralda-claro text-esmeralda border border-esmeralda-borda",
-  desnecessario: "bg-superficie text-grafite border border-marfim",
-  contraindicado: "bg-carmim text-areia",
+  adequado: "bg-sucesso text-texto",
+  aceitavel: "bg-sucesso-claro text-sucesso-escuro border border-sucesso-borda",
+  desnecessario: "bg-superficie text-texto border border-linha",
+  contraindicado: "bg-destaque-claro text-destaque-escuro border border-destaque",
 } as const;
 
 export function EscolhaTratamento({
@@ -57,21 +57,21 @@ export function EscolhaTratamento({
             <label
               key={o.id}
               className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-md border px-3 py-2 text-sm ${
-                marcadas.has(o.id) ? "border-vinho bg-vinho-claro" : "border-marfim bg-areia"
+                marcadas.has(o.id) ? "border-marca bg-marca-claro" : "border-linha bg-fundo"
               }`}
             >
               <input
                 type="checkbox"
                 checked={marcadas.has(o.id)}
                 onChange={() => alternar(o.id)}
-                className="size-4 shrink-0 accent-[#6b2130]"
+                className="size-4 shrink-0 accent-[#0018ff]"
               />
               <span>{o.texto}</span>
             </label>
           ))}
         </div>
       </fieldset>
-      <button type="submit" disabled={ocupado} className="min-h-12 w-full rounded-md bg-vinho px-4 font-medium text-areia disabled:opacity-40 sm:w-auto">
+      <button type="submit" disabled={ocupado} className="min-h-12 w-full rounded-md bg-marca px-4 font-medium text-fundo disabled:opacity-40 sm:w-auto">
         Confirmar tratamento
       </button>
     </form>
@@ -84,7 +84,7 @@ export function TratamentoCorrigido({ itens }: { itens: NonNullable<Visao["trata
       {itens.map((t) => (
         <li
           key={t.id}
-          className={`rounded-md border p-3 text-sm ${t.classificacao === "contraindicado" ? "border-carmim-borda bg-carmim-claro" : "border-marfim bg-areia"}`}
+          className={`rounded-md border p-3 text-sm ${t.classificacao === "contraindicado" ? "border-destaque-borda bg-destaque-claro" : "border-linha bg-fundo"}`}
         >
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1 text-xs text-suave">
@@ -95,7 +95,7 @@ export function TratamentoCorrigido({ itens }: { itens: NonNullable<Visao["trata
           </div>
           <p className="mt-1 font-medium">{t.texto}</p>
           <p className="text-suave">{t.justificativa}</p>
-          {t.dose?.a_revisar && <p className="mt-1 text-xs text-ambar">Dose a revisar</p>}
+          {t.dose?.a_revisar && <p className="mt-1 text-xs text-alerta-escuro">Dose a revisar</p>}
         </li>
       ))}
     </ul>

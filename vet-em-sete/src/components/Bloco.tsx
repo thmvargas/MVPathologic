@@ -3,28 +3,29 @@
 import { useId, useState } from "react";
 import { ChevronDown, Lock, type LucideIcon } from "lucide-react";
 
-export type Acento = "vinho" | "azul" | "violeta" | "ambar" | "esmeralda" | "carmim";
+/**
+ * Identidade UNIFEOB: cartões brancos com contorno cinza, título em azul e o
+ * "ponto" da marca depois do título. O rosa (10% da composição) fica para o
+ * aviso de camada nova.
+ */
+export type Acento = "marca" | "destaque";
 
 // Classes estáticas (o Tailwind precisa ver os nomes completos).
-export const ESTILO: Record<Acento, { cartao: string; titulo: string }> = {
-  vinho: { cartao: "bg-vinho-claro border-vinho-borda", titulo: "text-vinho" },
-  azul: { cartao: "bg-azul-claro border-azul-borda", titulo: "text-azul" },
-  violeta: { cartao: "bg-violeta-claro border-violeta-borda", titulo: "text-violeta" },
-  ambar: { cartao: "bg-ambar-claro border-ambar-borda", titulo: "text-ambar" },
-  esmeralda: { cartao: "bg-esmeralda-claro border-esmeralda-borda", titulo: "text-esmeralda" },
-  carmim: { cartao: "bg-carmim-claro border-carmim-borda", titulo: "text-carmim" },
+export const ESTILO: Record<Acento, { cartao: string; titulo: string; ponto: string }> = {
+  marca: { cartao: "bg-fundo border-linha", titulo: "text-marca", ponto: "bg-marca" },
+  destaque: { cartao: "bg-fundo border-destaque", titulo: "text-texto", ponto: "bg-destaque" },
 };
 
 export function Bloco({
   titulo,
-  acento,
+  acento = "marca",
   icone: Icone,
   children,
   novo = false,
   inicialAberto = true,
 }: {
   titulo: string;
-  acento: Acento;
+  acento?: Acento;
   icone: LucideIcon;
   children: React.ReactNode;
   novo?: boolean;
@@ -44,8 +45,13 @@ export function Bloco({
           className={`flex min-h-12 w-full items-center gap-2 px-4 py-2 text-left ${e.titulo}`}
         >
           <Icone aria-hidden size={20} strokeWidth={1.5} className="shrink-0" />
-          <span className="flex-1">{titulo}</span>
-          {novo && <span className="font-sans text-xs font-medium uppercase tracking-wide">novo</span>}
+          <span className="flex-1">
+            {titulo}
+            <span aria-hidden className={`ml-0.5 inline-block size-1.5 rounded-full align-baseline ${e.ponto}`} />
+          </span>
+          {novo && (
+            <span className="rounded-full border border-destaque bg-destaque-claro px-2 py-0.5 font-sans text-xs font-semibold uppercase tracking-wide text-destaque-escuro">novo</span>
+          )}
           <ChevronDown
             aria-hidden
             size={20}
@@ -63,7 +69,7 @@ export function Bloco({
 
 export function BlocoBloqueado({ titulo, quando }: { titulo: string; quando: string }) {
   return (
-    <div className="flex min-h-12 items-center gap-2 rounded-lg border border-dashed border-marfim px-4 py-2 text-sm text-suave">
+    <div className="flex min-h-12 items-center gap-2 rounded-lg border border-dashed border-linha px-4 py-2 text-sm text-suave">
       <Lock aria-hidden size={16} strokeWidth={1.5} className="shrink-0" />
       <span className="flex-1">{titulo}</span>
       <span className="text-xs">{quando}</span>
@@ -82,7 +88,7 @@ export function ListaBlocos({ blocos }: { blocos: { titulo: string; itens: strin
             <ul className="mt-1 space-y-0.5">
               {b.itens.map((i) => (
                 <li key={i} className="flex gap-2">
-                  <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-grafite" />
+                  <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-texto" />
                   <span>{i}</span>
                 </li>
               ))}

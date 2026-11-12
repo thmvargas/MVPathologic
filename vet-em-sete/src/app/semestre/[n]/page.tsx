@@ -22,8 +22,8 @@ export default async function Semestre({
   const sit = await situacaoDoAluno();
   return (
     <div className="space-y-4 pt-2">
-      <Link href="/semestre" className="text-sm text-vinho underline">Todos os semestres</Link>
-      <h1 className="text-2xl text-vinho">{n}º semestre</h1>
+      <Link href="/semestre" className="text-sm text-marca underline">Todos os semestres</Link>
+      <h1 className="text-2xl text-marca">{n}º semestre</h1>
       <AvisoForaDoRanking />
       <FiltroEspecie grupos={gruposPresentes(doSemestre)} atual={especie} base={`/semestre/${n}`} />
       <ListaCasos modo="semestre" situacao cartoes={lista.map((c) => ({ ...cartao(c), situacao: sit.get(c.id) }))} />

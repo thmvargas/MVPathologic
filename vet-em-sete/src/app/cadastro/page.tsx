@@ -14,7 +14,7 @@ export default async function Cadastro({ searchParams }: { searchParams: Promise
   const professor = sessao.estado === "ok" ? sessao.perfil.papel === "professor" : sessao.professor;
   return (
     <div className="mx-auto max-w-sm space-y-5 pt-4">
-      <h1 className="text-2xl text-vinho">{sessao.estado === "ok" ? "Editar cadastro" : "Complete seu cadastro"}</h1>
+      <h1 className="text-2xl text-marca">{sessao.estado === "ok" ? "Editar cadastro" : "Complete seu cadastro"}</h1>
       {professor && <p className="text-sm text-suave">Conta de professor: semestre e turma não são necessários.</p>}
       <FormCadastro professor={professor} inicial={sessao.estado === "ok" ? sessao.perfil : undefined} />
     </div>

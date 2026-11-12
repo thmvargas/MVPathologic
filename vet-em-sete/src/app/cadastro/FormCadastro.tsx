@@ -8,7 +8,7 @@ type Inicial = { nome: string; apelido: string; semestre: number | null; turma: 
 
 export default function FormCadastro({ professor, inicial }: { professor: boolean; inicial?: Inicial }) {
   const [estado, acao, pendente] = useActionState<EstadoForm, FormData>(salvarCadastro, {});
-  const campo = "min-h-12 w-full rounded-md border border-grafite/40 bg-areia px-3 text-base focus:border-vinho focus:outline-none";
+  const campo = "min-h-12 w-full rounded-md border border-texto/40 bg-fundo px-3 text-base focus:border-marca focus:outline-none";
   return (
     <form action={acao} className="space-y-4">
       <label className="block space-y-1">
@@ -43,14 +43,14 @@ export default function FormCadastro({ professor, inicial }: { professor: boolea
         </div>
       )}
       <label className="flex min-h-12 items-start gap-3 text-sm">
-        <input type="checkbox" name="aceite" required className="mt-1 size-4 shrink-0 accent-[#6b2130]" />
+        <input type="checkbox" name="aceite" required className="mt-1 size-4 shrink-0 accent-[#0018ff]" />
         <span>
-          Li o <Link href="/privacidade" target="_blank" className="text-vinho underline">aviso de privacidade</Link> e
+          Li o <Link href="/privacidade" target="_blank" className="text-marca underline">aviso de privacidade</Link> e
           concordo com o uso dos meus dados de jogo para fins didáticos.
         </span>
       </label>
-      {estado.erro && <p role="alert" className="text-sm text-carmim">{estado.erro}</p>}
-      <button type="submit" disabled={pendente} className="min-h-12 w-full rounded-md bg-vinho px-4 font-medium text-areia disabled:opacity-40">
+      {estado.erro && <p role="alert" className="text-sm text-destaque-escuro">{estado.erro}</p>}
+      <button type="submit" disabled={pendente} className="min-h-12 w-full rounded-md bg-marca px-4 font-medium text-fundo disabled:opacity-40">
         {pendente ? "Salvando..." : "Salvar"}
       </button>
     </form>

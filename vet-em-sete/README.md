@@ -174,6 +174,23 @@ Só casos com `"status": "revisado"` entram no caso do dia. O sorteio é feito
 na primeira visita de cada dia (horário de Brasília) e fica gravado na tabela
 `ves_caso_do_dia`. Para fixar um caso numa data, use **Administração → Agenda**.
 
+## Identidade visual
+
+Segue o Brandbook UNIFEOB (dez. 2023):
+
+- Paleta institucional na divisão 60 | 30 | 10: branco e cinzas, Azul Unifeob
+  `#0018ff` e Rosa Destaque `#ff1863`. Cores definidas em `src/app/globals.css`.
+- Logo + assinatura: logotipo oficial, ponto na cor da Escola Agro (`#96d30f`,
+  Medicina Veterinária) e o nome "Vet em Sete" (`src/components/Marca.tsx`).
+  O logotipo em `public/marca/` foi recortado da imagem oficial do modelo de
+  apresentação, sem alterar a forma. Se a comunicação tiver o arquivo vetorial
+  (SVG), basta substituir os PNGs.
+- Fonte: a da marca é a Arson Pro (comercial). O site usa Montserrat, a opção
+  livre mais próxima; se houver licença web da Arson Pro, ela é usada
+  automaticamente ao ser incluída.
+- Sem gradientes e sem sombras. Textos pequenos sobre rosa, verde e amarelo
+  usam versões escuras dessas cores para manter o contraste AA.
+
 ## Aviso
 
 Conteúdo didático produzido para graduação, sob curadoria de patologista

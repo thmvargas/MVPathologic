@@ -10,7 +10,7 @@ export default function FormAgenda({ opcoes, minimo }: { opcoes: [string, string
   const [r, setR] = useState<Resposta | null>(null);
   const [pendente, iniciar] = useTransition();
   const router = useRouter();
-  const cls = "min-h-11 w-full rounded-md border border-grafite/40 bg-areia px-2 text-sm";
+  const cls = "min-h-11 w-full rounded-md border border-texto/40 bg-fundo px-2 text-sm";
   if (!opcoes.length) return <p className="text-sm text-suave">Nenhum caso aprovado de uso &quot;caso do dia&quot; para agendar.</p>;
   return (
     <form
@@ -34,8 +34,8 @@ export default function FormAgenda({ opcoes, minimo }: { opcoes: [string, string
           {opcoes.map(([id, rot]) => <option key={id} value={id}>{rot}</option>)}
         </select>
       </label>
-      <button disabled={pendente} className="min-h-11 rounded-md bg-vinho px-4 text-sm font-medium text-areia disabled:opacity-40">Agendar</button>
-      {r && <p role={r.ok ? "status" : "alert"} className={`text-sm sm:col-span-3 ${r.ok ? "text-esmeralda" : "text-carmim"}`}>{r.mensagem}</p>}
+      <button disabled={pendente} className="min-h-11 rounded-md bg-marca px-4 text-sm font-medium text-fundo disabled:opacity-40">Agendar</button>
+      {r && <p role={r.ok ? "status" : "alert"} className={`text-sm sm:col-span-3 ${r.ok ? "text-sucesso-escuro" : "text-destaque-escuro"}`}>{r.mensagem}</p>}
     </form>
   );
 }

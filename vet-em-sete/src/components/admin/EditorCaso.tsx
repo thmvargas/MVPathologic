@@ -20,7 +20,7 @@ type Obj = Record<string, any>;
 // Campos básicos
 // ---------------------------------------------------------------------------
 
-const cls = "min-h-11 w-full rounded-md border border-grafite/40 bg-areia px-2 text-sm focus:border-vinho focus:outline-none";
+const cls = "min-h-11 w-full rounded-md border border-texto/40 bg-fundo px-2 text-sm focus:border-marca focus:outline-none";
 
 function Rotulo({ t, children, dica }: { t: string; children: React.ReactNode; dica?: string }) {
   return (
@@ -70,7 +70,7 @@ function Escolha({ v, set, opcoes, vazio }: { v: any; set: (x: string) => void; 
 function Marca({ v, set, t }: { v: any; set: (x: boolean) => void; t: string }) {
   return (
     <label className="inline-flex min-h-11 items-center gap-2 text-sm">
-      <input type="checkbox" checked={Boolean(v)} onChange={(e) => set(e.target.checked)} className="size-4 accent-[#9c4707]" />
+      <input type="checkbox" checked={Boolean(v)} onChange={(e) => set(e.target.checked)} className="size-4 accent-[#0018ff]" />
       {t}
     </label>
   );
@@ -97,11 +97,11 @@ function Lista<T = Obj>({
     n.splice(i + d, 0, x);
     set(n);
   };
-  const btn = "inline-flex min-h-9 min-w-9 items-center justify-center rounded border border-marfim disabled:opacity-30";
+  const btn = "inline-flex min-h-9 min-w-9 items-center justify-center rounded border border-linha disabled:opacity-30";
   return (
     <div className="space-y-2">
       {lista.map((item, i) => (
-        <div key={i} className="rounded-md border border-marfim bg-areia p-2">
+        <div key={i} className="rounded-md border border-linha bg-fundo p-2">
           <div className="mb-2 flex justify-end gap-1">
             <button type="button" aria-label="Subir" disabled={i === 0} onClick={() => mover(i, -1)} className={btn}>
               <ArrowUp aria-hidden size={14} />
@@ -109,14 +109,14 @@ function Lista<T = Obj>({
             <button type="button" aria-label="Descer" disabled={i === lista.length - 1} onClick={() => mover(i, 1)} className={btn}>
               <ArrowDown aria-hidden size={14} />
             </button>
-            <button type="button" aria-label="Remover" onClick={() => set(lista.filter((_, j) => j !== i))} className={`${btn} text-carmim`}>
+            <button type="button" aria-label="Remover" onClick={() => set(lista.filter((_, j) => j !== i))} className={`${btn} text-destaque-escuro`}>
               <Trash2 aria-hidden size={14} />
             </button>
           </div>
           {render(item, (x) => set(lista.map((y, j) => (j === i ? x : y))), i)}
         </div>
       ))}
-      <button type="button" onClick={() => set([...lista, novo() as T])} className="inline-flex min-h-10 items-center gap-1 text-sm text-vinho">
+      <button type="button" onClick={() => set([...lista, novo() as T])} className="inline-flex min-h-10 items-center gap-1 text-sm text-marca">
         <Plus aria-hidden size={16} /> {rotuloNovo}
       </button>
     </div>
@@ -146,9 +146,9 @@ function Blocos({ v, set }: { v: Obj[] | undefined; set: (x: Obj[]) => void }) {
 
 function Secao({ t, children, aberta = false }: { t: string; children: React.ReactNode; aberta?: boolean }) {
   return (
-    <details open={aberta} className="rounded-lg border border-marfim">
+    <details open={aberta} className="rounded-lg border border-linha">
       <summary className="cursor-pointer px-4 py-3 font-titulo text-lg font-semibold">{t}</summary>
-      <div className="space-y-3 border-t border-marfim px-4 py-3">{children}</div>
+      <div className="space-y-3 border-t border-linha px-4 py-3">{children}</div>
     </details>
   );
 }
@@ -234,14 +234,14 @@ export default function EditorCaso({
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
-        <h1 className="flex-1 text-2xl text-vinho">
+        <h1 className="flex-1 text-2xl text-marca">
           {novo ? "Novo caso" : mapa.get(c.diagnostico_id)?.nome ?? c.id}
         </h1>
-        <span className="rounded-full border border-marfim px-2 py-0.5 text-xs">{statusRotulo} · v{c.versao}</span>
+        <span className="rounded-full border border-linha px-2 py-0.5 text-xs">{statusRotulo} · v{c.versao}</span>
       </div>
 
       {/* Pendências */}
-      <div className={`rounded-lg border p-3 text-sm ${validacao.lista.length ? "border-ambar-borda bg-ambar-claro" : "border-esmeralda-borda bg-esmeralda-claro"}`}>
+      <div className={`rounded-lg border p-3 text-sm ${validacao.lista.length ? "border-alerta-borda bg-alerta-claro" : "border-sucesso-borda bg-sucesso-claro"}`}>
         {validacao.lista.length === 0 ? (
           <p>Sem pendências: o caso pode ser aprovado.</p>
         ) : (
@@ -270,7 +270,7 @@ export default function EditorCaso({
               if (a === "json") setJsonTexto(JSON.stringify(c, null, 2));
               setAba(a);
             }}
-            className={`min-h-10 rounded-full border px-3 text-sm ${aba === a ? "border-vinho bg-vinho text-areia" : "border-marfim"}`}
+            className={`min-h-10 rounded-full border px-3 text-sm ${aba === a ? "border-marca bg-marca text-fundo" : "border-linha"}`}
           >
             {a === "form" ? "Formulário" : "JSON (avançado)"}
           </button>
@@ -281,7 +281,7 @@ export default function EditorCaso({
         <div className="space-y-2">
           <p className="text-xs text-suave">Cole ou edite o caso inteiro em JSON. Clique em &quot;Aplicar&quot; para voltar ao formulário.</p>
           <textarea value={jsonTexto} onChange={(e) => setJsonTexto(e.target.value)} rows={24} className={`${cls} py-2 font-mono text-xs`} spellCheck={false} />
-          {jsonErro && <p role="alert" className="text-sm text-carmim">{jsonErro}</p>}
+          {jsonErro && <p role="alert" className="text-sm text-destaque-escuro">{jsonErro}</p>}
           <button
             type="button"
             onClick={() => {
@@ -295,7 +295,7 @@ export default function EditorCaso({
                 setJsonErro(e instanceof Error ? e.message : "JSON inválido.");
               }
             }}
-            className="min-h-11 rounded-md border border-vinho px-3 text-sm text-vinho"
+            className="min-h-11 rounded-md border border-marca px-3 text-sm text-marca"
           >
             Aplicar
           </button>
@@ -508,9 +508,9 @@ export default function EditorCaso({
       )}
 
       {/* Barra de ações */}
-      <div className="sticky bottom-0 -mx-4 space-y-2 border-t border-marfim bg-areia px-4 py-3">
+      <div className="sticky bottom-0 -mx-4 space-y-2 border-t border-linha bg-fundo px-4 py-3">
         {resposta && (
-          <div role={resposta.ok ? "status" : "alert"} className={`text-sm ${resposta.ok ? "text-esmeralda" : "text-carmim"}`}>
+          <div role={resposta.ok ? "status" : "alert"} className={`text-sm ${resposta.ok ? "text-sucesso-escuro" : "text-destaque-escuro"}`}>
             {resposta.mensagem}
             {!resposta.ok && resposta.pendencias && resposta.pendencias.length > 0 && (
               <ul className="mt-1 list-disc pl-5 text-xs">
@@ -520,7 +520,7 @@ export default function EditorCaso({
           </div>
         )}
         <div className="flex flex-wrap gap-2">
-          <button type="button" disabled={pendente} onClick={() => enviar("salvar")} className="min-h-11 rounded-md bg-vinho px-4 text-sm font-medium text-areia disabled:opacity-40">
+          <button type="button" disabled={pendente} onClick={() => enviar("salvar")} className="min-h-11 rounded-md bg-marca px-4 text-sm font-medium text-fundo disabled:opacity-40">
             {pendente ? "Salvando..." : "Salvar"}
           </button>
           {!novo && c.status !== "revisado" && (
@@ -529,23 +529,23 @@ export default function EditorCaso({
               disabled={pendente || validacao.lista.length > 0}
               onClick={() => enviar("aprovar")}
               title={validacao.lista.length ? "Resolva as pendências para aprovar" : undefined}
-              className="min-h-11 rounded-md bg-esmeralda px-4 text-sm font-medium text-areia disabled:opacity-40"
+              className="min-h-11 rounded-md bg-sucesso px-4 text-sm font-medium text-texto disabled:opacity-40"
             >
               Aprovar
             </button>
           )}
           {!novo && c.status === "revisado" && (
-            <button type="button" disabled={pendente} onClick={() => enviar("rascunho")} className="min-h-11 rounded-md border border-vinho px-4 text-sm text-vinho">
+            <button type="button" disabled={pendente} onClick={() => enviar("rascunho")} className="min-h-11 rounded-md border border-marca px-4 text-sm text-marca">
               Voltar para rascunho
             </button>
           )}
           {!novo && c.status !== "arquivado" && (
-            <button type="button" disabled={pendente} onClick={() => window.confirm("Arquivar este caso? Ele sai do jogo.") && enviar("arquivar")} className="min-h-11 rounded-md border border-marfim px-4 text-sm">
+            <button type="button" disabled={pendente} onClick={() => window.confirm("Arquivar este caso? Ele sai do jogo.") && enviar("arquivar")} className="min-h-11 rounded-md border border-linha px-4 text-sm">
               Arquivar
             </button>
           )}
           {linkPrevia && (
-            <a href={linkPrevia} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-vinho px-4 text-sm text-vinho">
+            <a href={linkPrevia} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-marca px-4 text-sm text-marca">
               <Eye aria-hidden size={16} strokeWidth={1.5} /> Jogar como aluno
             </a>
           )}
@@ -561,7 +561,7 @@ export default function EditorCaso({
                   if (r.ok) router.push("/admin/casos");
                 })
               }
-              className="min-h-11 rounded-md border border-carmim px-4 text-sm text-carmim"
+              className="min-h-11 rounded-md border border-destaque px-4 text-sm text-destaque-escuro"
             >
               Excluir
             </button>

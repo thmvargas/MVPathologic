@@ -4,10 +4,10 @@ import type { Proximidade } from "@/lib/jogo/proximidade";
 type Tom = "igual" | "parcial" | "diferente" | "perto";
 
 const ESTILO: Record<Tom, string> = {
-  igual: "bg-esmeralda text-areia border-esmeralda",
-  parcial: "bg-ambar text-areia border-ambar",
-  diferente: "bg-superficie text-grafite border-marfim",
-  perto: "bg-ambar-claro text-ambar border-ambar",
+  igual: "bg-sucesso text-texto border-sucesso",
+  parcial: "bg-alerta text-texto border-alerta",
+  diferente: "bg-superficie text-texto border-linha",
+  perto: "bg-alerta-claro text-alerta-escuro border-alerta",
 };
 const ICONE = { igual: Check, parcial: Contrast, diferente: X, perto: Target };
 

@@ -8,7 +8,7 @@ export default async function NovoCaso() {
   const b = await banco();
   return (
     <div className="space-y-3">
-      <Link href="/admin/casos" className="text-sm text-vinho underline">Todos os casos</Link>
+      <Link href="/admin/casos" className="text-sm text-marca underline">Todos os casos</Link>
       <EditorCaso inicial={{ ...casoVazio(), revisao: { autor: prof.nome } }} novo diagnosticos={b.diagnosticos} />
     </div>
   );

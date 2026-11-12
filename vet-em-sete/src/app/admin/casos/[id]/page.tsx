@@ -12,7 +12,7 @@ export default async function EditarCaso({ params }: { params: Promise<{ id: str
   const jogavel = b.buscarCaso(id); // só casos completos podem ser jogados na prévia
   return (
     <div className="space-y-3">
-      <Link href="/admin/casos" className="text-sm text-vinho underline">Todos os casos</Link>
+      <Link href="/admin/casos" className="text-sm text-marca underline">Todos os casos</Link>
       <EditorCaso
         key={JSON.stringify(data.conteudo).length + id}
         inicial={data.conteudo as Record<string, unknown>}

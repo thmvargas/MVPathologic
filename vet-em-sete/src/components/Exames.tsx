@@ -29,9 +29,9 @@ export const ROTULO_CLASSE = {
 } as const;
 
 const ESTILO_CLASSE = {
-  relevante: "bg-esmeralda text-areia",
-  pouco_util: "bg-superficie text-grafite border border-marfim",
-  desnecessario: "bg-carmim text-areia",
+  relevante: "bg-sucesso text-texto",
+  pouco_util: "bg-superficie text-texto border border-linha",
+  desnecessario: "bg-destaque-claro text-destaque-escuro border border-destaque",
 } as const;
 
 export function SeloClasse({ c }: { c: keyof typeof ROTULO_CLASSE }) {
@@ -42,9 +42,9 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
   const { resultado } = exame;
   const Icone = ICONE_EXAME[exame.tipo] ?? ClipboardList;
   return (
-    <article className="space-y-2 rounded-md border border-esmeralda-borda bg-areia p-3">
+    <article className="space-y-2 rounded-md border border-sucesso-borda bg-fundo p-3">
       <header className="flex flex-wrap items-center gap-2">
-        <Icone aria-hidden size={18} strokeWidth={1.5} className="text-esmeralda" />
+        <Icone aria-hidden size={18} strokeWidth={1.5} className="text-sucesso-escuro" />
         <h3 className="flex-1 font-sans text-sm font-semibold">{exame.nome}</h3>
         {exame.classificacao && <SeloClasse c={exame.classificacao} />}
       </header>
@@ -53,7 +53,7 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
           <table className="w-full min-w-[22rem] border-collapse text-left text-sm">
             <caption className="sr-only">Resultado de {exame.nome}</caption>
             <thead>
-              <tr className="border-b border-marfim text-xs text-suave">
+              <tr className="border-b border-linha text-xs text-suave">
                 <th scope="col" className="px-1 py-1 font-medium">Analito</th>
                 <th scope="col" className="px-1 py-1 font-medium">Resultado</th>
                 <th scope="col" className="px-1 py-1 font-medium">Referência</th>
@@ -61,7 +61,7 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
             </thead>
             <tbody>
               {resultado.tabela.map((l) => (
-                <tr key={l.analito} className="border-b border-marfim/60 align-top">
+                <tr key={l.analito} className="border-b border-linha/60 align-top">
                   <th scope="row" className="px-1 py-1 font-normal">{l.analito}</th>
                   <td className={`px-1 py-1 whitespace-nowrap ${l.alterado ? "font-semibold" : ""}`}>
                     {l.valor} {l.unidade}
@@ -71,7 +71,7 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
                   <td className="px-1 py-1 text-suave whitespace-nowrap">
                     {l.referencia}
                     {mostrarRevisar && l.a_revisar && (
-                      <span className="ml-1 rounded border border-ambar-borda bg-ambar-claro px-1 text-[0.65rem] text-ambar">
+                      <span className="ml-1 rounded border border-alerta-borda bg-alerta-claro px-1 text-[0.65rem] text-alerta-escuro">
                         a revisar
                       </span>
                     )}
@@ -95,7 +95,7 @@ export function ResultadoExame({ exame, mostrarRevisar }: { exame: Omit<ExameVis
           {resultado.conclusao}
         </p>
       )}
-      {exame.comentario_didatico && <p className="border-t border-marfim pt-2 text-sm text-suave">{exame.comentario_didatico}</p>}
+      {exame.comentario_didatico && <p className="border-t border-linha pt-2 text-sm text-suave">{exame.comentario_didatico}</p>}
     </article>
   );
 }
@@ -132,7 +132,7 @@ export function EscolhaExame({
               <label
                 key={o.id}
                 className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-md border px-3 py-2 text-sm ${
-                  marcado ? "border-esmeralda bg-esmeralda-claro" : "border-marfim bg-areia"
+                  marcado ? "border-sucesso bg-sucesso-claro" : "border-linha bg-fundo"
                 }`}
               >
                 <input
@@ -141,9 +141,9 @@ export function EscolhaExame({
                   value={o.id}
                   checked={marcado}
                   onChange={() => setSel(o.id)}
-                  className="size-4 accent-[#047857]"
+                  className="size-4 accent-[#0018ff]"
                 />
-                <I aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-esmeralda" />
+                <I aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-sucesso-escuro" />
                 <span>{o.nome}</span>
               </label>
             );
@@ -153,7 +153,7 @@ export function EscolhaExame({
       <button
         type="submit"
         disabled={!sel || ocupado}
-        className="min-h-12 w-full rounded-md bg-esmeralda px-4 font-medium text-areia disabled:opacity-40 sm:w-auto"
+        className="min-h-12 w-full rounded-md bg-sucesso px-4 font-medium text-texto disabled:opacity-40 sm:w-auto"
       >
         Pedir exame
       </button>
