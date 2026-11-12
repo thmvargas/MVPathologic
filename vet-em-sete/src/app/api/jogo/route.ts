@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { banco } from "@/lib/dados";
@@ -35,14 +36,17 @@ export async function POST(req: Request) {
   if (sessao.estado === "ok" && modo !== "exemplo" && modo !== "previa") {
     const uid = sessao.perfil.id;
     const p = (!novo && (await partidaAberta(uid, caso.id, modo))) || (await criarPartida(uid, caso, modo, dataBR()));
-    return NextResponse.json({ partidaId: p.id, data: p.data_caso, visao: montarVisao(estadoDaPartida(p), caso, diagnosticos) });
+    return NextResponse.json({ partidaId: p.id, data: p.data_caso, visao: montarVisao(estadoDaPartida(p), caso, diagnosticos, `partida:${p.id}`) });
   }
 
   const salvo = token && !novo ? lerEstado(token) : null;
-  const acoes = salvo && salvo.codigo === codigo && salvo.versao === caso.versao ? salvo.acoes : [];
+  const valido = salvo && salvo.codigo === codigo && salvo.versao === caso.versao;
+  const acoes = valido ? salvo.acoes : [];
+  // Partida sem login: semente sorteada no início e guardada no token assinado
+  const semente = (valido && salvo.semente) || randomUUID();
   const estado = { ...estadoInicial(caso), acoes };
   return NextResponse.json({
-    token: assinarEstado({ codigo, versao: caso.versao, acoes }),
-    visao: montarVisao(estado, caso, diagnosticos),
+    token: assinarEstado({ codigo, versao: caso.versao, acoes, semente }),
+    visao: montarVisao(estado, caso, diagnosticos, `token:${semente}`),
   });
 }

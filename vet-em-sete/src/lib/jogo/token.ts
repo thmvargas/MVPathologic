@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import type { Acao } from "./motor";
 
 /** Conteúdo do token: o caso vai pelo código neutro, nunca pelo id (que revela o diagnóstico). */
-export type EstadoToken = { codigo: string; versao: number; acoes: Acao[] };
+export type EstadoToken = { codigo: string; versao: number; acoes: Acao[]; semente?: string };
 
 /**
  * Estado da partida assinado (HMAC-SHA256). Usado enquanto o jogo roda sem
@@ -40,7 +40,7 @@ export function lerEstado(token: string): EstadoToken | null {
   try {
     const e = JSON.parse(Buffer.from(corpo, "base64url").toString("utf8"));
     if (typeof e?.codigo !== "string" || typeof e?.versao !== "number" || !Array.isArray(e?.acoes)) return null;
-    return { codigo: e.codigo, versao: e.versao, acoes: e.acoes };
+    return { codigo: e.codigo, versao: e.versao, acoes: e.acoes, semente: typeof e.semente === "string" ? e.semente.slice(0, 40) : undefined };
   } catch {
     return null;
   }

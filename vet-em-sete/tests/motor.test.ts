@@ -110,3 +110,71 @@ describe("compartilhar", () => {
     expect(t.toLowerCase()).not.toContain("erliq");
   });
 });
+
+import fs from "node:fs";
+import path from "node:path";
+import { CasoSchema } from "@/lib/caso/esquema";
+import { embaralhar } from "@/lib/jogo/ordem";
+
+describe("ordem de exames e condutas", () => {
+  const dir = path.join(__dirname, "../src/dados/casos");
+  const casos = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => CasoSchema.parse(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))));
+
+  it("embaralhamento é uma permutação e é estável para a mesma semente", () => {
+    const a = embaralhar([1, 2, 3, 4, 5, 6, 7, 8], "x");
+    expect([...a].sort()).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(embaralhar([1, 2, 3, 4, 5, 6, 7, 8], "x")).toEqual(a);
+    expect(embaralhar([1, 2, 3, 4, 5, 6, 7, 8], "y")).not.toEqual(a);
+  });
+
+  it("a visão mostra as condutas fora da ordem de cadastro, sempre na mesma ordem", () => {
+    let e = jogar([{ tipo: "palpite", diagnosticoId: "erliquiose_monocitica" }]);
+    const v1 = montarVisao(e, caso, mapa);
+    const ids = v1.tratamentosOpcoes!.map((t) => t.id);
+    expect([...ids].sort()).toEqual(caso.tratamentos.map((t) => t.id).sort());
+    expect(ids).not.toEqual(caso.tratamentos.map((t) => t.id));
+    expect(montarVisao(e, caso, mapa).tratamentosOpcoes!.map((t) => t.id)).toEqual(ids);
+    e = aplicarAcao(e, { tipo: "tratamento", condutas: [] }, caso, mapa);
+    expect(montarVisao(e, caso, mapa).tratamentoCorrigido!.map((t) => t.id)).toEqual(ids);
+  });
+
+  it("cada partida tem sua própria ordem, estável para a mesma partida", () => {
+    const e = jogar([{ tipo: "palpite", diagnosticoId: "erliquiose_monocitica" }]);
+    const ordem = (s: string) => montarVisao(e, caso, mapa, s).tratamentosOpcoes!.map((t) => t.id).join(",");
+    expect(ordem("partida:1")).toBe(ordem("partida:1"));
+    const distintas = new Set(Array.from({ length: 20 }, (_, i) => ordem(`partida:${i}`)));
+    expect(distintas.size).toBeGreaterThan(10);
+  });
+
+  it("em muitas partidas, a conduta adequada não ocupa o topo mais que o acaso", () => {
+    const e = jogar([{ tipo: "palpite", diagnosticoId: "erliquiose_monocitica" }]);
+    const adequadas = new Set(caso.tratamentos.filter((t) => t.classificacao === "adequado").map((t) => t.id));
+    const N = 2000;
+    let primeiraAdequada = 0;
+    for (let i = 0; i < N; i++) if (adequadas.has(montarVisao(e, caso, mapa, `partida:${i}`).tratamentosOpcoes![0].id)) primeiraAdequada++;
+    const esperado = adequadas.size / caso.tratamentos.length;
+    expect(Math.abs(primeiraAdequada / N - esperado)).toBeLessThan(0.04);
+  });
+
+  it("no banco inteiro, adequados e relevantes não ficam concentrados no topo", () => {
+    // Fração de itens "bons" entre os primeiros k, comparada com a fração geral
+    let bonsNoTopo = 0, topo = 0, bons = 0, total = 0;
+    for (const c of casos) {
+      const ordem = embaralhar(c.tratamentos, `condutas:${c.id}:${c.versao}`);
+      const k = c.tratamentos.filter((t) => t.classificacao === "adequado").length;
+      bonsNoTopo += ordem.slice(0, k).filter((t) => t.classificacao === "adequado").length;
+      topo += k;
+      bons += k;
+      total += c.tratamentos.length;
+      const ex = embaralhar(c.exames, `exames:${c.id}:${c.versao}`);
+      const kr = c.exames.filter((x) => x.classificacao === "relevante").length;
+      bonsNoTopo += ex.slice(0, kr).filter((x) => x.classificacao === "relevante").length;
+      topo += kr;
+      bons += kr;
+      total += c.exames.length;
+    }
+    // Na ordem de cadastro essa fração seria ~100%; embaralhado, fica perto da proporção geral
+    expect(bonsNoTopo / topo).toBeLessThan(0.6);
+    expect(bonsNoTopo / topo).toBeGreaterThan((bons / total) * 0.5);
+  });
+});

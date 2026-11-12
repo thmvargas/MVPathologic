@@ -1,6 +1,7 @@
 import type { Caso, Diagnostico } from "@/lib/caso/esquema";
 import { compararDiagnosticos, type Proximidade } from "./proximidade";
 import { calcularPontuacao, MAX_TENTATIVAS, type Pontuacao } from "./pontuacao";
+import { embaralhar } from "./ordem";
 
 /**
  * Motor do jogo. Funções puras: recebem o estado e o caso, devolvem o novo
@@ -178,8 +179,22 @@ export type Visao = {
   temItensARevisar: boolean;
 };
 
-export function montarVisao(estado: Estado, caso: Caso, diagnosticos: Map<string, Diagnostico>): Visao {
+/**
+ * `semente` define a ordem em que exames e condutas aparecem. Deve ser
+ * própria da partida (id da partida, ou um valor sorteado guardado no token),
+ * para que cada aluno e cada partida tenham uma ordem diferente, estável ao
+ * recarregar.
+ */
+export function montarVisao(
+  estado: Estado,
+  caso: Caso,
+  diagnosticos: Map<string, Diagnostico>,
+  semente = `${caso.id}:${caso.versao}`,
+): Visao {
   const r = resumir(estado, caso);
+  // Ordem de exibição embaralhada (fixa por partida), para a posição não revelar a classificação
+  const examesEmOrdem = embaralhar(caso.exames, `exames:${semente}`);
+  const condutasEmOrdem = embaralhar(caso.tratamentos, `condutas:${semente}`);
   const terminouDiagnostico = r.fase !== "diagnostico";
   const fim = r.fase === "fim";
   const alvo = diagnosticos.get(caso.diagnostico_id);
@@ -237,19 +252,19 @@ export function montarVisao(estado: Estado, caso: Caso, diagnosticos: Map<string
   if (nivel >= 3) visao.anamnese = caso.anamnese;
   if (nivel >= 4) visao.exame_fisico = caso.exame_fisico;
   if (r.fase === "diagnostico" && nivel >= PRIMEIRA_TENTATIVA_COM_EXAME)
-    visao.examesDisponiveis = caso.exames
+    visao.examesDisponiveis = examesEmOrdem
       .filter((e) => !r.examesPedidos.includes(e.id))
       .map((e) => ({ id: e.id, nome: e.nome, tipo: e.tipo }));
 
   if (terminouDiagnostico) {
     visao.diagnostico = { id: alvo.id, nome: alvo.nome };
     visao.acertou = r.tentativaAcerto !== null;
-    visao.tratamentosOpcoes = caso.tratamentos.map((t) => ({ id: t.id, texto: t.texto, tipo: t.tipo }));
+    visao.tratamentosOpcoes = condutasEmOrdem.map((t) => ({ id: t.id, texto: t.texto, tipo: t.tipo }));
   }
 
   if (fim) {
     const marcadas = new Set(r.tratamentoMarcado ?? []);
-    visao.tratamentoCorrigido = caso.tratamentos.map((t) => ({ ...t, marcada: marcadas.has(t.id) }));
+    visao.tratamentoCorrigido = condutasEmOrdem.map((t) => ({ ...t, marcada: marcadas.has(t.id) }));
     visao.pontuacao = calcularPontuacao({
       caso,
       tentativaAcerto: r.tentativaAcerto,
@@ -263,7 +278,7 @@ export function montarVisao(estado: Estado, caso: Caso, diagnosticos: Map<string
     }));
     visao.referencias = caso.referencias;
     // No fim, todos os exames ficam visíveis com classificação, para estudo
-    visao.examesTodos = caso.exames.map((e) => ({ ...e, pedido: r.examesPedidos.includes(e.id) }));
+    visao.examesTodos = examesEmOrdem.map((e) => ({ ...e, pedido: r.examesPedidos.includes(e.id) }));
   }
   return visao;
 }
