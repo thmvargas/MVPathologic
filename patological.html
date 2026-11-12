@@ -66,6 +66,13 @@ body{
 .btn:focus-visible{ outline: 3px solid var(--cor-acento); outline-offset: 3px; }
 .btn.secundario{ background: var(--cor-secundaria); }
 .btn.acento{ background: var(--cor-acento); }
+.card-vetemsete{
+  text-align:center;
+  background:#ffffff;
+  border:2px solid #0018ff;
+}
+.card-vetemsete h2{ color:#0018ff; }
+.btn.vetemsete{ background:#0018ff; color:#fff; }
 .btn.fantasma{ background: #fff; color: var(--cor-texto); }
 .btn:disabled{ opacity:0.55; cursor:not-allowed; transform:none; }
 .btn-pequeno{ font-size:14px; padding:8px 16px; min-height:36px; }
@@ -1006,6 +1013,13 @@ function renderIntro() {
       el("button", { class: "btn secundario", text: "🗓️ Jogar dias anteriores", onclick: renderArquivo }),
     ]));
   }
+
+  // Jogo irmão em site próprio (Next.js na Vercel, login com e-mail institucional).
+  partes.push(el("section", { class: "card card-vetemsete" }, [
+    el("h2", { text: "🩺 Já conhece o Vet em Sete?" }),
+    el("p", { text: "Raciocínio clínico: um caso veterinário por dia e sete tentativas para chegar ao diagnóstico. Peça exames, escolha o tratamento e aprenda com a explicação. Entre com o e-mail institucional." }),
+    el("button", { class: "btn vetemsete", text: "Jogar Vet em Sete", onclick: () => { location.href = "https://vet-em-sete.vercel.app"; } }),
+  ]));
 
   partes.push(el("section", { class: "card", style: "text-align:center" }, [
     el("button", { class: "btn fantasma", text: "🐾 Voltar pro PatoVetZee", onclick: () => { location.href = "patovetzee.html"; } }),
