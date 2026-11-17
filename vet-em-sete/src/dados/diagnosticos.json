@@ -340,7 +340,8 @@
     ],
     "especies": [
       "canina",
-      "felina"
+      "felina",
+      "bovina"
     ],
     "sistemas": [
       "reprodutor",
@@ -770,8 +771,7 @@
     "id": "cetose_bovina",
     "nome": "Cetose",
     "sinonimos": [
-      "acetonemia",
-      "toxemia da prenhez"
+      "acetonemia"
     ],
     "especies": [
       "bovina",
@@ -1711,5 +1711,2068 @@
     "categoria": "infecciosa_parasitaria",
     "agente_grupo": "Ancylostomatidae",
     "agente_genero": "Ancylostoma"
+  },
+  {
+    "id": "papilomatose_bovina",
+    "nome": "Papilomatose bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Papillomaviridae",
+    "agente_genero": "Deltapapillomavirus"
+  },
+  {
+    "id": "febre_aftosa_bovina",
+    "nome": "Febre aftosa",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Picornaviridae",
+    "agente_genero": "Aphthovirus"
+  },
+  {
+    "id": "cirrose_hepatica_canina",
+    "nome": "Cirrose hepática",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "insulinoma_canino",
+    "nome": "Insulinoma",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "pancreatico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "cetoacidose_diabetica_canina",
+    "nome": "Cetoacidose diabética",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "pancreatico"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "insuficiencia_pancreatica_exocrina_canina",
+    "nome": "Insuficiência pancreática exócrina",
+    "sinonimos": [
+      "IPE"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "pancreatico"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "hemiplegia_laringea_equina",
+    "nome": "Hemiplegia laríngea equina",
+    "sinonimos": [
+      "roarer"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "dirofilariose_canina",
+    "nome": "Dirofilariose canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Onchocercidae",
+    "agente_genero": "Dirofilaria"
+  },
+  {
+    "id": "cardiomiopatia_dilatada_canina",
+    "nome": "Cardiomiopatia dilatada",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "persistencia_ducto_arterioso_canina",
+    "nome": "Persistência do ducto arterioso",
+    "sinonimos": [
+      "PDA"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "tumor_venereo_transmissivel_canino",
+    "nome": "Tumor venéreo transmissível",
+    "sinonimos": [
+      "TVT"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "criptorquidismo_canino",
+    "nome": "Criptorquidismo canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "displasia_coxofemoral",
+    "nome": "Displasia coxofemoral",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "osteossarcoma_canino",
+    "nome": "Osteossarcoma apendicular canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "encefalopatia_espongiforme_bovina",
+    "nome": "Encefalopatia espongiforme bovina",
+    "sinonimos": [
+      "EEB",
+      "vaca louca"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "degenerativa",
+    "agente_grupo": "Príons"
+  },
+  {
+    "id": "traumatismo_cranioencefalico_canino",
+    "nome": "Traumatismo cranioencefálico",
+    "sinonimos": [
+      "TCE"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "ppid_equina",
+    "nome": "Disfunção da pars intermedia da hipófise",
+    "sinonimos": [
+      "PPID",
+      "Cushing equino"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "diarreia_viral_bovina",
+    "nome": "Diarreia viral bovina",
+    "sinonimos": [
+      "BVD"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "multissistemico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Flaviviridae",
+    "agente_genero": "Pestivirus"
+  },
+  {
+    "id": "cardiomiopatia_hipertrofica_felina",
+    "nome": "Cardiomiopatia hipertrófica felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "defeito_septo_atrial_canino",
+    "nome": "Defeito do septo atrial",
+    "sinonimos": [
+      "CIA"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "defeito_septo_ventricular_canino",
+    "nome": "Defeito do septo ventricular",
+    "sinonimos": [
+      "CIV"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "endocardiose_valvar_canina",
+    "nome": "Endocardiose valvar",
+    "sinonimos": [
+      "degeneração mixomatosa"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "endocardite_bacteriana_canina",
+    "nome": "Endocardite bacteriana",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "endocardite_parasitaria_equina",
+    "nome": "Endocardite/arterite parasitária equina",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Strongylidae",
+    "agente_genero": "Strongylus"
+  },
+  {
+    "id": "persistencia_4_arco_aortico_direito_canina",
+    "nome": "Persistência do 4º arco aórtico direito",
+    "sinonimos": [
+      "anel vascular"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "tetralogia_fallot_canina",
+    "nome": "Tetralogia de Fallot",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "cardiovascular"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "actinomicose_bovina",
+    "nome": "Actinomicose",
+    "sinonimos": [
+      "lumpy jaw"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Actinomycetaceae",
+    "agente_genero": "Actinomyces"
+  },
+  {
+    "id": "coccidiose_bovina",
+    "nome": "Coccidiose bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Eimeriidae",
+    "agente_genero": "Eimeria"
+  },
+  {
+    "id": "deslocamento_abomaso_bovino",
+    "nome": "Deslocamento de abomaso",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "ectima_contagioso_ovino",
+    "nome": "Ectima contagioso",
+    "sinonimos": [
+      "dermatite pustular contagiosa"
+    ],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Poxviridae",
+    "agente_genero": "Parapoxvirus"
+  },
+  {
+    "id": "espirocercose_canina",
+    "nome": "Espirocercose",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Spirocercidae",
+    "agente_genero": "Spirocerca"
+  },
+  {
+    "id": "gastrite_uremica_canina",
+    "nome": "Gastrite urêmica",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "habronemose_equina",
+    "nome": "Habronemose",
+    "sinonimos": [
+      "feridas de verão"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Habronematidae",
+    "agente_genero": "Habronema"
+  },
+  {
+    "id": "intussuscepcao_canina",
+    "nome": "Intussuscepção intestinal",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "linfoma_intestinal_felino",
+    "nome": "Linfoma intestinal felino",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "megaesofago_idiopatico_canino",
+    "nome": "Megaesôfago idiopático/adquirido",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "idiopatica"
+  },
+  {
+    "id": "melanoma_oral_canino",
+    "nome": "Melanoma oral canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "panleucopenia_felina",
+    "nome": "Panleucopenia felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Parvoviridae",
+    "agente_genero": "Protoparvovirus"
+  },
+  {
+    "id": "rotavirose_bovina",
+    "nome": "Rotavirose bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Reoviridae",
+    "agente_genero": "Rotavirus"
+  },
+  {
+    "id": "ulcera_gastrica_equina",
+    "nome": "Síndrome de úlcera gástrica equina",
+    "sinonimos": [
+      "EGUS"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "idiopatica"
+  },
+  {
+    "id": "sindrome_zollinger_ellison_canina",
+    "nome": "Síndrome de Zollinger-Ellison",
+    "sinonimos": [
+      "gastrinoma"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "ulcera_gastrica_canina",
+    "nome": "Úlcera péptica gastroduodenal",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "digestorio"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "acromegalia_felina",
+    "nome": "Acromegalia felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "bocio_bovino",
+    "nome": "Bócio",
+    "sinonimos": [
+      "hiperplasia tireoidiana por deficiência de iodo"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "carcinoma_tireoide_canino",
+    "nome": "Carcinoma de tireoide",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "diabetes_insipidus_central_canina",
+    "nome": "Diabetes insipidus central",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "diabetes_insipidus_nefrogenica_canina",
+    "nome": "Diabetes insipidus nefrogênica",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "feocromocitoma_canino",
+    "nome": "Feocromocitoma",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "hiperadrenocorticismo_iatrogenico_canino",
+    "nome": "Hiperadrenocorticismo iatrogênico",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hipercalcemia_maligna_canina",
+    "nome": "Hipercalcemia da malignidade",
+    "sinonimos": [
+      "pseudo-hiperparatireoidismo"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "hiperparatireoidismo_primario_canino",
+    "nome": "Hiperparatireoidismo primário",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "hiperparatireoidismo_nutricional_canino",
+    "nome": "Hiperparatireoidismo secundário nutricional",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "hiperparatireoidismo_renal_canino",
+    "nome": "Hiperparatireoidismo secundário renal",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "hipoadrenocorticismo_canino",
+    "nome": "Hipoadrenocorticismo",
+    "sinonimos": [
+      "Addison"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hipoparatireoidismo_canino",
+    "nome": "Hipoparatireoidismo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "nanismo_hipofisario_canino",
+    "nome": "Nanismo hipofisário",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "endocrino"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "leucose_enzootica_bovina",
+    "nome": "Leucose enzoótica bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hematopoietico_linfatico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Retroviridae",
+    "agente_genero": "Deltaretrovirus"
+  },
+  {
+    "id": "carcinoma_hepatocelular_canino",
+    "nome": "Carcinoma hepatocelular",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "cisticercose_bovina",
+    "nome": "Cisticercose bovina",
+    "sinonimos": [
+      "Cysticercus bovis"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Taeniidae",
+    "agente_genero": "Taenia"
+  },
+  {
+    "id": "colangiocarcinoma_felino",
+    "nome": "Colangiocarcinoma",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "complexo_rumenite_abscesso_hepatico_bovino",
+    "nome": "Complexo rumenite-abscesso hepático",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Fusobacteriaceae",
+    "agente_genero": "Fusobacterium"
+  },
+  {
+    "id": "fotossensibilizacao_hepatogena_bovina",
+    "nome": "Fotossensibilização hepatógena",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "hepatopatia_cobre_canina",
+    "nome": "Hepatopatia por acúmulo de cobre",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "senecio_intoxicacao_bovina",
+    "nome": "Intoxicação por Senecio spp.",
+    "sinonimos": [
+      "seneciose"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "intoxicacao_xilitol_canina",
+    "nome": "Intoxicação por xilitol",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "shunt_portossistemico_congenito_canino",
+    "nome": "Shunt portossistêmico congênito",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "toxemia_da_prenhez_ovina",
+    "nome": "Toxemia da prenhez",
+    "sinonimos": [],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "triadite_felina",
+    "nome": "Triadite felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "hepatobiliar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "artrite_por_lentivirus_ovina",
+    "nome": "Artrite por lentivírus de pequenos ruminantes",
+    "sinonimos": [
+      "Maedi-Visna"
+    ],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Retroviridae",
+    "agente_genero": "Lentivirus"
+  },
+  {
+    "id": "artrite_reumatoide_canina",
+    "nome": "Artrite reumatoide",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "artrite_septica_bovina",
+    "nome": "Artrite séptica",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "distrofia_muscular_canina",
+    "nome": "Distrofia muscular",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "doenca_musculo_branco_ovina",
+    "nome": "Doença do músculo branco",
+    "sinonimos": [
+      "deficiência de selênio e vitamina E",
+      "distrofia muscular nutricional"
+    ],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "edema_maligno_equino",
+    "nome": "Edema maligno",
+    "sinonimos": [
+      "Clostridium septicum"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Clostridiaceae",
+    "agente_genero": "Clostridium"
+  },
+  {
+    "id": "hipertrofia_muscular_congenita_bovina",
+    "nome": "Musculatura dupla",
+    "sinonimos": [
+      "hipertrofia muscular congênita"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "neosporose_canina",
+    "nome": "Neosporose",
+    "sinonimos": [
+      "Neospora caninum"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Sarcocystidae",
+    "agente_genero": "Neospora"
+  },
+  {
+    "id": "osteoartrite_canina",
+    "nome": "Osteoartrite / doença articular degenerativa",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "osteodistrofia_fibrosa_equina",
+    "nome": "Osteodistrofia fibrosa",
+    "sinonimos": [
+      "bran disease"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "nutricional"
+  },
+  {
+    "id": "osteogenese_imperfeita_canina",
+    "nome": "Osteogênese imperfeita",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "osteoma_equino",
+    "nome": "Osteoma",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "osteomielite_bacteriana_bovina",
+    "nome": "Osteomielite bacteriana",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "osteopetrose_canina",
+    "nome": "Osteopetrose",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "purpura_hemorragica_equina",
+    "nome": "Púrpura hemorrágica",
+    "sinonimos": [
+      "vasculite imunomediada pós-estrangúlio"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "tromboembolismo_arterial_felino",
+    "nome": "Tromboembolismo arterial",
+    "sinonimos": [
+      "saddle thrombus"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "musculoesqueletico"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "encefalopatia_hepatica_canina",
+    "nome": "Encefalopatia hepática",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hidrocefalia_congenita_canina",
+    "nome": "Hidrocefalia congênita",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "intoxicacao_sal_bovina",
+    "nome": "Intoxicação por NaCl",
+    "sinonimos": [
+      "síndrome da privação de água"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "meningite_bacteriana_neonatal_equina",
+    "nome": "Meningite bacteriana neonatal",
+    "sinonimos": [
+      "sepse do potro"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "mieloencefalite_protozoaria_equina",
+    "nome": "Mieloencefalite protozoária equina",
+    "sinonimos": [
+      "EPM"
+    ],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Sarcocystidae",
+    "agente_genero": "Sarcocystis"
+  },
+  {
+    "id": "scrapie_ovina",
+    "nome": "Scrapie",
+    "sinonimos": [],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "nervoso"
+    ],
+    "categoria": "degenerativa",
+    "agente_grupo": "Príons"
+  },
+  {
+    "id": "adenocarcinoma_pancreatico_canino",
+    "nome": "Adenocarcinoma pancreático",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "pancreatico"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "pancreatite_cronica_felina",
+    "nome": "Pancreatite crônica felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "pancreatico"
+    ],
+    "categoria": "idiopatica"
+  },
+  {
+    "id": "brucelose_canina",
+    "nome": "Brucelose canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Brucellaceae",
+    "agente_genero": "Brucella"
+  },
+  {
+    "id": "carcinoma_inflamatorio_mamario_canino",
+    "nome": "Carcinoma inflamatório mamário canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "carcinoma_mamario_canino",
+    "nome": "Carcinoma mamário canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "cisto_folicular_ovariano_bovino",
+    "nome": "Cisto folicular ovariano bovino",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "endometrite_cronica_bovina",
+    "nome": "Endometrite crônica bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "fibropapiloma_peniano_bovino",
+    "nome": "Fibropapiloma peniano bovino",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Papillomaviridae",
+    "agente_genero": "Deltapapillomavirus"
+  },
+  {
+    "id": "freemartinismo_bovina",
+    "nome": "Freemartinismo",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "congenita_genetica"
+  },
+  {
+    "id": "hiperplasia_endometrial_cistica_canina",
+    "nome": "Hiperplasia endometrial cística canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hiperplasia_fibroadenomatosa_mamaria_felina",
+    "nome": "Hiperplasia fibroadenomatosa mamária felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "hiperplasia_prostatica_benigna_canina",
+    "nome": "Hiperplasia prostática benigna canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "leiomioma_uterino_canino",
+    "nome": "Leiomioma uterino canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "metrite_puerperal_bovina",
+    "nome": "Metrite puerperal bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "orquite_bacteriana_canina",
+    "nome": "Orquite/epididimite bacteriana canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "prolapso_uterino_bovino",
+    "nome": "Prolapso uterino bovino",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "prostatite_canina",
+    "nome": "Prostatite canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "pseudociese_canina",
+    "nome": "Pseudociese canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "metabolica_endocrina"
+  },
+  {
+    "id": "seminoma_canino",
+    "nome": "Seminoma canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "torcao_uterina_bovina",
+    "nome": "Torção uterina bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "tumor_celulas_granulosa_equino",
+    "nome": "Tumor de células da granulosa",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "tumor_celulas_leydig_canino",
+    "nome": "Tumor de células de Leydig canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "tumor_celulas_sertoli_canino",
+    "nome": "Tumor de células de Sertoli canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "tumor_mamario_benigno_canino",
+    "nome": "Tumor mamário benigno canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "reprodutor"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "adenocarcinoma_pulmonar_canino",
+    "nome": "Adenocarcinoma pulmonar canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "broncopneumonia_bacteriana_canina",
+    "nome": "Broncopneumonia bacteriana canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "difteria_bezerros",
+    "nome": "Difteria dos bezerros",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Fusobacteriaceae",
+    "agente_genero": "Fusobacterium"
+  },
+  {
+    "id": "hemorragia_pulmonar_induzida_exercicio_equina",
+    "nome": "Hemorragia pulmonar induzida por exercício",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "micose_bolsa_gutural_equina",
+    "nome": "Micose de bolsa gutural equina",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Aspergillaceae",
+    "agente_genero": "Aspergillus"
+  },
+  {
+    "id": "neoplasia_nasal_canina",
+    "nome": "Neoplasia nasal canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "piotorax_felino",
+    "nome": "Piotórax felino",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "pneumonia_fibrinosa_bovina",
+    "nome": "Pneumonia fibrinosa bovina",
+    "sinonimos": [
+      "febre do transporte"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Pasteurellaceae",
+    "agente_genero": "Mannheimia"
+  },
+  {
+    "id": "rinotraqueite_infecciosa_bovina",
+    "nome": "Rinotraqueíte infecciosa bovina",
+    "sinonimos": [
+      "IBR"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Herpesviridae",
+    "agente_genero": "Varicellovirus"
+  },
+  {
+    "id": "rodococose_equina",
+    "nome": "Rodococose equina",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Nocardiaceae",
+    "agente_genero": "Rhodococcus"
+  },
+  {
+    "id": "verminose_pulmonar_bovina",
+    "nome": "Verminose pulmonar bovina",
+    "sinonimos": [],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "respiratorio"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Dictyocaulidae",
+    "agente_genero": "Dictyocaulus"
+  },
+  {
+    "id": "adenite_sebacea_canina",
+    "nome": "Adenite sebácea",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "carcinoma_sebaceo_canino",
+    "nome": "Carcinoma sebáceo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "complexo_granuloma_eosinofilico_felino",
+    "nome": "Complexo granuloma eosinofílico felino",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "dermatite_malassezia_canina",
+    "nome": "Dermatite generalizada por Malassezia spp.",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Malasseziaceae",
+    "agente_genero": "Malassezia"
+  },
+  {
+    "id": "dermatite_solar_canina",
+    "nome": "Dermatite solar canina",
+    "sinonimos": [
+      "dermatite actínica"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "dermatite_herpesvirus_felino",
+    "nome": "Dermatite ulcerativa facial por herpesvírus felino",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Herpesviridae",
+    "agente_genero": "Varicellovirus"
+  },
+  {
+    "id": "dermatofitose_felina",
+    "nome": "Dermatofitose",
+    "sinonimos": [
+      "ringworm"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Arthrodermataceae",
+    "agente_genero": "Microsporum"
+  },
+  {
+    "id": "hemangiossarcoma_cutaneo_canino",
+    "nome": "Hemangiossarcoma cutâneo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "histoplasmose_canina",
+    "nome": "Histoplasmose",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Ajellomycetaceae",
+    "agente_genero": "Histoplasma"
+  },
+  {
+    "id": "linfoma_cutaneo_epiteliotropico_canino",
+    "nome": "Linfoma cutâneo epiteliotrópico",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "lupus_eritematoso_discoide_canino",
+    "nome": "Lúpus eritematoso discoide",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "melanoma_cutaneo_canino",
+    "nome": "Melanoma cutâneo canino",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "otite_externa_malassezia",
+    "nome": "Otite externa por Malassezia spp.",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_fungica",
+    "agente_grupo": "Malasseziaceae",
+    "agente_genero": "Malassezia"
+  },
+  {
+    "id": "paniculite_canina",
+    "nome": "Paniculite",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "papiloma_cutaneo_viral_canino",
+    "nome": "Papiloma cutâneo viral",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_viral",
+    "agente_grupo": "Papillomaviridae",
+    "agente_genero": "Lambdapapillomavirus"
+  },
+  {
+    "id": "penfigo_foliaceo_canino",
+    "nome": "Pênfigo foliáceo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "piodermite_bacteriana_canina",
+    "nome": "Piodermite bacteriana",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Staphylococcaceae",
+    "agente_genero": "Staphylococcus"
+  },
+  {
+    "id": "plasmocitoma_cutaneo_canino",
+    "nome": "Plasmocitoma cutâneo",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "sarna_notoedrica_felina",
+    "nome": "Sarna notoédrica felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "infecciosa_parasitaria",
+    "agente_grupo": "Sarcoptidae",
+    "agente_genero": "Notoedres"
+  },
+  {
+    "id": "tumor_benigno_anexos_cutaneos_canino",
+    "nome": "Tumor benigno de anexos cutâneos",
+    "sinonimos": [
+      "tricoepitelioma",
+      "pilomatricoma",
+      "adenoma sebáceo"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "vasculite_cutanea_imunomediada_canina",
+    "nome": "Vasculite cutânea imunomediada",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "tegumentar"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "carcinoma_celulas_transicionais_canino",
+    "nome": "Carcinoma de células transicionais",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "cistite_bacteriana_canina",
+    "nome": "Cistite bacteriana",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "glomerulonefrite_imunomediada_canina",
+    "nome": "Glomerulonefrite imunomediada canina",
+    "sinonimos": [],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "imunomediada"
+  },
+  {
+    "id": "hidronefrose_equina",
+    "nome": "Hidronefrose",
+    "sinonimos": [],
+    "especies": [
+      "equina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "necrose_tubular_aguda_felina",
+    "nome": "Necrose tubular aguda felina",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "necrose_tubular_aguda_toxica_canina",
+    "nome": "Necrose tubular aguda por intoxicação",
+    "sinonimos": [
+      "uva",
+      "passas",
+      "etilenoglicol"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "toxica"
+  },
+  {
+    "id": "nefroblastoma_canino",
+    "nome": "Nefroblastoma",
+    "sinonimos": [
+      "tumor de Wilms"
+    ],
+    "especies": [
+      "canina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "neoplasica"
+  },
+  {
+    "id": "nefrolitiase_felina",
+    "nome": "Nefrolitíase",
+    "sinonimos": [
+      "cálculos renais"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "traumatica_mecanica"
+  },
+  {
+    "id": "pielonefrite_felina",
+    "nome": "Pielonefrite",
+    "sinonimos": [],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "infecciosa_bacteriana"
+  },
+  {
+    "id": "pielonefrite_bovina",
+    "nome": "Pielonefrite contagiosa bovina",
+    "sinonimos": [
+      "Corynebacterium renale"
+    ],
+    "especies": [
+      "bovina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "infecciosa_bacteriana",
+    "agente_grupo": "Corynebacteriaceae",
+    "agente_genero": "Corynebacterium"
+  },
+  {
+    "id": "poliquistose_renal_felina",
+    "nome": "Poliquistose renal",
+    "sinonimos": [
+      "PKD"
+    ],
+    "especies": [
+      "felina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "degenerativa"
+  },
+  {
+    "id": "urolitiase_obstrutiva_ovina",
+    "nome": "Urolitíase obstrutiva",
+    "sinonimos": [],
+    "especies": [
+      "ovina"
+    ],
+    "sistemas": [
+      "urinario"
+    ],
+    "categoria": "traumatica_mecanica"
   }
 ]
