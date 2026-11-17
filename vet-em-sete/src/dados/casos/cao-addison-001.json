@@ -1,0 +1,349 @@
+{
+  "id": "cao-addison-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Poodle standard",
+  "idade": "4 anos",
+  "sexo": "fêmea castrada",
+  "peso": "18 kg",
+  "queixa_principal": [
+    "Fraqueza que vai e volta",
+    "Vômito e diarreia"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "endocrino",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Histórico",
+      "itens": [
+        "Vários episódios de \"gastrite\" no último ano, que melhoravam com soro e corticoide"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 3 dias: vômitos, diarreia, tremores",
+        "Hoje: muito fraca, quase não fica em pé"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "52",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,2",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "TPC",
+        "valor": "3",
+        "unidade": "s",
+        "referencia": "≤ 2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 8%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Pulso femoral",
+        "valor": "Fraco",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Estado geral",
+        "itens": [
+          "Prostração, extremidades frias"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Bradicardia num animal em choque"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Leve dor"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "eletrolitos",
+      "tipo": "bioquimica",
+      "nome": "Eletrólitos e bioquímica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Sódio",
+            "valor": "128",
+            "unidade": "mEq/L",
+            "referencia": "141–152",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Potássio",
+            "valor": "7,6",
+            "unidade": "mEq/L",
+            "referencia": "4,37–5,35",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Ureia",
+            "valor": "110",
+            "unidade": "mg/dL",
+            "referencia": "21–60",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Glicose",
+            "valor": "62",
+            "unidade": "mg/dL",
+            "referencia": "76–119",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Hiponatremia, hipercalemia (Na:K 17), azotemia e hipoglicemia."
+      },
+      "comentario_didatico": "Sódio baixo com potássio alto (relação Na:K < 27) num cão em choque é muito sugestivo."
+    },
+    {
+      "id": "acth",
+      "tipo": "outro",
+      "nome": "Teste de estimulação com ACTH",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cortisol basal: < 1 µg/dL",
+          "Cortisol após ACTH: < 1 µg/dL"
+        ],
+        "conclusao": "Hipoadrenocorticismo."
+      },
+      "comentario_didatico": "Exame definitivo: cortisol baixo antes e depois do ACTH confirma a insuficiência adrenal."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Linfócitos e eosinófilos normais num animal em choque"
+        ],
+        "conclusao": "Sem leucograma de estresse."
+      },
+      "comentario_didatico": "Ausência de leucograma de estresse (linfócitos e eosinófilos normais num cão doente) é uma pista."
+    },
+    {
+      "id": "ecg",
+      "tipo": "outro",
+      "nome": "Eletrocardiograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Ondas T apiculadas, ondas P achatadas"
+        ],
+        "conclusao": "Hipercalemia."
+      },
+      "comentario_didatico": "Mostra os efeitos da hipercalemia e indica urgência."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,018"
+        ],
+        "conclusao": "Concentração urinária reduzida."
+      },
+      "comentario_didatico": "Densidade baixa mesmo desidratada pode confundir com doença renal."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica os eletrólitos."
+    }
+  ],
+  "diagnostico_id": "hipoadrenocorticismo_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "lesao_renal_aguda",
+      "como_descartar": "Azotemia e hipercalemia, mas sem hiponatremia marcante e com cortisol normal."
+    },
+    {
+      "diagnostico_id": "parvovirose_canina",
+      "como_descartar": "Filhote, leucopenia, teste de antígeno positivo."
+    },
+    {
+      "diagnostico_id": "pancreatite_aguda",
+      "como_descartar": "Dor abdominal e lipase alta, eletrólitos sem padrão Na:K baixo."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa rápida com solução salina 0,9%",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Corrige o choque e o sódio e dilui o potássio."
+    },
+    {
+      "id": "dexametasona",
+      "texto": "Dexametasona IV",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Repõe glicocorticoide sem interferir no teste de ACTH (deve-se coletar antes, se possível)."
+    },
+    {
+      "id": "hipercalemia",
+      "texto": "Tratar a hipercalemia grave (gluconato de cálcio, insulina com glicose)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Protege o coração."
+    },
+    {
+      "id": "mineralo",
+      "texto": "Manutenção: mineralocorticoide (DOCP ou fludrocortisona) e prednisolona em dose baixa",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Repõe aldosterona e cortisol por toda a vida."
+    },
+    {
+      "id": "estresse",
+      "texto": "Aumentar a dose de glicocorticoide em situações de estresse",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "O cão não produz cortisol para responder ao estresse."
+    },
+    {
+      "id": "potassio",
+      "texto": "Fluido com potássio",
+      "tipo": "suporte",
+      "classificacao": "contraindicado",
+      "justificativa": "O potássio já está perigosamente alto."
+    },
+    {
+      "id": "so_antiemetico",
+      "texto": "Só antiemético e dieta",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Ignora a crise adrenal, que pode ser fatal."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela jovem com episódios repetidos de \"gastrite\" que melhoravam com soro, agora em choque com bradicardia, hiponatremia, hipercalemia, azotemia, hipoglicemia e sem leucograma de estresse; cortisol sem resposta ao ACTH: hipoadrenocorticismo (crise addisoniana).",
+    "fisiopatologia": [
+      "Na maioria dos cães, o córtex adrenal é destruído por mecanismo imunomediado.",
+      "Falta aldosterona: o rim perde sódio e água e retém potássio.",
+      "Falta cortisol: hipoglicemia, fraqueza, sinais digestivos e incapacidade de responder ao estresse.",
+      "A hipercalemia deixa o coração lento (bradicardia num animal em choque, que deveria estar taquicárdico).",
+      "Sinais vagos e intermitentes que melhoram com fluidos fazem a doença ser chamada de \"a grande imitadora\"."
+    ],
+    "pistas": [
+      {
+        "achado": "Episódios que melhoravam com soro e corticoide",
+        "por_que_importa": "Insuficiência adrenal mascarada."
+      },
+      {
+        "achado": "Bradicardia em choque",
+        "por_que_importa": "Hipercalemia."
+      },
+      {
+        "achado": "Na:K baixa",
+        "por_que_importa": "Falta de aldosterona."
+      },
+      {
+        "achado": "Sem leucograma de estresse",
+        "por_que_importa": "Falta de cortisol."
+      }
+    ],
+    "comentario_exames": "Eletrólitos levantam a suspeita; o teste com ACTH confirma.",
+    "comentario_tratamento": "Fluido salino, glicocorticoide, controle do potássio e reposição por toda a vida."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

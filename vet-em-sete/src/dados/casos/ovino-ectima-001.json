@@ -1,0 +1,278 @@
+{
+  "id": "ovino-ectima-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "ovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Dorper",
+  "idade": "Cordeiros de 1 a 2 meses",
+  "sexo": "lote",
+  "peso": "12 kg (média)",
+  "queixa_principal": [
+    "Feridas com crostas na boca dos cordeiros",
+    "Não conseguem mamar"
+  ],
+  "semestre": 3,
+  "uso": "treino",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Rebanho de 200 ovelhas; compra recente de carneiros"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Sem vacina para ectima"
+      ]
+    },
+    {
+      "titulo": "Funcionários",
+      "itens": [
+        "Um tratador com lesão nodular no dedo"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 10 dias: pápulas nos lábios que viraram crostas grossas",
+        "Algumas ovelhas com lesões nos tetos"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal (cordeiros)",
+        "valor": "39,8",
+        "unidade": "°C",
+        "referencia": "38,5–40,0",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Condição",
+        "valor": "Cordeiros emagrecendo",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Lábios e focinho",
+        "itens": [
+          "Crostas proliferativas, espessas, acinzentadas, nas comissuras labiais e focinho"
+        ]
+      },
+      {
+        "titulo": "Ovelhas",
+        "itens": [
+          "Lesões semelhantes nos tetos"
+        ]
+      },
+      {
+        "titulo": "Boca",
+        "itens": [
+          "Algumas lesões na gengiva"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "clinico",
+      "tipo": "outro",
+      "nome": "Exame clínico das lesões no rebanho",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Lesões proliferativas crostosas em lábios de cordeiros e tetos de ovelhas"
+        ],
+        "conclusao": "Compatível com ectima contagioso."
+      },
+      "comentario_didatico": "O aspecto das lesões em cordeiros e nos tetos das ovelhas é muito característico."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para parapoxvírus (crosta)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Parapoxvírus (Orf virus): detectado"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Confirma o vírus."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia de crosta",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hiperplasia epidérmica, degeneração balonosa, inclusões intracitoplasmáticas"
+        ],
+        "conclusao": "Compatível."
+      },
+      "comentario_didatico": "Degeneração balonosa com corpúsculos de inclusão; complementa."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura bacteriana",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Flora secundária"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Avalia infecção secundária."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica as lesões."
+    },
+    {
+      "id": "selenio",
+      "tipo": "bioquimica",
+      "nome": "Selênio",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "ectima_contagioso_ovino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "febre_aftosa_bovina",
+      "como_descartar": "Vesículas na boca e nos cascos em várias espécies; notificação imediata obrigatória."
+    },
+    {
+      "diagnostico_id": "dermatofitose_felina",
+      "como_descartar": "Dermatofitose: lesões circulares descamativas, cultura positiva."
+    },
+    {
+      "diagnostico_id": "papilomatose_bovina",
+      "como_descartar": "Verrugas, sem crostas proliferativas nas comissuras."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "suporte",
+      "texto": "Suporte: ajudar os cordeiros a mamar ou dar leite por mamadeira",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "A doença regride em 3 a 4 semanas; o risco é a desnutrição."
+    },
+    {
+      "id": "secundaria",
+      "texto": "Tratar infecções secundárias e controlar moscas",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Evita miíase e complicações."
+    },
+    {
+      "id": "luvas",
+      "texto": "Usar luvas ao manejar os animais",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Zoonose: o \"orf\" causa nódulo na mão de quem lida com os animais."
+    },
+    {
+      "id": "vacina",
+      "texto": "Vacinação no rebanho onde a doença já existe",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "Vacina viva: só em rebanhos já afetados, pois introduz o vírus."
+    },
+    {
+      "id": "separar",
+      "texto": "Separar os animais afetados e limpar cochos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O vírus resiste em crostas no ambiente."
+    },
+    {
+      "id": "arrancar",
+      "texto": "Arrancar as crostas",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Causa dor e sangramento, e espalha o vírus."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cordeiros de rebanho sem vacina, após compra de carneiros, com crostas proliferativas nos lábios, dificuldade para mamar, ovelhas com lesões nos tetos e tratador com nódulo no dedo; PCR positiva para parapoxvírus: ectima contagioso.",
+    "fisiopatologia": [
+      "O vírus do ectima (Parapoxvirus, família Poxviridae) entra por pequenas lesões na pele, como as causadas por pasto áspero.",
+      "Replica nos queratinócitos e estimula proliferação da epiderme: pápulas, vesículas, pústulas e crostas espessas.",
+      "Cordeiros transmitem para os tetos das mães durante a mamada.",
+      "O vírus resiste por meses nas crostas caídas.",
+      "É zoonose ocupacional: nódulo nas mãos de quem manipula os animais."
+    ],
+    "pistas": [
+      {
+        "achado": "Cordeiros jovens com lesões nos lábios",
+        "por_que_importa": "Forma típica."
+      },
+      {
+        "achado": "Lesões nos tetos das ovelhas",
+        "por_que_importa": "Transmissão na mamada."
+      },
+      {
+        "achado": "Tratador com nódulo no dedo",
+        "por_que_importa": "Zoonose."
+      },
+      {
+        "achado": "Parapoxvírus na PCR",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Clínica muito característica; PCR confirma.",
+    "comentario_tratamento": "Suporte, controle de secundárias, luvas e vacinação em rebanho afetado."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "id": "cao-leptospirose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Sem raça definida",
+  "idade": "3 anos",
+  "sexo": "macho",
+  "peso": "22 kg",
+  "queixa_principal": [
+    "Vomitando e sem comer",
+    "Olhos amarelados"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "urinario",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa perto de córrego; ratos no quintal"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Enchente na rua há 2 semanas"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Última vacina polivalente há 2 anos"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 dias: febre, vômitos, dor ao andar",
+        "Urina pouco desde ontem"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,9",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "130",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Ictéricas, com petéquias",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 7%",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Dor à palpação renal"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Esclera amarelada, conjuntiva congesta"
+        ]
+      },
+      {
+        "titulo": "Músculos",
+        "itens": [
+          "Dor muscular difusa"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ureia",
+            "valor": "180",
+            "unidade": "mg/dL",
+            "referencia": "21–60",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "5,2",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "ALT",
+            "valor": "310",
+            "unidade": "U/L",
+            "referencia": "21–102",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Bilirrubina total",
+            "valor": "4,1",
+            "unidade": "mg/dL",
+            "referencia": "0,1–0,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Azotemia e hepatopatia com hiperbilirrubinemia."
+      },
+      "comentario_didatico": "Azotemia com lesão hepática e icterícia apontam doença de rim e fígado ao mesmo tempo."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para Leptospira em sangue e urina",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Leptospira spp.: detectada no sangue"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Na primeira semana o agente está no sangue; depois, na urina. PCR em ambos aumenta a sensibilidade."
+    },
+    {
+      "id": "mat",
+      "tipo": "sorologia",
+      "nome": "Soroaglutinação microscópica (MAT) pareada",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Título 1:200 na primeira amostra"
+        ],
+        "conclusao": "Aguardar segunda amostra."
+      },
+      "comentario_didatico": "Confirma pela soroconversão em 2 a 4 semanas; no início pode ser negativa ou confundir com vacina."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Glicosúria com glicemia normal",
+          "Cilindros granulosos"
+        ],
+        "conclusao": "Lesão tubular."
+      },
+      "comentario_didatico": "Glicosúria com glicemia normal e cilindros indicam lesão tubular."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Leucocitose",
+          "Trombocitopenia leve"
+        ],
+        "conclusao": "Inflamação."
+      },
+      "comentario_didatico": "Leucocitose e trombocitopenia, inespecíficas."
+    },
+    {
+      "id": "rx_coluna",
+      "tipo": "radiografia",
+      "nome": "Radiografia de coluna",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "A dor é muscular e renal, não de coluna."
+    }
+  ],
+  "diagnostico_id": "leptospirose_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "lesao_renal_aguda",
+      "como_descartar": "Lesão renal aguda por tóxicos (uva, etilenoglicol, AINE), sem icterícia nem exposição a água."
+    },
+    {
+      "diagnostico_id": "erliquiose_monocitica",
+      "como_descartar": "Petéquias e febre com trombocitopenia acentuada, sem azotemia importante."
+    },
+    {
+      "diagnostico_id": "hepatite_infecciosa_canina",
+      "como_descartar": "Filhotes não vacinados, edema de córnea, sem lesão renal tão marcada."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia com controle rigoroso da produção de urina",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Corrige a desidratação e acompanha a oligúria."
+    },
+    {
+      "id": "doxiciclina",
+      "texto": "Doxiciclina (após melhora do vômito; inicialmente penicilina/ampicilina IV)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Elimina a leptospiremia e depois o estado de portador renal.",
+      "dose": {
+        "texto": "Doxiciclina 5 mg/kg VO a cada 12 h por 14 dias",
+        "fonte": "sykes2011",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "zoonose",
+      "texto": "Orientar a família sobre zoonose: luvas, higiene e procurar médico se tiver sintomas",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A urina do cão contém leptospiras."
+    },
+    {
+      "id": "ratos",
+      "texto": "Controle de roedores e evitar água de enchente",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Ratos são reservatórios."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Atualizar a vacinação dos outros cães",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Vacinas cobrem os sorovares mais comuns."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal para a dor muscular",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Piora a lesão renal num paciente azotêmico."
+    },
+    {
+      "id": "dialise",
+      "texto": "Encaminhar para hemodiálise se ficar anúrico apesar do tratamento",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Pode salvar casos graves onde há disponibilidade."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão com vacinação vencida, em casa perto de córrego com ratos e após enchente, com febre, vômitos, icterícia, dor renal e muscular, oligúria, azotemia e hepatopatia; PCR positiva para Leptospira: leptospirose canina.",
+    "fisiopatologia": [
+      "Leptospiras são espiroquetas eliminadas na urina de roedores e outros reservatórios; sobrevivem em água e solo úmidos.",
+      "Penetram por mucosas ou pele lesada e se espalham pelo sangue.",
+      "Colonizam os túbulos renais (nefrite intersticial, lesão renal aguda) e lesam o fígado (colestase, icterícia).",
+      "A vasculite causa petéquias e, em alguns casos, hemorragia pulmonar.",
+      "Cães recuperados podem eliminar leptospiras na urina por semanas."
+    ],
+    "pistas": [
+      {
+        "achado": "Enchente, córrego e ratos",
+        "por_que_importa": "Exposição."
+      },
+      {
+        "achado": "Vacina vencida",
+        "por_que_importa": "Suscetibilidade."
+      },
+      {
+        "achado": "Icterícia e azotemia juntas",
+        "por_que_importa": "Rim e fígado."
+      },
+      {
+        "achado": "PCR positiva",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Bioquímica e PCR em sangue e urina; MAT pareada.",
+    "comentario_tratamento": "Fluido, antimicrobiano e cuidado com a zoonose."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "sykes2011",
+      "citacao": "SYKES, J. E. et al. 2010 ACVIM small animal consensus statement on leptospirosis: diagnosis, epidemiology, treatment, and prevention. Journal of Veterinary Internal Medicine, v. 25, n. 1, p. 1-13, 2011."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "id": "equino-leucoencefalomalacia-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Mangalarga",
+  "idade": "7 anos",
+  "sexo": "fêmea",
+  "peso": "420 kg",
+  "queixa_principal": [
+    "Égua andando em círculos e batendo nas coisas",
+    "Outra égua morreu ontem"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "nervoso",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Recebe milho em grão comprado barato há 1 mês, armazenado em local úmido"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Outra égua do mesmo lote morreu com sinais parecidos"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Raiva e encefalomielites em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Desde hoje cedo: apatia, depois agitação, andar em círculos, cegueira"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,2",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "52",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Cegueira, andar compulsivo em círculos, pressão da cabeça contra a parede",
+          "Períodos de excitação alternados com depressão"
+        ]
+      },
+      {
+        "titulo": "Lábios",
+        "itens": [
+          "Paralisia leve do lábio inferior"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "racao",
+      "tipo": "outro",
+      "nome": "Análise do milho para fumonisinas",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Milho com grãos ardidos e mofados",
+          "Fumonisina B1 muito acima do limite para equinos"
+        ],
+        "conclusao": "Contaminação por fumonisina."
+      },
+      "comentario_didatico": "Fumonisina B1 em concentração alta confirma a fonte."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia da égua morta",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Áreas amolecidas, amareladas e hemorrágicas na substância branca dos hemisférios cerebrais"
+        ],
+        "conclusao": "Leucoencefalomalácia."
+      },
+      "comentario_didatico": "Áreas de necrose liquefativa na substância branca do cérebro são características."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Enzimas hepáticas",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "GGT e AST levemente aumentadas"
+        ],
+        "conclusao": "Lesão hepática leve."
+      },
+      "comentario_didatico": "Lesão hepática pode acompanhar."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Líquido cerebrospinal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Proteína aumentada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Proteína alta, inespecífico."
+    },
+    {
+      "id": "raiva",
+      "tipo": "outro",
+      "nome": "Pesquisa de raiva no material da égua morta (laboratório oficial)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Obrigatório descartar em equino com sinais nervosos."
+    },
+    {
+      "id": "aie",
+      "tipo": "sorologia",
+      "nome": "AIE",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não reagente"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica sinais cerebrais agudos."
+    }
+  ],
+  "diagnostico_id": "leucoencefalomalacia_equina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "raiva",
+      "como_descartar": "Paralisia progressiva, alteração de comportamento; diagnóstico oficial após a morte."
+    },
+    {
+      "diagnostico_id": "mieloencefalite_protozoaria_equina",
+      "como_descartar": "Ataxia assimétrica e atrofia muscular, evolução de semanas."
+    },
+    {
+      "diagnostico_id": "tripanossomose_equina",
+      "como_descartar": "Febre, anemia, fraqueza de posteriores."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "retirar_milho",
+      "texto": "Retirar imediatamente o milho de todos os animais",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Outros equinos podem adoecer nos próximos dias."
+    },
+    {
+      "id": "suporte",
+      "texto": "Suporte e controle de convulsões; prognóstico muito ruim",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Não há antídoto."
+    },
+    {
+      "id": "armazenar",
+      "texto": "Comprar milho de qualidade, armazenar seco e descartar grãos ardidos",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção."
+    },
+    {
+      "id": "eutanasia",
+      "texto": "Eutanásia se o animal estiver em sofrimento sem melhora",
+      "tipo": "eutanasia",
+      "classificacao": "aceitavel",
+      "justificativa": "A maioria dos casos é fatal."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não é infecção; atrasa as medidas."
+    },
+    {
+      "id": "milho_outro",
+      "texto": "Manter o milho e só reduzir a quantidade",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "A fumonisina é cumulativa; qualquer quantidade é risco."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Égua que recebe milho armazenado em local úmido, com cegueira, andar compulsivo em círculos, pressão da cabeça e outra égua morta; milho com fumonisina e necrose da substância branca na necropsia: leucoencefalomalácia equina.",
+    "fisiopatologia": [
+      "Fusarium verticillioides cresce no milho armazenado com umidade e produz fumonisinas.",
+      "A fumonisina B1 inibe a síntese de esfingolipídios, que são componentes das membranas.",
+      "Nos equinos, causa lesão vascular e necrose da substância branca cerebral.",
+      "Os sinais aparecem após semanas de ingestão e evoluem rápido.",
+      "Equinos são a espécie mais sensível."
+    ],
+    "pistas": [
+      {
+        "achado": "Milho barato armazenado úmido",
+        "por_que_importa": "Fonte de fumonisina."
+      },
+      {
+        "achado": "Mais de um animal afetado",
+        "por_que_importa": "Causa comum."
+      },
+      {
+        "achado": "Cegueira e andar em círculos",
+        "por_que_importa": "Lesão cerebral."
+      },
+      {
+        "achado": "Necrose da substância branca",
+        "por_que_importa": "Lesão típica."
+      }
+    ],
+    "comentario_exames": "Análise do milho e necropsia; descartar raiva.",
+    "comentario_tratamento": "Retirar o milho de todos; não há tratamento específico."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

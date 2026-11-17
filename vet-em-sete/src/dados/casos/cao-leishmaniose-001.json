@@ -1,0 +1,343 @@
+{
+  "id": "cao-leishmaniose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Boxer",
+  "idade": "5 anos",
+  "sexo": "macho",
+  "peso": "26 kg",
+  "queixa_principal": [
+    "Emagrecendo",
+    "Unhas crescendo muito e feridas nas orelhas"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "multissistemico",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Chácara em município com casos de leishmaniose visceral humana e canina"
+      ]
+    },
+    {
+      "titulo": "Vetor",
+      "itens": [
+        "Mosquitinho (flebotomíneo) visto no canil ao entardecer"
+      ]
+    },
+    {
+      "titulo": "Prevenção",
+      "itens": [
+        "Sem coleira repelente nem vacina"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 meses: perda de peso, perda de pelo ao redor dos olhos, feridas nas pontas das orelhas",
+        "Unhas grandes"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Bebe mais água"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,3",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "3/9",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Hipocoradas",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Dermatite esfoliativa com alopecia periocular (\"óculos\")",
+          "Úlceras nas pontas das orelhas"
+        ]
+      },
+      {
+        "titulo": "Unhas",
+        "itens": [
+          "Onicogrifose"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Generalizadamente aumentados"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Esplenomegalia"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia de linfonodo ou medula óssea",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Amastigotas de Leishmania em macrófagos"
+        ],
+        "conclusao": "Leishmaniose."
+      },
+      "comentario_didatico": "Formas amastigotas dentro de macrófagos confirmam a infecção."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Teste rápido DPP e ELISA (protocolo do Ministério da Saúde)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "DPP: reagente",
+          "ELISA: reagente"
+        ],
+        "conclusao": "Sororreagente."
+      },
+      "comentario_didatico": "Teste oficial de triagem e confirmação no Brasil."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Proteínas, função renal e relação proteína:creatinina",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Proteína total",
+            "valor": "9,4",
+            "unidade": "g/dL",
+            "referencia": "5,4–7,1",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Globulinas",
+            "valor": "6,9",
+            "unidade": "g/dL",
+            "referencia": "2,7–4,4",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "1,8",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "descricao": [
+          "Relação proteína:creatinina urinária 2,5"
+        ],
+        "conclusao": "Hiperglobulinemia, proteinúria e azotemia leve."
+      },
+      "comentario_didatico": "Hiperglobulinemia e proteinúria indicam glomerulonefrite, principal causa de morte e base do estadiamento."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Anemia normocítica normocrômica"
+        ],
+        "conclusao": "Anemia."
+      },
+      "comentario_didatico": "Anemia arregenerativa leve é comum; inespecífica."
+    },
+    {
+      "id": "pcr_ehr",
+      "tipo": "pcr",
+      "nome": "PCR para Ehrlichia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Coinfecção é comum e pode agravar as citopenias."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não ajuda no diagnóstico."
+    }
+  ],
+  "diagnostico_id": "leishmaniose_visceral_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "erliquiose_monocitica",
+      "como_descartar": "Trombocitopenia acentuada e sangramentos; sem onicogrifose nem úlceras de orelha."
+    },
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Linfonodos muito aumentados com população monomórfica."
+    },
+    {
+      "diagnostico_id": "penfigo_foliaceo_canino",
+      "como_descartar": "Crostas faciais sem doença sistêmica, sem amastigotas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "notificar",
+      "texto": "Seguir a legislação e notificar o serviço de vigilância (zoonose de importância em saúde pública)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A leishmaniose visceral é doença de notificação no Brasil."
+    },
+    {
+      "id": "miltefosina",
+      "texto": "Tratamento com miltefosina (único produto registrado para cães no Brasil) associado a alopurinol, com acompanhamento veterinário",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a carga parasitária e melhora os sinais, mas o cão pode continuar infectado.",
+      "dose": {
+        "texto": "Conforme bula do produto registrado (ex.: miltefosina 2 mg/kg VO a cada 24 h por 28 dias)",
+        "fonte": "leishvet2011",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "coleira",
+      "texto": "Coleira com deltametrina (repelente) no cão e nos contactantes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a picada do flebotomíneo e a transmissão."
+    },
+    {
+      "id": "rim",
+      "texto": "Tratar a proteinúria e acompanhar a função renal",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "A glomerulonefrite é a principal causa de morte."
+    },
+    {
+      "id": "ambiente",
+      "texto": "Manejo ambiental: limpar matéria orgânica e telar o canil",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O vetor se cria em matéria orgânica."
+    },
+    {
+      "id": "droga_humana",
+      "texto": "Usar antimoniais ou anfotericina de uso humano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Proibido para cães no Brasil, para não selecionar parasitos resistentes."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide em dose imunossupressora para a pele",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Piora a doença."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Boxer em área endêmica, sem prevenção, com emagrecimento, alopecia periocular, úlceras de orelha, onicogrifose, linfadenomegalia e esplenomegalia; hiperglobulinemia, proteinúria, amastigotas na citologia e sorologia reagente: leishmaniose visceral canina.",
+    "fisiopatologia": [
+      "Leishmania infantum é transmitida pela picada de flebotomíneos (Lutzomyia longipalpis no Brasil).",
+      "Os parasitos (amastigotas) se multiplicam dentro de macrófagos na pele, linfonodos, baço, fígado e medula.",
+      "Cães com resposta imune tipo Th2 produzem muitos anticorpos e imunocomplexos.",
+      "Os imunocomplexos se depositam nos glomérulos (glomerulonefrite), articulações e vasos.",
+      "O cão é o principal reservatório urbano para a leishmaniose humana."
+    ],
+    "pistas": [
+      {
+        "achado": "Área endêmica, vetor no canil",
+        "por_que_importa": "Exposição."
+      },
+      {
+        "achado": "Óculos, úlceras de orelha e onicogrifose",
+        "por_que_importa": "Lesões típicas."
+      },
+      {
+        "achado": "Hiperglobulinemia",
+        "por_que_importa": "Resposta humoral intensa."
+      },
+      {
+        "achado": "Amastigotas em macrófagos",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Citologia e sorologia oficiais; bioquímica e proteinúria para estadiar.",
+    "comentario_tratamento": "Seguir a legislação: tratamento com produto registrado, repelente e manejo ambiental."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "leishvet2011",
+      "citacao": "SOLANO-GALLEGO, L. et al. LeishVet guidelines for the practical management of canine leishmaniosis. Parasites & Vectors, v. 4, p. 86, 2011."
+    },
+    {
+      "id": "ms_lv2014",
+      "citacao": "BRASIL. Ministério da Saúde. Manual de vigilância e controle da leishmaniose visceral. Brasília: Ministério da Saúde, 2014."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório. Conferir a legislação vigente sobre tratamento de cães no Brasil."
+  }
+}

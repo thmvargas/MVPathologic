@@ -1,0 +1,304 @@
+{
+  "id": "cao-tvt-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Sem raça definida",
+  "idade": "4 anos",
+  "sexo": "fêmea inteira",
+  "peso": "16 kg",
+  "queixa_principal": [
+    "Sangramento pela vulva",
+    "Lambe muito a região"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "reprodutor",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Vive solta na rua do bairro; volta para casa à noite"
+      ]
+    },
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Não castrada; cruzou com cães da rua no último cio"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Atrasada"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 mês: gotas de sangue na vulva, fora do cio",
+        "Cheiro forte"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Pomada caseira"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,7",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Levemente hipocoradas",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Vulva e vagina",
+        "itens": [
+          "Massa friável, em couve-flor, avermelhada, no vestíbulo vaginal, sangrando ao toque"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Inguinais sem alterações"
+        ]
+      },
+      {
+        "titulo": "Mamas",
+        "itens": [
+          "Sem nódulos"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia por impressão ou aspiração da massa",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "População monomórfica de células redondas",
+          "Citoplasma com vacúolos claros e pontilhados",
+          "Figuras de mitose frequentes"
+        ],
+        "conclusao": "Tumor venéreo transmissível."
+      },
+      "comentario_didatico": "Diagnóstico rápido: células redondas com citoplasma vacuolizado são típicas do TVT."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Neoplasia de células redondas em lençóis"
+        ],
+        "conclusao": "TVT."
+      },
+      "comentario_didatico": "Confirma, mas a citologia já é muito característica."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Hematócrito",
+            "valor": "33",
+            "unidade": "%",
+            "referencia": "37–55",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Leucócitos",
+            "valor": "9,8",
+            "unidade": "×10³/µL",
+            "referencia": "6,0–17,0",
+            "fonte": "weiss",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Anemia leve por sangramento crônico."
+      },
+      "comentario_didatico": "Base para a quimioterapia: a vincristina causa mielossupressão e o hemograma precisa ser acompanhado."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Metástase é rara; útil em casos avançados."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Hematúria por contaminação"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não ajuda no diagnóstico da massa."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "tumor_venereo_transmissivel_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "leiomioma_uterino_canino",
+      "como_descartar": "Massa firme e lisa, em cadela idosa; células fusiformes."
+    },
+    {
+      "diagnostico_id": "piometra",
+      "como_descartar": "Secreção purulenta da cérvix, sem massa vaginal."
+    },
+    {
+      "diagnostico_id": "carcinoma_espinocelular",
+      "como_descartar": "Células epiteliais atípicas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "vincristina",
+      "texto": "Sulfato de vincristina IV semanal, até remissão completa e mais 1 a 2 aplicações",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Muito eficaz; a maioria responde em 4 a 6 aplicações.",
+      "dose": {
+        "texto": "0,5–0,75 mg/m² IV semanal",
+        "fonte": "withrow",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "hemograma_semanal",
+      "texto": "Hemograma antes de cada aplicação",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Detecta leucopenia induzida pela droga."
+    },
+    {
+      "id": "castrar",
+      "texto": "Castração e manter a cadela em casa",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita novas exposições por cópula."
+    },
+    {
+      "id": "extravasamento",
+      "texto": "Cuidado com extravasamento perivascular da vincristina",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "É vesicante: causa necrose do tecido se vazar da veia."
+    },
+    {
+      "id": "cirurgia_so",
+      "texto": "Só retirada cirúrgica da massa",
+      "tipo": "cirurgia",
+      "classificacao": "desnecessario",
+      "justificativa": "Recidiva frequente; a quimioterapia é o tratamento de escolha."
+    },
+    {
+      "id": "pomada",
+      "texto": "Manter só pomada e esperar regredir",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "O tumor cresce e pode se espalhar."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela não castrada de vida livre, com sangramento vulvar fora do cio e massa friável em couve-flor no vestíbulo; citologia com células redondas vacuolizadas: tumor venéreo transmissível.",
+    "fisiopatologia": [
+      "O TVT é um tumor transmitido por transplante de células vivas, sobretudo no coito.",
+      "As células tumorais são um clone com origem num único cão antigo; têm cariótipo anormal próprio.",
+      "Implanta em mucosas com microlesões: genital, nasal, oral.",
+      "Responde muito bem à vincristina; a imunidade do hospedeiro participa da regressão."
+    ],
+    "pistas": [
+      {
+        "achado": "Cadela não castrada que vive na rua",
+        "por_que_importa": "Exposição por cópula."
+      },
+      {
+        "achado": "Sangramento fora do cio",
+        "por_que_importa": "Lesão na mucosa."
+      },
+      {
+        "achado": "Massa em couve-flor friável",
+        "por_que_importa": "Aspecto típico."
+      },
+      {
+        "achado": "Células redondas vacuolizadas",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Citologia resolve; hemograma é necessário para a quimioterapia.",
+    "comentario_tratamento": "Vincristina semanal com hemograma; castração."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    },
+    {
+      "id": "withrow",
+      "citacao": "VAIL, D. M.; THAMM, D. H.; LIPTAK, J. M. Withrow and MacEwen's Small Animal Clinical Oncology. 6. ed. St. Louis: Elsevier, 2020."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

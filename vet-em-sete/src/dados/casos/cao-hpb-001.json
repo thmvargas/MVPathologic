@@ -1,0 +1,289 @@
+{
+  "id": "cao-hpb-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Pastor-alemão",
+  "idade": "9 anos",
+  "sexo": "macho inteiro",
+  "peso": "38 kg",
+  "queixa_principal": [
+    "Força para fazer cocô",
+    "Sangue no fim do xixi"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "reprodutor",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Não castrado; usado como reprodutor no passado"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 meses: fezes finas como fita e esforço para defecar",
+        "Gotas de sangue na uretra fora da micção"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Come e bebe bem; sem febre"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,6",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "92",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Toque retal",
+        "itens": [
+          "Próstata aumentada, simétrica, lisa, indolor"
+        ]
+      },
+      {
+        "titulo": "Testículos",
+        "itens": [
+          "Normais à palpação"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Sem dor"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia da próstata",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Próstata aumentada, simétrica, parênquima homogêneo com pequenos cistos"
+        ],
+        "conclusao": "Hiperplasia prostática benigna."
+      },
+      "comentario_didatico": "Mostra aumento difuso e simétrico com pequenos cistos, típico da hiperplasia."
+    },
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia do lavado prostático ou do ejaculado",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Células epiteliais prostáticas sem atipias",
+          "Hemácias",
+          "Sem bactérias"
+        ],
+        "conclusao": "Sem inflamação ou neoplasia."
+      },
+      "comentario_didatico": "Afasta prostatite e neoplasia: células epiteliais uniformes, sem inflamação séptica."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise com cultura",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Hemácias",
+          "Cultura negativa"
+        ],
+        "conclusao": "Sem infecção."
+      },
+      "comentario_didatico": "Afasta infecção urinária associada."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Prostatomegalia"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Mostra a próstata aumentada, mas o ultrassom detalha melhor."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "O tenesmo é mecânico."
+    }
+  ],
+  "diagnostico_id": "hiperplasia_prostatica_benigna_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "prostatite_canina",
+      "como_descartar": "Próstata dolorosa, febre, neutrófilos e bactérias na citologia."
+    },
+    {
+      "diagnostico_id": "carcinoma_celulas_transicionais_canino",
+      "como_descartar": "Massa assimétrica, mineralização; ocorre também em castrados."
+    },
+    {
+      "diagnostico_id": "urolitiase_vesical",
+      "como_descartar": "Cálculos visíveis na imagem; próstata normal."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "castracao",
+      "texto": "Orquiectomia",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento definitivo: sem testosterona, a próstata reduz em semanas."
+    },
+    {
+      "id": "finasterida",
+      "texto": "Finasterida, se o tutor quiser manter o cão como reprodutor",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Reduz a próstata sem castração, enquanto usada."
+    },
+    {
+      "id": "osaterona",
+      "texto": "Antiandrogênico (ex.: acetato de osaterona)",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Alternativa clínica de ação rápida."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano prolongado",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não há infecção."
+    },
+    {
+      "id": "prostatectomia",
+      "texto": "Prostatectomia",
+      "tipo": "cirurgia",
+      "classificacao": "contraindicado",
+      "justificativa": "Cirurgia de alto risco, sem indicação para doença benigna."
+    },
+    {
+      "id": "estrogenio",
+      "texto": "Estrógeno para reduzir a próstata",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Risco de aplasia medular grave."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão idoso não castrado com tenesmo, fezes em fita e sangramento uretral, próstata aumentada, simétrica e indolor; ultrassom com aumento difuso e cistos e citologia sem inflamação: hiperplasia prostática benigna.",
+    "fisiopatologia": [
+      "A próstata cresce sob efeito da di-hidrotestosterona, formada a partir da testosterona pela enzima 5-alfa-redutase.",
+      "Em cães inteiros com mais de 6 anos, a hiperplasia é quase universal.",
+      "A próstata grande comprime o reto: tenesmo e fezes em fita.",
+      "Vasos dilatados no parênquima explicam o sangramento uretral."
+    ],
+    "pistas": [
+      {
+        "achado": "Macho idoso inteiro",
+        "por_que_importa": "Exposição androgênica."
+      },
+      {
+        "achado": "Tenesmo e fezes em fita",
+        "por_que_importa": "Compressão do reto."
+      },
+      {
+        "achado": "Próstata simétrica e indolor",
+        "por_que_importa": "Hiperplasia, não infecção."
+      },
+      {
+        "achado": "Citologia sem inflamação",
+        "por_que_importa": "Afasta prostatite."
+      }
+    ],
+    "comentario_exames": "Toque retal, ultrassom e citologia.",
+    "comentario_tratamento": "Castração resolve; finasterida se for reprodutor."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "johnston2001",
+      "citacao": "JOHNSTON, S. D.; ROOT KUSTRITZ, M. V.; OLSON, P. N. S. Canine and Feline Theriogenology. Philadelphia: Saunders, 2001."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

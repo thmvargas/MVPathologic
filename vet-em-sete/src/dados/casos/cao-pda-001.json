@@ -1,0 +1,291 @@
+{
+  "id": "cao-pda-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Spitz alemão (lulu da pomerânia)",
+  "idade": "10 semanas",
+  "sexo": "fêmea",
+  "peso": "0,9 kg",
+  "queixa_principal": [
+    "Filhote menor que os irmãos",
+    "Cansa ao brincar"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "cardiovascular",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Canil; primeira consulta para vacina"
+      ]
+    },
+    {
+      "titulo": "Ninhada",
+      "itens": [
+        "Os 3 irmãos são maiores e mais ativos"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração de filhote"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Para de brincar antes dos irmãos e respira rápido"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Vermífugo do canil"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "200",
+        "unidade": "bpm",
+        "referencia": "até 220 em filhotes",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "44",
+        "unidade": "mpm",
+        "referencia": "15–40 em filhotes",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Róseas"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Sopro contínuo (\"de maquinaria\") mais intenso na base cardíaca esquerda, alta"
+        ]
+      },
+      {
+        "titulo": "Palpação",
+        "itens": [
+          "Frêmito na base esquerda"
+        ]
+      },
+      {
+        "titulo": "Pulso femoral",
+        "itens": [
+          "Forte e saltitante (\"martelo d'água\")"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma com Doppler",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Ducto arterioso pérvio com fluxo contínuo da aorta para o tronco pulmonar",
+          "Dilatação do átrio e ventrículo esquerdos"
+        ],
+        "conclusao": "Persistência do ducto arterioso com desvio esquerda-direita."
+      },
+      "comentario_didatico": "Mostra o ducto e o fluxo contínuo da aorta para a artéria pulmonar; define o tamanho para a oclusão."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Abaulamento da aorta, do tronco pulmonar e da aurícula esquerda na projeção dorsoventral",
+          "Circulação pulmonar aumentada"
+        ],
+        "conclusao": "Sobrecarga de volume esquerda."
+      },
+      "comentario_didatico": "Mostra o aumento esquerdo e a dilatação da aorta descendente (\"tríplice abaulamento\")."
+    },
+    {
+      "id": "ecg",
+      "tipo": "outro",
+      "nome": "Eletrocardiograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Ondas R altas"
+        ],
+        "conclusao": "Sobrecarga ventricular esquerda."
+      },
+      "comentario_didatico": "Ondas R altas sugerem aumento do ventrículo esquerdo; complementa."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Útil antes da cirurgia; não diagnostica."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não explica sopro contínuo."
+    },
+    {
+      "id": "glicose",
+      "tipo": "bioquimica",
+      "nome": "Glicemia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Não relacionada ao sopro."
+    }
+  ],
+  "diagnostico_id": "persistencia_ducto_arterioso_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "defeito_septo_ventricular_canino",
+      "como_descartar": "Sopro sistólico mais à direita, não contínuo."
+    },
+    {
+      "diagnostico_id": "tetralogia_fallot_canina",
+      "como_descartar": "Cianose e policitemia, sopro sistólico de estenose pulmonar."
+    },
+    {
+      "diagnostico_id": "persistencia_4_arco_aortico_direito_canina",
+      "como_descartar": "Regurgitação ao começar ração sólida, sem sopro."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "oclusao",
+      "texto": "Oclusão do ducto (ligadura cirúrgica ou dispositivo por cateter) o quanto antes",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Corrige a causa; sem correção, a maioria evolui para insuficiência cardíaca no primeiro ano."
+    },
+    {
+      "id": "furosemida",
+      "texto": "Diurético se houver edema pulmonar antes da cirurgia",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Estabiliza o filhote."
+    },
+    {
+      "id": "reproducao",
+      "texto": "Não usar a filhote na reprodução e avisar o canil",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A PDA tem componente hereditário em raças pequenas."
+    },
+    {
+      "id": "esperar",
+      "texto": "Esperar o ducto fechar sozinho com o crescimento",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Após as primeiras semanas de vida, o ducto não fecha mais."
+    },
+    {
+      "id": "vacina",
+      "texto": "Seguir o protocolo de vacinas normalmente",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "Não interfere; manter a imunização."
+    },
+    {
+      "id": "restricao",
+      "texto": "Exercício intenso para fortalecer o coração",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta a carga num coração já sobrecarregado."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de raça pequena, menor que os irmãos e com intolerância ao esforço, com sopro contínuo na base esquerda, frêmito e pulso saltitante; eco com ducto pérvio: persistência do ducto arterioso.",
+    "fisiopatologia": [
+      "Anatomia/embriologia: no feto, o ducto arterioso liga o tronco pulmonar à aorta e desvia o sangue dos pulmões, que ainda não respiram.",
+      "Fisiologia: ao nascer, o aumento do oxigênio e a queda das prostaglandinas fazem a musculatura do ducto contrair e fechá-lo.",
+      "Na PDA, a parede do ducto tem pouco músculo liso e ele não fecha.",
+      "Depois do nascimento, a pressão da aorta é maior: o sangue passa da aorta para a artéria pulmonar durante sístole e diástole, por isso o sopro é contínuo.",
+      "O excesso de sangue volta ao lado esquerdo, que dilata (sobrecarga de volume)."
+    ],
+    "pistas": [
+      {
+        "achado": "Filhote de raça pequena, menor que os irmãos",
+        "por_que_importa": "Cardiopatia congênita."
+      },
+      {
+        "achado": "Sopro contínuo na base esquerda",
+        "por_que_importa": "Típico de PDA."
+      },
+      {
+        "achado": "Pulso saltitante",
+        "por_que_importa": "Escoamento diastólico da aorta."
+      },
+      {
+        "achado": "Ducto visível no eco",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Ecocardiograma confirma; radiografia mostra o efeito sobre o coração.",
+    "comentario_tratamento": "Fechar o ducto cedo; o prognóstico após a oclusão é muito bom."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "mcgeady",
+      "citacao": "McGEADY, T. A. et al. Veterinary Embryology. 2. ed. Hoboken: Wiley-Blackwell, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

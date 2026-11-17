@@ -1,0 +1,294 @@
+{
+  "id": "gato-dermatofitose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Persa",
+  "idade": "5 meses",
+  "sexo": "macho",
+  "peso": "2,0 kg",
+  "queixa_principal": [
+    "Falhas redondas no pelo",
+    "Criança da casa com mancha na pele"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprado em gatil há 1 mês"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Criança de 6 anos com lesão circular avermelhada no braço"
+      ]
+    },
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Falhas de pelo na cabeça e nas orelhas há 3 semanas, aumentando"
+      ]
+    },
+    {
+      "titulo": "Prurido",
+      "itens": [
+        "Pouco"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,6",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore corporal",
+        "valor": "5/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Áreas circulares de alopecia com descamação e pelos quebrados na face, orelhas e membros torácicos"
+        ]
+      },
+      {
+        "titulo": "Unhas",
+        "itens": [
+          "Sem alterações"
+        ]
+      },
+      {
+        "titulo": "Estado geral",
+        "itens": [
+          "Bom"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "wood",
+      "tipo": "outro",
+      "nome": "Lâmpada de Wood",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Pelos com fluorescência verde-maçã nas bordas das lesões"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Fluorescência verde-maçã nos pelos (não nas crostas) sugere Microsporum canis e indica onde coletar."
+    },
+    {
+      "id": "tricograma",
+      "tipo": "citologia",
+      "nome": "Tricograma (exame direto dos pelos)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Pelos com esporos em bainha (ectotrix)"
+        ],
+        "conclusao": "Dermatofitose."
+      },
+      "comentario_didatico": "Mostra esporos em volta e dentro dos pelos (ectotrix), confirmação rápida."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura fúngica (escova de dentes, método de Mackenzie)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Microsporum canis"
+        ],
+        "conclusao": "M. canis."
+      },
+      "comentario_didatico": "Padrão para identificar a espécie e acompanhar a cura (duas culturas negativas)."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado de pele",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta ácaros; aqui negativo."
+    },
+    {
+      "id": "felv",
+      "tipo": "sorologia",
+      "nome": "FeLV e FIV",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativos"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Gatos imunossuprimidos têm formas mais graves; não muda o diagnóstico."
+    },
+    {
+      "id": "biopsia",
+      "tipo": "histopatologia",
+      "nome": "Biópsia de pele",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Diagnóstico já feito por métodos simples."
+    }
+  ],
+  "diagnostico_id": "dermatofitose_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "demodicose",
+      "como_descartar": "Ácaros no raspado; rara em gatos."
+    },
+    {
+      "diagnostico_id": "sarna_notoedrica_felina",
+      "como_descartar": "Prurido intenso com crostas nas orelhas e face, ácaros no raspado."
+    },
+    {
+      "diagnostico_id": "esporotricose",
+      "como_descartar": "Úlceras e nódulos, leveduras na citologia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "itraconazol",
+      "texto": "Antifúngico sistêmico (itraconazol) em pulsos",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento sistêmico recomendado em gatos.",
+      "dose": {
+        "texto": "5 mg/kg VO a cada 24 h, em semanas alternadas",
+        "fonte": "moriello2017",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "topico",
+      "texto": "Banho com enxofre-cal ou miconazol com clorexidina 2 vezes por semana",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Reduz a contaminação do ambiente."
+    },
+    {
+      "id": "ambiente",
+      "texto": "Limpeza e desinfecção do ambiente (aspirar, hipoclorito diluído)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Os esporos permanecem por meses."
+    },
+    {
+      "id": "crianca",
+      "texto": "Orientar a família a procurar médico para a criança",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Zoonose."
+    },
+    {
+      "id": "cultura_cura",
+      "texto": "Manter até duas culturas negativas",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "A melhora visual vem antes da cura micológica."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Pomada de corticoide nas lesões",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Favorece o fungo e espalha a infecção."
+    },
+    {
+      "id": "raspar",
+      "texto": "Tosar todo o gato e raspar a pele com lâmina",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Microtraumas espalham o fungo; tosa delicada só se necessário."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de gato persa vindo de gatil, com alopecia circular e descamação, e criança da casa com lesão circular; fluorescência à lâmpada de Wood, esporos ectotrix e cultura com Microsporum canis: dermatofitose.",
+    "fisiopatologia": [
+      "Dermatófitos são fungos que digerem queratina de pelos, unhas e camada córnea.",
+      "Microsporum canis é o principal em gatos; filhotes, persas e gatos de gatis são mais afetados.",
+      "Os esporos são transmitidos por contato e pelo ambiente.",
+      "A infecção do pelo o deixa frágil: quebra e alopecia circular.",
+      "É zoonose comum, sobretudo em crianças."
+    ],
+    "pistas": [
+      {
+        "achado": "Filhote persa de gatil",
+        "por_que_importa": "Grupo de risco."
+      },
+      {
+        "achado": "Alopecia circular com descamação",
+        "por_que_importa": "Lesão típica."
+      },
+      {
+        "achado": "Criança com lesão circular",
+        "por_que_importa": "Zoonose."
+      },
+      {
+        "achado": "Fluorescência e esporos",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Lâmpada de Wood, tricograma e cultura.",
+    "comentario_tratamento": "Itraconazol, tratamento tópico, ambiente e acompanhamento por cultura."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "moriello2017",
+      "citacao": "MORIELLO, K. A. et al. Diagnosis and treatment of dermatophytosis in dogs and cats: clinical consensus guidelines of the World Association for Veterinary Dermatology. Veterinary Dermatology, v. 28, n. 3, p. 266-e68, 2017."
+    },
+    {
+      "id": "muller",
+      "citacao": "MILLER, W. H.; GRIFFIN, C. E.; CAMPBELL, K. L. Muller and Kirk's Small Animal Dermatology. 7. ed. St. Louis: Elsevier, 2013."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

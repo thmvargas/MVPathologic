@@ -1,0 +1,314 @@
+{
+  "id": "gato-panleucopenia-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "3 meses",
+  "sexo": "fêmea",
+  "peso": "1,1 kg",
+  "queixa_principal": [
+    "Vômito e diarreia",
+    "Muito apática"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Resgatada há 1 semana de uma colônia de gatos de rua"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Nenhuma"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Outro filhote da mesma ninhada morreu ontem"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias: parou de comer, vômitos",
+        "Hoje: diarreia líquida"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,2",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 8%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "220",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Alças espessadas e dolorosas à palpação"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Fica com a cabeça pendente sobre a tigela de água"
+        ]
+      },
+      {
+        "titulo": "Mucosas",
+        "itens": [
+          "Pálidas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Leucócitos",
+            "valor": "0,9",
+            "unidade": "×10³/µL",
+            "referencia": "5,5–19,5",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Neutrófilos",
+            "valor": "0,3",
+            "unidade": "×10³/µL",
+            "referencia": "2,5–12,5",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Panleucopenia."
+      },
+      "comentario_didatico": "Leucopenia acentuada é o achado-chave."
+    },
+    {
+      "id": "antigeno",
+      "tipo": "sorologia",
+      "nome": "Teste rápido de antígeno de parvovírus nas fezes",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Reagente"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Testes para parvovírus canino detectam também o vírus felino."
+    },
+    {
+      "id": "felv",
+      "tipo": "sorologia",
+      "nome": "FeLV e FIV",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativos"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Coinfecção piora o prognóstico; não explica sozinha a leucopenia aguda."
+    },
+    {
+      "id": "glicemia",
+      "tipo": "bioquimica",
+      "nome": "Glicemia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "60 mg/dL"
+        ],
+        "conclusao": "Hipoglicemia."
+      },
+      "comentario_didatico": "Hipoglicemia é comum em filhotes doentes e orienta o suporte."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Alças com gás e líquido"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não necessário sem suspeita de corpo estranho."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "—"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Filhote."
+    }
+  ],
+  "diagnostico_id": "panleucopenia_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "giardiase",
+      "como_descartar": "Diarreia sem febre e sem leucopenia."
+    },
+    {
+      "diagnostico_id": "leucemia_viral_felina",
+      "como_descartar": "Citopenias crônicas, teste de antígeno FeLV positivo."
+    },
+    {
+      "diagnostico_id": "corpo_estranho_gastrintestinal",
+      "como_descartar": "Vômito com obstrução na imagem, sem leucopenia."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa com glicose e potássio conforme exames",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Base do tratamento."
+    },
+    {
+      "id": "antiemetico",
+      "texto": "Antiemético",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Permite alimentação precoce."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano de amplo espectro",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Neutropenia com lesão intestinal: risco de sepse."
+    },
+    {
+      "id": "isolamento",
+      "texto": "Isolamento e desinfecção com hipoclorito",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O vírus resiste por meses no ambiente."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar os outros gatos da casa",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção eficaz."
+    },
+    {
+      "id": "vacina_viva",
+      "texto": "Vacina com vírus vivo atenuado nesta filhote doente",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não trata e pode piorar um animal imunossuprimido."
+    },
+    {
+      "id": "gestante",
+      "texto": "Vacina viva em gatas prenhes da colônia",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Pode causar hipoplasia cerebelar nos fetos."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de colônia de rua, não vacinada, com irmão morto, febre, vômito, diarreia, dor abdominal e desidratação; leucopenia acentuada e antígeno positivo: panleucopenia felina.",
+    "fisiopatologia": [
+      "O parvovírus felino (Protoparvovirus, o mesmo gênero do parvovírus canino) só replica em células em divisão.",
+      "Destrói criptas intestinais (enterite), medula óssea e tecido linfoide (panleucopenia).",
+      "Em fetos e neonatos, atinge o cerebelo em desenvolvimento: hipoplasia cerebelar e ataxia.",
+      "O vírus é muito resistente e é transmitido por fezes e objetos."
+    ],
+    "pistas": [
+      {
+        "achado": "Filhote de colônia não vacinada",
+        "por_que_importa": "Exposição."
+      },
+      {
+        "achado": "Irmão morto",
+        "por_que_importa": "Surto."
+      },
+      {
+        "achado": "Leucopenia acentuada",
+        "por_que_importa": "Medula e tecido linfoide atingidos."
+      },
+      {
+        "achado": "Antígeno positivo",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Hemograma e teste de antígeno.",
+    "comentario_tratamento": "Suporte intensivo, antimicrobiano, isolamento e vacinação dos contactantes."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "sykes",
+      "citacao": "SYKES, J. E. Canine and Feline Infectious Diseases. St. Louis: Elsevier, 2014."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

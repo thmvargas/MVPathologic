@@ -1,0 +1,332 @@
+{
+  "id": "gato-lirio-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "2 anos",
+  "sexo": "fêmea castrada",
+  "peso": "3,9 kg",
+  "queixa_principal": [
+    "Vomitou e está sem comer",
+    "Mordeu um buquê de flores"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "urinario",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento; tutora recebeu buquê com lírios há 2 dias"
+      ]
+    },
+    {
+      "titulo": "Hábito",
+      "itens": [
+        "Morde plantas"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias: mordeu folhas e pólen caiu na pelagem",
+        "Vomitou algumas vezes no primeiro dia",
+        "Hoje: apatia, não come, urina pouco"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,8",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 6%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "180",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Rins aumentados e dolorosos à palpação"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Pólen alaranjado na face e nas patas"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Apática, salivando"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ureia",
+            "valor": "210",
+            "unidade": "mg/dL",
+            "referencia": "42–64",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Creatinina",
+            "valor": "7,8",
+            "unidade": "mg/dL",
+            "referencia": "0,8–1,8",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Potássio",
+            "valor": "6,4",
+            "unidade": "mEq/L",
+            "referencia": "4,0–4,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Fósforo",
+            "valor": "11,2",
+            "unidade": "mg/dL",
+            "referencia": "4,5–8,1",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Azotemia grave com hipercalemia e hiperfosfatemia."
+      },
+      "comentario_didatico": "Azotemia que surge em 24 a 72 horas após a exposição indica lesão renal aguda."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Densidade 1,012",
+          "Glicosúria com glicemia normal",
+          "Cilindros granulosos e células tubulares"
+        ],
+        "conclusao": "Lesão tubular aguda."
+      },
+      "comentario_didatico": "Glicosúria com glicemia normal, proteinúria e cilindros granulosos indicam necrose tubular."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia renal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Rins aumentados, córtex hiperecogênico",
+          "Sem dilatação de pelve"
+        ],
+        "conclusao": "Nefropatia aguda."
+      },
+      "comentario_didatico": "Rins aumentados e hiperecogênicos, sem obstrução; complementa."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Gata jovem."
+    },
+    {
+      "id": "felv",
+      "tipo": "sorologia",
+      "nome": "FeLV e FIV",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativos"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica a lesão renal aguda."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem sinais respiratórios."
+    }
+  ],
+  "diagnostico_id": "necrose_tubular_aguda_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "doenca_renal_cronica",
+      "como_descartar": "Rins pequenos e irregulares, anemia, evolução de meses."
+    },
+    {
+      "diagnostico_id": "obstrucao_uretral_felina",
+      "como_descartar": "Bexiga grande e dura, esforço para urinar."
+    },
+    {
+      "diagnostico_id": "pielonefrite_felina",
+      "como_descartar": "Febre, dor renal e urocultura positiva."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa agressiva e monitoramento da produção de urina",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Quanto antes, melhor; idealmente nas primeiras 18 horas após a exposição."
+    },
+    {
+      "id": "descontaminar",
+      "texto": "Lavar o pólen da pelagem",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Evita nova ingestão ao se lamber."
+    },
+    {
+      "id": "hipercalemia",
+      "texto": "Tratar a hipercalemia",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Protege o coração."
+    },
+    {
+      "id": "dialise",
+      "texto": "Encaminhar para diálise se ficar anúrica",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Única opção quando não há produção de urina."
+    },
+    {
+      "id": "lirios",
+      "texto": "Orientar a não ter lírios (Lilium e Hemerocallis) em casa com gatos",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Qualquer parte da planta, inclusive o pólen e a água do vaso, é tóxica."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal para dor",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Nefrotóxico."
+    },
+    {
+      "id": "emese",
+      "texto": "Induzir vômito agora",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Útil só logo após a ingestão; já se passaram 2 dias."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gata que mordeu folhas de lírio e tinha pólen na pelagem, com vômito inicial e, dois dias depois, apatia, oligúria, rins aumentados e dolorosos, azotemia grave e sinais de lesão tubular: lesão renal aguda (necrose tubular) por intoxicação por lírio.",
+    "fisiopatologia": [
+      "Lírios dos gêneros Lilium e Hemerocallis são extremamente tóxicos para gatos; toda a planta e o pólen.",
+      "A toxina, ainda não totalmente identificada, causa necrose das células dos túbulos renais.",
+      "Nas primeiras horas há vômito; em 24 a 72 horas surge lesão renal aguda com oligúria ou anúria.",
+      "Os túbulos lesados perdem glicose e formam cilindros.",
+      "Sem tratamento precoce, a mortalidade é alta."
+    ],
+    "pistas": [
+      {
+        "achado": "Contato com lírio e pólen na pelagem",
+        "por_que_importa": "Exposição."
+      },
+      {
+        "achado": "Vômito inicial e depois oligúria",
+        "por_que_importa": "Evolução típica."
+      },
+      {
+        "achado": "Rins grandes e dolorosos",
+        "por_que_importa": "Lesão aguda."
+      },
+      {
+        "achado": "Glicosúria com glicemia normal",
+        "por_que_importa": "Lesão tubular."
+      }
+    ],
+    "comentario_exames": "Bioquímica e urinálise seriadas.",
+    "comentario_tratamento": "Fluido precoce e agressivo; diálise se anúria; prevenção."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "id": "bovino-rpt-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Holandesa",
+  "idade": "5 anos",
+  "sexo": "fêmea",
+  "peso": "580 kg",
+  "queixa_principal": [
+    "Queda brusca da produção de leite",
+    "Não quer andar"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Confinamento; silagem de milho e concentrado no cocho"
+      ]
+    },
+    {
+      "titulo": "Instalações",
+      "itens": [
+        "Reforma de cerca com arame há 1 mês perto do galpão de ração"
+      ]
+    },
+    {
+      "titulo": "Prevenção",
+      "itens": [
+        "Não usa ímã ruminal"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 3 dias: comeu pouco e produção caiu de 30 para 12 litros",
+        "Fica parada com os cotovelos afastados e arqueia o dorso"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,8",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "104",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "1 em 2 minutos",
+        "referencia": "2–3 em 2 minutos",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Cotovelos abduzidos, dorso arqueado, relutância em andar"
+        ]
+      },
+      {
+        "titulo": "Provas de dor",
+        "itens": [
+          "Gemido à pressão na região do xifoide e ao descer rampas (prova do bastão positiva)"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Bulhas abafadas com ruído de \"chapinhar\""
+        ]
+      },
+      {
+        "titulo": "Veias",
+        "itens": [
+          "Jugulares ingurgitadas, edema de barbela"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "detector",
+      "tipo": "outro",
+      "nome": "Detector de metais na região do retículo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Sinal positivo na região reticular"
+        ],
+        "conclusao": "Metal no retículo."
+      },
+      "comentario_didatico": "Indica presença de metal, mas muitas vacas sadias têm metal no retículo; usar junto com a clínica."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia do retículo e do pericárdio",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Líquido pericárdico com fibrina",
+          "Motilidade reticular reduzida com aderências"
+        ],
+        "conclusao": "Pericardite traumática."
+      },
+      "comentario_didatico": "Mostra líquido e fibrina no pericárdio e aderências do retículo: confirma a pericardite."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma e fibrinogênio",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Fibrinogênio",
+            "valor": "1.100",
+            "unidade": "mg/dL",
+            "referencia": "300–700",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Inflamação."
+      },
+      "comentario_didatico": "Leucocitose e fibrinogênio alto indicam inflamação; inespecíficos."
+    },
+    {
+      "id": "pericardiocentese",
+      "tipo": "citologia",
+      "nome": "Pericardiocentese com citologia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Exsudato séptico fétido"
+        ],
+        "conclusao": "Pericardite séptica."
+      },
+      "comentario_didatico": "Líquido séptico confirma, mas tem riscos; o ultrassom costuma bastar."
+    },
+    {
+      "id": "bhb",
+      "tipo": "bioquimica",
+      "nome": "Beta-hidroxibutirato",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Cetose pode coexistir, mas não explica a dor e as jugulares cheias."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "Teste de mastite (CMT)",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "A queda do leite tem outra causa."
+    }
+  ],
+  "diagnostico_id": "reticulopericardite_traumatica",
+  "diferenciais": [
+    {
+      "diagnostico_id": "deslocamento_abomaso_bovino",
+      "como_descartar": "Som de \"ping\" à percussão do flanco, sem dor no xifoide nem sinais cardíacos."
+    },
+    {
+      "diagnostico_id": "pneumonia_fibrinosa_bovina",
+      "como_descartar": "Sinais respiratórios e crepitações pulmonares."
+    },
+    {
+      "diagnostico_id": "cetose_bovina",
+      "como_descartar": "Hiporexia e queda de leite sem dor ou febre; cetonas altas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "descarte",
+      "texto": "Avaliar descarte ou eutanásia (pericardite com insuficiência cardíaca)",
+      "tipo": "eutanasia",
+      "classificacao": "adequado",
+      "justificativa": "Com pericardite e jugulares ingurgitadas, o prognóstico é muito ruim."
+    },
+    {
+      "id": "ima",
+      "texto": "Ímã ruminal nas demais vacas do lote",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Prende os metais e previne novos casos."
+    },
+    {
+      "id": "manejo",
+      "texto": "Retirar restos de arame da área de alimentação e usar ímãs no misturador",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Elimina a fonte."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano e ímã na fase inicial, sem pericardite",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Pode funcionar quando só há reticulite."
+    },
+    {
+      "id": "rumenotomia",
+      "texto": "Rumenotomia para remover o corpo estranho",
+      "tipo": "cirurgia",
+      "classificacao": "aceitavel",
+      "justificativa": "Útil antes de haver pericardite instalada."
+    },
+    {
+      "id": "exercicio",
+      "texto": "Fazer a vaca andar para estimular o rúmen",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta a dor e o risco de perfuração."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca em confinamento após reforma de cerca, com queda de leite, febre, dor no xifoide, postura antálgica, bulhas abafadas, jugulares ingurgitadas e edema de barbela; ultrassom com pericardite: reticulopericardite traumática.",
+    "fisiopatologia": [
+      "Bovinos comem sem selecionar e engolem objetos metálicos, que se acumulam no retículo.",
+      "As contrações do retículo empurram o arame através da parede.",
+      "O objeto pode atingir o diafragma e o pericárdio, que fica a poucos centímetros.",
+      "A pericardite com líquido e fibrina restringe o enchimento do coração: jugulares cheias e edema.",
+      "A dor da peritonite localizada explica a postura e a relutância em andar."
+    ],
+    "pistas": [
+      {
+        "achado": "Reforma de cerca com arame",
+        "por_que_importa": "Fonte de corpo estranho."
+      },
+      {
+        "achado": "Dor no xifoide",
+        "por_que_importa": "Retículo."
+      },
+      {
+        "achado": "Bulhas abafadas e ruído de chapinhar",
+        "por_que_importa": "Pericárdio com líquido e gás."
+      },
+      {
+        "achado": "Jugulares ingurgitadas",
+        "por_que_importa": "Insuficiência cardíaca direita."
+      }
+    ],
+    "comentario_exames": "Ultrassom confirma; detector de metais só apoia.",
+    "comentario_tratamento": "Com pericardite instalada, o prognóstico é ruim; prevenir com ímãs e manejo."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

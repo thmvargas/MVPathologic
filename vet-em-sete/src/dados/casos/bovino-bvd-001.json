@@ -1,0 +1,285 @@
+{
+  "id": "bovino-bvd-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Girolando",
+  "idade": "14 meses",
+  "sexo": "fêmea",
+  "peso": "300 kg",
+  "queixa_principal": [
+    "Novilha que nunca cresceu bem",
+    "Agora com diarreia e feridas na boca"
+  ],
+  "semestre": 6,
+  "uso": "treino",
+  "sistema": "multissistemico",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Nascimento",
+      "itens": [
+        "Nasceu pequena; mãe foi comprada prenhe de outro rebanho"
+      ]
+    },
+    {
+      "titulo": "Rebanho",
+      "itens": [
+        "Abortos, repetição de cio e bezerros fracos no último ano"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Rebanho não vacinado para BVD"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Sempre menor que as companheiras, com infecções frequentes",
+        "Há 5 dias: febre, diarreia profusa, salivação e não come"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Antibiótico, sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,0",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Hidratação",
+        "valor": "Desidratação estimada em 10%",
+        "alterado": "anormal"
+      },
+      {
+        "nome": "Escore corporal",
+        "valor": "Magro",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Boca",
+        "itens": [
+          "Erosões e úlceras na gengiva, palato e língua"
+        ]
+      },
+      {
+        "titulo": "Espaço interdigital",
+        "itens": [
+          "Erosões"
+        ]
+      },
+      {
+        "titulo": "Fezes",
+        "itens": [
+          "Diarreia aquosa com muco e sangue"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR ou ELISA de antígeno para o vírus da BVD, repetido após 3 semanas",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Positivo nas duas amostras"
+        ],
+        "conclusao": "Animal persistentemente infectado."
+      },
+      "comentario_didatico": "Dois resultados positivos com 3 semanas de intervalo identificam o animal persistentemente infectado."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia (se morrer)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Erosões no esôfago e no abomaso",
+          "Placas de Peyer hemorrágicas e necróticas"
+        ],
+        "conclusao": "Doença das mucosas."
+      },
+      "comentario_didatico": "Erosões em todo o trato digestório e placas de Peyer necróticas são típicas da doença das mucosas."
+    },
+    {
+      "id": "rebanho",
+      "tipo": "pcr",
+      "nome": "Testar todo o rebanho (bezerros e animais novos)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Mais 2 animais positivos persistentes"
+        ],
+        "conclusao": "Outros PI no rebanho."
+      },
+      "comentario_didatico": "Encontra outros persistentemente infectados que mantêm o vírus."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Leucopenia"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Leucopenia apoia, inespecífica."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG e pesquisa de oocistos",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Coinfecções parasitárias pioram a diarreia; aqui baixas."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "CMT",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "—"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Novilha não lactante."
+    }
+  ],
+  "diagnostico_id": "diarreia_viral_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "febre_aftosa_bovina",
+      "como_descartar": "Vesículas, não erosões; notificação imediata; várias espécies."
+    },
+    {
+      "diagnostico_id": "rinotraqueite_infecciosa_bovina",
+      "como_descartar": "Rinotraqueíte e conjuntivite, sem erosões em todo o trato digestório."
+    },
+    {
+      "diagnostico_id": "coccidiose_bovina",
+      "como_descartar": "Diarreia com sangue em bezerros jovens, oocistos nas fezes."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "eliminar_pi",
+      "texto": "Eliminar (descartar) os animais persistentemente infectados",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "São a fonte contínua de vírus para o rebanho."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar as matrizes antes da reprodução",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Protege o feto da infecção que gera novos persistentemente infectados."
+    },
+    {
+      "id": "testar_compras",
+      "texto": "Testar animais comprados e bezerros de vacas compradas prenhes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "A novilha veio de uma mãe infectada na gestação."
+    },
+    {
+      "id": "eutanasia",
+      "texto": "Eutanásia da novilha (doença das mucosas é fatal)",
+      "tipo": "eutanasia",
+      "classificacao": "adequado",
+      "justificativa": "Não há tratamento eficaz."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Insistir no antimicrobiano",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Doença viral; não muda a evolução."
+    },
+    {
+      "id": "manter",
+      "texto": "Manter a novilha no rebanho para reprodução",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Transmite o vírus e gera bezerros infectados."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Novilha pequena desde o nascimento, filha de vaca comprada prenhe, em rebanho com problemas reprodutivos e sem vacina, com febre, diarreia profusa e erosões na boca e nos cascos; antígeno positivo em duas amostras: animal persistentemente infectado pelo vírus da BVD com doença das mucosas.",
+    "fisiopatologia": [
+      "O vírus da diarreia viral bovina (Pestivirus) causa infecções transitórias, problemas reprodutivos e imunossupressão.",
+      "Se o feto se infecta entre cerca de 40 e 125 dias de gestação, antes de o sistema imune amadurecer, ele passa a reconhecer o vírus como próprio.",
+      "O bezerro nasce persistentemente infectado: elimina vírus a vida toda, muitas vezes cresce mal.",
+      "Se o animal PI se infecta com uma cepa citopática semelhante, desenvolve a doença das mucosas, fatal.",
+      "Os PI são o principal reservatório no rebanho."
+    ],
+    "pistas": [
+      {
+        "achado": "Mãe comprada prenhe",
+        "por_que_importa": "Infecção fetal."
+      },
+      {
+        "achado": "Sempre pequena e doente",
+        "por_que_importa": "Animal PI."
+      },
+      {
+        "achado": "Erosões na boca e nos cascos com diarreia",
+        "por_que_importa": "Doença das mucosas."
+      },
+      {
+        "achado": "Dois testes positivos",
+        "por_que_importa": "PI confirmado."
+      }
+    ],
+    "comentario_exames": "Dois testes de antígeno com 3 semanas de intervalo; testar o rebanho.",
+    "comentario_tratamento": "Descartar PI, vacinar matrizes e testar animais comprados."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

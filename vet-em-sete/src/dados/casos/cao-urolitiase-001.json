@@ -1,0 +1,287 @@
+{
+  "id": "cao-urolitiase-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Schnauzer miniatura",
+  "idade": "7 anos",
+  "sexo": "fêmea castrada",
+  "peso": "8 kg",
+  "queixa_principal": [
+    "Xixi com sangue",
+    "Urina muitas vezes, pouco de cada vez"
+  ],
+  "semestre": 5,
+  "uso": "treino",
+  "sistema": "urinario",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca e petiscos"
+      ]
+    },
+    {
+      "titulo": "Água",
+      "itens": [
+        "Bebe pouco"
+      ]
+    },
+    {
+      "titulo": "Episódios anteriores",
+      "itens": [
+        "Duas \"infecções urinárias\" no último ano, tratadas com antibiótico"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 semana: hematúria, polaciúria, urina em casa"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,5",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "104",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Bexiga pequena, de parede espessa, com sensação de \"areia\" à palpação"
+        ]
+      },
+      {
+        "titulo": "Estado geral",
+        "itens": [
+          "Bom"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal incluindo toda a uretra",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Vários urólitos radiopacos na bexiga, de 2 a 6 mm"
+        ],
+        "conclusao": "Urolitíase vesical."
+      },
+      "comentario_didatico": "Cálculos de oxalato e de estruvita são radiopacos."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise com urocultura (cistocentese)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "pH 6,0",
+          "Cristais de oxalato de cálcio di-hidratado",
+          "Urocultura negativa"
+        ],
+        "conclusao": "Sugere oxalato de cálcio."
+      },
+      "comentario_didatico": "pH, cristais e infecção orientam o tipo provável e o tratamento."
+    },
+    {
+      "id": "analise",
+      "tipo": "outro",
+      "nome": "Análise quantitativa do cálculo removido",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Oxalato de cálcio mono e di-hidratado"
+        ],
+        "conclusao": "Oxalato de cálcio."
+      },
+      "comentario_didatico": "Confirma o tipo, que define a prevenção."
+    },
+    {
+      "id": "calcio",
+      "tipo": "bioquimica",
+      "nome": "Cálcio sérico",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Cálcio total",
+            "valor": "10,2",
+            "unidade": "mg/dL",
+            "referencia": "9,3–11,8",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Hipercalcemia predispõe a oxalato; aqui normal."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "urolitiase_vesical",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cistite_bacteriana_canina",
+      "como_descartar": "Cistite sem cálculos na imagem e urocultura positiva."
+    },
+    {
+      "diagnostico_id": "carcinoma_celulas_transicionais_canino",
+      "como_descartar": "Massa na parede da bexiga, cão idoso; pode sangrar."
+    },
+    {
+      "diagnostico_id": "pielonefrite_felina",
+      "como_descartar": "Pielonefrite: febre, dor renal, cilindros."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "cistotomia",
+      "texto": "Remoção cirúrgica (cistotomia) ou por técnicas minimamente invasivas",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Oxalato de cálcio não se dissolve com dieta."
+    },
+    {
+      "id": "rx_pos",
+      "texto": "Radiografia após a cirurgia para confirmar remoção completa",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Cálculos esquecidos são causa comum de \"recidiva\"."
+    },
+    {
+      "id": "prevencao",
+      "texto": "Prevenção: dieta úmida e específica para oxalato, aumentar a ingestão de água",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Urina diluída reduz a recidiva."
+    },
+    {
+      "id": "dieta_dissolver",
+      "texto": "Dieta de dissolução para estruvita",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Não dissolve oxalato e acidifica a urina, o que favorece o oxalato."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano por semanas",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Urocultura negativa."
+    },
+    {
+      "id": "monitor",
+      "texto": "Urinálise e radiografia a cada 3 a 6 meses",
+      "tipo": "exame",
+      "classificacao": "aceitavel",
+      "justificativa": "Detecta recidiva cedo."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Schnauzer miniatura de meia-idade, que bebe pouca água, com hematúria e polaciúria recorrentes, urólitos radiopacos e cristais de oxalato em urina ácida; análise do cálculo confirma oxalato de cálcio: urolitíase vesical por oxalato de cálcio.",
+    "fisiopatologia": [
+      "Urólitos se formam quando a urina fica supersaturada de minerais.",
+      "Oxalato de cálcio é favorecido por urina ácida e concentrada e por predisposição racial (Schnauzer miniatura, Yorkshire, Shih-tzu).",
+      "Estruvita em cães costuma estar ligada a infecção urinária; oxalato não.",
+      "Os cálculos irritam a mucosa: hematúria, polaciúria e cistite.",
+      "Oxalato não se dissolve com dieta; precisa ser removido."
+    ],
+    "pistas": [
+      {
+        "achado": "Schnauzer de meia-idade",
+        "por_que_importa": "Raça predisposta ao oxalato."
+      },
+      {
+        "achado": "Bebe pouca água",
+        "por_que_importa": "Urina concentrada."
+      },
+      {
+        "achado": "Cristais de oxalato e urina ácida",
+        "por_que_importa": "Tipo provável."
+      },
+      {
+        "achado": "Infecções repetidas sem cura",
+        "por_que_importa": "Cálculo não diagnosticado."
+      }
+    ],
+    "comentario_exames": "Radiografia, urinálise com cultura e análise do cálculo.",
+    "comentario_tratamento": "Remoção cirúrgica e prevenção com dieta e água."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

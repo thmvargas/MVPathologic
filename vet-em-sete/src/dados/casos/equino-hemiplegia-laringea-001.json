@@ -1,0 +1,283 @@
+{
+  "id": "equino-hemiplegia-laringea-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Puro-sangue inglês",
+  "idade": "4 anos",
+  "sexo": "macho",
+  "peso": "510 kg",
+  "queixa_principal": [
+    "Ronco ao galopar",
+    "Rendimento caiu nas corridas"
+  ],
+  "semestre": 1,
+  "uso": "diario",
+  "sistema": "respiratorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Uso",
+      "itens": [
+        "Cavalo de corrida em treinamento"
+      ]
+    },
+    {
+      "titulo": "Saúde",
+      "itens": [
+        "Sem febre ou secreção nasal"
+      ]
+    },
+    {
+      "titulo": "Porte",
+      "itens": [
+        "Animal alto, de pescoço longo"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há meses: ruído alto na inspiração durante o galope, que some no repouso",
+        "Cansa antes do fim da prova"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,8",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória em repouso",
+        "valor": "12",
+        "unidade": "mpm",
+        "referencia": "8–16",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca em repouso",
+        "valor": "36",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Repouso",
+        "itens": [
+          "Sem ruído respiratório"
+        ]
+      },
+      {
+        "titulo": "Palpação da laringe",
+        "itens": [
+          "Músculo cricoaritenóideo dorsal esquerdo menos volumoso que o direito"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Normal em repouso"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "endoscopia_repouso",
+      "tipo": "outro",
+      "nome": "Endoscopia da laringe em repouso",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cartilagem aritenoide esquerda não abduz totalmente",
+          "Assimetria em repouso"
+        ],
+        "conclusao": "Hemiplegia laríngea esquerda (grau III)."
+      },
+      "comentario_didatico": "Mostra a assimetria e a falta de abdução da cartilagem aritenoide esquerda (graduação de Havemeyer)."
+    },
+    {
+      "id": "endoscopia_esforco",
+      "tipo": "outro",
+      "nome": "Endoscopia dinâmica durante o exercício",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Colapso da aritenoide esquerda e da prega vocal na inspiração"
+        ],
+        "conclusao": "Obstrução dinâmica."
+      },
+      "comentario_didatico": "Mostra o colapso da aritenoide durante o galope, que explica o ruído e a queda de rendimento."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia da laringe",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Músculo esquerdo hiperecogênico"
+        ],
+        "conclusao": "Atrofia neurogênica."
+      },
+      "comentario_didatico": "Mostra atrofia do músculo cricoaritenóideo lateral; complementa."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem sinais de doença infecciosa."
+    },
+    {
+      "id": "lavado",
+      "tipo": "citologia",
+      "nome": "Lavado broncoalveolar",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Investigaria hemorragia ou inflamação pulmonar, que não explicam o ronco."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não avalia a laringe."
+    }
+  ],
+  "diagnostico_id": "hemiplegia_laringea_equina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hemorragia_pulmonar_induzida_exercicio_equina",
+      "como_descartar": "Sangue na traqueia após exercício, sem ruído inspiratório característico."
+    },
+    {
+      "diagnostico_id": "micose_bolsa_gutural_equina",
+      "como_descartar": "Epistaxe e disfagia; lesão de nervos que passam pela bolsa gutural."
+    },
+    {
+      "diagnostico_id": "garrotilho",
+      "como_descartar": "Febre e linfonodos aumentados."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "laringoplastia",
+      "texto": "Laringoplastia (prótese de abdução da aritenoide), com ventriculocordectomia",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Mantém a via aérea aberta durante o esforço."
+    },
+    {
+      "id": "ajuste",
+      "texto": "Avaliar se o rendimento exigido justifica a cirurgia (uso do animal)",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Cavalos de lazer podem conviver bem com o problema."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não é doença infecciosa."
+    },
+    {
+      "id": "repouso",
+      "texto": "Só repouso por meses esperando melhora",
+      "tipo": "manejo",
+      "classificacao": "desnecessario",
+      "justificativa": "A neuropatia é progressiva e não regride."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide para \"desinflamar\" a laringe",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não há inflamação; não trata a falta de inervação."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cavalo de corrida alto, de pescoço longo, com ruído inspiratório só durante o galope e queda de rendimento, sem sinais infecciosos; endoscopia com falta de abdução da aritenoide esquerda: hemiplegia laríngea esquerda.",
+    "fisiopatologia": [
+      "Anatomia: o músculo cricoaritenóideo dorsal abre a glote, puxando a cartilagem aritenoide; é inervado pelo nervo laríngeo recorrente.",
+      "O nervo laríngeo recorrente esquerdo contorna o arco da aorta no tórax e sobe pelo pescoço: é o mais longo do corpo.",
+      "Em cavalos altos, essa fibra longa sofre degeneração axonal distal (neuropatia), e o músculo atrofia.",
+      "Fisiologia: no galope, o fluxo de ar cria pressão negativa que puxa a aritenoide sem tônus para dentro da via aérea.",
+      "O resultado é o ronco inspiratório (\"roarer\") e menos ar para o esforço."
+    ],
+    "pistas": [
+      {
+        "achado": "Cavalo alto de pescoço longo",
+        "por_que_importa": "Nervo mais longo, mais vulnerável."
+      },
+      {
+        "achado": "Ronco só no galope",
+        "por_que_importa": "Obstrução dinâmica."
+      },
+      {
+        "achado": "Músculo esquerdo menor",
+        "por_que_importa": "Atrofia neurogênica."
+      },
+      {
+        "achado": "Lado esquerdo",
+        "por_que_importa": "Trajeto do nervo pelo arco aórtico."
+      }
+    ],
+    "comentario_exames": "Endoscopia em repouso e durante o exercício.",
+    "comentario_tratamento": "Laringoplastia quando o desempenho importa; não é infecção nem inflamação."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

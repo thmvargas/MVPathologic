@@ -1,0 +1,282 @@
+{
+  "id": "cao-hidrocefalia-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Chihuahua",
+  "idade": "4 meses",
+  "sexo": "macho",
+  "peso": "0,8 kg",
+  "queixa_principal": [
+    "Cabeça grande e olhos para baixo",
+    "Não aprende e anda cambaleando"
+  ],
+  "semestre": 1,
+  "uso": "treino",
+  "sistema": "nervoso",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprado de criador"
+      ]
+    },
+    {
+      "titulo": "Crescimento",
+      "itens": [
+        "Menor da ninhada"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em andamento"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Desde novo: cabeça arredondada, anda em círculos e bate em objetos",
+        "Não aprende comandos simples"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,5",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "160",
+        "unidade": "bpm",
+        "referencia": "70–220 (filhotes)",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Crânio",
+        "itens": [
+          "Crânio em cúpula, fontanela bregmática aberta e ampla"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Estrabismo ventrolateral bilateral (\"olhar de sol poente\")"
+        ]
+      },
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Ataxia, déficits de propriocepção, ameaça diminuída"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "us_fontanela",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia pela fontanela aberta",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Ventrículos laterais muito dilatados, córtex fino"
+        ],
+        "conclusao": "Hidrocefalia."
+      },
+      "comentario_didatico": "Barata e sem anestesia: mostra os ventrículos laterais dilatados."
+    },
+    {
+      "id": "rm",
+      "tipo": "outro",
+      "nome": "Ressonância magnética",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Dilatação acentuada dos ventrículos laterais e do terceiro ventrículo",
+          "Aqueduto mesencefálico estreito"
+        ],
+        "conclusao": "Hidrocefalia obstrutiva congênita."
+      },
+      "comentario_didatico": "Exame de escolha para confirmar e procurar a causa (por exemplo, obstrução do aqueduto)."
+    },
+    {
+      "id": "acidos_biliares",
+      "tipo": "bioquimica",
+      "nome": "Ácidos biliares",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Normais"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta shunt portossistêmico, outro diferencial em raças pequenas com sinais neurológicos."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Punção de líquor",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Arriscada com pressão intracraniana alta."
+    },
+    {
+      "id": "glicemia",
+      "tipo": "bioquimica",
+      "nome": "Glicemia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Hipoglicemia de filhotes miniatura causa sinais neurológicos agudos; aqui normal."
+    },
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "hidrocefalia_congenita_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "shunt_portossistemico_congenito_canino",
+      "como_descartar": "Sinais após refeições, ácidos biliares altos."
+    },
+    {
+      "diagnostico_id": "traumatismo_cranioencefalico_canino",
+      "como_descartar": "Histórico de trauma, sinais agudos."
+    },
+    {
+      "diagnostico_id": "cinomose",
+      "como_descartar": "Sinais respiratórios, oculares e mioclonia em cão não vacinado."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "corticoide",
+      "texto": "Corticoide para reduzir a produção de líquor (prednisolona)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controle clínico inicial."
+    },
+    {
+      "id": "omeprazol",
+      "texto": "Omeprazol ou acetazolamida para reduzir a produção de líquor",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Usados como adjuvantes."
+    },
+    {
+      "id": "shunt_vp",
+      "texto": "Derivação ventriculoperitoneal com neurocirurgião",
+      "tipo": "cirurgia",
+      "classificacao": "aceitavel",
+      "justificativa": "Indicada quando o tratamento clínico não controla; disponível em centros especializados."
+    },
+    {
+      "id": "proteger",
+      "texto": "Proteger a fontanela aberta de traumas",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "O cérebro está exposto a lesões."
+    },
+    {
+      "id": "reproducao",
+      "texto": "Não reproduzir os pais e o filhote",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Componente hereditário em raças miniatura."
+    },
+    {
+      "id": "puncao",
+      "texto": "Punções repetidas para retirar líquor",
+      "tipo": "suporte",
+      "classificacao": "contraindicado",
+      "justificativa": "Risco de hemorragia e infecção, efeito passageiro."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de Chihuahua pequeno, com crânio em cúpula, fontanela aberta, estrabismo ventrolateral, ataxia e dificuldade de aprendizado; ventrículos laterais muito dilatados no ultrassom e na ressonância, com aqueduto estreito: hidrocefalia congênita.",
+    "fisiopatologia": [
+      "Anatomia/fisiologia: o líquido cerebrospinal é produzido nos plexos coroides dos ventrículos e circula até o espaço subaracnóideo, onde é absorvido.",
+      "Passa dos ventrículos laterais ao terceiro, pelo aqueduto mesencefálico ao quarto ventrículo.",
+      "Se o aqueduto é estreito (comum em raças miniatura), o líquor se acumula e os ventrículos dilatam.",
+      "O córtex fica fino e comprimido: déficits neurológicos e cognitivos.",
+      "Em filhotes, as suturas e a fontanela ainda abertas permitem o crânio aumentar (cúpula)."
+    ],
+    "pistas": [
+      {
+        "achado": "Raça miniatura",
+        "por_que_importa": "Predisposição."
+      },
+      {
+        "achado": "Crânio em cúpula e fontanela aberta",
+        "por_que_importa": "Pressão intracraniana."
+      },
+      {
+        "achado": "Olhar de sol poente",
+        "por_que_importa": "Estrabismo ventrolateral típico."
+      },
+      {
+        "achado": "Ventrículos dilatados",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Ultrassom pela fontanela e ressonância.",
+    "comentario_tratamento": "Controle clínico da produção de líquor e derivação cirúrgica em casos selecionados."
+  },
+  "referencias": [
+    {
+      "id": "dewey",
+      "citacao": "DEWEY, C. W.; DA COSTA, R. C. Practical Guide to Canine and Feline Neurology. 3. ed. Ames: Wiley-Blackwell, 2016."
+    },
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

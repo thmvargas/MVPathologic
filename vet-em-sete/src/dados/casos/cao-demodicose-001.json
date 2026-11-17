@@ -1,0 +1,279 @@
+{
+  "id": "cao-demodicose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Pit bull",
+  "idade": "7 meses",
+  "sexo": "macho",
+  "peso": "14 kg",
+  "queixa_principal": [
+    "Perda de pelo no rosto e nas patas",
+    "Pele vermelha"
+  ],
+  "semestre": 3,
+  "uso": "treino",
+  "sistema": "tegumentar",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprado de criador; mãe teve o mesmo problema"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Completa"
+      ]
+    },
+    {
+      "titulo": "Contactantes",
+      "itens": [
+        "Outros cães da casa sem lesões"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 mês: falhas ao redor dos olhos e da boca, depois nas patas e no tronco"
+      ]
+    },
+    {
+      "titulo": "Prurido",
+      "itens": [
+        "Leve no início, aumentou"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,8",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Linfonodos",
+        "valor": "Aumentados",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Alopecia, eritema, comedões e descamação na face, periocular, membros e tronco (mais de 5 áreas)"
+        ]
+      },
+      {
+        "titulo": "Patas",
+        "itens": [
+          "Pododermatite com edema"
+        ]
+      },
+      {
+        "titulo": "Infecção secundária",
+        "itens": [
+          "Pústulas e crostas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado cutâneo profundo (até sangrar) em várias áreas",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Numerosos Demodex canis adultos, ninfas e ovos"
+        ],
+        "conclusao": "Demodicose generalizada."
+      },
+      "comentario_didatico": "Muitos ácaros adultos, ninfas e ovos confirmam a demodicose."
+    },
+    {
+      "id": "tricograma",
+      "tipo": "citologia",
+      "nome": "Tricograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Ácaros nas raízes dos pelos"
+        ],
+        "conclusao": "Positivo."
+      },
+      "comentario_didatico": "Alternativa menos invasiva em áreas difíceis (patas, face)."
+    },
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia por fita adesiva",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Cocos e neutrófilos"
+        ],
+        "conclusao": "Piodermite secundária."
+      },
+      "comentario_didatico": "Mostra a piodermite secundária, que precisa de tratamento."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura fúngica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta dermatofitose; negativa."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Em filhote, a demodicose juvenil não costuma ter doença de base hormonal."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "—"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "demodicose",
+  "diferenciais": [
+    {
+      "diagnostico_id": "sarna_sarcoptica",
+      "como_descartar": "Prurido intenso, bordas das orelhas e cotovelos, contagiosa; ácaros difíceis de achar."
+    },
+    {
+      "diagnostico_id": "dermatofitose_felina",
+      "como_descartar": "Dermatofitose: cultura positiva, lesões circulares."
+    },
+    {
+      "diagnostico_id": "piodermite_bacteriana_canina",
+      "como_descartar": "Sem ácaros; pode ser secundária à demodicose."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "isoxazolina",
+      "texto": "Isoxazolina oral (ex.: fluralaner, sarolaner) até dois raspados negativos",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento atual mais eficaz e seguro."
+    },
+    {
+      "id": "piodermite",
+      "texto": "Tratar a piodermite secundária",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Melhora o conforto e a resposta."
+    },
+    {
+      "id": "castrar",
+      "texto": "Castrar e não usar na reprodução",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Predisposição hereditária à forma juvenil generalizada."
+    },
+    {
+      "id": "raspados",
+      "texto": "Raspados de controle mensais",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Define o fim do tratamento."
+    },
+    {
+      "id": "isolar",
+      "texto": "Isolar o cão dos outros cães da casa",
+      "tipo": "sanitaria",
+      "classificacao": "desnecessario",
+      "justificativa": "A demodicose não é contagiosa entre cães adultos."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Corticoide para a coceira",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Reduz a imunidade e piora a proliferação dos ácaros."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de raça predisposta, com mãe afetada, com alopecia, eritema e comedões em face, patas e tronco, pododermatite e piodermite secundária; raspado com muitos Demodex: demodicose juvenil generalizada.",
+    "fisiopatologia": [
+      "Demodex canis faz parte da fauna normal da pele e é transmitido da mãe ao filhote na amamentação.",
+      "A doença aparece quando a imunidade (sobretudo celular) não controla a população de ácaros.",
+      "Na forma juvenil há predisposição hereditária; na do adulto, procurar doença de base (endócrina, neoplasia, corticoides).",
+      "Os ácaros vivem nos folículos: foliculite, alopecia, comedões e infecção secundária.",
+      "Não é contagiosa para outros cães adultos nem para pessoas."
+    ],
+    "pistas": [
+      {
+        "achado": "Filhote, mãe afetada",
+        "por_que_importa": "Forma juvenil hereditária."
+      },
+      {
+        "achado": "Face, olhos e patas",
+        "por_que_importa": "Distribuição típica."
+      },
+      {
+        "achado": "Comedões",
+        "por_que_importa": "Folículos com ácaros."
+      },
+      {
+        "achado": "Raspado com ácaros",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Raspado profundo ou tricograma.",
+    "comentario_tratamento": "Isoxazolina, tratar a piodermite e não reproduzir."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "muller",
+      "citacao": "MILLER, W. H.; GRIFFIN, C. E.; CAMPBELL, K. L. Muller and Kirk's Small Animal Dermatology. 7. ed. St. Louis: Elsevier, 2013."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

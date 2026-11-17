@@ -1,0 +1,280 @@
+{
+  "id": "cao-displasia-coxofemoral-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Labrador",
+  "idade": "8 meses",
+  "sexo": "fêmea",
+  "peso": "24 kg",
+  "queixa_principal": [
+    "Anda rebolando",
+    "Não quer subir escada"
+  ],
+  "semestre": 2,
+  "uso": "treino",
+  "sistema": "musculoesqueletico",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Comprada de criador sem exames dos pais"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração de filhote à vontade, crescimento rápido"
+      ]
+    },
+    {
+      "titulo": "Atividade",
+      "itens": [
+        "Brinca muito em piso liso"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 meses: andar rebolando e sentar de lado",
+        "Cansa nas caminhadas"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,7",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "6/9"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Marcha",
+        "itens": [
+          "Movimento de \"coelho\" (salta com os dois posteriores juntos)"
+        ]
+      },
+      {
+        "titulo": "Quadril",
+        "itens": [
+          "Dor à extensão da articulação coxofemoral",
+          "Sinal de Ortolani positivo bilateral sob sedação"
+        ]
+      },
+      {
+        "titulo": "Musculatura",
+        "itens": [
+          "Músculos da coxa pouco desenvolvidos"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia ventrodorsal do quadril (posição estendida), sob sedação",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Acetábulos rasos",
+          "Cabeça femoral coberta em menos da metade",
+          "Ângulo de Norberg reduzido"
+        ],
+        "conclusao": "Displasia coxofemoral bilateral."
+      },
+      "comentario_didatico": "Mostra a subluxação e a cobertura insuficiente da cabeça do fêmur pelo acetábulo."
+    },
+    {
+      "id": "ortolani",
+      "tipo": "outro",
+      "nome": "Teste de Ortolani sob sedação",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Positivo bilateralmente"
+        ],
+        "conclusao": "Frouxidão articular."
+      },
+      "comentario_didatico": "Mede a frouxidão da articulação; positivo indica subluxação."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não ajuda no diagnóstico ortopédico."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Artrocentese com cultura",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Líquido normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem sinais de artrite séptica."
+    },
+    {
+      "id": "rx_coluna",
+      "tipo": "radiografia",
+      "nome": "Radiografia de coluna",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta causa neurológica de fraqueza dos posteriores; aqui normal."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "displasia_coxofemoral",
+  "diferenciais": [
+    {
+      "diagnostico_id": "osteoartrite_canina",
+      "como_descartar": "Consequência da displasia em adultos; aqui a filhote ainda tem frouxidão sem artrose importante."
+    },
+    {
+      "diagnostico_id": "osteossarcoma_canino",
+      "como_descartar": "Lesão agressiva em osso, cão adulto."
+    },
+    {
+      "diagnostico_id": "neosporose_canina",
+      "como_descartar": "Paralisia rígida dos posteriores em filhotes, com causa neurológica."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "peso",
+      "texto": "Controle de peso e dieta de crescimento para raças grandes",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Excesso de peso e crescimento rápido pioram a doença."
+    },
+    {
+      "id": "exercicio",
+      "texto": "Exercício controlado de baixo impacto (natação, caminhadas em superfícies firmes)",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Fortalece a musculatura que estabiliza o quadril."
+    },
+    {
+      "id": "cirurgia_juvenil",
+      "texto": "Avaliar cirurgia corretiva juvenil (ex.: osteotomia pélvica) com ortopedista",
+      "tipo": "cirurgia",
+      "classificacao": "aceitavel",
+      "justificativa": "Indicada em filhotes selecionados, antes da artrose."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório nas crises de dor",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Alívio sintomático."
+    },
+    {
+      "id": "reproducao",
+      "texto": "Não usar na reprodução",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Doença hereditária poligênica."
+    },
+    {
+      "id": "repouso_absoluto",
+      "texto": "Repouso absoluto em gaiola por meses",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Leva à atrofia muscular e piora a estabilidade."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de Labrador de crescimento rápido, sem exame dos pais, com andar rebolando, \"pulo de coelho\", dor à extensão do quadril e Ortolani positivo; radiografia com acetábulos rasos e subluxação: displasia coxofemoral bilateral.",
+    "fisiopatologia": [
+      "Anatomia: a cabeça do fêmur deve encaixar fundo no acetábulo, mantida pela cápsula, pelo ligamento da cabeça do fêmur e pelos músculos.",
+      "Na displasia, há frouxidão articular durante o crescimento: a cabeça femoral sai parcialmente do acetábulo.",
+      "As forças anormais remodelam o acetábulo (raso) e a cabeça femoral (achatada).",
+      "Com o tempo, surge a osteoartrite.",
+      "É hereditária e poligênica; o ambiente (crescimento rápido, peso, piso liso) piora."
+    ],
+    "pistas": [
+      {
+        "achado": "Raça grande, sem exame dos pais",
+        "por_que_importa": "Herança."
+      },
+      {
+        "achado": "Crescimento rápido e piso liso",
+        "por_que_importa": "Fatores ambientais."
+      },
+      {
+        "achado": "Pulo de coelho",
+        "por_que_importa": "Evita dor ao estender o quadril."
+      },
+      {
+        "achado": "Ortolani positivo",
+        "por_que_importa": "Frouxidão."
+      }
+    ],
+    "comentario_exames": "Radiografia do quadril sob sedação e teste de Ortolani.",
+    "comentario_tratamento": "Peso, exercício controlado e avaliação cirúrgica; não reproduzir."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "tobias",
+      "citacao": "JOHNSTON, S. A.; TOBIAS, K. M. Veterinary Surgery: Small Animal. 2. ed. St. Louis: Elsevier, 2018."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

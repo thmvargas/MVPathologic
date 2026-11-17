@@ -1,0 +1,291 @@
+{
+  "id": "cao-carcinoma-mamario-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Poodle",
+  "idade": "10 anos",
+  "sexo": "fêmea inteira",
+  "peso": "7 kg",
+  "queixa_principal": [
+    "Caroços nas mamas",
+    "Um deles cresceu rápido"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "reprodutor",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Nunca castrada",
+        "Recebeu anticoncepcional injetável por vários anos"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração e comida caseira"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Nódulos percebidos há 1 ano",
+        "O maior dobrou de tamanho em 2 meses"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Tosse discreta há 2 semanas"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,5",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "32",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Mamas",
+        "itens": [
+          "Nódulo de 4 cm, aderido, ulcerado, na mama inguinal direita",
+          "Dois nódulos de 1 cm em mamas torácicas"
+        ]
+      },
+      {
+        "titulo": "Linfonodos",
+        "itens": [
+          "Inguinal direito aumentado"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Sem alterações"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax em três projeções",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Nódulos pulmonares múltiplos de 3 a 8 mm"
+        ],
+        "conclusao": "Metástases pulmonares."
+      },
+      "comentario_didatico": "Estadiamento obrigatório antes da cirurgia: metástase pulmonar muda o prognóstico e a conduta."
+    },
+    {
+      "id": "histopato",
+      "tipo": "histopatologia",
+      "nome": "Histopatologia do nódulo maior e do linfonodo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Carcinoma tubulopapilar de grau III",
+          "Invasão vascular",
+          "Metástase no linfonodo inguinal"
+        ],
+        "conclusao": "Carcinoma mamário de alto grau com metástase."
+      },
+      "comentario_didatico": "Define tipo e grau do carcinoma e confirma metástase linfonodal."
+    },
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia aspirativa",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Células epiteliais atípicas"
+        ],
+        "conclusao": "Neoplasia epitelial."
+      },
+      "comentario_didatico": "Ajuda a separar tumor de mama de outras massas, mas não gradua o carcinoma."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Completa o estadiamento; aqui sem metástases abdominais."
+    },
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para Ehrlichia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "carcinoma_mamario_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "tumor_mamario_benigno_canino",
+      "como_descartar": "Crescimento lento, bem delimitado, sem invasão na histopatologia."
+    },
+    {
+      "diagnostico_id": "carcinoma_inflamatorio_mamario_canino",
+      "como_descartar": "Mama difusamente quente, vermelha e dolorosa, edema; prognóstico muito ruim."
+    },
+    {
+      "diagnostico_id": "mastocitoma",
+      "como_descartar": "Células redondas com grânulos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "estadiar",
+      "texto": "Estadiamento completo antes de qualquer cirurgia",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Define se há indicação de cirurgia curativa."
+    },
+    {
+      "id": "paliativo",
+      "texto": "Com metástase pulmonar: cirurgia só se paliativa (tumor ulcerado) e controle de dor",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Retirar a massa ulcerada melhora a qualidade de vida, sem expectativa de cura."
+    },
+    {
+      "id": "oncologia",
+      "texto": "Encaminhar à oncologia para discutir quimioterapia",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Benefício limitado e debatido no carcinoma mamário canino."
+    },
+    {
+      "id": "castracao_cedo",
+      "texto": "Orientar castração precoce das cadelas jovens da família",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Castrar antes do primeiro ou segundo cio reduz muito o risco."
+    },
+    {
+      "id": "progestageno",
+      "texto": "Manter o anticoncepcional",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Progestágenos estimulam o tecido mamário e aumentam o risco."
+    },
+    {
+      "id": "mastectomia_bilateral",
+      "texto": "Mastectomia bilateral radical imediata, sem estadiar",
+      "tipo": "cirurgia",
+      "classificacao": "contraindicado",
+      "justificativa": "Com metástase pulmonar, a cirurgia extensa não traz cura e tem muito risco."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela idosa não castrada, com uso prolongado de anticoncepcional, com múltiplos nódulos mamários, um deles grande, ulcerado e de crescimento rápido, linfonodo aumentado e metástases pulmonares; carcinoma de grau III: carcinoma mamário canino.",
+    "fisiopatologia": [
+      "Os tumores mamários são os mais comuns em cadelas não castradas; cerca de metade é maligna.",
+      "Os hormônios ovarianos e os progestágenos estimulam o epitélio mamário.",
+      "A castração antes do primeiro cio reduz o risco a quase zero; o efeito diminui depois de alguns cios.",
+      "Os carcinomas se espalham por via linfática (linfonodos regionais) e sanguínea (pulmão)."
+    ],
+    "pistas": [
+      {
+        "achado": "Cadela idosa não castrada",
+        "por_que_importa": "Exposição hormonal."
+      },
+      {
+        "achado": "Anticoncepcional injetável",
+        "por_que_importa": "Progestágeno."
+      },
+      {
+        "achado": "Nódulo ulcerado de crescimento rápido",
+        "por_que_importa": "Comportamento maligno."
+      },
+      {
+        "achado": "Nódulos pulmonares",
+        "por_que_importa": "Metástase."
+      }
+    ],
+    "comentario_exames": "Radiografia em três projeções e histopatologia são indispensáveis.",
+    "comentario_tratamento": "Com metástase, tratamento paliativo; a prevenção é a castração precoce."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "johnston2001",
+      "citacao": "JOHNSTON, S. D.; ROOT KUSTRITZ, M. V.; OLSON, P. N. S. Canine and Feline Theriogenology. Philadelphia: Saunders, 2001."
+    },
+    {
+      "id": "withrow",
+      "citacao": "VAIL, D. M.; THAMM, D. H.; LIPTAK, J. M. Withrow and MacEwen's Small Animal Clinical Oncology. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

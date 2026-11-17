@@ -1,0 +1,295 @@
+{
+  "id": "bovino-dae-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Holandesa",
+  "idade": "5 anos",
+  "sexo": "fêmea",
+  "peso": "620 kg",
+  "queixa_principal": [
+    "Come só um pouco de feno, recusa o concentrado",
+    "Produção caiu"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "digestorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Parto",
+      "itens": [
+        "Pariu há 12 dias"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Dieta com muito concentrado e pouca fibra longa no pós-parto"
+      ]
+    },
+    {
+      "titulo": "Doenças pós-parto",
+      "itens": [
+        "Teve hipocalcemia subclínica e cetose"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 dias: apetite seletivo, comendo só volumoso",
+        "Fezes escassas e pastosas"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Propilenoglicol oral"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,7",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "84",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Movimentos ruminais",
+        "valor": "Diminuídos",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Percussão com ausculta",
+        "itens": [
+          "Som metálico de \"ping\" no flanco esquerdo, entre a 9ª e a 13ª costelas"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Leve assimetria: arco costal esquerdo abaulado"
+        ]
+      },
+      {
+        "titulo": "Hálito",
+        "itens": [
+          "Cetônico"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ping",
+      "tipo": "outro",
+      "nome": "Percussão com ausculta simultânea (\"ping\") e auscultação com balotamento",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Ping de som agudo entre o terço médio e dorsal das últimas costelas esquerdas"
+        ],
+        "conclusao": "Víscera com gás no lado esquerdo."
+      },
+      "comentario_didatico": "O ping no flanco esquerdo, sobre a área do rúmen, é o principal sinal de abomaso deslocado à esquerda."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia do flanco esquerdo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Abomaso com gás e conteúdo entre o rúmen e a parede"
+        ],
+        "conclusao": "Deslocamento de abomaso à esquerda."
+      },
+      "comentario_didatico": "Mostra o abomaso entre o rúmen e a parede abdominal."
+    },
+    {
+      "id": "bhb",
+      "tipo": "bioquimica",
+      "nome": "Beta-hidroxibutirato",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Beta-hidroxibutirato",
+            "valor": "2,4",
+            "unidade": "mmol/L",
+            "referencia": "< 1,2",
+            "fonte": "constable",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Cetose."
+      },
+      "comentario_didatico": "Cetose acompanha e é fator de risco; deve ser tratada."
+    },
+    {
+      "id": "cloreto",
+      "tipo": "bioquimica",
+      "nome": "Cloreto e bicarbonato",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Cloreto baixo, bicarbonato alto"
+        ],
+        "conclusao": "Alcalose hipoclorêmica."
+      },
+      "comentario_didatico": "Alcalose metabólica hipoclorêmica por sequestro de ácido no abomaso."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "CMT",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica o ping."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "deslocamento_abomaso_bovino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cetose_bovina",
+      "como_descartar": "Pode estar sozinha (sem ping) ou junto com o deslocamento."
+    },
+    {
+      "diagnostico_id": "reticulopericardite_traumatica",
+      "como_descartar": "Dor no xifoide, febre, jugulares cheias."
+    },
+    {
+      "diagnostico_id": "timpanismo_gasoso",
+      "como_descartar": "Distensão dorsal esquerda do rúmen com gás, sem ping limitado às últimas costelas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "cirurgia",
+      "texto": "Correção cirúrgica com abomasopexia (ou omentopexia)",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Recoloca o abomaso no lugar e fixa para evitar recidiva."
+    },
+    {
+      "id": "cetose",
+      "texto": "Tratar a cetose (propilenoglicol, glicose IV)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Doença associada que atrasa a recuperação."
+    },
+    {
+      "id": "rolamento",
+      "texto": "Rolamento da vaca sem fixação",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Pode corrigir temporariamente, mas a recidiva é frequente."
+    },
+    {
+      "id": "dieta",
+      "texto": "Prevenção: mais fibra longa, transição gradual de dieta e controle de hipocalcemia e cetose no pós-parto",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz o risco no rebanho."
+    },
+    {
+      "id": "laxante",
+      "texto": "Laxantes e óleo mineral esperando resolver",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não reposiciona o abomaso."
+    },
+    {
+      "id": "antibiotico_so",
+      "texto": "Só antimicrobiano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não é infecção."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Vaca leiteira 12 dias após o parto, com dieta pobre em fibra e cetose, com apetite seletivo, produção em queda e \"ping\" no flanco esquerdo; ultrassom com abomaso entre o rúmen e a parede: deslocamento de abomaso à esquerda.",
+    "fisiopatologia": [
+      "Anatomia: o abomaso fica normalmente no assoalho do abdome, à direita da linha média.",
+      "Após o parto, o útero recua e deixa espaço livre no abdome ventral.",
+      "Dieta rica em concentrado e pobre em fibra reduz a motilidade do abomaso e aumenta a produção de gás.",
+      "O abomaso com gás sobe pelo lado esquerdo, entre o rúmen e a parede (deslocamento à esquerda).",
+      "Hipocalcemia e cetose reduzem a contração do abomaso e aumentam o risco."
+    ],
+    "pistas": [
+      {
+        "achado": "Primeiras semanas após o parto",
+        "por_que_importa": "Período de risco."
+      },
+      {
+        "achado": "Pouca fibra e muito concentrado",
+        "por_que_importa": "Atonia e gás."
+      },
+      {
+        "achado": "Ping no flanco esquerdo",
+        "por_que_importa": "Víscera com gás."
+      },
+      {
+        "achado": "Cetose associada",
+        "por_que_importa": "Doenças ligadas."
+      }
+    ],
+    "comentario_exames": "Percussão com ausculta e ultrassom.",
+    "comentario_tratamento": "Cirurgia com fixação e tratamento da cetose."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

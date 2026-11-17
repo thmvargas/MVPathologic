@@ -1,0 +1,292 @@
+{
+  "id": "gato-piotorax-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Sem raça definida",
+  "idade": "3 anos",
+  "sexo": "macho inteiro",
+  "peso": "4,1 kg",
+  "queixa_principal": [
+    "Respirando com dificuldade",
+    "Não come há 3 dias"
+  ],
+  "semestre": 5,
+  "uso": "treino",
+  "sistema": "respiratorio",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Sai à rua; briga com frequência"
+      ]
+    },
+    {
+      "titulo": "Ferimentos",
+      "itens": [
+        "Tutor viu feridas de mordida no tórax há 2 semanas"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Atrasada"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Apatia e respiração rápida que piorou",
+        "Recusa comida"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,9",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "64",
+        "unidade": "mpm",
+        "referencia": "20–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "210",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Padrão restritivo, respiração curta e rápida"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Sons cardíacos e pulmonares abafados ventralmente, dos dois lados"
+        ]
+      },
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Cicatriz de mordida no tórax lateral"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pocus",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassom de tórax rápido (POCUS)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Efusão pleural bilateral com conteúdo ecogênico"
+        ],
+        "conclusao": "Efusão pleural."
+      },
+      "comentario_didatico": "Confirma efusão pleural com o gato em posição confortável e guia a punção."
+    },
+    {
+      "id": "toracocentese",
+      "tipo": "citologia",
+      "nome": "Toracocentese com análise do líquido, citologia e cultura",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Líquido turvo, cor de creme, odor fétido",
+          "Neutrófilos degenerados e bactérias mistas, inclusive filamentosas",
+          "Cultura: Pasteurella multocida e anaeróbios"
+        ],
+        "conclusao": "Piotórax."
+      },
+      "comentario_didatico": "É diagnóstica e terapêutica. Líquido purulento com bactérias confirma o piotórax."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Neutrofilia com desvio"
+        ],
+        "conclusao": "Inflamação séptica."
+      },
+      "comentario_didatico": "Leucocitose com desvio à esquerda, inespecífico."
+    },
+    {
+      "id": "felv_fiv",
+      "tipo": "sorologia",
+      "nome": "FeLV e FIV",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativos"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Gato que briga tem risco de FIV; não muda o tratamento imediato."
+    },
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma completo",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Sem sinais de causa cardíaca; atrasaria a drenagem."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Gato jovem."
+    }
+  ],
+  "diagnostico_id": "piotorax_felino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cardiomiopatia_hipertrofica_felina",
+      "como_descartar": "Efusão é um transudato modificado e o átrio esquerdo está grande."
+    },
+    {
+      "diagnostico_id": "peritonite_infecciosa_felina",
+      "como_descartar": "Efusão amarela, viscosa, sem bactérias."
+    },
+    {
+      "diagnostico_id": "linfoma_multicentrico",
+      "como_descartar": "Efusão com células linfoides atípicas; linfoma mediastinal em gatos jovens com FeLV."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "dreno",
+      "texto": "Drenagem pleural com tubo de toracostomia e lavagem",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Retira o pus; a drenagem é a base do tratamento."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano de amplo espectro com ação em anaeróbios, por semanas",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Flora mista, incluindo anaeróbios da boca do gato."
+    },
+    {
+      "id": "oxigenio",
+      "texto": "Oxigênio e estabilização antes de manipular",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Paciente com dispneia descompensa fácil."
+    },
+    {
+      "id": "castrar",
+      "texto": "Castração depois da recuperação",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Reduz brigas, a principal causa."
+    },
+    {
+      "id": "so_antibiotico",
+      "texto": "Só antimicrobiano oral, sem drenagem",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "O pus não sai; alta mortalidade."
+    },
+    {
+      "id": "diuretico",
+      "texto": "Furosemida para retirar o líquido",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não é efusão de origem cardíaca; causa desidratação."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato macho inteiro que briga, com mordida no tórax há 2 semanas, febre, dispneia restritiva e sons abafados; efusão pleural purulenta com bactérias mistas: piotórax.",
+    "fisiopatologia": [
+      "A maioria dos casos em gatos vem de mordidas: a flora da boca (Pasteurella, anaeróbios) chega ao espaço pleural.",
+      "As bactérias causam inflamação supurativa e acúmulo de pus nos dois hemitórax.",
+      "O líquido impede a expansão do pulmão: respiração restritiva, curta e rápida.",
+      "Sem drenagem, a infecção leva a sepse e aderências."
+    ],
+    "pistas": [
+      {
+        "achado": "Gato inteiro que briga, mordida no tórax",
+        "por_que_importa": "Porta de entrada."
+      },
+      {
+        "achado": "Febre e dispneia restritiva",
+        "por_que_importa": "Infecção com líquido pleural."
+      },
+      {
+        "achado": "Sons abafados ventralmente",
+        "por_que_importa": "Efusão."
+      },
+      {
+        "achado": "Pus com bactérias",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "POCUS e toracocentese com citologia e cultura.",
+    "comentario_tratamento": "Drenagem com tubo, lavagem e antimicrobiano prolongado."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}
