@@ -1,0 +1,283 @@
+{
+  "id": "bovino-pem-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Nelore",
+  "idade": "12 meses",
+  "sexo": "macho",
+  "peso": "280 kg",
+  "queixa_principal": [
+    "Garrote cego e andando em círculos",
+    "Encosta a cabeça na cerca"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "nervoso",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Confinamento; mudou para dieta com muito concentrado há 3 semanas"
+      ]
+    },
+    {
+      "titulo": "Água",
+      "itens": [
+        "Bebedouro de poço com água de gosto salgado"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Mais dois animais com sinais parecidos"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 dia: isolado, sem comer",
+        "Hoje: cegueira, pressiona a cabeça contra objetos, tremores"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,9",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "72",
+        "unidade": "bpm",
+        "referencia": "60–80",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "Cegueira com reflexo pupilar preservado (cegueira central)",
+          "Pressão da cabeça contra a cerca, opistótono",
+          "Nistagmo dorsomedial (\"olhar de estrela\")"
+        ]
+      },
+      {
+        "titulo": "Consciência",
+        "itens": [
+          "Deprimida"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "tiamina",
+      "tipo": "outro",
+      "nome": "Resposta ao tratamento com tiamina",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Melhora parcial após 24 horas de tiamina"
+        ],
+        "conclusao": "Resposta compatível."
+      },
+      "comentario_didatico": "Melhora em horas a dias após tiamina apoia muito o diagnóstico."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de animal morto com lâmpada UV no cérebro",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Córtex cerebral amarelado, fluorescente à luz UV",
+          "Necrose laminar cortical"
+        ],
+        "conclusao": "Polioencefalomalácia."
+      },
+      "comentario_didatico": "O córtex lesado fica fluorescente sob luz ultravioleta; a histopatologia mostra necrose laminar cortical."
+    },
+    {
+      "id": "enxofre",
+      "tipo": "outro",
+      "nome": "Análise de enxofre na água e na dieta",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sulfato alto na água do poço"
+        ],
+        "conclusao": "Excesso de enxofre."
+      },
+      "comentario_didatico": "Excesso de sulfato é causa importante; orienta a prevenção."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Líquido cerebrospinal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Sem alterações relevantes"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Normal ou com pouca alteração; ajuda a afastar meningite."
+    },
+    {
+      "id": "raiva",
+      "tipo": "outro",
+      "nome": "Pesquisa de raiva (após a morte, laboratório oficial)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Todo bovino com sinais nervosos que morre deve ter raiva investigada."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inespecífico."
+    }
+  ],
+  "diagnostico_id": "polioencefalomalacia",
+  "diferenciais": [
+    {
+      "diagnostico_id": "raiva",
+      "como_descartar": "Paralisia ascendente, salivação, sem cegueira central com resposta à tiamina."
+    },
+    {
+      "diagnostico_id": "intoxicacao_sal_bovina",
+      "como_descartar": "Restrição de água seguida de acesso livre; sódio alto no soro e no líquor."
+    },
+    {
+      "diagnostico_id": "botulismo",
+      "como_descartar": "Paralisia flácida com consciência preservada."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "tiamina",
+      "texto": "Tiamina injetável o quanto antes, repetida",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Resposta melhor quanto mais cedo.",
+      "dose": {
+        "texto": "10 mg/kg IV lenta ou IM a cada 6–8 h no primeiro dia",
+        "fonte": "constable",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "dexametasona",
+      "texto": "Dexametasona para o edema cerebral",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Usada em casos graves para reduzir o edema."
+    },
+    {
+      "id": "dieta",
+      "texto": "Corrigir a dieta: transição gradual, mais fibra e reduzir sulfato na água e na ração",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Previne novos casos."
+    },
+    {
+      "id": "lote",
+      "texto": "Tratar os animais do lote com sinais iniciais",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Outros já estão afetados."
+    },
+    {
+      "id": "raiva_notificar",
+      "texto": "Notificar e enviar material ao serviço oficial se algum morrer",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Descartar raiva é obrigatório."
+    },
+    {
+      "id": "contencao",
+      "texto": "Contenção forçada para tratar sem cuidado com quedas",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Animal cego e desorientado se machuca."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Bovino jovem em confinamento após mudança brusca para dieta concentrada e com água rica em sulfato, com cegueira central, pressão da cabeça, opistótono e nistagmo, outros animais afetados e melhora com tiamina: polioencefalomalácia.",
+    "fisiopatologia": [
+      "A polioencefalomalácia é a necrose do córtex cerebral (substância cinzenta).",
+      "Causas principais: deficiência de tiamina (por tiaminases de dietas ricas em grãos) e excesso de enxofre (sulfeto de hidrogênio produzido no rúmen).",
+      "A tiamina é cofator do metabolismo da glicose; sem ela, os neurônios ficam sem energia.",
+      "O córtex lesado incha: cegueira central, pressão da cabeça, opistótono.",
+      "A necrose laminar cortical fluoresce sob luz UV."
+    ],
+    "pistas": [
+      {
+        "achado": "Mudança brusca para concentrado",
+        "por_que_importa": "Alteração da flora e da tiamina."
+      },
+      {
+        "achado": "Água salgada com sulfato",
+        "por_que_importa": "Excesso de enxofre."
+      },
+      {
+        "achado": "Cegueira com pupilas reativas",
+        "por_que_importa": "Lesão cortical."
+      },
+      {
+        "achado": "Melhora com tiamina",
+        "por_que_importa": "Apoia o diagnóstico."
+      }
+    ],
+    "comentario_exames": "Resposta à tiamina e necropsia com luz UV; sempre descartar raiva.",
+    "comentario_tratamento": "Tiamina cedo e correção da dieta e da água."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

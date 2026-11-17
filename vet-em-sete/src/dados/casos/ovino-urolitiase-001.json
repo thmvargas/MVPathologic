@@ -1,0 +1,294 @@
+{
+  "id": "ovino-urolitiase-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "ovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Santa Inês",
+  "idade": "6 meses",
+  "sexo": "macho castrado",
+  "peso": "32 kg",
+  "queixa_principal": [
+    "Força para urinar e sai só gota",
+    "Barriga inchada e inquieto"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "urinario",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Confinamento para terminação"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Muito concentrado (milho e farelo) e pouco volumoso; água em bebedouro pouco limpo"
+      ]
+    },
+    {
+      "titulo": "Castração",
+      "itens": [
+        "Castrado com 1 mês de idade"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Desde ontem: tenta urinar várias vezes, abana a cauda, chuta a barriga",
+        "Pingos de urina com sangue"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "110",
+        "unidade": "bpm",
+        "referencia": "70–90",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,0",
+        "unidade": "°C",
+        "referencia": "38,5–40,0",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Prepúcio",
+        "itens": [
+          "Pelos do prepúcio com cristais arenosos"
+        ]
+      },
+      {
+        "titulo": "Pênis",
+        "itens": [
+          "Processo uretral (apêndice vermiforme) escurecido e endurecido ao exteriorizar o pênis"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Bexiga distendida à palpação; dor"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pênis",
+      "tipo": "outro",
+      "nome": "Exteriorização do pênis e exame do processo uretral",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cálculos no processo uretral, que está escurecido"
+        ],
+        "conclusao": "Obstrução no processo uretral."
+      },
+      "comentario_didatico": "O processo uretral é o local mais comum de obstrução nos pequenos ruminantes."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Bexiga muito distendida, sem líquido livre"
+        ],
+        "conclusao": "Bexiga íntegra."
+      },
+      "comentario_didatico": "Mostra a bexiga distendida e avalia ruptura de bexiga ou de uretra."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Ureia, creatinina e potássio",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Creatinina",
+            "valor": "4,5",
+            "unidade": "mg/dL",
+            "referencia": "1,2–1,9",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Azotemia pós-renal."
+      },
+      "comentario_didatico": "Avalia a azotemia pós-renal e o risco anestésico."
+    },
+    {
+      "id": "analise_calculo",
+      "tipo": "outro",
+      "nome": "Análise do cálculo",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Fosfato de amônio e magnésio"
+        ],
+        "conclusao": "Estruvita/fosfato."
+      },
+      "comentario_didatico": "Útil para a prevenção do lote (geralmente fosfato)."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "CMT",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "—"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Macho."
+    }
+  ],
+  "diagnostico_id": "urolitiase_obstrutiva_ovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "timpanismo_espumoso",
+      "como_descartar": "Distensão do flanco esquerdo após leguminosa, urina normal."
+    },
+    {
+      "diagnostico_id": "tetano",
+      "como_descartar": "Rigidez com trismo e prolapso de terceira pálpebra, após castração ou ferida."
+    },
+    {
+      "diagnostico_id": "pielonefrite_bovina",
+      "como_descartar": "Pielonefrite contagiosa: urina com sangue e pus, sem obstrução."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "processo",
+      "texto": "Amputação do processo uretral",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Desobstrui quando o cálculo está no processo uretral; procedimento simples."
+    },
+    {
+      "id": "cirurgia",
+      "texto": "Se não resolver: cistotomia com cateter ou uretrostomia, conforme o caso",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "A uretrostomia preserva a vida, mas encerra a vida reprodutiva."
+    },
+    {
+      "id": "dieta",
+      "texto": "Prevenção: relação cálcio:fósforo 2:1, cloreto de amônio na dieta, mais volumoso e água limpa à vontade",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Dietas ricas em grão e fósforo favorecem os cálculos."
+    },
+    {
+      "id": "castracao",
+      "texto": "Adiar a castração dos machos",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "A castração precoce reduz o diâmetro da uretra."
+    },
+    {
+      "id": "diuretico",
+      "texto": "Diurético para \"forçar a urina\"",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Com obstrução, aumenta a pressão e o risco de ruptura da bexiga."
+    },
+    {
+      "id": "esperar",
+      "texto": "Esperar passar sozinho",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "A bexiga pode romper em horas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cordeiro castrado cedo, em confinamento com muito concentrado e pouca água limpa, com esforço para urinar, gotas com sangue, cristais nos pelos do prepúcio, processo uretral escurecido e bexiga distendida: urolitíase obstrutiva.",
+    "fisiopatologia": [
+      "Anatomia: em ovinos e caprinos machos, a uretra tem a flexura sigmoide e termina no processo uretral, estreito.",
+      "A castração precoce reduz o desenvolvimento do pênis e da uretra (menos testosterona).",
+      "Dietas ricas em grãos têm muito fósforo e magnésio e favorecem cálculos de fosfato.",
+      "Pouca água e urina concentrada aumentam a formação de cristais.",
+      "O cálculo para no processo uretral ou na flexura sigmoide e obstrui; a bexiga pode romper."
+    ],
+    "pistas": [
+      {
+        "achado": "Macho castrado cedo",
+        "por_que_importa": "Uretra estreita."
+      },
+      {
+        "achado": "Muito concentrado e pouca água",
+        "por_que_importa": "Cálculos de fosfato."
+      },
+      {
+        "achado": "Cristais nos pelos do prepúcio",
+        "por_que_importa": "Cristalúria."
+      },
+      {
+        "achado": "Processo uretral escurecido",
+        "por_que_importa": "Local da obstrução."
+      }
+    ],
+    "comentario_exames": "Exame do pênis e do processo uretral, ultrassom para avaliar a bexiga.",
+    "comentario_tratamento": "Desobstruir (amputar o processo) e corrigir a dieta do lote."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

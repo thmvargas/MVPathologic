@@ -1,0 +1,270 @@
+{
+  "id": "bovino-freemartinismo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Nelore",
+  "idade": "16 meses",
+  "sexo": "fêmea",
+  "peso": "300 kg",
+  "queixa_principal": [
+    "Nunca entrou no cio",
+    "Novilha que não emprenha"
+  ],
+  "semestre": 1,
+  "uso": "diario",
+  "sistema": "reprodutor",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Nascimento",
+      "itens": [
+        "Nasceu gêmea de um bezerro macho"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote de novilhas com touro há 6 meses; todas as outras emprenharam"
+      ]
+    },
+    {
+      "titulo": "Saúde",
+      "itens": [
+        "Sempre saudável e bem desenvolvida"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Nunca foi vista em cio"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,6",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore corporal",
+        "valor": "Bom"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Genitália externa",
+        "itens": [
+          "Vulva pequena, com tufo de pelos longos e clitóris aumentado"
+        ]
+      },
+      {
+        "titulo": "Vaginoscopia",
+        "itens": [
+          "Vagina curta e terminando em fundo cego"
+        ]
+      },
+      {
+        "titulo": "Palpação retal",
+        "itens": [
+          "Cérvix e útero não palpáveis; gônadas muito pequenas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "comprimento_vaginal",
+      "tipo": "outro",
+      "nome": "Medição do comprimento vaginal com sonda",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Vagina de 7 cm, fundo cego"
+        ],
+        "conclusao": "Vagina hipoplásica."
+      },
+      "comentario_didatico": "Teste simples de campo: vagina curta (cerca de um terço do normal) em gêmea de macho é muito sugestivo."
+    },
+    {
+      "id": "cariotipo",
+      "tipo": "outro",
+      "nome": "Cariótipo ou PCR para cromossomo Y em sangue",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Quimerismo 60,XX/60,XY em linfócitos"
+        ],
+        "conclusao": "Quimerismo de células sanguíneas."
+      },
+      "comentario_didatico": "Confirma o quimerismo XX/XY nas células sanguíneas."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia reprodutiva",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Útero rudimentar",
+          "Gônadas pequenas, sem folículos"
+        ],
+        "conclusao": "Genitália interna hipoplásica."
+      },
+      "comentario_didatico": "Mostra útero rudimentar e gônadas anormais; complementa."
+    },
+    {
+      "id": "brucelose",
+      "tipo": "sorologia",
+      "nome": "Sorologia para brucelose",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Nunca ter cio não é sinal de brucelose."
+    },
+    {
+      "id": "progesterona",
+      "tipo": "bioquimica",
+      "nome": "Progesterona sérica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Basal"
+        ],
+        "conclusao": "Sem atividade lútea."
+      },
+      "comentario_didatico": "Baixa, indica ausência de corpo lúteo; não diz a causa."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "freemartinismo_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cisto_folicular_ovariano_bovino",
+      "como_descartar": "Cio irregular ou ninfomania; estruturas foliculares grandes no ovário."
+    },
+    {
+      "diagnostico_id": "brucelose_bovina",
+      "como_descartar": "Causa abortos, não falta de cio desde a puberdade."
+    },
+    {
+      "diagnostico_id": "torcao_uterina_bovina",
+      "como_descartar": "Ocorre na gestação avançada."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "descarte",
+      "texto": "Descartar da reprodução (engorda/abate)",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "É estéril em cerca de 90% dos casos; não há tratamento."
+    },
+    {
+      "id": "testar",
+      "texto": "Examinar ao nascimento as fêmeas gêmeas de machos",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Diagnóstico precoce evita custo de recria de uma novilha estéril."
+    },
+    {
+      "id": "hormonio",
+      "texto": "Protocolo hormonal para induzir cio",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "A genitália é malformada; o hormônio não resolve."
+    },
+    {
+      "id": "inseminar",
+      "texto": "Insistir com inseminação artificial",
+      "tipo": "manejo",
+      "classificacao": "desnecessario",
+      "justificativa": "Não há útero funcional."
+    },
+    {
+      "id": "macho",
+      "texto": "Avaliar o gêmeo macho para reprodução",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "O macho costuma ser fértil, embora possa ter fertilidade um pouco menor."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Novilha gêmea de um macho, bem desenvolvida, que nunca teve cio, com vulva pequena com tufo de pelos, vagina curta em fundo cego e genitália interna hipoplásica; quimerismo XX/XY: freemartinismo.",
+    "fisiopatologia": [
+      "Embriologia: em bovinos, as placentas de gêmeos se fundem e os vasos coriônicos se comunicam (anastomoses).",
+      "Células e hormônios do feto macho chegam à fêmea antes da diferenciação sexual dela.",
+      "O hormônio antimülleriano do macho faz regredir os ductos de Müller da fêmea: útero, cérvix e parte da vagina não se formam.",
+      "Células sanguíneas dos dois gêmeos circulam nos dois animais por toda a vida (quimerismo XX/XY).",
+      "Por isso, cerca de 9 em cada 10 fêmeas gêmeas de machos são estéreis."
+    ],
+    "pistas": [
+      {
+        "achado": "Gêmea de um macho",
+        "por_que_importa": "Causa principal."
+      },
+      {
+        "achado": "Nunca teve cio",
+        "por_que_importa": "Gônadas não funcionais."
+      },
+      {
+        "achado": "Vagina curta e tufo de pelos",
+        "por_que_importa": "Masculinização parcial."
+      },
+      {
+        "achado": "Quimerismo XX/XY",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Medir a vagina já orienta; cariótipo ou PCR para Y confirmam.",
+    "comentario_tratamento": "Não há tratamento: descartar da reprodução."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "mcgeady",
+      "citacao": "McGEADY, T. A. et al. Veterinary Embryology. 2. ed. Hoboken: Wiley-Blackwell, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

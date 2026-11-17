@@ -1,0 +1,297 @@
+{
+  "id": "ovino-musculo-branco-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "ovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Santa Inês",
+  "idade": "4 semanas",
+  "sexo": "lote de cordeiros",
+  "peso": "9 kg (média)",
+  "queixa_principal": [
+    "Cordeiros fracos que não ficam em pé",
+    "Alguns morreram de repente"
+  ],
+  "semestre": 1,
+  "uso": "diario",
+  "sistema": "musculoesqueletico",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Região",
+      "itens": [
+        "Solo pobre em selênio; pasto sem suplementação"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Ovelhas sem sal mineral na gestação"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "Problema parecido em anos anteriores"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Cordeiros andando rígidos, com tremores, depois deitados",
+        "Mamam se colocados na teta"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,3",
+        "unidade": "°C",
+        "referencia": "38,5–40,0",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "50",
+        "unidade": "mpm",
+        "referencia": "16–34",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Musculatura",
+        "itens": [
+          "Músculos dos membros firmes e doloridos à palpação"
+        ]
+      },
+      {
+        "titulo": "Postura",
+        "itens": [
+          "Arqueamento do dorso, rigidez, decúbito"
+        ]
+      },
+      {
+        "titulo": "Consciência",
+        "itens": [
+          "Alertas"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ck",
+      "tipo": "bioquimica",
+      "nome": "Creatinoquinase (CK) e AST",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "CK",
+            "valor": "12.000",
+            "unidade": "U/L",
+            "referencia": "< 300",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "AST",
+            "valor": "850",
+            "unidade": "U/L",
+            "referencia": "60–280",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Necrose muscular."
+      },
+      "comentario_didatico": "Muito altas indicam lesão muscular extensa."
+    },
+    {
+      "id": "selenio",
+      "tipo": "bioquimica",
+      "nome": "Selênio sanguíneo ou glutationa peroxidase",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Abaixo do adequado"
+        ],
+        "conclusao": "Deficiência de selênio."
+      },
+      "comentario_didatico": "Confirma a deficiência de selênio no rebanho."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de cordeiro morto",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Estrias brancas e calcárias em músculos dos membros e diafragma",
+          "Placas brancas no miocárdio"
+        ],
+        "conclusao": "Miopatia nutricional."
+      },
+      "comentario_didatico": "Mostra estrias brancas em músculos esqueléticos e no coração, característica que dá nome à doença."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Cordeiros muito jovens; não explica miopatia."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura de articulação",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta artrite infecciosa como causa de rigidez."
+    }
+  ],
+  "diagnostico_id": "doenca_musculo_branco_ovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "tetano",
+      "como_descartar": "Rigidez com trismo e prolapso de terceira pálpebra, após ferida ou castração."
+    },
+    {
+      "diagnostico_id": "artrite_septica_bovina",
+      "como_descartar": "Articulações quentes e aumentadas, um animal ou poucos."
+    },
+    {
+      "diagnostico_id": "clostridiose_carbunculo_sintomatico",
+      "como_descartar": "Animais mais velhos, músculo escuro e crepitante."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "selenio_vite",
+      "texto": "Selênio e vitamina E injetáveis nos cordeiros",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Repõe os antioxidantes; resposta em dias nos casos não muito avançados."
+    },
+    {
+      "id": "ovelhas",
+      "texto": "Suplementar as ovelhas na gestação (sal mineral com selênio ou injeção)",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Previne nos próximos partos."
+    },
+    {
+      "id": "repouso",
+      "texto": "Manter os cordeiros em repouso, sem correr",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Esforço piora a lesão muscular e pode levar a morte cardíaca."
+    },
+    {
+      "id": "dose_dupla",
+      "texto": "Dobrar a dose de selênio para garantir",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "O selênio é tóxico em doses um pouco acima da terapêutica."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano para o lote",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não é infecção."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cordeiros de região com solo pobre em selênio, filhos de ovelhas sem suplementação, com rigidez, fraqueza, músculos firmes e mortes súbitas; CK muito alta, selênio baixo e estrias brancas nos músculos e no coração: doença do músculo branco (miopatia nutricional).",
+    "fisiopatologia": [
+      "Fisiologia: a contração muscular gera radicais livres; o selênio (parte da glutationa peroxidase) e a vitamina E protegem as membranas.",
+      "Sem eles, os lipídios das membranas das fibras musculares se oxidam e as fibras necrosam.",
+      "As fibras mortas calcificam: estrias brancas e calcárias.",
+      "Atinge músculos esqueléticos (rigidez) e o miocárdio (morte súbita).",
+      "Cordeiros de crescimento rápido, filhos de mães deficientes, são os mais afetados."
+    ],
+    "pistas": [
+      {
+        "achado": "Solo pobre em selênio, sem sal mineral",
+        "por_que_importa": "Deficiência."
+      },
+      {
+        "achado": "Cordeiros jovens de crescimento rápido",
+        "por_que_importa": "Grupo de risco."
+      },
+      {
+        "achado": "CK muito alta",
+        "por_que_importa": "Lesão muscular."
+      },
+      {
+        "achado": "Estrias brancas",
+        "por_que_importa": "Lesão característica."
+      }
+    ],
+    "comentario_exames": "CK, dosagem de selênio e necropsia.",
+    "comentario_tratamento": "Selênio e vitamina E, com cuidado na dose; prevenir na gestação."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

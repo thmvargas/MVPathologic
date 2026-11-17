@@ -1,0 +1,314 @@
+{
+  "id": "equino-rodococose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Quarto de Milha",
+  "idade": "3 meses",
+  "sexo": "macho (potro)",
+  "peso": "140 kg",
+  "queixa_principal": [
+    "Potro com febre",
+    "Respiração rápida"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "respiratorio",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Haras",
+      "itens": [
+        "Muitos potros nascidos nos últimos meses; piquetes com terra seca e poeira"
+      ]
+    },
+    {
+      "titulo": "Histórico do haras",
+      "itens": [
+        "Casos semelhantes em anos anteriores"
+      ]
+    },
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Mãe e potro soltos em piquete coletivo"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 semana: febre e cansaço",
+        "Continua mamando, mas menos"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "40,3",
+        "unidade": "°C",
+        "referencia": "37,5–38,9 (potros)",
+        "fonte": "reed",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "56",
+        "unidade": "mpm",
+        "referencia": "20–40 (potros)",
+        "fonte": "reed",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "92",
+        "unidade": "bpm",
+        "referencia": "60–100 (potros)",
+        "fonte": "reed",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Narinas dilatadas, esforço respiratório"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Crepitações e sibilos em campos cranioventrais"
+        ]
+      },
+      {
+        "titulo": "Outros",
+        "itens": [
+          "Articulação do tarso aumentada (sinovite)"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia torácica",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Várias lesões arredondadas hipoecoicas periféricas (abscessos) de 2 a 5 cm"
+        ],
+        "conclusao": "Pneumonia piogranulomatosa com abscessos."
+      },
+      "comentario_didatico": "Mostra abscessos pulmonares periféricos; é usada também para triagem dos outros potros."
+    },
+    {
+      "id": "lavado",
+      "tipo": "citologia",
+      "nome": "Lavado traqueal com cultura e PCR",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Neutrófilos e macrófagos com cocobacilos gram-positivos intracelulares",
+          "PCR para vapA: positivo"
+        ],
+        "conclusao": "Rhodococcus equi virulento."
+      },
+      "comentario_didatico": "Isolamento de R. equi (com gene vapA) e cocobacilos dentro de macrófagos confirmam."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma e fibrinogênio",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Leucócitos",
+            "valor": "19,5",
+            "unidade": "×10³/µL",
+            "referencia": "5,5–12,5",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Fibrinogênio",
+            "valor": "700",
+            "unidade": "mg/dL",
+            "referencia": "100–400",
+            "fonte": "weiss",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Inflamação."
+      },
+      "comentario_didatico": "Leucocitose e fibrinogênio alto apoiam e ajudam na triagem, mas não confirmam."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Padrão alveolar com nódulos"
+        ],
+        "conclusao": "Compatível."
+      },
+      "comentario_didatico": "Mostra padrão nodular, mas o ultrassom é mais prático no haras."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Ovos de Parascaris"
+        ],
+        "conclusao": "Ascarídeos."
+      },
+      "comentario_didatico": "Não explica a pneumonia."
+    },
+    {
+      "id": "aie",
+      "tipo": "sorologia",
+      "nome": "Teste de AIE",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não reagente"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica o quadro."
+    }
+  ],
+  "diagnostico_id": "rodococose_equina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "garrotilho",
+      "como_descartar": "Abscessos de linfonodos da cabeça em animais de qualquer idade; S. equi."
+    },
+    {
+      "diagnostico_id": "influenza_equina",
+      "como_descartar": "Surto com tosse seca em vários animais, febre alta e curta."
+    },
+    {
+      "diagnostico_id": "rinopneumonite_equina",
+      "como_descartar": "Febre e secreção nasal serosa sem abscessos pulmonares."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "macrolideo",
+      "texto": "Macrolídeo (ex.: claritromicina ou azitromicina) associado à rifampicina",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Associação clássica: os dois agem dentro dos macrófagos, onde a bactéria vive.",
+      "dose": {
+        "texto": "Conforme consenso (ex.: claritromicina 7,5 mg/kg VO a cada 12 h + rifampicina 5 mg/kg VO a cada 12 h)",
+        "fonte": "giguere2011",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "triagem",
+      "texto": "Triagem dos outros potros com ultrassom torácico",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Detecta casos antes dos sinais."
+    },
+    {
+      "id": "poeira",
+      "texto": "Reduzir poeira: piquetes irrigados com pasto, evitar terra exposta",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A bactéria vive no solo e nas fezes; a poeira leva ao pulmão."
+    },
+    {
+      "id": "suporte",
+      "texto": "Antitérmico e suporte",
+      "tipo": "suporte",
+      "classificacao": "aceitavel",
+      "justificativa": "Conforto do potro."
+    },
+    {
+      "id": "penicilina",
+      "texto": "Penicilina isolada",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não alcança a bactéria dentro dos macrófagos; tratamento ineficaz."
+    },
+    {
+      "id": "tratar_todos",
+      "texto": "Tratar com antimicrobiano todos os potros com lesões pequenas e sem sinais",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Muitas lesões pequenas regridem; tratar todos favorece resistência."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Potro de 3 meses em haras com histórico da doença, piquetes secos e poeirentos, com febre, taquipneia, crepitações e sinovite; ultrassom com abscessos pulmonares e R. equi com vapA no lavado: rodococose equina.",
+    "fisiopatologia": [
+      "Rhodococcus equi é bactéria do solo, que se multiplica nas fezes de herbívoros.",
+      "Potros de 1 a 6 meses são suscetíveis: a imunidade materna cai e a deles ainda não amadureceu.",
+      "A bactéria é inalada com a poeira e sobrevive dentro dos macrófagos graças ao plasmídeo de virulência (gene vapA).",
+      "Forma pneumonia piogranulomatosa com abscessos.",
+      "Pode causar lesões extrapulmonares, como sinovite imunomediada."
+    ],
+    "pistas": [
+      {
+        "achado": "Potro de 1 a 6 meses",
+        "por_que_importa": "Faixa etária típica."
+      },
+      {
+        "achado": "Piquetes secos com poeira",
+        "por_que_importa": "Exposição."
+      },
+      {
+        "achado": "Casos em anos anteriores",
+        "por_que_importa": "Haras endêmico."
+      },
+      {
+        "achado": "Abscessos pulmonares no ultrassom",
+        "por_que_importa": "Lesão característica."
+      }
+    ],
+    "comentario_exames": "Ultrassom torácico e lavado traqueal com PCR para vapA.",
+    "comentario_tratamento": "Macrolídeo com rifampicina; reduzir poeira e fazer triagem."
+  },
+  "referencias": [
+    {
+      "id": "giguere2011",
+      "citacao": "GIGUÈRE, S. et al. Diagnosis, treatment, control, and prevention of infections caused by Rhodococcus equi in foals. Journal of Veterinary Internal Medicine, v. 25, n. 6, p. 1209-1220, 2011."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    },
+    {
+      "id": "weiss",
+      "citacao": "WEISS, D. J.; WARDROP, K. J. (Ed.). Schalm's Veterinary Hematology. 6. ed. Ames: Wiley-Blackwell, 2010."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

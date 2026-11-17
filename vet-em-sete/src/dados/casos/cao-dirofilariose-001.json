@@ -1,0 +1,323 @@
+{
+  "id": "cao-dirofilariose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Labrador",
+  "idade": "6 anos",
+  "sexo": "macho",
+  "peso": "34 kg",
+  "queixa_principal": [
+    "Tosse",
+    "Cansa nos passeios"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "cardiovascular",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa de praia no litoral norte de SP, fica no quintal à noite"
+      ]
+    },
+    {
+      "titulo": "Prevenção",
+      "itens": [
+        "Nunca recebeu preventivo para verme do coração"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Vizinhança",
+      "itens": [
+        "Outros cães da rua com o mesmo problema"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Tosse seca há 3 meses",
+        "Cansa e para no meio da caminhada",
+        "Emagrecimento leve"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "120",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "36",
+        "unidade": "mpm",
+        "referencia": "10–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,6",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Segunda bulha desdobrada",
+          "Crepitações discretas"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Sem ascite"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Opaca"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "antigeno",
+      "tipo": "sorologia",
+      "nome": "Teste de antígeno de Dirofilaria immitis",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Reagente"
+        ],
+        "conclusao": "Infecção por D. immitis."
+      },
+      "comentario_didatico": "Detecta antígeno de fêmeas adultas: é o teste de triagem e diagnóstico."
+    },
+    {
+      "id": "knott",
+      "tipo": "citologia",
+      "nome": "Teste de Knott modificado (microfilárias)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Microfilárias de D. immitis presentes"
+        ],
+        "conclusao": "Microfilaremia."
+      },
+      "comentario_didatico": "Confirma microfilaremia e diferencia D. immitis de Acanthocheilonema; importante antes do tratamento."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Artérias pulmonares lobares caudais dilatadas e tortuosas",
+          "Aumento do ventrículo direito"
+        ],
+        "conclusao": "Doença vascular pulmonar moderada."
+      },
+      "comentario_didatico": "Estadia a doença: artérias pulmonares dilatadas e tortuosas e aumento de câmaras direitas."
+    },
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Estruturas lineares paralelas na artéria pulmonar"
+        ],
+        "conclusao": "Vermes visíveis."
+      },
+      "comentario_didatico": "Pode mostrar vermes na artéria pulmonar e hipertensão pulmonar; complementa."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Eosinofilia leve"
+        ],
+        "conclusao": "Inespecífico."
+      },
+      "comentario_didatico": "Eosinofilia leve, inespecífica."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não detecta dirofilária."
+    }
+  ],
+  "diagnostico_id": "dirofilariose_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "endocardiose_valvar_canina",
+      "como_descartar": "Sopro mitral e aumento do átrio esquerdo, antígeno negativo."
+    },
+    {
+      "diagnostico_id": "broncopneumonia_bacteriana_canina",
+      "como_descartar": "Febre, tosse produtiva, padrão alveolar ventral."
+    },
+    {
+      "diagnostico_id": "traqueobronquite_infecciosa",
+      "como_descartar": "Tosse aguda após contato com cães, sem alterações vasculares."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "restricao",
+      "texto": "Restrição rigorosa de exercício durante todo o tratamento",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "A morte dos vermes causa tromboembolismo pulmonar; esforço aumenta o risco."
+    },
+    {
+      "id": "doxiciclina",
+      "texto": "Doxiciclina por 4 semanas antes do adulticida",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Elimina a Wolbachia, bactéria simbionte dos vermes, e reduz a reação inflamatória.",
+      "dose": {
+        "texto": "10 mg/kg VO a cada 12 h por 28 dias",
+        "fonte": "ahs",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "lactona",
+      "texto": "Lactona macrocíclica (preventivo) desde o início",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Mata larvas recentes e microfilárias, impedindo novas infecções."
+    },
+    {
+      "id": "melarsomina",
+      "texto": "Melarsomina em protocolo de 3 doses",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Único adulticida recomendado.",
+      "dose": {
+        "texto": "2,5 mg/kg IM profunda: 1 dose, e 30 dias depois 2 doses com 24 h",
+        "fonte": "ahs",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "corticoide",
+      "texto": "Prednisona em dose anti-inflamatória decrescente",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Reduz a reação pulmonar aos vermes mortos."
+    },
+    {
+      "id": "slow_kill",
+      "texto": "Só ivermectina contínua sem adulticida (\"morte lenta\")",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não é recomendado: demora anos, favorece resistência e a doença progride."
+    },
+    {
+      "id": "prevencao",
+      "texto": "Preventivo mensal para todos os cães da casa",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Área endêmica no litoral; os mosquitos transmitem."
+    },
+    {
+      "id": "exercicio_livre",
+      "texto": "Liberar exercício normal logo após a melarsomina",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Os vermes mortos embolizam para o pulmão; esforço nessa fase pode causar tromboembolismo fatal."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cão de área litorânea, sem prevenção, com tosse, intolerância ao exercício, segunda bulha desdobrada, antígeno positivo, microfilárias e alterações das artérias pulmonares: dirofilariose canina.",
+    "fisiopatologia": [
+      "Dirofilaria immitis é transmitida por mosquitos (Culicidae), comuns no litoral brasileiro.",
+      "As larvas chegam às artérias pulmonares e viram adultos em cerca de 6 meses.",
+      "Os vermes lesam o endotélio, causando endarterite proliferativa e hipertensão pulmonar.",
+      "O ventrículo direito trabalha mais e pode falhar (cor pulmonale).",
+      "A Wolbachia, bactéria dos vermes, contribui para a inflamação."
+    ],
+    "pistas": [
+      {
+        "achado": "Litoral, sem preventivo, cães vizinhos doentes",
+        "por_que_importa": "Área endêmica."
+      },
+      {
+        "achado": "Tosse e intolerância ao exercício",
+        "por_que_importa": "Doença vascular pulmonar."
+      },
+      {
+        "achado": "Segunda bulha desdobrada",
+        "por_que_importa": "Hipertensão pulmonar."
+      },
+      {
+        "achado": "Antígeno positivo",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "Antígeno e teste de Knott confirmam; radiografia estadia.",
+    "comentario_tratamento": "Restrição de exercício, doxiciclina, preventivo e melarsomina; nunca exercício durante o tratamento."
+  },
+  "referencias": [
+    {
+      "id": "ahs",
+      "citacao": "AMERICAN HEARTWORM SOCIETY. Current canine guidelines for the prevention, diagnosis, and management of heartworm (Dirofilaria immitis) infection in dogs. Wilmington: AHS, 2024."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

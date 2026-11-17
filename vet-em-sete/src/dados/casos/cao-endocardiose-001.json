@@ -1,0 +1,364 @@
+{
+  "id": "cao-endocardiose-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Poodle",
+  "idade": "11 anos",
+  "sexo": "macho castrado",
+  "peso": "6,5 kg",
+  "queixa_principal": [
+    "Tosse à noite",
+    "Cansa fácil"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "cardiovascular",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Ectoparasitas e vermes",
+      "itens": [
+        "Controle regular"
+      ]
+    },
+    {
+      "titulo": "Achado anterior",
+      "itens": [
+        "Veterinário ouviu \"um sopro\" há 2 anos; sem acompanhamento"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Tosse há 1 mês, pior à noite e ao deitar",
+        "Respira rápido dormindo",
+        "Desmaiou uma vez ao se agitar"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Xarope para tosse, sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "168",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória em repouso",
+        "valor": "52",
+        "unidade": "mpm",
+        "referencia": "< 30 em repouso/sono",
+        "fonte": "keene2019",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,4",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Róseas"
+      },
+      {
+        "nome": "TPC",
+        "valor": "2",
+        "unidade": "s"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Ausculta cardíaca",
+        "itens": [
+          "Sopro sistólico grau V/VI, mais intenso no foco mitral (ápice esquerdo)",
+          "Taquicardia sinusal"
+        ]
+      },
+      {
+        "titulo": "Ausculta pulmonar",
+        "itens": [
+          "Crepitações finas em campos pulmonares caudais"
+        ]
+      },
+      {
+        "titulo": "Pulso femoral",
+        "itens": [
+          "Presente, regular"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "rx_torax",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax (duas projeções)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Cardiomegalia com aumento acentuado do átrio esquerdo",
+          "VHS (índice vertebral cardíaco) aumentado",
+          "Padrão intersticial-alveolar peri-hilar e caudodorsal"
+        ],
+        "conclusao": "Cardiomegalia esquerda com edema pulmonar cardiogênico."
+      },
+      "comentario_didatico": "Mostra o aumento do átrio esquerdo e o edema pulmonar, que define o estágio C do ACVIM."
+    },
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Folhetos da valva mitral espessados, com prolapso",
+          "Regurgitação mitral intensa ao Doppler",
+          "Relação átrio esquerdo:aorta aumentada",
+          "Contratilidade preservada"
+        ],
+        "conclusao": "Doença mixomatosa da valva mitral, estágio C."
+      },
+      "comentario_didatico": "Confirma a degeneração mixomatosa da valva mitral, a regurgitação e o remodelamento atrial; é o exame definitivo."
+    },
+    {
+      "id": "ntprobnp",
+      "tipo": "bioquimica",
+      "nome": "NT-proBNP",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "NT-proBNP",
+            "valor": "2.800",
+            "unidade": "pmol/L",
+            "referencia": "< 900",
+            "fonte": "keene2019",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Elevado."
+      },
+      "comentario_didatico": "Ajuda a diferenciar tosse cardíaca de respiratória quando não há eco; aqui não muda a conduta."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica (rim e eletrólitos)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Creatinina",
+            "valor": "1,0",
+            "unidade": "mg/dL",
+            "referencia": "0,5–1,5",
+            "fonte": "kaneko",
+            "a_revisar": true
+          },
+          {
+            "analito": "Potássio",
+            "valor": "4,4",
+            "unidade": "mEq/L",
+            "referencia": "4,37–5,35",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Sem alterações."
+      },
+      "comentario_didatico": "Base para iniciar diurético e IECA; não diagnostica."
+    },
+    {
+      "id": "pcr_tosse",
+      "tipo": "pcr",
+      "nome": "PCR para agentes do complexo respiratório infeccioso",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não detectado"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Cão idoso, sem contato com outros cães e com sopro intenso: a tosse é cardíaca."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "endocardiose_valvar_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "cardiomiopatia_dilatada_canina",
+      "como_descartar": "Cães de raças grandes, contratilidade reduzida no eco, sopro discreto ou ausente."
+    },
+    {
+      "diagnostico_id": "traqueobronquite_infecciosa",
+      "como_descartar": "Tosse com contato com outros cães, sem cardiomegalia nem edema."
+    },
+    {
+      "diagnostico_id": "dirofilariose_canina",
+      "como_descartar": "Aumento de câmaras direitas e artérias pulmonares; teste de antígeno positivo."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "furosemida",
+      "texto": "Furosemida",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Diurético de alça: retira o edema pulmonar.",
+      "dose": {
+        "texto": "2 mg/kg a cada 8–12 h, ajustada",
+        "fonte": "keene2019",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "pimobendan",
+      "texto": "Pimobendan",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Inodilatador; prolonga a sobrevida nos estágios B2 e C.",
+      "dose": {
+        "texto": "0,25–0,3 mg/kg VO a cada 12 h",
+        "fonte": "keene2019",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "ieca",
+      "texto": "IECA (ex.: enalapril) após estabilização",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Recomendado no estágio C para modular o sistema renina-angiotensina-aldosterona."
+    },
+    {
+      "id": "frc",
+      "texto": "Ensinar o tutor a contar a frequência respiratória dormindo",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Acima de 30 por minuto indica descompensação; é o melhor monitoramento em casa."
+    },
+    {
+      "id": "dieta",
+      "texto": "Dieta com teor moderado de sódio",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Ajuda no controle da congestão, sem restrição extrema."
+    },
+    {
+      "id": "antitussigeno",
+      "texto": "Só antitussígeno",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Mascara a congestão sem tratá-la; o cão pode piorar."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa para \"hidratar\"",
+      "tipo": "suporte",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta a pré-carga e piora o edema pulmonar."
+    },
+    {
+      "id": "cirurgia",
+      "texto": "Plastia da valva mitral",
+      "tipo": "cirurgia",
+      "classificacao": "aceitavel",
+      "justificativa": "Existe em centros especializados; pouco disponível e de alto custo."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Poodle idoso com sopro mitral conhecido, tosse noturna, taquipneia em repouso, síncope, sopro sistólico intenso no foco mitral e crepitações; radiografia com aumento de átrio esquerdo e edema, eco com valva mitral degenerada: doença mixomatosa da valva mitral (endocardiose), estágio C do ACVIM.",
+    "fisiopatologia": [
+      "É a doença cardíaca adquirida mais comum em cães, sobretudo de raças pequenas e idosos.",
+      "A degeneração mixomatosa espessa e deforma os folhetos; a valva não fecha e o sangue volta ao átrio esquerdo.",
+      "O átrio aumenta e a pressão nas veias pulmonares sobe, causando edema pulmonar.",
+      "O átrio esquerdo grande comprime o brônquio principal esquerdo e contribui para a tosse.",
+      "O sistema renina-angiotensina-aldosterona ativado retém sódio e água e agrava a congestão."
+    ],
+    "pistas": [
+      {
+        "achado": "Raça pequena, idoso, sopro conhecido",
+        "por_que_importa": "Perfil típico."
+      },
+      {
+        "achado": "Taquipneia dormindo",
+        "por_que_importa": "Sinal precoce de edema pulmonar."
+      },
+      {
+        "achado": "Sopro sistólico intenso no foco mitral",
+        "por_que_importa": "Regurgitação mitral."
+      },
+      {
+        "achado": "Átrio esquerdo aumentado e edema",
+        "por_que_importa": "Estágio C."
+      }
+    ],
+    "comentario_exames": "Radiografia e eco são o essencial; NT-proBNP ajuda quando não há eco.",
+    "comentario_tratamento": "Furosemida, pimobendan e IECA; monitorar a frequência respiratória em casa."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "keene2019",
+      "citacao": "KEENE, B. W. et al. ACVIM consensus guidelines for the diagnosis and treatment of myxomatous mitral valve disease in dogs. Journal of Veterinary Internal Medicine, v. 33, n. 3, p. 1127-1140, 2019."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

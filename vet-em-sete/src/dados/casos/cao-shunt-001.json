@@ -1,0 +1,333 @@
+{
+  "id": "cao-shunt-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Yorkshire terrier",
+  "idade": "7 meses",
+  "sexo": "macho",
+  "peso": "1,3 kg",
+  "queixa_principal": [
+    "Fica \"bobo\" e anda em círculos depois de comer",
+    "Pequeno para a idade"
+  ],
+  "semestre": 2,
+  "uso": "diario",
+  "sistema": "hepatobiliar",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Origem",
+      "itens": [
+        "Canil"
+      ]
+    },
+    {
+      "titulo": "Crescimento",
+      "itens": [
+        "Menor da ninhada"
+      ]
+    },
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração de filhote rica em proteína"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Episódios de desorientação, salivação, pressionar a cabeça na parede, cerca de 1 hora após as refeições",
+        "Entre os episódios, normal"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Bebe e urina muito"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,3",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "140",
+        "unidade": "bpm",
+        "referencia": "70–180",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "3/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Neurológico",
+        "itens": [
+          "No momento: normal; tutor filmou pressão da cabeça contra a parede"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Íris cor de cobre"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Sem alterações palpáveis"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "acidos_biliares",
+      "tipo": "bioquimica",
+      "nome": "Ácidos biliares séricos em jejum e 2 horas após a refeição",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ácidos biliares (jejum)",
+            "valor": "45",
+            "unidade": "µmol/L",
+            "referencia": "< 10",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Ácidos biliares (pós-prandial)",
+            "valor": "210",
+            "unidade": "µmol/L",
+            "referencia": "< 25",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Desvio portossistêmico ou falência hepática."
+      },
+      "comentario_didatico": "Muito altos após a refeição indicam que o sangue do intestino não passa pelo fígado."
+    },
+    {
+      "id": "ultrassom",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassonografia abdominal com Doppler (ou angiotomografia)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Fígado pequeno",
+          "Vaso anômalo extra-hepático ligando a veia porta à veia cava caudal",
+          "Rins aumentados com urólitos de urato"
+        ],
+        "conclusao": "Shunt portossistêmico extra-hepático único."
+      },
+      "comentario_didatico": "Localiza o vaso anômalo, define se é único e extra-hepático e planeja a cirurgia."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica e amônia",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Ureia",
+            "valor": "9",
+            "unidade": "mg/dL",
+            "referencia": "21–60",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "Albumina",
+            "valor": "2,1",
+            "unidade": "g/dL",
+            "referencia": "2,6–3,3",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Função hepática reduzida."
+      },
+      "comentario_didatico": "Ureia baixa, albumina baixa e amônia alta apoiam a suspeita."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Cristais de biurato de amônio",
+          "Densidade baixa"
+        ],
+        "conclusao": "Biuratos."
+      },
+      "comentario_didatico": "Cristais de biurato de amônio são uma pista importante."
+    },
+    {
+      "id": "liquor",
+      "tipo": "outro",
+      "nome": "Análise do líquido cerebrospinal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Os sinais neurológicos ligados às refeições apontam para causa metabólica, não encefalite."
+    },
+    {
+      "id": "rx_cranio",
+      "tipo": "radiografia",
+      "nome": "Radiografia de crânio",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não ajuda."
+    }
+  ],
+  "diagnostico_id": "shunt_portossistemico_congenito_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hidrocefalia_congenita_canina",
+      "como_descartar": "Raças pequenas com crânio em cúpula e fontanela aberta; sinais neurológicos constantes."
+    },
+    {
+      "diagnostico_id": "encefalopatia_hepatica_canina",
+      "como_descartar": "É a consequência do shunt; também ocorre em doença hepática adquirida grave."
+    },
+    {
+      "diagnostico_id": "hepatopatia_cobre_canina",
+      "como_descartar": "Hepatite crônica em adultos, enzimas hepáticas altas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "cirurgia",
+      "texto": "Atenuação gradual do vaso anômalo (anel ameroide ou faixa de celofane)",
+      "tipo": "cirurgia",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento definitivo para shunt extra-hepático único; fechamento gradual evita hipertensão portal."
+    },
+    {
+      "id": "lactulose",
+      "texto": "Lactulose",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Acidifica o cólon e reduz a absorção de amônia."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano oral para reduzir bactérias produtoras de amônia (ex.: metronidazol em dose baixa)",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controle da encefalopatia antes da cirurgia."
+    },
+    {
+      "id": "dieta",
+      "texto": "Dieta com proteína de alta qualidade em quantidade moderada, várias refeições",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz picos de amônia sem desnutrir o filhote."
+    },
+    {
+      "id": "benzodiazepinico",
+      "texto": "Diazepam como calmante rotineiro",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Metabolizado pelo fígado e pode agravar a encefalopatia."
+    },
+    {
+      "id": "dieta_proteica",
+      "texto": "Manter ração rica em proteína para ajudar o crescimento",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Aumenta a produção de amônia e as crises."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Filhote de Yorkshire pequeno para a idade, com episódios neurológicos após as refeições, poliúria, íris cor de cobre, ácidos biliares muito altos, ureia e albumina baixas, biuratos na urina e vaso anômalo portocava no ultrassom: shunt portossistêmico congênito extra-hepático.",
+    "fisiopatologia": [
+      "Anatomia: a veia porta leva o sangue do intestino ao fígado, que remove amônia e toxinas antes que cheguem à circulação geral.",
+      "No feto, o ducto venoso desvia o sangue do fígado; ele deve fechar após o nascimento.",
+      "No shunt, um vaso anômalo liga o sistema porta à veia cava (ou o ducto venoso permanece aberto).",
+      "O sangue do intestino chega ao cérebro sem passar pelo fígado: amônia alta e encefalopatia hepática, pior após comer proteína.",
+      "Sem o estímulo do fluxo portal, o fígado fica pequeno e produz menos ureia e albumina."
+    ],
+    "pistas": [
+      {
+        "achado": "Raça pequena, filhote pequeno",
+        "por_que_importa": "Shunt extra-hepático congênito."
+      },
+      {
+        "achado": "Sinais neurológicos após comer",
+        "por_que_importa": "Pico de amônia."
+      },
+      {
+        "achado": "Ácidos biliares altos após refeição",
+        "por_que_importa": "Desvio do fígado."
+      },
+      {
+        "achado": "Biuratos",
+        "por_que_importa": "Amônia e ácido úrico altos."
+      }
+    ],
+    "comentario_exames": "Ácidos biliares e imagem para localizar o vaso.",
+    "comentario_tratamento": "Controle clínico da encefalopatia e atenuação cirúrgica gradual do vaso."
+  },
+  "referencias": [
+    {
+      "id": "dyce",
+      "citacao": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Tratado de anatomia veterinária. 4. ed. Rio de Janeiro: Elsevier, 2010."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

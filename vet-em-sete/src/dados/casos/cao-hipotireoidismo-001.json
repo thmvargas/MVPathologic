@@ -1,0 +1,328 @@
+{
+  "id": "cao-hipotireoidismo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Golden retriever",
+  "idade": "7 anos",
+  "sexo": "fêmea castrada",
+  "peso": "38 kg",
+  "queixa_principal": [
+    "Engordou sem comer mais",
+    "Pelo caindo e sem vontade de passear"
+  ],
+  "semestre": 5,
+  "uso": "diario",
+  "sistema": "endocrino",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Peso",
+      "itens": [
+        "Ganhou 6 kg no último ano sem mudar a dieta"
+      ]
+    },
+    {
+      "titulo": "Comportamento",
+      "itens": [
+        "Mais quieta, procura lugares quentes"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 1 ano: preguiça, sono, intolerância ao frio",
+        "Perda de pelo no rabo e nos flancos, sem coceira",
+        "Otites de repetição"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "58",
+        "unidade": "bpm",
+        "referencia": "60–160",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,6",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "8/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Alopecia simétrica nos flancos e \"cauda de rato\"",
+          "Pele espessa e fria; hiperpigmentação"
+        ]
+      },
+      {
+        "titulo": "Face",
+        "itens": [
+          "Expressão \"trágica\" (pálpebras pesadas)"
+        ]
+      },
+      {
+        "titulo": "Ouvidos",
+        "itens": [
+          "Otite ceruminosa bilateral"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "t4l_tsh",
+      "tipo": "outro",
+      "nome": "T4 livre (por diálise) e TSH",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "T4 livre",
+            "valor": "0,3",
+            "unidade": "ng/dL",
+            "referencia": "0,8–3,0",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "baixo"
+          },
+          {
+            "analito": "TSH",
+            "valor": "1,2",
+            "unidade": "ng/mL",
+            "referencia": "< 0,6",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Hipotireoidismo primário."
+      },
+      "comentario_didatico": "T4 livre baixo com TSH alto, num cão com sinais compatíveis, confirma o hipotireoidismo."
+    },
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "Bioquímica sérica",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Colesterol",
+            "valor": "520",
+            "unidade": "mg/dL",
+            "referencia": "135–270",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Triglicerídeos",
+            "valor": "300",
+            "unidade": "mg/dL",
+            "referencia": "20–112",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Hipercolesterolemia e hipertrigliceridemia."
+      },
+      "comentario_didatico": "Hipercolesterolemia em jejum é achado frequente e sustenta a suspeita."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Anemia normocítica normocrômica leve"
+        ],
+        "conclusao": "Anemia leve."
+      },
+      "comentario_didatico": "Anemia arregenerativa leve é comum; inespecífica."
+    },
+    {
+      "id": "t4_total",
+      "tipo": "outro",
+      "nome": "T4 total isolado",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "Sugestivo, não definitivo."
+      },
+      "comentario_didatico": "Sozinho não basta: cai em muitas doenças e com vários fármacos (síndrome do eutireoidiano doente)."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado de pele",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta demodicose; sem prurido nem lesões sugestivas."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não ajuda."
+    }
+  ],
+  "diagnostico_id": "hipotireoidismo_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hiperadrenocorticismo",
+      "como_descartar": "Poliúria, polifagia, abdome pendular e fosfatase alcalina alta; letargia menos marcada."
+    },
+    {
+      "diagnostico_id": "dermatite_atopica",
+      "como_descartar": "Prurido e lesões em face, patas e axilas."
+    },
+    {
+      "diagnostico_id": "demodicose",
+      "como_descartar": "Ácaros no raspado; pode ser secundária ao hipotireoidismo."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "levotiroxina",
+      "texto": "Levotiroxina",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Reposição hormonal por toda a vida.",
+      "dose": {
+        "texto": "0,02 mg/kg VO a cada 12 h (ou 0,02 mg/kg a cada 24 h com formulação adequada)",
+        "fonte": "nelson",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "monitor",
+      "texto": "Dosar T4 4 a 6 horas após a dose depois de 4 semanas",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Ajusta a dose e evita excesso."
+    },
+    {
+      "id": "dieta",
+      "texto": "Ajustar a dieta para perda de peso",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "Ajuda enquanto o metabolismo se normaliza."
+    },
+    {
+      "id": "otite",
+      "texto": "Tratar as otites",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Melhoram com o controle hormonal, mas precisam de tratamento local."
+    },
+    {
+      "id": "t4_so",
+      "texto": "Tratar com base só no T4 total baixo",
+      "tipo": "exame",
+      "classificacao": "desnecessario",
+      "justificativa": "Risco de tratar quem não tem a doença; confirmar com T4 livre e TSH."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Prednisona para a pele",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não trata a causa e pode agravar o quadro metabólico."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Cadela Golden de meia-idade com ganho de peso, letargia, intolerância ao frio, bradicardia, alopecia simétrica não pruriginosa, \"cauda de rato\", otites e hipercolesterolemia; T4 livre baixo com TSH alto: hipotireoidismo primário.",
+    "fisiopatologia": [
+      "A maioria dos casos é tireoidite linfocítica (imunomediada) ou atrofia idiopática da tireoide.",
+      "Os hormônios tireoidianos regulam o metabolismo basal: sua falta reduz o gasto energético (ganho de peso, frio, letargia).",
+      "Reduzem o metabolismo do colesterol: hipercolesterolemia.",
+      "Na pele, o folículo para na fase de repouso: alopecia, sem prurido.",
+      "Com a tireoide falhando, a hipófise aumenta o TSH tentando estimulá-la."
+    ],
+    "pistas": [
+      {
+        "achado": "Ganho de peso sem comer mais",
+        "por_que_importa": "Metabolismo baixo."
+      },
+      {
+        "achado": "Intolerância ao frio e letargia",
+        "por_que_importa": "Hipometabolismo."
+      },
+      {
+        "achado": "Alopecia sem prurido e cauda de rato",
+        "por_que_importa": "Dermatopatia endócrina."
+      },
+      {
+        "achado": "Colesterol alto",
+        "por_que_importa": "Achado metabólico."
+      }
+    ],
+    "comentario_exames": "T4 livre e TSH confirmam; T4 total sozinho engana.",
+    "comentario_tratamento": "Levotiroxina com monitoramento do T4."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

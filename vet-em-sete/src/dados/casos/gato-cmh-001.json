@@ -1,0 +1,332 @@
+{
+  "id": "gato-cmh-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "felina",
+  "grupo_especie": "gatos",
+  "raca": "Maine Coon",
+  "idade": "6 anos",
+  "sexo": "macho castrado",
+  "peso": "7,2 kg",
+  "queixa_principal": [
+    "Respirando de boca aberta",
+    "Escondido e sem comer"
+  ],
+  "semestre": 6,
+  "uso": "diario",
+  "sistema": "cardiovascular",
+  "dificuldade": 3,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Apartamento"
+      ]
+    },
+    {
+      "titulo": "Família",
+      "itens": [
+        "Um irmão de ninhada morreu de repente aos 4 anos"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Estresse recente",
+      "itens": [
+        "Viagem de carro e hotel para gatos há 3 dias"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Hoje cedo: respiração rápida e de boca aberta",
+        "Sem tosse"
+      ]
+    },
+    {
+      "titulo": "Outros sinais",
+      "itens": [
+        "Nenhum sinal anterior percebido"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência respiratória",
+        "valor": "72",
+        "unidade": "mpm",
+        "referencia": "20–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "240",
+        "unidade": "bpm",
+        "referencia": "140–220",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "37,4",
+        "unidade": "°C",
+        "referencia": "37,8–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "baixo"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Pálidas e levemente cianóticas",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Ritmo de galope",
+          "Crepitações bilaterais"
+        ]
+      },
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Padrão restritivo com esforço; posição ortopneica"
+        ]
+      },
+      {
+        "titulo": "Membros",
+        "itens": [
+          "Pulsos femorais presentes e simétricos"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pocus",
+      "tipo": "ultrassonografia",
+      "nome": "Ultrassom de tórax rápido (POCUS) com avaliação do átrio esquerdo",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Linhas B difusas (edema)",
+          "Átrio esquerdo muito aumentado",
+          "Pouco líquido pleural"
+        ],
+        "conclusao": "Insuficiência cardíaca congestiva provável."
+      },
+      "comentario_didatico": "Feito com o gato em posição esternal e mínimo estresse; átrio esquerdo grande indica causa cardíaca."
+    },
+    {
+      "id": "eco",
+      "tipo": "ultrassonografia",
+      "nome": "Ecocardiograma completo (após estabilização)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Parede livre e septo do ventrículo esquerdo espessados (> 6 mm)",
+          "Átrio esquerdo dilatado",
+          "Ecocontraste espontâneo (\"fumaça\") no átrio"
+        ],
+        "conclusao": "Cardiomiopatia hipertrófica com risco de tromboembolismo."
+      },
+      "comentario_didatico": "Mostra o espessamento do ventrículo esquerdo que define o fenótipo hipertrófico."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de tórax",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Cardiomegalia com coração em \"forma de coração de baralho\"",
+          "Padrão alveolar irregular"
+        ],
+        "conclusao": "Edema pulmonar."
+      },
+      "comentario_didatico": "Útil, mas a contenção pode descompensar o gato; deixar para depois."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4 total",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Hipertireoidismo causa hipertrofia secundária em gatos idosos; aqui normal, e o gato é jovem."
+    },
+    {
+      "id": "pressao",
+      "tipo": "outro",
+      "nome": "Pressão arterial sistólica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "140 mmHg"
+        ],
+        "conclusao": "Normal."
+      },
+      "comentario_didatico": "Hipertensão também espessa o ventrículo; aqui normal."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "cardiomiopatia_hipertrofica_felina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "hipertireoidismo_felino",
+      "como_descartar": "Hipertrofia secundária em gato idoso com T4 alto."
+    },
+    {
+      "diagnostico_id": "piotorax_felino",
+      "como_descartar": "Efusão pleural purulenta, febre; átrio esquerdo normal."
+    },
+    {
+      "diagnostico_id": "tromboembolismo_arterial_felino",
+      "como_descartar": "Complicação da cardiomiopatia: paralisia súbita e dor nos membros pélvicos com pulsos ausentes."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "oxigenio",
+      "texto": "Oxigênio e mínimo manuseio",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Gato com dispneia descompensa com estresse."
+    },
+    {
+      "id": "furosemida",
+      "texto": "Furosemida injetável",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Retira o edema pulmonar.",
+      "dose": {
+        "texto": "1–2 mg/kg IV ou IM, repetida conforme resposta",
+        "fonte": "fuentes2020",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "clopidogrel",
+      "texto": "Clopidogrel",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Átrio grande com \"fumaça\" indica risco alto de trombo; o clopidogrel reduz esse risco.",
+      "dose": {
+        "texto": "18,75 mg/gato VO a cada 24 h",
+        "fonte": "fuentes2020",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "triagem",
+      "texto": "Recomendar ecocardiograma dos parentes e afastar o gato da reprodução",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "Em Maine Coon há mutação hereditária associada."
+    },
+    {
+      "id": "pimobendan",
+      "texto": "Pimobendan",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Pode ser usado na insuficiência congestiva, mas deve ser evitado se houver obstrução da via de saída."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa pela anorexia",
+      "tipo": "suporte",
+      "classificacao": "contraindicado",
+      "justificativa": "Agrava a congestão."
+    },
+    {
+      "id": "rx_ja",
+      "texto": "Contenção firme para radiografia imediata",
+      "tipo": "exame",
+      "classificacao": "contraindicado",
+      "justificativa": "Pode levar a parada respiratória num gato dispneico."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Gato Maine Coon com histórico familiar de morte súbita, após estresse, apresenta dispneia aguda, galope e crepitações; átrio esquerdo muito aumentado e ventrículo esquerdo espessado no eco: cardiomiopatia hipertrófica com insuficiência cardíaca congestiva.",
+    "fisiopatologia": [
+      "A cardiomiopatia hipertrófica é a doença cardíaca mais comum em gatos; em Maine Coon e Ragdoll há mutações hereditárias.",
+      "O ventrículo esquerdo espesso e rígido enche mal (disfunção diastólica).",
+      "A pressão sobe no átrio esquerdo, que dilata, e nas veias pulmonares: edema.",
+      "No átrio grande o sangue fica lento e forma trombos, que podem ir para a aorta (tromboembolismo).",
+      "O estresse aumenta a frequência e encurta o enchimento, descompensando o gato."
+    ],
+    "pistas": [
+      {
+        "achado": "Maine Coon com irmão de morte súbita",
+        "por_que_importa": "Componente genético."
+      },
+      {
+        "achado": "Dispneia aguda após estresse",
+        "por_que_importa": "Descompensação."
+      },
+      {
+        "achado": "Galope",
+        "por_que_importa": "Disfunção diastólica."
+      },
+      {
+        "achado": "Átrio esquerdo grande com \"fumaça\"",
+        "por_que_importa": "Risco de trombo."
+      }
+    ],
+    "comentario_exames": "POCUS com mínimo estresse primeiro; eco completo depois; descartar hipertireoidismo e hipertensão.",
+    "comentario_tratamento": "Oxigênio, furosemida e prevenção de trombo; cuidado com estresse e fluidos."
+  },
+  "referencias": [
+    {
+      "id": "ettinger",
+      "citacao": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "fuentes2020",
+      "citacao": "LUIS FUENTES, V. et al. ACVIM consensus statement guidelines for the classification, diagnosis, and management of cardiomyopathies in cats. Journal of Veterinary Internal Medicine, v. 34, n. 3, p. 1062-1077, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

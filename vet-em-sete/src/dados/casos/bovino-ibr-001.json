@@ -1,0 +1,283 @@
+{
+  "id": "bovino-ibr-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Girolando",
+  "idade": "2 anos",
+  "sexo": "lote de novilhas",
+  "peso": "380 kg (média)",
+  "queixa_principal": [
+    "Febre e secreção no nariz",
+    "Olhos lacrimejando"
+  ],
+  "semestre": 4,
+  "uso": "treino",
+  "sistema": "respiratorio",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote de recria; entraram 8 novilhas compradas há 3 semanas"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Rebanho não vacinado para IBR"
+      ]
+    },
+    {
+      "titulo": "Reprodução",
+      "itens": [
+        "Duas vacas do rebanho abortaram no mês passado"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 dias: febre, perda de apetite, salivação",
+        "Secreção nasal clara que ficou espessa"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "41,2",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "48",
+        "unidade": "mpm",
+        "referencia": "20–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Focinho",
+        "itens": [
+          "Mucosa nasal muito avermelhada (\"focinho vermelho\") com placas brancas"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Conjuntivite com lacrimejamento"
+        ]
+      },
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Tosse; ausculta pulmonar com poucos ruídos"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "pcr",
+      "tipo": "pcr",
+      "nome": "PCR para herpesvírus bovino 1 (swab nasal)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "BoHV-1: detectado"
+        ],
+        "conclusao": "Herpesvírus bovino 1."
+      },
+      "comentario_didatico": "Detecta o vírus na fase aguda e confirma a causa."
+    },
+    {
+      "id": "sorologia",
+      "tipo": "sorologia",
+      "nome": "Sorologia pareada (soroneutralização)",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Aumento de 4 vezes no título após 3 semanas"
+        ],
+        "conclusao": "Infecção recente."
+      },
+      "comentario_didatico": "O aumento dos títulos entre duas coletas confirma infecção recente no rebanho."
+    },
+    {
+      "id": "necropsia_feto",
+      "tipo": "necropsia",
+      "nome": "Exame do feto abortado",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Focos de necrose no fígado do feto"
+        ],
+        "conclusao": "Compatível com BoHV-1."
+      },
+      "comentario_didatico": "Ajuda a ligar os abortos ao vírus."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura bacteriana nasal",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Flora mista"
+        ],
+        "conclusao": "Inespecífica."
+      },
+      "comentario_didatico": "Avalia infecção secundária."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    },
+    {
+      "id": "cmt",
+      "tipo": "outro",
+      "nome": "CMT",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "rinotraqueite_infecciosa_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "pneumonia_fibrinosa_bovina",
+      "como_descartar": "Pleuropneumonia cranioventral grave, sem placas no focinho."
+    },
+    {
+      "diagnostico_id": "diarreia_viral_bovina",
+      "como_descartar": "Úlceras orais e diarreia; abortos também, mas sem rinotraqueíte típica."
+    },
+    {
+      "diagnostico_id": "febre_aftosa_bovina",
+      "como_descartar": "Vesículas na boca e nos cascos; notificação imediata."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "suporte",
+      "texto": "Suporte e anti-inflamatório",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Não há antiviral; o suporte reduz a febre e melhora o apetite."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano nos animais com sinais de pneumonia bacteriana secundária",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "O vírus abre caminho para bactérias."
+    },
+    {
+      "id": "vacinar",
+      "texto": "Vacinar o rebanho e definir programa de vacinação",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Controla a doença clínica e os abortos."
+    },
+    {
+      "id": "quarentena",
+      "texto": "Quarentena e teste para animais comprados",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Os animais introduzidos trouxeram o vírus."
+    },
+    {
+      "id": "latencia",
+      "texto": "Considerar que os infectados ficam portadores latentes",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "O herpesvírus fica no gânglio trigêmeo e reativa com estresse."
+    },
+    {
+      "id": "antiviral",
+      "texto": "Antiviral humano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Sem indicação ou registro para bovinos."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Novilhas não vacinadas, após entrada de animais comprados, com febre alta, focinho vermelho com placas, conjuntivite e tosse, e abortos recentes no rebanho; PCR e sorologia positivas: rinotraqueíte infecciosa bovina.",
+    "fisiopatologia": [
+      "O herpesvírus bovino 1 replica na mucosa do trato respiratório superior e na conjuntiva.",
+      "Causa necrose do epitélio: focinho vermelho e placas.",
+      "Fica latente no gânglio trigêmeo e reativa com estresse, eliminando vírus de novo.",
+      "Em vacas prenhes, a viremia leva ao aborto.",
+      "A lesão do epitélio favorece pneumonia bacteriana secundária."
+    ],
+    "pistas": [
+      {
+        "achado": "Animais comprados sem quarentena",
+        "por_que_importa": "Introdução do vírus."
+      },
+      {
+        "achado": "Focinho vermelho com placas",
+        "por_que_importa": "Lesão típica."
+      },
+      {
+        "achado": "Conjuntivite",
+        "por_que_importa": "Forma ocular."
+      },
+      {
+        "achado": "Abortos no rebanho",
+        "por_que_importa": "Forma reprodutiva."
+      }
+    ],
+    "comentario_exames": "PCR na fase aguda e sorologia pareada confirmam.",
+    "comentario_tratamento": "Suporte, tratar secundárias, vacinar e fazer quarentena."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

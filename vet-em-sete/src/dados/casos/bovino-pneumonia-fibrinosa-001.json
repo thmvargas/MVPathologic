@@ -1,0 +1,286 @@
+{
+  "id": "bovino-pneumonia-fibrinosa-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Nelore",
+  "idade": "10 meses",
+  "sexo": "lote de bezerros desmamados",
+  "peso": "220 kg (média)",
+  "queixa_principal": [
+    "Febre e respiração difícil",
+    "Bezerros recém-chegados"
+  ],
+  "semestre": 3,
+  "uso": "diario",
+  "sistema": "respiratorio",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote comprado em leilão, viajou 18 horas de caminhão",
+        "Chegou há 6 dias ao confinamento"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Sem vacinas respiratórias"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Dias quentes e noites frias, muita poeira"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 dias vários animais com secreção nasal e tosse",
+        "Três mortos hoje"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal (doentes)",
+        "valor": "41,0",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "60",
+        "unidade": "mpm",
+        "referencia": "20–30",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Respiração",
+        "itens": [
+          "Dispneia com respiração abdominal e gemido expiratório"
+        ]
+      },
+      {
+        "titulo": "Ausculta",
+        "itens": [
+          "Crepitações e áreas sem som nos lobos cranioventrais"
+        ]
+      },
+      {
+        "titulo": "Secreções",
+        "itens": [
+          "Nasal mucopurulenta"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia de bezerro morto",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Consolidação cranioventral vermelho-escura",
+          "Fibrina sobre a pleura",
+          "Septos interlobulares espessados (aspecto \"marmorizado\")"
+        ],
+        "conclusao": "Pleuropneumonia fibrinosa."
+      },
+      "comentario_didatico": "A lesão é típica: pleuropneumonia fibrinosa cranioventral com fibrina na pleura."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura de pulmão com antibiograma",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Mannheimia haemolytica isolada"
+        ],
+        "conclusao": "M. haemolytica."
+      },
+      "comentario_didatico": "Isola o agente e orienta a escolha do antimicrobiano para o lote."
+    },
+    {
+      "id": "pcr_virus",
+      "tipo": "pcr",
+      "nome": "PCR para vírus respiratórios (BoHV-1, BRSV, BVDV)",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "BRSV detectado"
+        ],
+        "conclusao": "Coinfecção viral."
+      },
+      "comentario_didatico": "Avalia os vírus que abrem caminho para a bactéria; ajuda a planejar a vacina."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Neutrofilia"
+        ],
+        "conclusao": "Inflamação."
+      },
+      "comentario_didatico": "Leucocitose e fibrinogênio alto, inespecíficos."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "Carga baixa."
+      },
+      "comentario_didatico": "Não explica um surto respiratório agudo."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não realizada"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inviável no campo para bovinos desse porte."
+    }
+  ],
+  "diagnostico_id": "pneumonia_fibrinosa_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "rinotraqueite_infecciosa_bovina",
+      "como_descartar": "Traqueíte com placas na mucosa, conjuntivite; geralmente sem pleuropneumonia extensa."
+    },
+    {
+      "diagnostico_id": "verminose_pulmonar_bovina",
+      "como_descartar": "Tosse em bezerros a pasto, larvas nas fezes, lesões caudodorsais."
+    },
+    {
+      "diagnostico_id": "tuberculose_bovina",
+      "como_descartar": "Evolução crônica, granulomas caseosos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "antibiotico_lote",
+      "texto": "Antimicrobiano de longa ação para doentes e metafilaxia do lote",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento precoce reduz mortes; escolher pelo antibiograma."
+    },
+    {
+      "id": "aine",
+      "texto": "Anti-inflamatório não esteroidal",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Reduz febre e lesão pulmonar."
+    },
+    {
+      "id": "isolar",
+      "texto": "Separar doentes, sombra, água e ventilação",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Reduz estresse e transmissão."
+    },
+    {
+      "id": "vacina",
+      "texto": "Vacinar os próximos lotes antes do transporte",
+      "tipo": "sanitaria",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção dos vírus e da Mannheimia."
+    },
+    {
+      "id": "chegada",
+      "texto": "Manejo de recepção: descanso, água, feno de qualidade",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "O estresse do transporte é o principal gatilho."
+    },
+    {
+      "id": "corticoide",
+      "texto": "Dexametasona em dose alta",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Imunossupressão favorece a bactéria."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Bezerros recém-desmamados, transportados por longa distância e sem vacinação, com febre alta, dispneia e mortes; necropsia com pleuropneumonia fibrinosa cranioventral e Mannheimia haemolytica isolada: pneumonia fibrinosa bovina (\"febre do transporte\").",
+    "fisiopatologia": [
+      "Mannheimia haemolytica vive na nasofaringe de bovinos sadios.",
+      "Estresse (transporte, desmame, mistura de lotes) e vírus respiratórios reduzem as defesas do trato respiratório.",
+      "A bactéria chega aos alvéolos e produz leucotoxina, que mata neutrófilos e macrófagos.",
+      "A inflamação libera fibrina: pleuropneumonia fibrinosa nos lobos cranioventrais, por gravidade.",
+      "A endotoxina causa febre e toxemia."
+    ],
+    "pistas": [
+      {
+        "achado": "Transporte longo e mistura de lotes",
+        "por_que_importa": "Estresse."
+      },
+      {
+        "achado": "Sem vacina respiratória",
+        "por_que_importa": "Suscetibilidade."
+      },
+      {
+        "achado": "Crepitações cranioventrais",
+        "por_que_importa": "Distribuição da broncopneumonia."
+      },
+      {
+        "achado": "Fibrina na pleura",
+        "por_que_importa": "Lesão típica."
+      }
+    ],
+    "comentario_exames": "Necropsia e cultura de um animal morto orientam todo o lote.",
+    "comentario_tratamento": "Antimicrobiano cedo, anti-inflamatório e manejo de recepção; vacinar os próximos lotes."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

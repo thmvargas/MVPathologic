@@ -1,0 +1,302 @@
+{
+  "id": "bovino-fotossensibilizacao-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "bovina",
+  "grupo_especie": "ruminantes",
+  "raca": "Nelore",
+  "idade": "Bezerros de 8 a 12 meses",
+  "sexo": "lote",
+  "peso": "200 kg (média)",
+  "queixa_principal": [
+    "Pele descascando nas costas",
+    "Animais procurando sombra"
+  ],
+  "semestre": 4,
+  "uso": "treino",
+  "sistema": "hepatobiliar",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Lote colocado há 3 semanas em pasto novo de Brachiaria decumbens em brotação"
+      ]
+    },
+    {
+      "titulo": "Clima",
+      "itens": [
+        "Período chuvoso e quente"
+      ]
+    },
+    {
+      "titulo": "Outros casos",
+      "itens": [
+        "10% do lote com sinais; dois mortos"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Inquietos, coçando, procurando sombra e lama",
+        "Depois, pele avermelhada, inchada e descascando nas áreas brancas e expostas"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,5",
+        "unidade": "°C",
+        "referencia": "38,0–39,3",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Mucosas",
+        "valor": "Ictéricas",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Eritema, edema e necrose com crostas no dorso, focinho, orelhas e úbere, áreas despigmentadas e expostas ao sol"
+        ]
+      },
+      {
+        "titulo": "Olhos",
+        "itens": [
+          "Lacrimejamento e fotofobia"
+        ]
+      },
+      {
+        "titulo": "Comportamento",
+        "itens": [
+          "Emagrecimento"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "bioquimica",
+      "tipo": "bioquimica",
+      "nome": "GGT, AST e bilirrubina",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "GGT",
+            "valor": "180",
+            "unidade": "U/L",
+            "referencia": "6–17",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "Bilirrubina total",
+            "valor": "2,4",
+            "unidade": "mg/dL",
+            "referencia": "0,01–0,5",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Colestase."
+      },
+      "comentario_didatico": "GGT muito alta e bilirrubina alta mostram lesão hepática colestática, origem da fotossensibilização."
+    },
+    {
+      "id": "necropsia",
+      "tipo": "necropsia",
+      "nome": "Necropsia e histopatologia do fígado",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Fígado alaranjado",
+          "Cristais em ductos biliares e macrófagos espumosos",
+          "Colangite"
+        ],
+        "conclusao": "Lesão hepática por saponinas."
+      },
+      "comentario_didatico": "Cristais birrefringentes nos ductos biliares e macrófagos espumosos confirmam a intoxicação por saponinas da braquiária."
+    },
+    {
+      "id": "pasto",
+      "tipo": "outro",
+      "nome": "Avaliação do pasto",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Pasto quase exclusivo de B. decumbens jovem"
+        ],
+        "conclusao": "Fonte provável."
+      },
+      "comentario_didatico": "Confirma Brachiaria decumbens em brotação como fonte."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado de pele",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Lesões restritas a áreas despigmentadas expostas ao sol não são sarna."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura de pele",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Flora secundária"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não infeccioso."
+    },
+    {
+      "id": "opg",
+      "tipo": "coproparasitologico",
+      "nome": "OPG",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Baixo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica."
+    }
+  ],
+  "diagnostico_id": "fotossensibilizacao_hepatogena_bovina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "senecio_intoxicacao_bovina",
+      "como_descartar": "Também lesa o fígado; fibrose e megalocitose, curso crônico; plantas de Senecio no pasto."
+    },
+    {
+      "diagnostico_id": "papilomatose_bovina",
+      "como_descartar": "Verrugas, sem relação com sol ou fígado."
+    },
+    {
+      "diagnostico_id": "diarreia_viral_bovina",
+      "como_descartar": "Úlceras orais e diarreia, sem relação com áreas despigmentadas."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "tirar_pasto",
+      "texto": "Retirar o lote da braquiária",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Interrompe a ingestão das saponinas."
+    },
+    {
+      "id": "sombra",
+      "texto": "Sombra e abrigo do sol",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Sem luz solar, a filoeritrina não reage na pele."
+    },
+    {
+      "id": "feridas",
+      "texto": "Tratar as feridas e controlar moscas e bicheiras",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Lesões abertas atraem moscas."
+    },
+    {
+      "id": "manejo",
+      "texto": "No futuro: evitar animais jovens e recém-introduzidos em braquiária em brotação",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção."
+    },
+    {
+      "id": "antibiotico_so",
+      "texto": "Só antimicrobiano",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Não trata a causa; os animais continuam comendo a planta."
+    },
+    {
+      "id": "sol",
+      "texto": "Manter a pasto ao sol para \"secar\" as feridas",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "A luz solar causa as lesões."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Bezerros em pasto novo de Brachiaria decumbens em brotação, com lesões de pele em áreas despigmentadas e expostas ao sol, fotofobia, icterícia e mortes; GGT e bilirrubina altas e cristais nos ductos biliares: fotossensibilização hepatógena por intoxicação por saponinas da braquiária.",
+    "fisiopatologia": [
+      "A clorofila é digerida no rúmen e forma filoeritrina, normalmente eliminada pelo fígado na bile.",
+      "As saponinas da Brachiaria formam cristais que obstruem os ductos biliares: colestase.",
+      "A filoeritrina se acumula no sangue e chega à pele.",
+      "Na pele clara e exposta, a luz solar ativa a filoeritrina, que libera radicais livres e destrói as células.",
+      "Animais jovens e recém-introduzidos em braquiária em brotação são os mais sensíveis."
+    ],
+    "pistas": [
+      {
+        "achado": "Braquiária em brotação",
+        "por_que_importa": "Fonte de saponinas."
+      },
+      {
+        "achado": "Lesões só em pele clara exposta",
+        "por_que_importa": "Fotossensibilização."
+      },
+      {
+        "achado": "Icterícia",
+        "por_que_importa": "Lesão hepática."
+      },
+      {
+        "achado": "GGT alta",
+        "por_que_importa": "Colestase."
+      }
+    ],
+    "comentario_exames": "GGT e bilirrubina mostram a origem hepática; necropsia confirma.",
+    "comentario_tratamento": "Tirar do pasto, sombra e cuidado das feridas."
+  },
+  "referencias": [
+    {
+      "id": "constable",
+      "citacao": "CONSTABLE, P. D. et al. Veterinary Medicine: a textbook of the diseases of cattle, horses, sheep, pigs and goats. 11. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "riet",
+      "citacao": "RIET-CORREA, F. et al. Doenças de ruminantes e equídeos. 3. ed. Santa Maria: Pallotti, 2007."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

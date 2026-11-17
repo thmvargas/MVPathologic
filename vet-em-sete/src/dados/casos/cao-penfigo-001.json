@@ -1,0 +1,286 @@
+{
+  "id": "cao-penfigo-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Akita",
+  "idade": "5 anos",
+  "sexo": "macho castrado",
+  "peso": "40 kg",
+  "queixa_principal": [
+    "Crostas no focinho e orelhas",
+    "Coceira leve"
+  ],
+  "semestre": 4,
+  "uso": "diario",
+  "sistema": "tegumentar",
+  "dificuldade": 2,
+  "historico": [
+    {
+      "titulo": "Ambiente",
+      "itens": [
+        "Casa com quintal"
+      ]
+    },
+    {
+      "titulo": "Medicações",
+      "itens": [
+        "Recebeu antibiótico por 3 semanas sem melhora"
+      ]
+    },
+    {
+      "titulo": "Ectoparasitas",
+      "itens": [
+        "Controle em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 2 meses: crostas no focinho, ao redor dos olhos e nas orelhas",
+        "Agora também nos coxins"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma no momento"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "39,3",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Linfonodos",
+        "valor": "Levemente aumentados"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Pele",
+        "itens": [
+          "Pústulas grandes e crostas amarelas no plano nasal, região periocular e pavilhões auriculares",
+          "Distribuição simétrica"
+        ]
+      },
+      {
+        "titulo": "Coxins",
+        "itens": [
+          "Hiperqueratose com fissuras"
+        ]
+      },
+      {
+        "titulo": "Mucosas",
+        "itens": [
+          "Sem lesões na boca"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "citologia",
+      "tipo": "citologia",
+      "nome": "Citologia de pústula intacta",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Neutrófilos não degenerados",
+          "Muitos queratinócitos acantolíticos isolados e em grupos",
+          "Sem bactérias"
+        ],
+        "conclusao": "Pustulose acantolítica estéril."
+      },
+      "comentario_didatico": "Neutrófilos não degenerados com muitos queratinócitos acantolíticos, sem bactérias, sugerem pênfigo foliáceo."
+    },
+    {
+      "id": "biopsia",
+      "tipo": "histopatologia",
+      "nome": "Biópsia de pústulas ou crostas recentes",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Pústulas subcorneais com neutrófilos e queratinócitos acantolíticos"
+        ],
+        "conclusao": "Pênfigo foliáceo."
+      },
+      "comentario_didatico": "Confirma: pústulas subcorneais com células acantolíticas."
+    },
+    {
+      "id": "raspado",
+      "tipo": "citologia",
+      "nome": "Raspado cutâneo",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativo"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Afasta demodicose."
+    },
+    {
+      "id": "cultura",
+      "tipo": "outro",
+      "nome": "Cultura fúngica",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativa"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Dermatofitose por Trichophyton pode causar acantólise; aqui negativa."
+    },
+    {
+      "id": "hemograma",
+      "tipo": "hemograma",
+      "nome": "Hemograma",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Neutrofilia leve"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Inespecífico."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "penfigo_foliaceo_canino",
+  "diferenciais": [
+    {
+      "diagnostico_id": "lupus_eritematoso_discoide_canino",
+      "como_descartar": "Despigmentação e perda da textura do plano nasal, sem pústulas generalizadas."
+    },
+    {
+      "diagnostico_id": "piodermite_bacteriana_canina",
+      "como_descartar": "Pústulas pequenas com bactérias, responde a antibiótico."
+    },
+    {
+      "diagnostico_id": "dermatofitose_felina",
+      "como_descartar": "Dermatofitose: cultura positiva."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "prednisolona",
+      "texto": "Prednisolona em dose imunossupressora, com redução gradual",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Tratamento inicial de escolha.",
+      "dose": {
+        "texto": "2 mg/kg/dia, reduzindo após remissão",
+        "fonte": "muller",
+        "a_revisar": true
+      }
+    },
+    {
+      "id": "poupador",
+      "texto": "Associar fármaco poupador de corticoide (ex.: azatioprina ou ciclosporina) se necessário",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Permite reduzir o corticoide no longo prazo."
+    },
+    {
+      "id": "sol",
+      "texto": "Evitar exposição solar",
+      "tipo": "manejo",
+      "classificacao": "aceitavel",
+      "justificativa": "A luz UV piora as lesões."
+    },
+    {
+      "id": "monitor",
+      "texto": "Hemograma e bioquímica periódicos durante a imunossupressão",
+      "tipo": "exame",
+      "classificacao": "adequado",
+      "justificativa": "Monitora efeitos adversos."
+    },
+    {
+      "id": "so_antibiotico",
+      "texto": "Mais antibiótico",
+      "tipo": "farmaco",
+      "classificacao": "desnecessario",
+      "justificativa": "Não é infecção bacteriana; já não respondeu."
+    },
+    {
+      "id": "parar",
+      "texto": "Interromper o corticoide de uma vez ao melhorar",
+      "tipo": "farmaco",
+      "classificacao": "contraindicado",
+      "justificativa": "Recidiva e risco de insuficiência adrenal."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Akita adulto com pústulas e crostas simétricas no focinho, olhos, orelhas e coxins, sem resposta a antibiótico; citologia com acantolíticos sem bactérias e biópsia com pústulas subcorneais: pênfigo foliáceo.",
+    "fisiopatologia": [
+      "É a doença autoimune de pele mais comum em cães e gatos; Akita e Chow-chow são predispostos.",
+      "Autoanticorpos atacam a desmocoleína, proteína dos desmossomos que unem os queratinócitos.",
+      "As células se soltam (acantólise) e formam pústulas logo abaixo da camada córnea.",
+      "As pústulas são frágeis e viram crostas; o padrão facial e de coxins é típico.",
+      "Medicamentos e exposição solar podem desencadear ou piorar."
+    ],
+    "pistas": [
+      {
+        "achado": "Akita",
+        "por_que_importa": "Raça predisposta."
+      },
+      {
+        "achado": "Crostas simétricas em face e orelhas",
+        "por_que_importa": "Distribuição típica."
+      },
+      {
+        "achado": "Sem resposta a antibiótico",
+        "por_que_importa": "Não é piodermite."
+      },
+      {
+        "achado": "Queratinócitos acantolíticos",
+        "por_que_importa": "Achado-chave."
+      }
+    ],
+    "comentario_exames": "Citologia de pústula intacta e biópsia.",
+    "comentario_tratamento": "Imunossupressão com redução gradual e monitoramento."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "muller",
+      "citacao": "MILLER, W. H.; GRIFFIN, C. E.; CAMPBELL, K. L. Muller and Kirk's Small Animal Dermatology. 7. ed. St. Louis: Elsevier, 2013."
+    },
+    {
+      "id": "zachary",
+      "citacao": "ZACHARY, J. F. Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

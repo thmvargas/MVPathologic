@@ -1,0 +1,290 @@
+{
+  "id": "cao-ipe-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "canina",
+  "grupo_especie": "caes",
+  "raca": "Pastor-alemão",
+  "idade": "2 anos",
+  "sexo": "macho",
+  "peso": "24 kg",
+  "queixa_principal": [
+    "Emagrecendo apesar de comer muito",
+    "Fezes volumosas e gordurosas"
+  ],
+  "semestre": 5,
+  "uso": "treino",
+  "sistema": "pancreatico",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Alimentação",
+      "itens": [
+        "Ração seca; come tudo e ainda procura comida, come as próprias fezes"
+      ]
+    },
+    {
+      "titulo": "Vacinação",
+      "itens": [
+        "Em dia"
+      ]
+    },
+    {
+      "titulo": "Vermifugação",
+      "itens": [
+        "Em dia"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Há 4 meses: fezes pastosas, amareladas, volumosas, com cheiro forte",
+        "Perdeu 8 kg"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Vermífugo e probiótico, sem melhora"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,5",
+        "unidade": "°C",
+        "referencia": "37,5–39,2",
+        "fonte": "feitosa",
+        "a_revisar": true
+      },
+      {
+        "nome": "Escore de condição corporal",
+        "valor": "2/9",
+        "alterado": "anormal"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Corpo",
+        "itens": [
+          "Muito magro, musculatura atrofiada"
+        ]
+      },
+      {
+        "titulo": "Pelagem",
+        "itens": [
+          "Opaca e seborreica"
+        ]
+      },
+      {
+        "titulo": "Abdome",
+        "itens": [
+          "Borborigmos audíveis"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "tli",
+      "tipo": "bioquimica",
+      "nome": "Imunorreatividade semelhante à tripsina (TLI) sérica em jejum",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "TLI",
+            "valor": "1,2",
+            "unidade": "µg/L",
+            "referencia": "5,7–45,2",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Insuficiência pancreática exócrina."
+      },
+      "comentario_didatico": "Exame de escolha: TLI muito baixa confirma a insuficiência pancreática exócrina."
+    },
+    {
+      "id": "cobalamina",
+      "tipo": "bioquimica",
+      "nome": "Cobalamina (vitamina B12) e folato",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Cobalamina",
+            "valor": "150",
+            "unidade": "ng/L",
+            "referencia": "250–900",
+            "fonte": "nelson",
+            "a_revisar": true,
+            "alterado": "baixo"
+          }
+        ],
+        "conclusao": "Hipocobalaminemia."
+      },
+      "comentario_didatico": "A cobalamina costuma estar baixa e precisa ser reposta; folato alto indica supercrescimento bacteriano."
+    },
+    {
+      "id": "copro",
+      "tipo": "coproparasitologico",
+      "nome": "Coproparasitológico seriado",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Negativo em 3 amostras"
+        ],
+        "conclusao": "Negativo."
+      },
+      "comentario_didatico": "Afasta parasitas (giárdia) que também causam má absorção."
+    },
+    {
+      "id": "sudan",
+      "tipo": "citologia",
+      "nome": "Pesquisa de gordura nas fezes",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Muitos glóbulos de gordura"
+        ],
+        "conclusao": "Esteatorreia."
+      },
+      "comentario_didatico": "Gordura não digerida apoia, mas é pouco específica."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia abdominal",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não avalia função pancreática."
+    },
+    {
+      "id": "t4",
+      "tipo": "outro",
+      "nome": "T4",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não explica o quadro."
+    }
+  ],
+  "diagnostico_id": "insuficiencia_pancreatica_exocrina_canina",
+  "diferenciais": [
+    {
+      "diagnostico_id": "giardiase",
+      "como_descartar": "Diarreia de intestino delgado com cistos de Giardia nas fezes."
+    },
+    {
+      "diagnostico_id": "diabetes_mellitus",
+      "como_descartar": "Polifagia e emagrecimento com poliúria e hiperglicemia."
+    },
+    {
+      "diagnostico_id": "linfoma_intestinal_felino",
+      "como_descartar": "Linfoma intestinal: má absorção com espessamento intestinal; mais comum em gatos."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "enzimas",
+      "texto": "Enzimas pancreáticas em pó misturadas a cada refeição",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Substituem as enzimas que o pâncreas não produz; tratamento por toda a vida."
+    },
+    {
+      "id": "b12",
+      "texto": "Suplementação de cobalamina",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "A falta de B12 piora a resposta ao tratamento."
+    },
+    {
+      "id": "dieta",
+      "texto": "Dieta altamente digestível, em várias refeições",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Melhora a absorção."
+    },
+    {
+      "id": "antibiotico",
+      "texto": "Antimicrobiano se houver supercrescimento bacteriano que não responde",
+      "tipo": "farmaco",
+      "classificacao": "aceitavel",
+      "justificativa": "Usado em casos selecionados."
+    },
+    {
+      "id": "reproducao",
+      "texto": "Não usar na reprodução",
+      "tipo": "sanitaria",
+      "classificacao": "aceitavel",
+      "justificativa": "Atrofia acinar tem componente hereditário em Pastor-alemão."
+    },
+    {
+      "id": "jejum",
+      "texto": "Jejum para \"descansar o intestino\"",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "O cão já está desnutrido; precisa comer com as enzimas."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Pastor-alemão jovem com emagrecimento intenso apesar de polifagia, coprofagia e fezes volumosas, amareladas e gordurosas; TLI muito baixa e cobalamina baixa: insuficiência pancreática exócrina por atrofia acinar.",
+    "fisiopatologia": [
+      "O pâncreas exócrino produz enzimas digestivas (lipase, amilase, tripsina).",
+      "Em Pastor-alemão, a causa mais comum é a atrofia acinar pancreática, de origem imunomediada e hereditária.",
+      "Sem enzimas, gordura, proteína e amido não são digeridos: má digestão, fezes volumosas e gordurosas, emagrecimento com fome.",
+      "A falta de fator intrínseco pancreático reduz a absorção de cobalamina.",
+      "Os sinais só aparecem quando mais de 90% do tecido acinar foi perdido."
+    ],
+    "pistas": [
+      {
+        "achado": "Pastor-alemão jovem",
+        "por_que_importa": "Raça predisposta."
+      },
+      {
+        "achado": "Fome com emagrecimento",
+        "por_que_importa": "Má digestão."
+      },
+      {
+        "achado": "Fezes volumosas e gordurosas",
+        "por_que_importa": "Esteatorreia."
+      },
+      {
+        "achado": "TLI muito baixa",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "TLI é o exame de escolha; cobalamina orienta suplementação.",
+    "comentario_tratamento": "Enzimas em todas as refeições, B12 e dieta digestível."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "nelson",
+      "citacao": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2020."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}

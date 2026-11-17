@@ -1,0 +1,318 @@
+{
+  "id": "equino-rabdomiolise-001",
+  "status": "rascunho",
+  "versao": 1,
+  "especie": "equina",
+  "grupo_especie": "equinos",
+  "raca": "Quarto de Milha",
+  "idade": "5 anos",
+  "sexo": "fêmea",
+  "peso": "470 kg",
+  "queixa_principal": [
+    "Ficou dura depois do treino",
+    "Urina escura"
+  ],
+  "semestre": 1,
+  "uso": "treino",
+  "sistema": "musculoesqueletico",
+  "dificuldade": 1,
+  "historico": [
+    {
+      "titulo": "Manejo",
+      "itens": [
+        "Ficou parada 3 dias em baia com a mesma ração concentrada de trabalho"
+      ]
+    },
+    {
+      "titulo": "Uso",
+      "itens": [
+        "Égua de prova de tambor, temperamento nervoso"
+      ]
+    },
+    {
+      "titulo": "Episódios anteriores",
+      "itens": [
+        "Teve algo parecido uma vez"
+      ]
+    }
+  ],
+  "anamnese": [
+    {
+      "titulo": "Evolução",
+      "itens": [
+        "Voltou ao treino hoje; após 15 minutos ficou rígida, suando e relutando em andar"
+      ]
+    },
+    {
+      "titulo": "Medicações em uso",
+      "itens": [
+        "Nenhuma"
+      ]
+    }
+  ],
+  "exame_fisico": {
+    "parametros": [
+      {
+        "nome": "Frequência cardíaca",
+        "valor": "72",
+        "unidade": "bpm",
+        "referencia": "28–40",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Frequência respiratória",
+        "valor": "36",
+        "unidade": "mpm",
+        "referencia": "8–16",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      },
+      {
+        "nome": "Temperatura retal",
+        "valor": "38,9",
+        "unidade": "°C",
+        "referencia": "37,5–38,5",
+        "fonte": "feitosa",
+        "a_revisar": true,
+        "alterado": "alto"
+      }
+    ],
+    "achados": [
+      {
+        "titulo": "Musculatura",
+        "itens": [
+          "Glúteos e lombo firmes, dolorosos e contraídos"
+        ]
+      },
+      {
+        "titulo": "Marcha",
+        "itens": [
+          "Passos curtos, rígidos, relutância em se mover"
+        ]
+      },
+      {
+        "titulo": "Urina",
+        "itens": [
+          "Marrom-avermelhada"
+        ]
+      }
+    ]
+  },
+  "exames": [
+    {
+      "id": "ck",
+      "tipo": "bioquimica",
+      "nome": "CK e AST",
+      "classificacao": "relevante",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "CK",
+            "valor": "45.000",
+            "unidade": "U/L",
+            "referencia": "100–470",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          },
+          {
+            "analito": "AST",
+            "valor": "1.200",
+            "unidade": "U/L",
+            "referencia": "160–410",
+            "fonte": "kaneko",
+            "a_revisar": true,
+            "alterado": "alto"
+          }
+        ],
+        "conclusao": "Rabdomiólise."
+      },
+      "comentario_didatico": "Confirmam a lesão muscular; a CK sobe em horas e cai em dias, a AST demora mais."
+    },
+    {
+      "id": "urinalise",
+      "tipo": "urinalise",
+      "nome": "Urinálise",
+      "classificacao": "relevante",
+      "resultado": {
+        "descricao": [
+          "Urina marrom, sangue oculto positivo sem hemácias no sedimento (mioglobina)"
+        ],
+        "conclusao": "Mioglobinúria."
+      },
+      "comentario_didatico": "Mioglobinúria indica risco de lesão renal; orienta a hidratação."
+    },
+    {
+      "id": "creatinina",
+      "tipo": "bioquimica",
+      "nome": "Creatinina e eletrólitos",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "tabela": [
+          {
+            "analito": "Creatinina",
+            "valor": "1,9",
+            "unidade": "mg/dL",
+            "referencia": "1,2–1,9",
+            "fonte": "kaneko",
+            "a_revisar": true
+          }
+        ],
+        "conclusao": "Limite superior."
+      },
+      "comentario_didatico": "Avalia o rim, que a mioglobina pode lesar."
+    },
+    {
+      "id": "biopsia",
+      "tipo": "histopatologia",
+      "nome": "Biópsia muscular",
+      "classificacao": "pouco_util",
+      "resultado": {
+        "descricao": [
+          "Não realizada na fase aguda"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Útil nos casos recorrentes para diferenciar miopatias por acúmulo de polissacarídeo; não agora."
+    },
+    {
+      "id": "rx",
+      "tipo": "radiografia",
+      "nome": "Radiografia de membros",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Normal"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não há lesão óssea."
+    },
+    {
+      "id": "aie",
+      "tipo": "sorologia",
+      "nome": "AIE",
+      "classificacao": "desnecessario",
+      "resultado": {
+        "descricao": [
+          "Não reagente"
+        ],
+        "conclusao": "—"
+      },
+      "comentario_didatico": "Não relacionado."
+    }
+  ],
+  "diagnostico_id": "rabdomiolise_esforco",
+  "diferenciais": [
+    {
+      "diagnostico_id": "laminite",
+      "como_descartar": "Dor nos cascos, pulso digital forte, CK normal."
+    },
+    {
+      "diagnostico_id": "tetano",
+      "como_descartar": "Rigidez com trismo e prolapso de terceira pálpebra, sem relação com exercício."
+    },
+    {
+      "diagnostico_id": "colica_compactacao",
+      "como_descartar": "Dor abdominal, olhar para o flanco, sem músculos duros."
+    }
+  ],
+  "tratamentos": [
+    {
+      "id": "parar",
+      "texto": "Parar o exercício e não forçar a caminhar",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Mais esforço aumenta a lesão."
+    },
+    {
+      "id": "fluido",
+      "texto": "Fluidoterapia intravenosa",
+      "tipo": "suporte",
+      "classificacao": "adequado",
+      "justificativa": "Protege os rins da mioglobina."
+    },
+    {
+      "id": "analgesia",
+      "texto": "Analgesia (AINE só depois de hidratada) e relaxante muscular",
+      "tipo": "farmaco",
+      "classificacao": "adequado",
+      "justificativa": "Controle de dor; AINE em paciente desidratada pode lesar o rim."
+    },
+    {
+      "id": "dieta",
+      "texto": "Dieta com menos concentrado e mais gordura e fibra; reduzir a ração nos dias parados",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Prevenção de novos episódios."
+    },
+    {
+      "id": "rotina",
+      "texto": "Exercício diário regular, evitando dias parados com ração cheia",
+      "tipo": "manejo",
+      "classificacao": "adequado",
+      "justificativa": "Rotina previsível reduz recidivas."
+    },
+    {
+      "id": "caminhar",
+      "texto": "Fazer andar para \"soltar\" os músculos",
+      "tipo": "manejo",
+      "classificacao": "contraindicado",
+      "justificativa": "Agrava a necrose muscular."
+    }
+  ],
+  "explicacao": {
+    "resumo": "Égua de alto desempenho, nervosa, mantida parada com ração cheia, com rigidez e dor muscular minutos após voltar ao treino, sudorese e urina escura; CK muito alta e mioglobinúria: rabdomiólise de esforço.",
+    "fisiopatologia": [
+      "Fisiologia: a contração depende do cálcio liberado do retículo sarcoplasmático e de ATP para relaxar.",
+      "Em algumas raças há defeitos no controle do cálcio intracelular (rabdomiólise recorrente) ou no armazenamento de glicogênio (miopatia por acúmulo de polissacarídeo).",
+      "Com ração rica em amido e dias parados, o músculo acumula substrato; ao voltar ao exercício, ocorre contração sustentada e necrose.",
+      "Fibras lesadas liberam CK e mioglobina; a mioglobina na urina pode lesar os túbulos renais."
+    ],
+    "pistas": [
+      {
+        "achado": "Dias parados com ração cheia",
+        "por_que_importa": "Clássico (\"mal da segunda-feira\")."
+      },
+      {
+        "achado": "Rigidez minutos após o exercício",
+        "por_que_importa": "Rabdomiólise."
+      },
+      {
+        "achado": "Urina marrom",
+        "por_que_importa": "Mioglobinúria."
+      },
+      {
+        "achado": "CK muito alta",
+        "por_que_importa": "Confirma."
+      }
+    ],
+    "comentario_exames": "CK, AST e urinálise; biópsia nos casos recorrentes.",
+    "comentario_tratamento": "Parar, hidratar, analgesia e corrigir dieta e rotina."
+  },
+  "referencias": [
+    {
+      "id": "feitosa",
+      "citacao": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 4. ed. Rio de Janeiro: Roca, 2020."
+    },
+    {
+      "id": "kaneko",
+      "citacao": "KANEKO, J. J.; HARVEY, J. W.; BRUSS, M. L. Clinical Biochemistry of Domestic Animals. 6. ed. San Diego: Academic Press, 2008. Apêndice."
+    },
+    {
+      "id": "reece",
+      "citacao": "REECE, W. O. Dukes: fisiologia dos animais domésticos. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017."
+    },
+    {
+      "id": "reed",
+      "citacao": "REED, S. M.; BAYLY, W. M.; SELLON, D. C. Equine Internal Medicine. 4. ed. St. Louis: Elsevier, 2018."
+    }
+  ],
+  "revisao": {
+    "autor": "Claude (rascunho)",
+    "observacoes": "Intervalos de referência e doses marcados 'a revisar' foram citados de memória: conferir na fonte ou trocar pelos do laboratório."
+  }
+}
